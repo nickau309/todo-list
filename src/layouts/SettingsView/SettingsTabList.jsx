@@ -52,26 +52,26 @@ export default function SettingsTabList({ setShowSmSidebar, showSmSidebar }) {
       <div className="min-h-0 grow">
         <div className="h-full overflow-auto">
           <Tab.List className="flex flex-col gap-1 p-3">
-            {({ selectedIndex }) =>
-              settingsTabsData.map((tab, i) => (
-                <Tab
-                  key={tab.path}
-                  onClick={() => setShowSmSidebar(false)}
-                  className={classNames(
+            {settingsTabsData.map((tab) => (
+              <Tab
+                key={tab.path}
+                onClick={() => setShowSmSidebar(false)}
+                className={({ selected }) => {
+                  return classNames(
                     "flex min-w-0 items-center gap-1.5 overflow-hidden rounded-[5px] p-1 transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-                    selectedIndex === i
+                    selected
                       ? "bg-tab-hover-fill"
                       : "focus-visible:bg-quaternary-hover-fill enabled:hover:bg-quaternary-hover-fill",
                     "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
-                  )}
-                >
-                  <span className="text-settings-icon">{tab.icon}</span>
-                  <div className="whitespace-nowrap text-sm/[18.4px]">
-                    {tab.description}
-                  </div>
-                </Tab>
-              ))
-            }
+                  );
+                }}
+              >
+                <span className="text-settings-icon">{tab.icon}</span>
+                <div className="whitespace-nowrap text-sm/[18.4px]">
+                  {tab.description}
+                </div>
+              </Tab>
+            ))}
           </Tab.List>
         </div>
       </div>

@@ -54,27 +54,25 @@ export default function DueDate({ disabled, dueDate }) {
     return (
       <div className="relative flex basis-10">
         <Popover as={Fragment}>
-          {({ open }) => (
-            <>
-              <Popover.Button
-                ref={refs.setReference}
-                as={ModifyButton}
-                disabled={disabled}
-                className={classNames(
-                  "peer grow",
-                  open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
-                )}
-              >
-                <span className={classNames("mr-3.5", className)}>
-                  <DueDateIcon24 />
-                </span>
-                <span className="grow select-none truncate text-left font-reactist leading-8">
-                  {description}
-                </span>
-              </Popover.Button>
-              {DueDateDropdownComponent}
-            </>
-          )}
+          <Popover.Button
+            ref={refs.setReference}
+            as={ModifyButton}
+            disabled={disabled}
+            className={({ open }) => {
+              return classNames(
+                "peer grow",
+                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+              );
+            }}
+          >
+            <span className={classNames("mr-3.5", className)}>
+              <DueDateIcon24 />
+            </span>
+            <span className="grow select-none truncate text-left font-reactist leading-8">
+              {description}
+            </span>
+          </Popover.Button>
+          {DueDateDropdownComponent}
         </Popover>
         <button
           type="button"
@@ -97,26 +95,24 @@ export default function DueDate({ disabled, dueDate }) {
   } else {
     return (
       <Popover as={Fragment}>
-        {({ open }) => (
-          <>
-            <Popover.Button
-              ref={refs.setReference}
-              as={AddButton}
-              disabled={disabled}
-              className={classNames(
-                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
-              )}
-            >
-              <span className="mr-3.5">
-                <DueDateIcon24 />
-              </span>
-              <span className="grow select-none truncate text-left font-reactist leading-8">
-                Due date
-              </span>
-            </Popover.Button>
-            {DueDateDropdownComponent}
-          </>
-        )}
+        <Popover.Button
+          ref={refs.setReference}
+          as={AddButton}
+          disabled={disabled}
+          className={({ open }) => {
+            return classNames(
+              open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+            );
+          }}
+        >
+          <span className="mr-3.5">
+            <DueDateIcon24 />
+          </span>
+          <span className="grow select-none truncate text-left font-reactist leading-8">
+            Due date
+          </span>
+        </Popover.Button>
+        {DueDateDropdownComponent}
       </Popover>
     );
   }

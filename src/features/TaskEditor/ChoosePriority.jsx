@@ -23,24 +23,20 @@ export default function ChoosePriority({ editId, editType }) {
 
   return (
     <Listbox value={priority} onChange={setPriority} name="priority">
-      {({ open }) => (
+      {({ value, open }) => (
         <>
           <Listbox.Button ref={refs.setReference} as={InputButton}>
-            {({ value }) => (
-              <>
-                <span className={textColor[value]}>
-                  {value === 4 ? <Priority4Icon16 /> : <PriorityIcon16 />}
-                </span>
-                <span className="font-reactist text-[13px]">
-                  {value === 4 ? "Priority" : "P" + value}
-                </span>
-                {value !== 4 && (
-                  <RemoveButton
-                    onClick={() => setPriority(4)}
-                    aria-label="Remove priority"
-                  />
-                )}
-              </>
+            <span className={textColor[value]}>
+              {value === 4 ? <Priority4Icon16 /> : <PriorityIcon16 />}
+            </span>
+            <span className="font-reactist text-[13px]">
+              {value === 4 ? "Priority" : "P" + value}
+            </span>
+            {value !== 4 && (
+              <RemoveButton
+                onClick={() => setPriority(4)}
+                aria-label="Remove priority"
+              />
             )}
           </Listbox.Button>
           {open && (
