@@ -31,11 +31,7 @@ export default function AddTask() {
           onClose={closeEditor}
           onSubmit={(e) => {
             e.preventDefault();
-            const formData = new FormData(
-              e.currentTarget instanceof HTMLFormElement
-                ? e.currentTarget
-                : e.currentTarget.form
-            );
+            const formData = new FormData(e.target.closest("form"));
             formData.append("type", "addTask");
             fetcher.submit(formData, { method: "post" });
           }}

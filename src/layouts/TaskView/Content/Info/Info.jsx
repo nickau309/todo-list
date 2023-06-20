@@ -64,11 +64,7 @@ export default function Info({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(
-      e.currentTarget instanceof HTMLFormElement
-        ? e.currentTarget
-        : e.currentTarget.form
-    );
+    const formData = new FormData(e.target.closest("form"));
     formData.append("type", "updateTask");
     formData.append("id", taskId);
     fetcher.submit(formData, { method: "post" });
