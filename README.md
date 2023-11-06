@@ -1,8 +1,10 @@
-# todo-list
-
-[**Live Demo**](https://nickau309.github.io/todo-list/)
+# Todo List
 
 This is a simplified Todoist landing page clone.
+
+## Demo
+
+[**Deployed on GitHub Pages**](https://nickau309.github.io/todo-list/)
 
 ## Features cloned
 
@@ -16,37 +18,37 @@ This is a simplified Todoist landing page clone.
 - Labels for tasks
 - Theme selection
 
-## Packages used
+## Tech Stack
 
-- Floating UI
-- Framer Motion
-- Localforage
-- Headless UI
-- React Router
-- Tailwind CSS
+### React
 
-## React
+- Build the UI of the landing page
+- Handle the logic of the landing page with contexts and custom hooks
+- [React Router](https://github.com/remix-run/react-router) is used to handle routing
+- [Headless UI](https://github.com/tailwindlabs/headlessui) is used to get some unstyled and fully accessible UI components
+- [Floating UI](https://github.com/floating-ui/floating-ui) is used to position floating elements
+- [Framer Motion](https://github.com/framer/motion) is used to create animations
+- Built-in hooks used:
+  - `useCallback`
+  - `useContext`
+  - `useEffect`
+  - `useId`
+  - `useImperativeHandle`
+  - `useLayoutEffect`
+  - `useMemo`
+  - `useRef`
+  - `useState`
 
-Contexts and custom hooks are used for handling the majority logic of the landing page.
-
-### Built-in hooks used
-
-- `useCallback`
-- `useContext`
-- `useEffect`
-- `useId`
-- `useImperativeHandle`
-- `useLayoutEffect`
-- `useMemo`
-- `useRef`
-- `useState`
-
-## Styling
-
-Tailwind CSS, Headless UI and Floating UI are used for the styling.
-
-### CSS techniques applied
+### Tailwind CSS
 
 - Flexbox
 - Grid
 - Responsive design
+
+### ESLint
+
+- Analyze the code statically to identify and avoid errors
+
+### Prettier
+
+- Format the code in a consistent style
