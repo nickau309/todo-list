@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import { Listbox } from "@headlessui/react";
-import { ProjectIcon12, SelectCheckIcon12 } from "@assets";
-import { Z60Portal } from "@components/portals";
-import { classNames, textColor } from "@utils";
+import { ProjectIcon12, SelectCheckIcon12 } from "@/assets";
+import { Z60Portal } from "@/components/portals";
+import { classNames, textColor } from "@/utils";
 
 const ColorDropdown = forwardRef(function ColorDropdown(props, ref) {
   return (
@@ -12,7 +12,7 @@ const ColorDropdown = forwardRef(function ColorDropdown(props, ref) {
           static
           className={classNames(
             "max-h-[300px] overflow-x-hidden overflow-y-scroll",
-            "focus-visible:outline-none"
+            "focus-visible:outline-none",
           )}
         >
           {Object.entries(textColor).map(([name, textColor]) => (

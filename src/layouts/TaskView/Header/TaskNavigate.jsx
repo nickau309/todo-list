@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
-import { ChevronDownIcon24, ChevronUpIcon } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
+import { ChevronDownIcon24, ChevronUpIcon } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
 
 export default function TaskNavigate({ projectId }) {
   const navigate = useNavigate();
   const { projectId: paramProjectId, taskId } = useParams();
   const { tasks } = useRouteLoaderData(
-    projectId === paramProjectId ? "project" : "task"
+    projectId === paramProjectId ? "project" : "task",
   );
 
   const currIndex = tasks.findIndex((t) => t.id === taskId);

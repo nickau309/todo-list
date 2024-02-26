@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import { useFetcher, useLoaderData } from "react-router-dom";
 import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { DueDateIcon24 } from "@assets";
-import { DueDateDropdown } from "@components/dropdowns";
-import { classNames } from "@utils";
+import { DueDateIcon24 } from "@/assets";
+import { DueDateDropdown } from "@/components/dropdowns";
+import { classNames } from "@/utils";
 
 export default function ItemDueDateButton({ id }) {
   const fetcher = useFetcher();
@@ -32,7 +32,7 @@ export default function ItemDueDateButton({ id }) {
             "focus-visible:bg-base-secondary-hover focus-visible:text-base-primary",
             !open &&
               "opacity-0 group-focus-within/action:opacity-100 group-hover:opacity-100",
-            "min-[810px]:grid"
+            "min-[810px]:grid",
           );
         }}
       >
@@ -44,7 +44,7 @@ export default function ItemDueDateButton({ id }) {
         setDueDate={(dueDate) => {
           fetcher.submit(
             { type: "updateTask", id, dueDate },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         style={floatingStyles}

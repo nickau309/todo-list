@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 export default function PieChartIcon10({ numerator, denominator }) {
   const isLargeArc = numerator * 2 > denominator;
@@ -18,7 +18,7 @@ export default function PieChartIcon10({ numerator, denominator }) {
           "M5 5 L5 0",
           isLargeArc && "A5 5 0 0 1 5 10",
           `A5 5 0 0 1 ${x.toFixed(4)} ${y.toFixed(4)}`,
-          "Z"
+          "Z",
         )}
         fill="currentColor"
       />

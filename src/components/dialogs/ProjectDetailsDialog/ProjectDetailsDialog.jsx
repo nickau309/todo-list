@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { CancelButton, SubmitButton } from "@components/buttons";
-import { BaseOverlayDialog } from "@components/dialogs";
-import { classNames } from "@utils";
+import { CancelButton, SubmitButton } from "@/components/buttons";
+import { BaseOverlayDialog } from "@/components/dialogs";
+import { classNames } from "@/utils";
 import ColorInput from "./ColorInput";
 import IsFavoriteInput from "./IsFavoriteInput";
 import NameInput from "./NameInput";
@@ -50,7 +50,7 @@ export default function ProjectDetailsDialog({
                 onClick={onClose}
                 className={classNames(
                   "min-w-[68px] px-3 transition-colors duration-300",
-                  "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]"
+                  "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]",
                 )}
               >
                 <span className="leading-8">Cancel</span>
@@ -59,7 +59,7 @@ export default function ProjectDetailsDialog({
                 disabled={/^\s*$/.test(name)}
                 className={classNames(
                   "min-w-[68px] px-3 transition-colors duration-300",
-                  "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]"
+                  "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]",
                 )}
               >
                 <span className="leading-8">{verb}</span>

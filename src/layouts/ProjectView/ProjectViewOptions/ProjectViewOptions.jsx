@@ -1,9 +1,9 @@
 import React from "react";
 import { autoUpdate, shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { HelpSmIcon24, ViewIcon24 } from "@assets";
-import { Z50Portal } from "@components/portals";
-import { useDialogControl } from "@contexts";
+import { HelpSmIcon24, ViewIcon24 } from "@/assets";
+import { Z50Portal } from "@/components/portals";
+import { useDialogControl } from "@/contexts";
 import GroupListbox from "./GroupListbox";
 import LayoutListbox from "./LayoutListbox";
 import SortListbox from "./SortListbox";

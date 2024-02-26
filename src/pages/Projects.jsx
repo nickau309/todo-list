@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "@headlessui/react";
-import { AddSmIcon24, Cog6ToothIcon24 } from "@assets";
-import { QuaternaryButton, QuaternaryLink } from "@components/buttons";
-import { useDialogControl } from "@contexts";
-import { projectsTabsData } from "@data";
-import { classNames } from "@utils";
+import { AddSmIcon24, Cog6ToothIcon24 } from "@/assets";
+import { QuaternaryButton, QuaternaryLink } from "@/components/buttons";
+import { useDialogControl } from "@/contexts";
+import { projectsTabsData } from "@/data";
+import { classNames } from "@/utils";
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ export default function Projects() {
     if (pathname.startsWith("/projects/")) {
       setSelectedIndex(
         projectsTabsData.findIndex(
-          (tab) => tab.path === pathname.split("/").at(-1)
-        )
+          (tab) => tab.path === pathname.split("/").at(-1),
+        ),
       );
     }
   }, [pathname]);
@@ -47,7 +47,7 @@ export default function Projects() {
               className={classNames(
                 "transition-colors duration-300",
                 "max-[1165px]:w-8 max-[1165px]:shrink-0",
-                "min-[1165px]:min-w-[68px] min-[1165px]:gap-1.5 min-[1165px]:pl-1.5 min-[1165px]:pr-3"
+                "min-[1165px]:min-w-[68px] min-[1165px]:gap-1.5 min-[1165px]:pl-1.5 min-[1165px]:pr-3",
               )}
             >
               <span>
@@ -65,7 +65,7 @@ export default function Projects() {
                   className={classNames(
                     "relative rounded-full border px-3 text-sm/[30px] font-semibold capitalize",
                     "ui-selected:border-divider-secondary ui-selected:bg-base-primary ui-selected:text-tab-selected",
-                    "ui-not-selected:border-transparent ui-not-selected:text-tab-unselected"
+                    "ui-not-selected:border-transparent ui-not-selected:text-tab-unselected",
                   )}
                 >
                   {tab.path}

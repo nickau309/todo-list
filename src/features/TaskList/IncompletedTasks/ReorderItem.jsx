@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Reorder, useDragControls } from "framer-motion";
-import { useWidth } from "@contexts/WidthContext";
-import { classNames } from "@utils";
+import { useWidth } from "@/contexts/WidthContext";
+import { classNames } from "@/utils";
 import AddTaskAbove from "./AddTaskAbove";
 import AddTaskBelow from "./AddTaskBelow";
 import EditTask from "./EditTask";
@@ -34,7 +34,7 @@ export default function ReorderItem({
 
   const dividerClassName = classNames(
     "border-b",
-    isInTaskPanel ? "border-divider-secondary" : "border-divider-base"
+    isInTaskPanel ? "border-divider-secondary" : "border-divider-base",
   );
 
   const displayWidth = {
@@ -86,7 +86,7 @@ export default function ReorderItem({
         className={classNames(
           "rounded-[3px]",
           dividerClassName,
-          isDragging ? "absolute bg-drag shadow-drag" : "bg-base-primary"
+          isDragging ? "absolute bg-drag shadow-drag" : "bg-base-primary",
         )}
         style={displayWidth}
       >

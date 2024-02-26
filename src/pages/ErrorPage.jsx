@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
-import { ErrorComponent } from "@components";
+import { ErrorComponent } from "@/components";
 
 export default function ErrorPage() {
   const error = useRouteError();

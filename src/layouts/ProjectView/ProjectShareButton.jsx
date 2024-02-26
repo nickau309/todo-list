@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ShareOptionIcon24 } from "@assets";
+import { ShareOptionIcon24 } from "@/assets";
 
 export default function ProjectShareButton() {
   return (

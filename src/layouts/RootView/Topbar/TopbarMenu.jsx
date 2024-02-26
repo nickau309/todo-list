@@ -11,9 +11,9 @@ import {
   Theme,
   UpgradeToBusiness,
   UpgradeToPro,
-} from "@components/menuItems/user";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/menuItems/user";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function TopbarMenu() {
   const { refs, floatingStyles } = useFloating({
@@ -39,7 +39,7 @@ export default function TopbarMenu() {
             <div
               className={classNames(
                 "rounded-full border-2 border-transparent",
-                "ui-open:border-divider-on-dark"
+                "ui-open:border-divider-on-dark",
               )}
             >
               <span className="grid aspect-square w-7 place-items-center rounded-full border-2 bg-default text-base/6 text-username">
@@ -53,7 +53,7 @@ export default function TopbarMenu() {
                 static
                 className={classNames(
                   "box-content flex max-h-[80vh] min-w-[276px] max-w-[350px] overflow-hidden rounded-[10px] border border-menu-topbar bg-menu font-reactist text-base-primary shadow-menu-topbar",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 <div className="flex grow flex-col overflow-y-auto overflow-x-hidden p-1.5">

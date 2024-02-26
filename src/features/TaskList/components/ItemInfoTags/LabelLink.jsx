@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { LabelIconOutline12 } from "@assets";
-import { classNames, textColor } from "@utils";
+import { LabelIconOutline12 } from "@/assets";
+import { classNames, textColor } from "@/utils";
 
 export default function LabelLink({ color, id, isCompleted, name }) {
   return (
@@ -10,7 +10,7 @@ export default function LabelLink({ color, id, isCompleted, name }) {
       onClick={(e) => e.stopPropagation()}
       className={classNames(
         "flex items-center gap-0.5 hover:underline",
-        isCompleted ? "text-charcoal" : textColor[color]
+        isCompleted ? "text-charcoal" : textColor[color],
       )}
     >
       <span>

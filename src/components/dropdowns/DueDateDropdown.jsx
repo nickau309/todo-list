@@ -1,8 +1,8 @@
 import React, { Fragment, forwardRef, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import Datepicker from "tailwind-datepicker-react";
-import { ChevronLeftIcon24, ChevronRightIcon24 } from "@assets";
-import { useTheme } from "@contexts";
+import { ChevronLeftIcon24, ChevronRightIcon24 } from "@/assets";
+import { useTheme } from "@/contexts";
 
 const options = {
   autoHide: false,
@@ -32,7 +32,7 @@ const options = {
 
 const DueDateDropdown = forwardRef(function DueDateDropdown(
   { dueDate, setDueDate, ...attr },
-  ref
+  ref,
 ) {
   const [selectedDate, setSelectedDate] = useState(dueDate ?? new Date());
 

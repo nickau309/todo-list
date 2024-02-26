@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useFetchers, useLoaderData, useParams } from "react-router-dom";
-import { CheckboxDisplayMini } from "@components/checkboxes";
-import { classNames } from "@utils";
+import { CheckboxDisplayMini } from "@/components/checkboxes";
+import { classNames } from "@/utils";
 import SiblingInfo from "./SiblingInfo";
 
 export default function ParentInfo() {
@@ -13,7 +13,7 @@ export default function ParentInfo() {
     (f) =>
       f.formData &&
       f.formData.get("id") === taskId &&
-      f.formData.get("projectId")
+      f.formData.get("projectId"),
   );
   const { parentId, projectId } = tasks.find((t) => t.id === taskId);
 
@@ -27,7 +27,7 @@ export default function ParentInfo() {
   }
 
   const { id, name, isCompleted, priority } = tasks.find(
-    (t) => t.id === parentId
+    (t) => t.id === parentId,
   );
 
   return (
@@ -38,7 +38,7 @@ export default function ParentInfo() {
           "relative flex min-w-[68px] items-center justify-center gap-1.5 rounded-l-[5px] border border-r-0 border-divider-secondary pl-1.5 pr-2 text-content-primary transition-colors duration-300",
           "after:absolute after:right-[-.5px] after:block after:h-3 after:w-px after:bg-divider-secondary",
           "hover:bg-quaternary-hover-fill hover:text-quaternary-hover-tint",
-          "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint"
+          "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
         )}
       >
         <CheckboxDisplayMini isCompleted={isCompleted} priority={priority} />

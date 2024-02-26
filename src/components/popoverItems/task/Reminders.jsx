@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover } from "@headlessui/react";
-import { ReminderIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { ReminderIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { Button } from "./components";
 
 export default function Reminders() {

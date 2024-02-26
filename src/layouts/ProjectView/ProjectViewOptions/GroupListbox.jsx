@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { autoUpdate, offset, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { DropdownIcon24, GroupIcon24, SelectCheckIcon12 } from "@assets";
-import { Z60Portal } from "@components/portals";
-import { classNames } from "@utils";
+import { DropdownIcon24, GroupIcon24, SelectCheckIcon12 } from "@/assets";
+import { Z60Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 const groupings = [
   { name: "default", description: "None (default)", disabled: false },
@@ -37,7 +37,7 @@ export default function GroupListbox() {
               "flex w-full gap-2.5 px-2.5 py-1 leading-6",
               open
                 ? "bg-menu-item-primary-hover"
-                : "hover:bg-menu-item-primary-hover"
+                : "hover:bg-menu-item-primary-hover",
             )}
           >
             <span className="text-content-secondary">
@@ -50,7 +50,7 @@ export default function GroupListbox() {
                   "flex",
                   open
                     ? "text-content-primary"
-                    : "text-content-secondary hover:text-content-primary"
+                    : "text-content-secondary hover:text-content-primary",
                 )}
               >
                 <span className="w-[120px] text-right text-sm/6">
@@ -68,7 +68,7 @@ export default function GroupListbox() {
                 static
                 className={classNames(
                   "box-content min-w-[220px] overflow-hidden rounded-[5px] border border-dropdown bg-dropdown shadow-dropdown",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 {groupings.map((grouping) => (
@@ -79,7 +79,7 @@ export default function GroupListbox() {
                     className={classNames(
                       "flex cursor-pointer items-center justify-between text-content-primary",
                       "ui-active:bg-menu-item-secondary-hover",
-                      "ui-disabled:cursor-not-allowed ui-disabled:text-[#999]"
+                      "ui-disabled:cursor-not-allowed ui-disabled:text-[#999]",
                     )}
                   >
                     {({ selected }) => (

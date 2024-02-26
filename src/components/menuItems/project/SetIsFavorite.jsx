@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetcher, useFetchers, useRouteLoaderData } from "react-router-dom";
-import { AddFavoriteIcon24, RemoveFavoriteIcon24 } from "@assets";
+import { AddFavoriteIcon24, RemoveFavoriteIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function SetIsFavorite({ id }) {
@@ -10,7 +10,7 @@ export default function SetIsFavorite({ id }) {
 
   const relevantFetcher = fetchers.find(
     (f) =>
-      f.formData && f.formData.get("id") === id && f.formData.get("isFavorite")
+      f.formData && f.formData.get("id") === id && f.formData.get("isFavorite"),
   );
 
   const isFavorite = relevantFetcher
@@ -23,7 +23,7 @@ export default function SetIsFavorite({ id }) {
       onClick={() => {
         fetcher.submit(
           { type: "updateProject", id, isFavorite: !isFavorite },
-          { method: "post" }
+          { method: "post" },
         );
       }}
     >

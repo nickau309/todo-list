@@ -1,6 +1,6 @@
 import React from "react";
-import { ReminderIcon16 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { ReminderIcon16 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { InputButton } from "./components";
 
 export default function ChooseReminders() {

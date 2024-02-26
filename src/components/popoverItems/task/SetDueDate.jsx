@@ -9,9 +9,9 @@ import {
   NextWeekIcon28,
   TodayIcon28,
   TomorrowIcon28,
-} from "@assets";
-import { DueDateDropdown } from "@components/dropdowns";
-import { classNames } from "@utils";
+} from "@/assets";
+import { DueDateDropdown } from "@/components/dropdowns";
+import { classNames } from "@/utils";
 
 export default function SetDueDate({ close, id }) {
   const fetcher = useFetcher();
@@ -38,12 +38,12 @@ export default function SetDueDate({ close, id }) {
             onClick={() => {
               fetcher.submit(
                 { type: "updateTask", id, dueDate: today },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
               "select-none rounded-[3px] text-date-today-fill",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <TodayIcon28 />
@@ -54,12 +54,12 @@ export default function SetDueDate({ close, id }) {
             onClick={() => {
               fetcher.submit(
                 { type: "updateTask", id, dueDate: tomorrow },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
               "select-none rounded-[3px] text-date-tomorrow-fill",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <TomorrowIcon28 />
@@ -70,16 +70,17 @@ export default function SetDueDate({ close, id }) {
             onClick={() => {
               const nextSaturday = new Date(today);
               nextSaturday.setDate(
-                nextSaturday.getDate() + ((13 - nextSaturday.getDay()) % 7 || 7)
+                nextSaturday.getDate() +
+                  ((13 - nextSaturday.getDay()) % 7 || 7),
               );
               fetcher.submit(
                 { type: "updateTask", id, dueDate: nextSaturday },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
               "select-none rounded-[3px] text-date-weekend-fill",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <NextWeekendIcon28 />
@@ -90,16 +91,16 @@ export default function SetDueDate({ close, id }) {
             onClick={() => {
               const nextMonday = new Date(today);
               nextMonday.setDate(
-                nextMonday.getDate() + ((8 - nextMonday.getDay()) % 7 || 7)
+                nextMonday.getDate() + ((8 - nextMonday.getDay()) % 7 || 7),
               );
               fetcher.submit(
                 { type: "updateTask", id, dueDate: nextMonday },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
               "select-none rounded-[3px] text-date-next-week-fill",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <NextWeekIcon28 />
@@ -110,12 +111,12 @@ export default function SetDueDate({ close, id }) {
             onClick={() => {
               fetcher.submit(
                 { type: "updateTask", id, dueDate: null },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
               "select-none rounded-[3px] text-content-secondary",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <DisabledIcon24 className="h-7 w-7" />
@@ -127,7 +128,7 @@ export default function SetDueDate({ close, id }) {
             onClick={(e) => e.stopPropagation()}
             className={classNames(
               "select-none rounded-[3px] text-content-secondary",
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             <MoreActionIcon28 />
@@ -140,7 +141,7 @@ export default function SetDueDate({ close, id }) {
             setDueDate={(dueDate) => {
               fetcher.submit(
                 { type: "updateTask", id, dueDate },
-                { method: "post" }
+                { method: "post" },
               );
               close();
             }}

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { CloseIcon24, SubmitIcon24 } from "@assets";
-import { CancelButton, SubmitButton } from "@components/buttons";
-import { classNames } from "@utils";
+import { CloseIcon24, SubmitIcon24 } from "@/assets";
+import { CancelButton, SubmitButton } from "@/components/buttons";
+import { classNames } from "@/utils";
 import ChooseDueDate from "./ChooseDueDate";
 import ChooseLabels from "./ChooseLabels";
 import ChoosePriority from "./ChoosePriority";
@@ -66,14 +66,14 @@ export default function TaskEditor({
         onClick={focusToTextarea}
         className={classNames(
           "flex cursor-text flex-col gap-2.5",
-          isInDialog ? "p-4" : "p-2.5 pb-0"
+          isInDialog ? "p-4" : "p-2.5 pb-0",
         )}
       >
         <div className="max-h-[200px] overflow-y-auto overflow-x-hidden">
           <div
             className={classNames(
               "flex flex-col",
-              isInDialog ? "gap-[5px] pb-[7px]" : "gap-0.5 pb-0.5"
+              isInDialog ? "gap-[5px] pb-[7px]" : "gap-0.5 pb-0.5",
             )}
           >
             <EditName
@@ -124,7 +124,7 @@ export default function TaskEditor({
       <div
         className={classNames(
           "flex justify-between gap-2 border-t border-divider-secondary",
-          isInDialog ? "p-4" : "p-2 pr-3"
+          isInDialog ? "p-4" : "p-2 pr-3",
         )}
       >
         <ChooseProject editId={editId} editType={editType} />
@@ -134,7 +134,7 @@ export default function TaskEditor({
             className={classNames(
               "transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
               "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
-              "max-[751px]:w-8 min-[751px]:min-w-[68px] min-[751px]:px-3"
+              "max-[751px]:w-8 min-[751px]:min-w-[68px] min-[751px]:px-3",
             )}
           >
             <span className="leading-8 max-[751px]:hidden">Cancel</span>
@@ -147,7 +147,7 @@ export default function TaskEditor({
             className={classNames(
               "transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
               "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
-              "max-[751px]:w-8 min-[751px]:min-w-[68px] min-[751px]:px-3"
+              "max-[751px]:w-8 min-[751px]:min-w-[68px] min-[751px]:px-3",
             )}
           >
             <span className="leading-8 max-[751px]:hidden">{verb}</span>

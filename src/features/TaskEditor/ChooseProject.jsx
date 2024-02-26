@@ -2,10 +2,10 @@ import React from "react";
 import { useLoaderData, useParams, useRouteLoaderData } from "react-router-dom";
 import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react-dom";
 import { Combobox } from "@headlessui/react";
-import { DropdownIcon16, InboxIcon16, ProjectIcon16 } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
-import { ProjectDropdown } from "@components/dropdowns";
-import { classNames, textColor } from "@utils";
+import { DropdownIcon16, InboxIcon16, ProjectIcon16 } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
+import { ProjectDropdown } from "@/components/dropdowns";
+import { classNames, textColor } from "@/utils";
 
 export default function ChooseProject({ editId, editType }) {
   const { tasks } = useLoaderData();
@@ -34,7 +34,7 @@ export default function ChooseProject({ editId, editType }) {
               className={classNames(
                 "min-w-[68px] gap-1 pl-1 pr-2 transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
                 "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
-                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
               )}
             >
               {project.childOrder ? (

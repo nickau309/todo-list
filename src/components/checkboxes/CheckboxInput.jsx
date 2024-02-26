@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useFetcher, useFetchers, useLoaderData } from "react-router-dom";
-import { CheckSmIcon24 } from "@assets";
+import { CheckSmIcon24 } from "@/assets";
 import {
   classNames,
   checkboxAnimations as animations,
@@ -9,7 +9,7 @@ import {
   checkboxDisabledBgColor as disabledBgColor,
   checkboxDisabledTextColor as disabledTextColor,
   checkboxTextColor as textColor,
-} from "@utils";
+} from "@/utils";
 
 export default function CheckboxInput({ className, disabled, taskId }) {
   const fetcher = useFetcher();
@@ -17,7 +17,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
   const { tasks } = useLoaderData();
 
   const releventFetcher = fetchers.find(
-    (f) => f.formData && f.formData.get("id") === taskId
+    (f) => f.formData && f.formData.get("id") === taskId,
   );
 
   const priority = releventFetcher?.formData?.get("priority")
@@ -40,7 +40,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
       const classMutationOnAnimationEnd = () => {
         node.classList.remove(
           animations[priority].check,
-          animations[priority].uncheck
+          animations[priority].uncheck,
         );
         node.classList.add(checkedBgColor[priority]);
       };
@@ -50,7 +50,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
       return () => {
         node.removeEventListener(
           "animationstart",
-          classMutationOnAnimationStart
+          classMutationOnAnimationStart,
         );
         node.removeEventListener("animationend", classMutationOnAnimationEnd);
       };
@@ -63,7 +63,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
     <div
       className={classNames(
         "relative grid aspect-square w-6 place-items-center",
-        disabled ? disabledTextColor[priority] : textColor[priority]
+        disabled ? disabledTextColor[priority] : textColor[priority],
       )}
     >
       <input
@@ -73,11 +73,11 @@ export default function CheckboxInput({ className, disabled, taskId }) {
         onClick={(e) => e.stopPropagation()}
         onChange={(e) => {
           e.target.classList.add(
-            animations[priority][e.target.checked ? "check" : "uncheck"]
+            animations[priority][e.target.checked ? "check" : "uncheck"],
           );
           fetcher.submit(
             { type: "updateTask", id: taskId, isCompleted: e.target.checked },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         onKeyDown={(e) => {
@@ -89,7 +89,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
                 id: taskId,
                 isCompleted: !e.target.checked,
               },
-              { method: "post" }
+              { method: "post" },
             );
           }
         }}
@@ -101,7 +101,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
           disabled && disabledBgColor[priority][status],
           !disabled && bgColor[priority].uncheck,
           !disabled && checkedBgColor[priority],
-          className
+          className,
         )}
       />
       <span
@@ -109,7 +109,7 @@ export default function CheckboxInput({ className, disabled, taskId }) {
           "pointer-events-none absolute transition ease-in",
           isCompleted
             ? "text-white opacity-100"
-            : "opacity-0 peer-enabled:peer-hover:opacity-100"
+            : "opacity-0 peer-enabled:peer-hover:opacity-100",
         )}
       >
         <CheckSmIcon24 />

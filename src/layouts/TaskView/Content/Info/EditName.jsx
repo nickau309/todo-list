@@ -1,10 +1,10 @@
 import React, { forwardRef, useRef } from "react";
-import { useNodeHeight, useTextareaControl } from "@hooks";
-import { classNames } from "@utils";
+import { useNodeHeight, useTextareaControl } from "@/hooks";
+import { classNames } from "@/utils";
 
 const EditName = forwardRef(function EditName(
   { defaultValue, onChange, ...attr },
-  ref
+  ref,
 ) {
   const textareaRef = useRef();
 
@@ -24,7 +24,7 @@ const EditName = forwardRef(function EditName(
       placeholder="Task name"
       className={classNames(
         "resize-none items-center overflow-hidden bg-inherit text-xl/tight font-semibold tracking-dark",
-        "placeholder:select-none placeholder:text-field-placeholder focus-visible:outline-none"
+        "placeholder:select-none placeholder:text-field-placeholder focus-visible:outline-none",
       )}
       {...attr}
     ></textarea>

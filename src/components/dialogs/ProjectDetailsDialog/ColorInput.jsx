@@ -1,9 +1,9 @@
 import React, { useId } from "react";
 import { autoUpdate, size, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { ProjectIcon12 } from "@assets";
-import { ColorDropdown } from "@components/dropdowns";
-import { classNames, textColor } from "@utils";
+import { ProjectIcon12 } from "@/assets";
+import { ColorDropdown } from "@/components/dropdowns";
+import { classNames, textColor } from "@/utils";
 
 export default function ColorInput({ defaultColor }) {
   const id = useId();
@@ -14,7 +14,7 @@ export default function ColorInput({ defaultColor }) {
         apply({ rects, elements }) {
           elements.floating.style.setProperty(
             "--width",
-            rects.reference.width + "px"
+            rects.reference.width + "px",
           );
         },
       }),
@@ -36,7 +36,7 @@ export default function ColorInput({ defaultColor }) {
               className={classNames(
                 "flex items-center gap-3 rounded-[5px] border border-field bg-base-primary px-[11px] py-[5px]",
                 "transition-[border,box-shadow] duration-300 ease-[cubic-bezier(.25,.1,.25,1)] focus:border-field-focus",
-                "focus-visible:!border-transparent focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+                "focus-visible:!border-transparent focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
               )}
             >
               <span className={textColor[value]}>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { Priority4Icon16, PriorityIcon16 } from "@assets";
-import { PriorityDropdown } from "@components/dropdowns";
-import { priorityTextColor as textColor } from "@utils";
+import { Priority4Icon16, PriorityIcon16 } from "@/assets";
+import { PriorityDropdown } from "@/components/dropdowns";
+import { priorityTextColor as textColor } from "@/utils";
 import { InputButton, RemoveButton } from "./components";
 
 export default function ChoosePriority({ editId, editType }) {
@@ -13,7 +13,7 @@ export default function ChoosePriority({ editId, editType }) {
   const [priority, setPriority] = useState(() =>
     editId && editType === "editTask"
       ? tasks.find((t) => t.id === editId).priority
-      : 4
+      : 4,
   );
 
   const { refs, floatingStyles } = useFloating({

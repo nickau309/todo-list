@@ -1,5 +1,5 @@
 import React from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 export default function Switch({ className, isChecked, ...attr }) {
   return (
@@ -9,7 +9,7 @@ export default function Switch({ className, isChecked, ...attr }) {
         "relative inline-flex h-[18px] w-8 items-center rounded-full",
         isChecked ? "bg-toggle-checked" : "bg-toggle",
         "p-[3px]",
-        className
+        className,
       )}
       {...attr}
     >
@@ -17,7 +17,7 @@ export default function Switch({ className, isChecked, ...attr }) {
         className={classNames(
           "inline-block h-3 w-3",
           isChecked && "translate-x-3.5",
-          "rounded-full bg-white transition-transform duration-[280ms]"
+          "rounded-full bg-white transition-transform duration-[280ms]",
         )}
       />
     </button>

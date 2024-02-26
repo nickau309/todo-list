@@ -2,9 +2,13 @@ import React, { Fragment } from "react";
 import { useFetcher, useParams } from "react-router-dom";
 import { autoUpdate, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { DueDateIcon24, RemoveIcon24 } from "@assets";
-import { DueDateDropdown } from "@components/dropdowns";
-import { classNames, getDueDateClassName, getDueDateDescription } from "@utils";
+import { DueDateIcon24, RemoveIcon24 } from "@/assets";
+import { DueDateDropdown } from "@/components/dropdowns";
+import {
+  classNames,
+  getDueDateClassName,
+  getDueDateDescription,
+} from "@/utils";
 import { AddButton, ModifyButton } from "./components";
 
 export default function DueDate({ disabled, dueDate }) {
@@ -32,7 +36,7 @@ export default function DueDate({ disabled, dueDate }) {
   const resetDueDate = () => {
     fetcher.submit(
       { type: "updateTask", id: taskId, dueDate: null },
-      { method: "post" }
+      { method: "post" },
     );
   };
 
@@ -43,7 +47,7 @@ export default function DueDate({ disabled, dueDate }) {
       setDueDate={(dueDate) => {
         fetcher.submit(
           { type: "updateTask", id: taskId, dueDate },
-          { method: "post" }
+          { method: "post" },
         );
       }}
       style={floatingStyles}
@@ -61,7 +65,7 @@ export default function DueDate({ disabled, dueDate }) {
             className={({ open }) => {
               return classNames(
                 "peer grow",
-                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
               );
             }}
           >
@@ -85,7 +89,7 @@ export default function DueDate({ disabled, dueDate }) {
             "focus-visible:opacity-100",
             "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
             "peer-enabled:peer-hover:opacity-100",
-            "disabled:cursor-not-allowed"
+            "disabled:cursor-not-allowed",
           )}
         >
           <RemoveIcon24 />
@@ -101,7 +105,7 @@ export default function DueDate({ disabled, dueDate }) {
           disabled={disabled}
           className={({ open }) => {
             return classNames(
-              open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+              open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
             );
           }}
         >

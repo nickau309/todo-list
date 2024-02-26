@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { CancelButton, SubmitButton } from "@components/buttons";
-import { classNames } from "@utils";
+import { CancelButton, SubmitButton } from "@/components/buttons";
+import { classNames } from "@/utils";
 
 export default function ProjectName({ childOrder, name: defaultName }) {
   const fetcher = useFetcher();
@@ -59,7 +59,7 @@ export default function ProjectName({ childOrder, name: defaultName }) {
           autoFocus
           className={classNames(
             "mt-[-4px] text-ellipsis rounded-[5px] border border-[#ddd] bg-inherit px-2 pb-[5px] pt-[3px] text-xl/tight font-bold text-base-input",
-            "focus-visible:border-charcoal focus-visible:outline-none"
+            "focus-visible:border-charcoal focus-visible:outline-none",
           )}
         />
         <div className="flex items-center gap-3">

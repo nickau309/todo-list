@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
-import { InboxIcon24 } from "@assets";
-import { classNames } from "@utils";
+import { InboxIcon24 } from "@/assets";
+import { classNames } from "@/utils";
 
 export default function Inbox() {
   const { incompleteTasksCountMap: countMap, projects } = useLoaderData();
@@ -18,14 +18,14 @@ export default function Inbox() {
         "group/item flex items-center rounded-[5px] pr-0.5",
         pathname.startsWith(href)
           ? "bg-base-primary-hover"
-          : "hover:bg-base-primary-hover"
+          : "hover:bg-base-primary-hover",
       )}
     >
       <Link
         to={href}
         className={classNames(
           "flex min-w-0 grow items-center gap-[5px] rounded-[5px] p-[5px]",
-          "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]"
+          "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]",
         )}
       >
         <span className="text-views-inbox">

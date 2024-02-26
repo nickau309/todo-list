@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tab } from "@headlessui/react";
-import { settingsTabsData } from "@data";
+import { settingsTabsData } from "@/data";
 import SettingsTabList from "./SettingsTabList";
 import SettingsTabPanels from "./SettingsTabPanels";
 
@@ -14,7 +14,7 @@ export default function SettingsTab({ handleClose }) {
 
   if (pathname.startsWith("/settings/")) {
     const newIndex = settingsTabsData.findIndex(
-      (tab) => tab.path === pathname.split("/")[2]
+      (tab) => tab.path === pathname.split("/")[2],
     );
     if (selectedIndex !== newIndex) {
       setSelectedIndex(newIndex);

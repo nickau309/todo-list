@@ -1,8 +1,8 @@
 import React from "react";
 import { useFetcher, useLoaderData } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { Priority4Icon24, PriorityIcon24 } from "@assets";
-import { classNames, priorityTextColor as textColor } from "@utils";
+import { Priority4Icon24, PriorityIcon24 } from "@/assets";
+import { classNames, priorityTextColor as textColor } from "@/utils";
 
 export default function SetPriority({ id }) {
   const fetcher = useFetcher();
@@ -20,7 +20,7 @@ export default function SetPriority({ id }) {
             onClick={() => {
               fetcher.submit(
                 { type: "updateTask", id, priority: i + 1 },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             className={classNames(
@@ -28,7 +28,7 @@ export default function SetPriority({ id }) {
               priority === i + 1 ? "border-base-primary" : "border-transparent",
               "p-px",
               textColor[i + 1],
-              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none"
+              "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
             {i + 1 === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}

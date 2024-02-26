@@ -1,7 +1,7 @@
 import React from "react";
 import { Dialog } from "@headlessui/react";
-import { ErrorComponent } from "@components";
-import { BaseDialog } from "@components/dialogs";
+import { ErrorComponent } from "@/components";
+import { BaseDialog } from "@/components/dialogs";
 
 export default function CommandMenuDialog({
   afterLeave = () => {},

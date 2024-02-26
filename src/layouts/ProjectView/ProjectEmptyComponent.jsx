@@ -1,6 +1,6 @@
 import React from "react";
-import { emptyProjectLogo, emptyProjectLogoDark } from "@assets";
-import { useTheme } from "@contexts";
+import { emptyProjectLogo, emptyProjectLogoDark } from "@/assets";
+import { useTheme } from "@/contexts";
 
 export default function ProjectEmptyComponent() {
   const { name } = useTheme();

@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useId, useRef, useState } from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { DescriptionIcon24 } from "@assets";
-import { CancelButton, SubmitButton } from "@components/buttons";
-import { CheckboxInput } from "@components/checkboxes";
-import { classNames } from "@utils";
+import { DescriptionIcon24 } from "@/assets";
+import { CancelButton, SubmitButton } from "@/components/buttons";
+import { CheckboxInput } from "@/components/checkboxes";
+import { classNames } from "@/utils";
 import EditDescription from "./EditDescription";
 import EditName from "./EditName";
 
@@ -26,7 +26,7 @@ export default function Info({
   const [name, setName] = useState(defaultName);
   const isSubmitDisabled = whiteSpaceOnlyReg.test(name) || name.length > 500;
   const [isDescriptionBlank, setIsDescriptionBlank] = useState(
-    whiteSpaceOnlyReg.test(description)
+    whiteSpaceOnlyReg.test(description),
   );
 
   const focusTo = (name) => {
@@ -82,7 +82,7 @@ export default function Info({
           disabled={isArchived || isEditing}
           className={classNames(
             "transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-            "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+            "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
           )}
         />
       </div>
@@ -151,7 +151,7 @@ export default function Info({
               onClick={() => setIsEditing(false)}
               className={classNames(
                 "min-w-[68px] px-3 transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
               )}
             >
               <span className="leading-8">Cancel</span>
@@ -160,7 +160,7 @@ export default function Info({
               disabled={isSubmitDisabled}
               className={classNames(
                 "min-w-[68px] px-3 transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
               )}
             >
               <span className="leading-8">Save</span>
@@ -177,7 +177,7 @@ export default function Info({
               "ml-[3px] mr-[5px] cursor-text break-words rounded-[3px] text-left text-xl/tight font-semibold tracking-dark",
               isCompleted && "line-through decoration-content-secondary",
               "transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-              "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+              "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
             )}
           >
             {fetcher.formData?.get("name") ?? defaultName}
@@ -191,7 +191,7 @@ export default function Info({
               descToDisplay === "" ? "mb-1" : "mb-[18px]",
               "cursor-text break-words rounded-[3px] pl-[3px] text-left leading-[1.65] tracking-dark",
               "transition-shadow duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-              "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+              "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
             )}
           >
             {descToDisplay === "" ? (

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { MoreActionIcon16 } from "@assets";
+import { MoreActionIcon16 } from "@/assets";
 import {
   AddExtension,
   AddTaskAbove,
@@ -14,9 +14,9 @@ import {
   Reminders,
   SetDueDate,
   SetPriority,
-} from "@components/popoverItems/task";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/popoverItems/task";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function ItemMenu({ id, isArchived, isCompleted, name }) {
   const { refs, floatingStyles } = useFloating({
@@ -41,7 +41,7 @@ export default function ItemMenu({ id, isArchived, isCompleted, name }) {
             "hover:bg-base-secondary-hover hover:text-base-primary",
             "focus-visible:bg-base-secondary-hover focus-visible:text-base-primary",
             !open &&
-              "opacity-0 group-focus-within/action:opacity-100 group-hover:opacity-100"
+              "opacity-0 group-focus-within/action:opacity-100 group-hover:opacity-100",
           );
         }}
       >

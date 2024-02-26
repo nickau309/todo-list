@@ -1,6 +1,6 @@
 import React from "react";
-import { CommandIcon62 } from "@assets";
-import { useDialogControl } from "@contexts";
+import { CommandIcon62 } from "@/assets";
+import { useDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function CommandMenu() {

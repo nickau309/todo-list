@@ -5,14 +5,14 @@ import {
   ConfirmDialog,
   ErrorDialog,
   QuickAddDialog,
-} from "@components/dialogs";
+} from "@/components/dialogs";
 import {
   useSetShowSidebarSm,
   useShowSidebar,
   useTheme,
   useWidth,
-} from "@contexts";
-import { classNames } from "@utils";
+} from "@/contexts";
+import { classNames } from "@/utils";
 import Dialogs from "./Dialogs";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
@@ -29,7 +29,7 @@ export default function RootView() {
       onClick={() => setShowSidebarSm(false)}
       className={classNames(
         "flex h-screen flex-col overflow-hidden bg-base",
-        className
+        className,
       )}
     >
       <div className="z-30 shrink-0 basis-11">
@@ -43,7 +43,7 @@ export default function RootView() {
               width < 751 && showSidebar
                 ? "opacity-100"
                 : "pointer-events-none opacity-0",
-              "min-[751px]:hidden"
+              "min-[751px]:hidden",
             )}
           ></div>
           <motion.div

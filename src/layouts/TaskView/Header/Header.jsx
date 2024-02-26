@@ -1,6 +1,6 @@
 import React from "react";
-import { CloseIcon24 } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
+import { CloseIcon24 } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
 import TaskNavigate from "./TaskNavigate";
 import TaskViewMenu from "./TaskViewMenu";
 import Title from "./Title";

@@ -1,13 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
-import { BaseOverlayDialog } from "@components/dialogs";
+import { BaseOverlayDialog } from "@/components/dialogs";
 import {
   ConfirmDialogProvider,
   EditorProvider,
   ErrorDialogProvider,
   ShowCompletedProvider,
-} from "@contexts";
+} from "@/contexts";
 import {
   addLabel,
   addProject,
@@ -18,8 +18,8 @@ import {
   moveTask,
   removeTaskLabel,
   updateTask,
-} from "@data";
-import { TaskView } from "@layouts";
+} from "@/data";
+import { TaskView } from "@/layouts";
 
 export async function loader({ params }) {
   const data = await getTasksInfo({ taskId: params.taskId });

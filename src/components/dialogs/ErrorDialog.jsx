@@ -1,11 +1,11 @@
 import React from "react";
 import { Dialog } from "@headlessui/react";
-import { CloseIcon24 } from "@assets";
-import { ErrorComponent } from "@components";
-import { QuaternaryButton } from "@components/buttons";
-import { BaseOverlayDialog } from "@components/dialogs";
-import { useErrorDialogControl, useErrorDialogState } from "@contexts";
-import { classNames } from "@utils";
+import { CloseIcon24 } from "@/assets";
+import { ErrorComponent } from "@/components";
+import { QuaternaryButton } from "@/components/buttons";
+import { BaseOverlayDialog } from "@/components/dialogs";
+import { useErrorDialogControl, useErrorDialogState } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function ErrorDialog({ afterLeave = () => {} }) {
   const { closeDialog, resetDialog } = useErrorDialogControl();
@@ -25,7 +25,7 @@ export default function ErrorDialog({ afterLeave = () => {} }) {
           className={classNames(
             "flex max-h-full w-full",
             maxWidth,
-            "flex-col divide-y divide-divider-tertiary rounded-[10px] bg-default font-reactist text-sm text-base-primary shadow-[0_2px_8px_rgb(0,0,0,.16)]"
+            "flex-col divide-y divide-divider-tertiary rounded-[10px] bg-default font-reactist text-sm text-base-primary shadow-[0_2px_8px_rgb(0,0,0,.16)]",
           )}
         >
           <header className="flex shrink-0 basis-12 items-center justify-between gap-4 p-2 pl-4">

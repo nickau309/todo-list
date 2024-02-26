@@ -1,7 +1,7 @@
 import React from "react";
 import { autoUpdate, offset, useFloating } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { HelpLgIcon24 } from "@assets";
+import { HelpLgIcon24 } from "@/assets";
 import {
   CommandMenu,
   GettingStartedGuide,
@@ -11,9 +11,9 @@ import {
   Sync,
   Templates,
   WhatsNew,
-} from "@components/menuItems/user";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/menuItems/user";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function HelpInformation() {
   const { refs, floatingStyles } = useFloating({
@@ -32,7 +32,7 @@ export default function HelpInformation() {
             className={classNames(
               "grid aspect-square w-8 place-items-center rounded-[3px]",
               "hover:bg-navbar-hover-fill",
-              "ui-open:bg-navbar-hover-fill"
+              "ui-open:bg-navbar-hover-fill",
             )}
           >
             <HelpLgIcon24 />
@@ -43,7 +43,7 @@ export default function HelpInformation() {
                 static
                 className={classNames(
                   "box-content flex max-h-[80vh] min-w-[276px] max-w-[350px] overflow-hidden rounded-[10px] border border-menu-topbar bg-menu font-reactist text-base-primary shadow-menu-topbar",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 <div className="flex grow flex-col overflow-y-auto overflow-x-hidden p-1.5">

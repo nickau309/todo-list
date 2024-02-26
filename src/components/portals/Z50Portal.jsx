@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Portal } from "@headlessui/react";
-import { useTheme } from "@contexts";
-import { classNames } from "@utils";
+import { useTheme } from "@/contexts";
+import { classNames } from "@/utils";
 
 const Z50Portal = forwardRef(function Z50Portal({ children, ...attr }, ref) {
   const { className } = useTheme();

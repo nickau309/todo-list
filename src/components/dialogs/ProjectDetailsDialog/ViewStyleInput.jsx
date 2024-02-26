@@ -1,8 +1,8 @@
 import React from "react";
 import { RadioGroup } from "@headlessui/react";
-import { RadioDisplay } from "@components/radios";
-import { useTheme } from "@contexts";
-import { classNames } from "@utils";
+import { RadioDisplay } from "@/components/radios";
+import { useTheme } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function ViewStyleInput({ defaultViewStyle }) {
   const { name } = useTheme();
@@ -19,7 +19,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
           value="list"
           className={classNames(
             "group flex cursor-pointer flex-col gap-2",
-            "focus-visible:outline-none ui-disabled:cursor-not-allowed"
+            "focus-visible:outline-none ui-disabled:cursor-not-allowed",
           )}
         >
           {({ checked, disabled }) => (
@@ -38,7 +38,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
                   name !== "Dark" && "bg-[url('/src/assets/ListPreview.svg')]",
                   name !== "Dark" &&
                     !disabled &&
-                    "hover:bg-[url('/src/assets/ListPreviewHover.svg')]"
+                    "hover:bg-[url('/src/assets/ListPreviewHover.svg')]",
                 )}
               />
               <div className="flex items-center gap-3">
@@ -47,7 +47,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
                   disabled={disabled}
                   className={classNames(
                     "transition-[border,box-shadow] duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-                    "group-focus-visible:border-transparent group-focus-visible:ring group-focus-visible:ring-outer group-focus-visible:ring-offset-1 group-focus-visible:ring-offset-inner"
+                    "group-focus-visible:border-transparent group-focus-visible:ring group-focus-visible:ring-outer group-focus-visible:ring-offset-1 group-focus-visible:ring-offset-inner",
                   )}
                 />
                 <span>List</span>
@@ -60,7 +60,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
           disabled
           className={classNames(
             "group flex cursor-pointer flex-col gap-2",
-            "focus-visible:outline-none ui-disabled:cursor-not-allowed"
+            "focus-visible:outline-none ui-disabled:cursor-not-allowed",
           )}
         >
           {({ checked, disabled }) => (
@@ -79,7 +79,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
                   name !== "Dark" && "bg-[url('/src/assets/BoardPreview.svg')]",
                   name !== "Dark" &&
                     !disabled &&
-                    "hover:bg-[url('/src/assets/BoardPreviewHover.svg')]"
+                    "hover:bg-[url('/src/assets/BoardPreviewHover.svg')]",
                 )}
               />
               <div className="flex items-center gap-3">
@@ -88,7 +88,7 @@ export default function ViewStyleInput({ defaultViewStyle }) {
                   disabled={disabled}
                   className={classNames(
                     "transition-[border,box-shadow] duration-300 ease-[cubic-bezier(.25,.1,.25,1)]",
-                    "group-focus-visible:border-transparent group-focus-visible:ring group-focus-visible:ring-outer group-focus-visible:ring-offset-1 group-focus-visible:ring-offset-inner"
+                    "group-focus-visible:border-transparent group-focus-visible:ring group-focus-visible:ring-outer group-focus-visible:ring-offset-1 group-focus-visible:ring-offset-inner",
                   )}
                 />
                 <span>Board</span>

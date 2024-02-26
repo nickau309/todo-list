@@ -2,9 +2,9 @@ import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { DropdownIcon24, Priority4Icon16, PriorityIcon16 } from "@assets";
-import { PriorityDropdown } from "@components/dropdowns";
-import { classNames, priorityTextColor as textColor } from "@utils";
+import { DropdownIcon24, Priority4Icon16, PriorityIcon16 } from "@/assets";
+import { PriorityDropdown } from "@/components/dropdowns";
+import { classNames, priorityTextColor as textColor } from "@/utils";
 import { ModifyButton } from "./components";
 
 export default function Priority({ disabled, priority }) {
@@ -31,7 +31,7 @@ export default function Priority({ disabled, priority }) {
         onChange={(priority) => {
           fetcher.submit(
             { type: "updateTask", id: taskId, priority },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         name="priority"
@@ -43,7 +43,7 @@ export default function Priority({ disabled, priority }) {
               as={ModifyButton}
               className={classNames(
                 "group",
-                open && "bg-quaternary-hover-fill"
+                open && "bg-quaternary-hover-fill",
               )}
             >
               <span className={classNames("mr-2", textColor[value])}>
@@ -56,7 +56,7 @@ export default function Priority({ disabled, priority }) {
                 <DropdownIcon24
                   className={classNames(
                     open ? "block" : "hidden",
-                    "group-enabled:group-hover:block group-enabled:group-focus-visible:block group-enabled:group-active:block"
+                    "group-enabled:group-hover:block group-enabled:group-focus-visible:block group-enabled:group-active:block",
                   )}
                 />
               </span>

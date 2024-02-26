@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { CheckSmIcon24 } from "@assets";
-import { classNames, checkboxAnimations as animations } from "@utils";
+import { CheckSmIcon24 } from "@/assets";
+import { classNames, checkboxAnimations as animations } from "@/utils";
 
 export default function RadioDisplay({ checked, className, disabled }) {
   const ref = useRef();
@@ -30,7 +30,7 @@ export default function RadioDisplay({ checked, className, disabled }) {
           checked && animations[1].check,
           !checked && !disabled && "group-hover:bg-charcoal/20",
           disabled && "opacity-30",
-          className
+          className,
         )}
       />
       <span
@@ -38,7 +38,7 @@ export default function RadioDisplay({ checked, className, disabled }) {
           "pointer-events-none absolute",
           checked ? "text-white" : "text-charcoal opacity-0",
           "transition ease-in",
-          !checked && !disabled && "group-hover:opacity-100"
+          !checked && !disabled && "group-hover:opacity-100",
         )}
       >
         <CheckSmIcon24 />

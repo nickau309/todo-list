@@ -2,8 +2,8 @@ import React from "react";
 import { useFetcher, useParams, useRouteLoaderData } from "react-router-dom";
 import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react-dom";
 import { Combobox } from "@headlessui/react";
-import { AddSmIcon24 } from "@assets";
-import { LabelsDropdown } from "@components/dropdowns";
+import { AddSmIcon24 } from "@/assets";
+import { LabelsDropdown } from "@/components/dropdowns";
 import { AddButton } from "../components";
 import Label from "./Label";
 
@@ -34,7 +34,7 @@ export default function Labels({ disabled, labelIds }) {
         onChange={(labelIds) => {
           fetcher.submit(
             { type: "updateTask", id: taskId, labelIds },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         multiple

@@ -1,10 +1,10 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 import { AddButton } from "../components";
 
 const LabelsButton = forwardRef(function LabelsButton(
   { children, className, labelIdsLength, ...attr },
-  ref
+  ref,
 ) {
   return labelIdsLength ? (
     <button
@@ -16,7 +16,7 @@ const LabelsButton = forwardRef(function LabelsButton(
         "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
         "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
         "disabled:cursor-not-allowed disabled:text-quaternary-disabled-tint",
-        className
+        className,
       )}
       {...attr}
       tabIndex={undefined}

@@ -1,6 +1,6 @@
 import React from "react";
-import { ActivityIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { ActivityIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function ViewTaskActivity() {

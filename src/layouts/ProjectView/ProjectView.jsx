@@ -5,7 +5,7 @@ import {
   useParams,
   useRouteLoaderData,
 } from "react-router-dom";
-import { TaskList } from "@features";
+import { TaskList } from "@/features";
 import ProjectArchiveBanner from "./ProjectArchiveBanner";
 import ProjectCommentButton from "./ProjectCommentButton";
 import ProjectEmptyComponent from "./ProjectEmptyComponent";

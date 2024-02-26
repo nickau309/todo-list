@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
-import { DuplicateIcon24 } from "@assets";
+import { DuplicateIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function DuplicateProject({ id }) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ThemeLgIcon24 } from "@assets";
+import { ThemeLgIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function Theme() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ExtensionIcon24 } from "@assets";
+import { ExtensionIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function Integrations() {

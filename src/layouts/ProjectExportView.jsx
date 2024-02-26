@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorDialog } from "@components/dialogs";
-import { useErrorDialogControl } from "@contexts";
+import { ErrorDialog } from "@/components/dialogs";
+import { useErrorDialogControl } from "@/contexts";
 
 export default function ProjectExportView() {
   const navigate = useNavigate();

@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
-import { InboxIcon16, ProjectIcon16 } from "@assets";
-import { textColor } from "@utils";
+import { InboxIcon16, ProjectIcon16 } from "@/assets";
+import { textColor } from "@/utils";
 
 export default function Title({ projectId }) {
   const fetchers = useFetchers();
@@ -16,7 +16,7 @@ export default function Title({ projectId }) {
   const { projects } = useRouteLoaderData("root");
 
   const relevantFetcher = fetchers.find(
-    (f) => f.formData && f.formData.get("id") === taskId
+    (f) => f.formData && f.formData.get("id") === taskId,
   );
   const displayProjectId =
     relevantFetcher?.formData.get("projectId") ?? projectId;

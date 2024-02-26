@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const InputButton = forwardRef(function InputButton(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <div
@@ -14,7 +14,7 @@ const InputButton = forwardRef(function InputButton(
         "hover:bg-quaternary-hover-fill",
         "focus-within:bg-quaternary-hover-fill",
         "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
-        className
+        className,
       )}
       {...attr}
       tabIndex="0"

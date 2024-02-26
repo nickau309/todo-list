@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Tab } from "@headlessui/react";
-import { CloseIcon24 } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
-import { useWidth } from "@contexts";
-import { settingsTabsData } from "@data";
-import { classNames } from "@utils";
+import { CloseIcon24 } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
+import { useWidth } from "@/contexts";
+import { settingsTabsData } from "@/data";
+import { classNames } from "@/utils";
 
 export default function SettingsTabList({ setShowSmSidebar, showSmSidebar }) {
   const ref = useRef();
@@ -62,7 +62,7 @@ export default function SettingsTabList({ setShowSmSidebar, showSmSidebar }) {
                     selected
                       ? "bg-tab-hover-fill"
                       : "focus-visible:bg-quaternary-hover-fill enabled:hover:bg-quaternary-hover-fill",
-                    "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+                    "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
                   );
                 }}
               >

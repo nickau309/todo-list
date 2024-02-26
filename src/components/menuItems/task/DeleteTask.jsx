@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
-import { DeleteIcon24 } from "@assets";
-import { useConfirmDialogControl } from "@contexts";
+import { DeleteIcon24 } from "@/assets";
+import { useConfirmDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function DeleteTask({ id, name }) {
@@ -20,7 +20,7 @@ export default function DeleteTask({ id, name }) {
         e.preventDefault();
         fetcher.submit(
           { type: "deleteTask", shouldRedirect: true, id },
-          { method: "post" }
+          { method: "post" },
         );
       },
       verb: "Delete",

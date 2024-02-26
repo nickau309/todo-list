@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
-import { updateSettings } from "@data";
-import { SettingsView } from "@layouts";
+import { updateSettings } from "@/data";
+import { SettingsView } from "@/layouts";
 
 export async function action({ request }) {
   const formData = await request.formData();

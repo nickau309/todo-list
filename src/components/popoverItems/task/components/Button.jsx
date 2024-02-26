@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const Button = forwardRef(function Button(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -11,7 +11,7 @@ const Button = forwardRef(function Button(
       className={classNames(
         "px-2.5 py-1",
         "hover:bg-menu-item-primary-hover focus-visible:bg-menu-item-primary-hover focus-visible:outline-none",
-        className
+        className,
       )}
       {...attr}
       tabIndex={undefined}

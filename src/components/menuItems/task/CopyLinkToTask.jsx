@@ -1,5 +1,5 @@
 import React from "react";
-import { LinkIcon24 } from "@assets";
+import { LinkIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function CopyLinkToTask({ id, projectId }) {
@@ -8,7 +8,7 @@ export default function CopyLinkToTask({ id, projectId }) {
       as="button"
       onClick={() => {
         navigator.clipboard.writeText(
-          `${window.location.origin}/todo-list/project/${projectId}/task/${id}`
+          `${window.location.origin}/todo-list/project/${projectId}/task/${id}`,
         );
       }}
     >

@@ -4,9 +4,9 @@ import {
   useNavigate,
   useRouteLoaderData,
 } from "react-router-dom";
-import { CheckboxInput } from "@components/checkboxes";
-import { useEditorState } from "@contexts";
-import { classNames } from "@utils";
+import { CheckboxInput } from "@/components/checkboxes";
+import { useEditorState } from "@/contexts";
+import { classNames } from "@/utils";
 import { ItemInfoTags, ItemLeftAction, ItemRightAction } from "../components";
 
 export default function ReorderItemDetail({
@@ -48,7 +48,7 @@ export default function ReorderItemDetail({
         className={classNames(
           "flex rounded-[5px]",
           isInTaskPanel ? "pr-[60px]" : "pr-[30px]",
-          "group-focus-within:-ml-2.5 group-focus-within:w-[calc(100%+10px)] group-focus-within:bg-task-button group-focus-within:pl-2.5 group-focus-within:outline-none group-focus-within:ring-1 group-focus-within:ring-inset group-focus-within:ring-task-button"
+          "group-focus-within:-ml-2.5 group-focus-within:w-[calc(100%+10px)] group-focus-within:bg-task-button group-focus-within:pl-2.5 group-focus-within:outline-none group-focus-within:ring-1 group-focus-within:ring-inset group-focus-within:ring-task-button",
         )}
       >
         <div className="-ml-[3px] mr-1.5 mt-2">
@@ -61,7 +61,7 @@ export default function ReorderItemDetail({
                 "line-clamp-4 w-full break-words pb-0.5 text-sm/normal tracking-dark",
                 isCompleted
                   ? "text-charcoal line-through"
-                  : "text-content-primary"
+                  : "text-content-primary",
               )}
             >
               {name}
@@ -80,7 +80,7 @@ export default function ReorderItemDetail({
           className={classNames(
             "absolute right-full top-[7px] pr-[3px]",
             isDragging && "opacity-0",
-            "group-focus-within:pr-[13px]"
+            "group-focus-within:pr-[13px]",
           )}
         >
           <ItemLeftAction
@@ -98,7 +98,7 @@ export default function ReorderItemDetail({
           isDragging && "opacity-0",
           isInTaskPanel
             ? "top-1.5 group-focus-within:focus-within:[&:not(:group-hover)]:bg-fade-panel"
-            : "top-2 -mr-[30px] group-focus-within:focus-within:[&:not(:group-hover)]:bg-fade"
+            : "top-2 -mr-[30px] group-focus-within:focus-within:[&:not(:group-hover)]:bg-fade",
         )}
       >
         <ItemRightAction

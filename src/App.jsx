@@ -89,8 +89,8 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/todo-list/",
-  }
+    basename: "/todo-list",
+  },
 );
 
 export default function App() {

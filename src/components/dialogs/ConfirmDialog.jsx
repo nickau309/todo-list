@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { Dialog } from "@headlessui/react";
-import { CloseIcon24 } from "@assets";
+import { CloseIcon24 } from "@/assets";
 import {
   CancelButton,
   SubmitButton,
   QuaternaryButton,
-} from "@components/buttons";
-import { BaseOverlayDialog } from "@components/dialogs";
-import { useConfirmDialogControl, useConfirmDialogState } from "@contexts";
+} from "@/components/buttons";
+import { BaseOverlayDialog } from "@/components/dialogs";
+import { useConfirmDialogControl, useConfirmDialogState } from "@/contexts";
 
 export default function ConfirmDialog() {
   const ref = useRef();

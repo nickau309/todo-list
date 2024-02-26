@@ -8,8 +8,8 @@ import React, {
 } from "react";
 import { useRouteLoaderData } from "react-router-dom";
 import equal from "fast-deep-equal";
-import { themeData } from "@data";
-import { usePrefersColorScheme } from "@hooks";
+import { themeData } from "@/data";
+import { usePrefersColorScheme } from "@/hooks";
 
 const SettingsStateContext = createContext(null);
 const SettingsControlContext = createContext(null);
@@ -25,7 +25,7 @@ export function SettingsProvider({ children }) {
 
   const settingsStateContextValue = useMemo(
     () => ({ previewSettings, hasChanged }),
-    [previewSettings, hasChanged]
+    [previewSettings, hasChanged],
   );
 
   // Settings Control Context
@@ -39,7 +39,7 @@ export function SettingsProvider({ children }) {
 
   const settingsControlContextValue = useMemo(
     () => ({ discardChanges, updatePreviewSettings }),
-    [discardChanges, updatePreviewSettings]
+    [discardChanges, updatePreviewSettings],
   );
 
   // Theme Context

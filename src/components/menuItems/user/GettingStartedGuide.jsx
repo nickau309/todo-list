@@ -1,6 +1,6 @@
 import React from "react";
-import { GuideIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { GuideIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function GettingStartedGuide() {

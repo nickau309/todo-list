@@ -1,6 +1,6 @@
 import React from "react";
-import { DisabledIcon24, ShowCompletedIcon24 } from "@assets";
-import { useSetShowCompleted, useShowCompleted } from "@contexts";
+import { DisabledIcon24, ShowCompletedIcon24 } from "@/assets";
+import { useSetShowCompleted, useShowCompleted } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function SetShowCompleted() {

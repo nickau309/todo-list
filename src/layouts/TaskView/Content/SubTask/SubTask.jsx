@@ -1,9 +1,9 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { AddSmIcon24 } from "@assets";
-import { useEditorControl, useEditorState, useWidth } from "@contexts";
-import { AddTask } from "@features";
-import { classNames } from "@utils";
+import { AddSmIcon24 } from "@/assets";
+import { useEditorControl, useEditorState, useWidth } from "@/contexts";
+import { AddTask } from "@/features";
+import { classNames } from "@/utils";
 import TaskListDisclosure from "./TaskListDisclosure";
 
 export default function SubTask({ isArchived }) {
@@ -40,7 +40,7 @@ export default function SubTask({ isArchived }) {
             "-mx-2 flex h-7 min-w-[68px] items-center rounded-[5px] border border-transparent pl-0.5 pr-2 text-quaternary-tint transition-colors duration-300",
             "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
             "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
-            "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]"
+            "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
           )}
         >
           <span className="mr-0.5">
@@ -67,7 +67,7 @@ export default function SubTask({ isArchived }) {
           className={classNames(
             "mx-3 flex h-10 min-w-[68px] items-center rounded-[5px] pl-1.5 pr-3 text-content-secondary transition-colors duration-300",
             "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
-            "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint"
+            "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
           )}
         >
           <span className="mr-3.5">

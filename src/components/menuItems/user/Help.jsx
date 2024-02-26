@@ -1,6 +1,6 @@
 import React from "react";
-import { HelpLgIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { HelpLgIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function Help() {

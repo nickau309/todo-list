@@ -1,6 +1,6 @@
 import React from "react";
-import { AddBelowIcon24 } from "@assets";
-import { useDialogControl } from "@contexts";
+import { AddBelowIcon24 } from "@/assets";
+import { useDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function AddProjectBelow({ id }) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { DeleteIcon24 } from "@assets";
-import { useConfirmDialogControl } from "@contexts";
+import { DeleteIcon24 } from "@/assets";
+import { useConfirmDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function DeleteProject({ id, name }) {
@@ -21,7 +21,7 @@ export default function DeleteProject({ id, name }) {
         e.preventDefault();
         fetcher.submit(
           { type: "deleteProject", shouldRedirect: projectId === id, id },
-          { method: "post" }
+          { method: "post" },
         );
       },
       verb: "Delete",

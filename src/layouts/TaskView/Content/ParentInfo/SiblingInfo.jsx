@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { autoUpdate, offset, size, useFloating } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { ChevronRightIcon16, SubTaskIcon16, ThickCheckIcon24 } from "@assets";
-import { CheckboxDisplay } from "@components/checkboxes";
-import { Z50Portal } from "@components/portals";
-import { useWidth } from "@contexts";
-import { classNames } from "@utils";
+import { ChevronRightIcon16, SubTaskIcon16, ThickCheckIcon24 } from "@/assets";
+import { CheckboxDisplay } from "@/components/checkboxes";
+import { Z50Portal } from "@/components/portals";
+import { useWidth } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function SiblingInfo() {
   const { siblingOrder, tasks } = useLoaderData();
@@ -25,7 +25,7 @@ export default function SiblingInfo() {
         apply({ availableHeight, elements }) {
           elements.floating.style.setProperty(
             "--max-height",
-            availableHeight + "px"
+            availableHeight + "px",
           );
         },
       }),
@@ -46,7 +46,7 @@ export default function SiblingInfo() {
                 : "text-quaternary-tint ",
               "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
               "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
-              "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]"
+              "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
             )}
           >
             <span className="text-content-secondary">
@@ -65,7 +65,7 @@ export default function SiblingInfo() {
                 static
                 className={classNames(
                   "box-content flex max-h-[var(--max-height)] min-w-[280px] max-w-[300px] select-none overflow-hidden rounded-[10px] border border-divider-secondary bg-menu shadow-[0_0_8px_rgba(0,0,0,.12)]",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 <div className="grow overflow-y-auto overflow-x-hidden py-1.5">
@@ -90,7 +90,7 @@ export default function SiblingInfo() {
                             "font-reactist text-sm/[1.65] tracking-dark",
                             siblingTask.isCompleted
                               ? "text-content-secondary line-through"
-                              : "text-content-primary"
+                              : "text-content-primary",
                           )}
                         >
                           {siblingTask.name}

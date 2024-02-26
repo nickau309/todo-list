@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const AddButton = forwardRef(function AddButton(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -14,7 +14,7 @@ const AddButton = forwardRef(function AddButton(
         "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
         "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
         "disabled:cursor-not-allowed disabled:text-quaternary-disabled-tint",
-        className
+        className,
       )}
       {...attr}
       tabIndex={undefined}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
-import { BaseDialog } from "@components/dialogs";
-import { useQuickAddDialogControl, useQuickAddDialogState } from "@contexts";
-import { TaskEditor } from "@features";
+import { BaseDialog } from "@/components/dialogs";
+import { useQuickAddDialogControl, useQuickAddDialogState } from "@/contexts";
+import { TaskEditor } from "@/features";
 
 export default function QuickAddDialog() {
   const fetcher = useFetcher();

@@ -1,11 +1,11 @@
 import React, { forwardRef, useRef } from "react";
 import { useLoaderData } from "react-router-dom";
-import { useNodeHeight, useTextareaControl } from "@hooks";
-import { classNames } from "@utils";
+import { useNodeHeight, useTextareaControl } from "@/hooks";
+import { classNames } from "@/utils";
 
 const EditDescription = forwardRef(function EditDescription(
   { editId, editType, ...attr },
-  ref
+  ref,
 ) {
   const { tasks } = useLoaderData();
 
@@ -28,7 +28,7 @@ const EditDescription = forwardRef(function EditDescription(
       placeholder="Description"
       className={classNames(
         "box-content resize-none overflow-hidden bg-inherit p-px pl-0 text-[13px]/[1.65] tracking-dark",
-        "placeholder:select-none placeholder:text-field-placeholder focus-visible:outline-none"
+        "placeholder:select-none placeholder:text-field-placeholder focus-visible:outline-none",
       )}
       {...attr}
     ></textarea>

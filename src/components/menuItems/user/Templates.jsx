@@ -1,6 +1,6 @@
 import React from "react";
-import { TemplateIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { TemplateIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function Templates() {

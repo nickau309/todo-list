@@ -1,6 +1,6 @@
 import React from "react";
-import { SyncIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { SyncIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function Sync() {

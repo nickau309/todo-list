@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { Reorder } from "framer-motion";
 import { Menu } from "@headlessui/react";
-import { ProjectIcon24 } from "@assets";
-import { useWidth } from "@contexts";
-import { classNames, textColor } from "@utils";
+import { ProjectIcon24 } from "@/assets";
+import { useWidth } from "@/contexts";
+import { classNames, textColor } from "@/utils";
 import ReorderItemMenu from "./ReorderItemMenu";
 
 export default function ReorderItem({
@@ -41,7 +41,7 @@ export default function ReorderItem({
   };
 
   const relevantFetcher = fetchers.find(
-    (f) => f.formData && f.formData.get("id") === id
+    (f) => f.formData && f.formData.get("id") === id,
   );
   const project = projects.find((p) => p.id === id);
 
@@ -74,7 +74,7 @@ export default function ReorderItem({
                 "absolute bg-base-primary-hover shadow-[0_5px_8px_rgba(0,0,0,.16)]",
               open || pathname.startsWith(href)
                 ? "bg-base-primary-hover"
-                : "hover:bg-base-primary-hover"
+                : "hover:bg-base-primary-hover",
             )}
           >
             <Link
@@ -83,7 +83,7 @@ export default function ReorderItem({
               draggable="false"
               className={classNames(
                 "flex min-w-0 grow items-center gap-[5px] rounded-[5px] p-[5px]",
-                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]"
+                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner focus-visible:transition-shadow focus-visible:duration-300 focus-visible:ease-[cubic-bezier(.25,.1,.25,1)]",
               )}
             >
               <span className={textColor[color]}>
@@ -99,7 +99,7 @@ export default function ReorderItem({
                   "select-none text-xs/6 text-count",
                   open
                     ? "opacity-0"
-                    : "opacity-100 group-focus-within/item:opacity-0 group-hover/item:opacity-0"
+                    : "opacity-100 group-focus-within/item:opacity-0 group-hover/item:opacity-0",
                 )}
               >
                 {incompleteTaskCount}

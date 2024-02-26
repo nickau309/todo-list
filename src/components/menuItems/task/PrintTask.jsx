@@ -1,6 +1,6 @@
 import React from "react";
-import { PrintIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { PrintIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function PrintTask() {

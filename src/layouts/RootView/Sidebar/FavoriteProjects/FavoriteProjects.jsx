@@ -2,16 +2,16 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon16 } from "@assets";
-import { AnimatedDisclosurePanel } from "@components";
-import { classNames } from "@utils";
+import { ChevronDownIcon16 } from "@/assets";
+import { AnimatedDisclosurePanel } from "@/components";
+import { classNames } from "@/utils";
 import ListItem from "./ListItem";
 
 export default function FavoriteProjects() {
   const { projects } = useLoaderData();
 
   const favoriteProjects = projects.filter(
-    (p) => !p.isArchived && p.isFavorite
+    (p) => !p.isArchived && p.isFavorite,
   );
 
   if (!favoriteProjects.length) {
@@ -35,7 +35,7 @@ export default function FavoriteProjects() {
                   "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
                   "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
                   "opacity-0 group-focus-within/sidebar:opacity-100 group-hover/sidebar:opacity-100",
-                  "disabled:cursor-not-allowed disabled:text-quaternary-disabled-tint"
+                  "disabled:cursor-not-allowed disabled:text-quaternary-disabled-tint",
                 )}
               >
                 <ChevronDownIcon16 className="transition-transform ui-not-open:rotate-90" />

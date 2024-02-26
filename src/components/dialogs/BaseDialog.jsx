@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useTheme } from "@contexts";
-import { classNames } from "@utils";
+import { useTheme } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function BaseDialog({
   afterLeave = () => {},

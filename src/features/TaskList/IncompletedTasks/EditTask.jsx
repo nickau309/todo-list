@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
-import { useEditorControl, useEditorState } from "@contexts";
-import { TaskEditor } from "@features";
+import { useEditorControl, useEditorState } from "@/contexts";
+import { TaskEditor } from "@/features";
 
 export default function EditTask({ id }) {
   const fetcher = useFetcher();

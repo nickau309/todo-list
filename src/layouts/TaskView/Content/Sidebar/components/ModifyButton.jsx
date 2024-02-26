@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const ModifyButton = forwardRef(function ModifyButton(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -15,7 +15,7 @@ const ModifyButton = forwardRef(function ModifyButton(
         "enabled:hover:bg-quaternary-hover-fill",
         "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
         "disabled:cursor-not-allowed disabled:font-semibold disabled:text-quaternary-disabled-tint",
-        className
+        className,
       )}
       {...attr}
       tabIndex={undefined}

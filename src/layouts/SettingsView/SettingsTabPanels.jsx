@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet, useFetcher } from "react-router-dom";
 import { Tab } from "@headlessui/react";
-import { ArrowLeftIcon24, CloseIcon24 } from "@assets";
+import { ArrowLeftIcon24, CloseIcon24 } from "@/assets";
 import {
   CancelButton,
   SubmitButton,
   QuaternaryButton,
-} from "@components/buttons";
-import { useSettingsControl, useSettingsState } from "@contexts";
-import { settingsTabsData } from "@data";
+} from "@/components/buttons";
+import { useSettingsControl, useSettingsState } from "@/contexts";
+import { settingsTabsData } from "@/data";
 
 export default function SettingsTabPanels({ handleClose, setShowSmSidebar }) {
   const fetcher = useFetcher();

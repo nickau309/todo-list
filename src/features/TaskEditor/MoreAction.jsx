@@ -1,10 +1,10 @@
 import React from "react";
 import { autoUpdate, flip, offset, useFloating } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { MoreActionIcon16 } from "@assets";
-import { AddExtension, EditTaskActions } from "@components/menuItems/task";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+import { MoreActionIcon16 } from "@/assets";
+import { AddExtension, EditTaskActions } from "@/components/menuItems/task";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 import { InputButton } from "./components";
 
 export default function MoreAction() {
@@ -33,7 +33,7 @@ export default function MoreAction() {
                 static
                 className={classNames(
                   "box-content flex w-[248px] overflow-hidden rounded-[10px] border border-divider-secondary bg-menu font-reactist text-content-primary shadow-[0_0_8px_rgba(0,0,0,.12)]",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 <div className="flex grow flex-col overflow-y-auto overflow-x-hidden p-1.5">

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { ExtensionIcon24 } from "@assets";
+import { ExtensionIcon24 } from "@/assets";
 import { LinkButton } from "./components";
 
 export default function AddExtension() {

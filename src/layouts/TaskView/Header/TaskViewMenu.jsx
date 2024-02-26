@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import { useParams, useRouteLoaderData } from "react-router-dom";
 import { autoUpdate, offset, useFloating } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { MoreActionIcon24 } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
+import { MoreActionIcon24 } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
 import {
   AddCommentsViaEmail,
   AddExtension,
@@ -12,9 +12,9 @@ import {
   DuplicateTask,
   PrintTask,
   ViewTaskActivity,
-} from "@components/menuItems/task";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/menuItems/task";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function TaskViewMenu({ addedAt, name, projectId }) {
   const { taskId } = useParams();
@@ -33,7 +33,7 @@ export default function TaskViewMenu({ addedAt, name, projectId }) {
     "en-HK",
     addedAtDate.getFullYear() === now.getFullYear()
       ? { day: "numeric", month: "short" }
-      : { day: "numeric", month: "short", year: "numeric" }
+      : { day: "numeric", month: "short", year: "numeric" },
   );
 
   const addedAtTimeString = addedAtDate.toLocaleTimeString("en-HK", {
@@ -53,7 +53,7 @@ export default function TaskViewMenu({ addedAt, name, projectId }) {
         className={({ open }) => {
           return classNames(
             "w-8 transition-colors duration-300",
-            open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+            open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
           );
         }}
       >
@@ -64,7 +64,7 @@ export default function TaskViewMenu({ addedAt, name, projectId }) {
           unmount={false}
           className={classNames(
             "box-content flex min-w-[280px] max-w-[300px] overflow-hidden rounded-[10px] border border-divider-secondary bg-menu font-reactist text-content-primary shadow-[0_0_8px_rgba(0,0,0,.12)]",
-            "focus-visible:outline-none"
+            "focus-visible:outline-none",
           )}
         >
           <div className="flex grow flex-col overflow-y-auto overflow-x-hidden p-1.5">

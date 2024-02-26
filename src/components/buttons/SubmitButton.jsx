@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const SubmitButton = forwardRef(function SubmitButton(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -15,7 +15,7 @@ const SubmitButton = forwardRef(function SubmitButton(
         "enabled:hover:bg-primary-hover-fill enabled:hover:text-primary-hover-tint",
         "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
         "disabled:cursor-not-allowed disabled:bg-primary-disabled-fill disabled:text-primary-disabled-tint",
-        className
+        className,
       )}
       {...attr}
     >

@@ -2,11 +2,11 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon16, PieChartIcon10 } from "@assets";
-import { AnimatedDisclosurePanel } from "@components";
-import { useSetShowCompleted, useShowCompleted } from "@contexts";
-import { TaskList } from "@features";
-import { classNames } from "@utils";
+import { ChevronDownIcon16, PieChartIcon10 } from "@/assets";
+import { AnimatedDisclosurePanel } from "@/components";
+import { useSetShowCompleted, useShowCompleted } from "@/contexts";
+import { TaskList } from "@/features";
+import { classNames } from "@/utils";
 
 export default function TaskListDisclosure({ childIds, isArchived }) {
   const { tasks } = useLoaderData();
@@ -15,7 +15,7 @@ export default function TaskListDisclosure({ childIds, isArchived }) {
   const setShowCompleted = useSetShowCompleted();
 
   const numberOfSubTaskCompleted = tasks.filter(
-    (t) => childIds.includes(t.id) && t.isCompleted
+    (t) => childIds.includes(t.id) && t.isCompleted,
   ).length;
 
   return (
@@ -30,7 +30,7 @@ export default function TaskListDisclosure({ childIds, isArchived }) {
             <Disclosure.Button
               className={classNames(
                 "h-8 min-w-[68px] grow gap-1.5 rounded-[5px] border border-transparent pl-1.5 pr-3",
-                "flex items-center transition-colors duration-300"
+                "flex items-center transition-colors duration-300",
               )}
             >
               <span className="text-quaternary-tint">
@@ -68,7 +68,7 @@ export default function TaskListDisclosure({ childIds, isArchived }) {
                   "flex h-7 min-w-[68px] select-none items-center rounded-[5px] border border-transparent px-2 font-reactist text-xs/7 font-semibold text-quaternary-tint transition-colors duration-300",
                   "focus-visible:bg-quaternary-hover-fill focus-visible:text-quaternary-hover-tint",
                   "enabled:hover:bg-quaternary-hover-fill enabled:hover:text-quaternary-hover-tint",
-                  "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]"
+                  "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
                 )}
               >
                 {showCompleted ? "Hide completed" : "Show completed"}

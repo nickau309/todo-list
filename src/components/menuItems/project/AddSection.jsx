@@ -1,6 +1,6 @@
 import React from "react";
-import { AddSectionIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { AddSectionIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function AddSection() {

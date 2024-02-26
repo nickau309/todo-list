@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
-import { DragHandleIcon24, DropdownIcon24 } from "@assets";
-import { classNames } from "@utils";
+import { DragHandleIcon24, DropdownIcon24 } from "@/assets";
+import { classNames } from "@/utils";
 
 export default function ItemLeftAction({
   controls = null,
@@ -24,7 +24,7 @@ export default function ItemLeftAction({
             isCompleted && "hidden",
             "cursor-move rounded-[3px] text-content-secondary opacity-0",
             "hover:bg-base-secondary-hover hover:text-base-primary",
-            "group-hover:opacity-100"
+            "group-hover:opacity-100",
           )}
         >
           <DragHandleIcon24 />
@@ -36,7 +36,7 @@ export default function ItemLeftAction({
           onClick={() => {
             fetcher.submit(
               { type: "updateTask", id, isCollapsed: !isCollapsed },
-              { method: "post" }
+              { method: "post" },
             );
           }}
           className="rounded-[3px] text-content-secondary hover:bg-base-secondary-hover hover:text-base-primary"

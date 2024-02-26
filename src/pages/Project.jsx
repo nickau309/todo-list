@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import { redirect } from "react-router-dom";
-import { EditorProvider, ShowCompletedProvider } from "@contexts";
+import { EditorProvider, ShowCompletedProvider } from "@/contexts";
 import {
   addProject,
   addTask,
@@ -13,8 +13,8 @@ import {
   moveTask,
   updateProject,
   updateTask,
-} from "@data";
-import { ProjectView } from "@layouts";
+} from "@/data";
+import { ProjectView } from "@/layouts";
 
 export async function loader({ params }) {
   const data = await getTasksInfo({ projectId: params.projectId });

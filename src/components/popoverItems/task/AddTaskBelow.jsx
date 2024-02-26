@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover } from "@headlessui/react";
-import { AddBelowIcon24 } from "@assets";
-import { useEditorControl } from "@contexts";
+import { AddBelowIcon24 } from "@/assets";
+import { useEditorControl } from "@/contexts";
 import { Button } from "./components";
 
 export default function AddTaskBelow({ id }) {

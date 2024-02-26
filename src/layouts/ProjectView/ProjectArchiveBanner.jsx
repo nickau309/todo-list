@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { ArchiveIconSolid24 } from "@assets";
-import { SubmitButton } from "@components/buttons";
+import { ArchiveIconSolid24 } from "@/assets";
+import { SubmitButton } from "@/components/buttons";
 
 export default function ProjectArchiveBanner() {
   const fetcher = useFetcher();
@@ -19,7 +19,7 @@ export default function ProjectArchiveBanner() {
         onClick={() => {
           fetcher.submit(
             { type: "updateProject", id: projectId, isArchived: false },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         className="min-w-[68px] shrink-0 px-3 transition-colors duration-300"

@@ -1,6 +1,6 @@
 import React from "react";
-import { ReminderIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { ReminderIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { AddButton } from "./components";
 
 export default function Reminders({ disabled }) {

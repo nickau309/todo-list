@@ -6,9 +6,9 @@ import {
   LabelIconSolid24,
   OptionCheckIcon24,
   OptionUncheckIcon24,
-} from "@assets";
-import { Z60Portal } from "@components/portals";
-import { textColor } from "@utils";
+} from "@/assets";
+import { Z60Portal } from "@/components/portals";
+import { textColor } from "@/utils";
 
 const LabelsDropdown = forwardRef(function LabelsDropdown(props, ref) {
   const fetcher = useFetcher();
@@ -83,7 +83,7 @@ const LabelsDropdown = forwardRef(function LabelsDropdown(props, ref) {
                   onClick={() => {
                     fetcher.submit(
                       { type: "addLabel", name: query },
-                      { method: "post" }
+                      { method: "post" },
                     );
                   }}
                   className="flex w-full items-center gap-2.5 px-2.5 py-1 text-base-primary"

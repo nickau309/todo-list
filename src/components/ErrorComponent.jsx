@@ -1,6 +1,6 @@
 import React from "react";
-import { errorLogo, errorLogoDark } from "@assets";
-import { useTheme } from "@contexts";
+import { errorLogo, errorLogoDark } from "@/assets";
+import { useTheme } from "@/contexts";
 
 export default function ErrorComponent({ errorText }) {
   const { name } = useTheme();

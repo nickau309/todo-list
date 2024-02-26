@@ -7,8 +7,8 @@ import {
   useFloating,
 } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { MoreActionIcon24 } from "@assets";
-import { QuaternaryButton } from "@components/buttons";
+import { MoreActionIcon24 } from "@/assets";
+import { QuaternaryButton } from "@/components/buttons";
 import {
   AddProjectAbove,
   AddProjectBelow,
@@ -21,9 +21,9 @@ import {
   SetIsFavorite,
   ShareProject,
   UnarchiveProject,
-} from "@components/menuItems/project";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/menuItems/project";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function ProjectListItemMenu({ id, isArchived, name }) {
   const { refs, floatingStyles } = useFloating({
@@ -35,7 +35,7 @@ export default function ProjectListItemMenu({ id, isArchived, name }) {
         apply({ availableHeight, elements }) {
           elements.floating.style.setProperty(
             "--max-height",
-            availableHeight + "px"
+            availableHeight + "px",
           );
         },
       }),
@@ -52,7 +52,7 @@ export default function ProjectListItemMenu({ id, isArchived, name }) {
         className={classNames(
           "w-8 transition-colors duration-300",
           "opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 ui-open:opacity-100",
-          "ui-open:!bg-quaternary-hover-fill ui-open:!text-quaternary-hover-tint"
+          "ui-open:!bg-quaternary-hover-fill ui-open:!text-quaternary-hover-tint",
         )}
       >
         <MoreActionIcon24 />
@@ -62,7 +62,7 @@ export default function ProjectListItemMenu({ id, isArchived, name }) {
           unmount={false}
           className={classNames(
             "box-content flex max-h-[var(--max-height)] w-[250px] overflow-hidden rounded-[10px] border border-menu bg-menu text-menu shadow-menu",
-            "focus-visible:outline-none"
+            "focus-visible:outline-none",
           )}
         >
           <div className="flex grow flex-col overflow-y-auto overflow-x-hidden py-1">

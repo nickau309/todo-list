@@ -1,10 +1,10 @@
 import React, { useId } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { CheckLgIcon24 } from "@assets";
-import { Switch } from "@components/switches";
-import { useSettingsControl, useSettingsState } from "@contexts";
-import { themeData } from "@data";
-import { classNames } from "@utils";
+import { CheckLgIcon24 } from "@/assets";
+import { Switch } from "@/components/switches";
+import { useSettingsControl, useSettingsState } from "@/contexts";
+import { themeData } from "@/data";
+import { classNames } from "@/utils";
 
 export default function SettingsTheme() {
   const id = useId();
@@ -25,7 +25,7 @@ export default function SettingsTheme() {
           id={id + "-sync"}
           className={classNames(
             "cursor-not-allowed",
-            "focus-visible:outline-none focus-visible:ring-[1.6px] focus-visible:ring-primary-fill focus-visible:ring-offset-[2.4px]"
+            "focus-visible:outline-none focus-visible:ring-[1.6px] focus-visible:ring-primary-fill focus-visible:ring-offset-[2.4px]",
           )}
         />
         <label htmlFor={id + "-sync"} className="cursor-not-allowed">
@@ -67,7 +67,7 @@ export default function SettingsTheme() {
               className={classNames(
                 "overflow-hidden rounded-lg border border-theme-card transition-transform duration-100 ease-[cubic-bezier(.42,0,.58,1)]",
                 "hover:translate-y-[-3px]",
-                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+                "focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
               )}
             >
               <div className={classNames("theme_card", theme.className)}>

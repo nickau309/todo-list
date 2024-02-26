@@ -1,8 +1,8 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { useShowCompleted } from "@contexts";
-import { AddTask } from "@features";
-import { classNames } from "@utils";
+import { useShowCompleted } from "@/contexts";
+import { AddTask } from "@/features";
+import { classNames } from "@/utils";
 import AddTaskButton from "./AddTaskButton";
 import CompletedTasks from "./CompletedTasks";
 import IncompletedTasks from "./IncompletedTasks";
@@ -22,7 +22,7 @@ export default function TaskList({
     <div
       className={classNames(
         !isInTaskPanel && "mt-[5px] pb-[18px]",
-        "w-full max-w-[800px]"
+        "w-full max-w-[800px]",
       )}
     >
       <IncompletedTasks isInTaskPanel={isInTaskPanel} />

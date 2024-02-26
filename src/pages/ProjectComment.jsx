@@ -6,11 +6,11 @@ import {
   useRouteLoaderData,
 } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
-import { CloseIcon24, InboxIcon24, ProjectIcon24 } from "@assets";
-import { ErrorComponent } from "@components";
-import { QuaternaryButton } from "@components/buttons";
-import { BaseOverlayDialog } from "@components/dialogs";
-import { classNames, textColor } from "@utils";
+import { CloseIcon24, InboxIcon24, ProjectIcon24 } from "@/assets";
+import { ErrorComponent } from "@/components";
+import { QuaternaryButton } from "@/components/buttons";
+import { BaseOverlayDialog } from "@/components/dialogs";
+import { classNames, textColor } from "@/utils";
 
 export default function ProjectComment() {
   const fetchers = useFetchers();
@@ -25,7 +25,7 @@ export default function ProjectComment() {
   };
 
   const relevantFetcher = fetchers.find(
-    (f) => f.formData && f.formData.get("id") === projectId
+    (f) => f.formData && f.formData.get("id") === projectId,
   );
   const project = projects.find((p) => p.id === projectId);
 
@@ -43,7 +43,7 @@ export default function ProjectComment() {
         <Dialog.Panel
           className={classNames(
             "flex h-full w-full flex-col divide-y divide-divider-tertiary rounded-t-[10px] bg-default text-base-primary shadow-[0_2px_8px_rgb(0,0,0,.16)]",
-            "min-[750px]:max-h-[960px] min-[750px]:max-w-[650px] min-[750px]:rounded-b-[10px]"
+            "min-[750px]:max-h-[960px] min-[750px]:max-w-[650px] min-[750px]:rounded-b-[10px]",
           )}
         >
           <header className="flex shrink-0 basis-14 items-center justify-between gap-2 pl-[18px] pr-3">

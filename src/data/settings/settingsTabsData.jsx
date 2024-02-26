@@ -12,9 +12,9 @@ import {
   SubscriptionIcon24,
   ThemeSmIcon24,
   ViewIcon24,
-} from "@assets";
-import { ErrorComponent } from "@components";
-import SettingsTheme from "@pages/SettingsTheme";
+} from "@/assets";
+import { ErrorComponent } from "@/components";
+import SettingsTheme from "@/pages/SettingsTheme";
 
 const settingsTabsData = [
   {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CloseIcon24, HomeIcon24, MenuIcon24 } from "@assets";
-import { useShowSidebarSm, useSetShowSidebar } from "@contexts";
-import { classNames } from "@utils";
+import { CloseIcon24, HomeIcon24, MenuIcon24 } from "@/assets";
+import { useShowSidebarSm, useSetShowSidebar } from "@/contexts";
+import { classNames } from "@/utils";
 import HelpInformation from "./HelpInformation";
 import Notification from "./Notification";
 import Productivity from "./Productivity";
@@ -18,7 +18,7 @@ export default function Topbar() {
     <div
       className={classNames(
         "flex h-full items-center justify-between border-b border-transparent bg-navbar-idle-fill px-3 text-navbar-idle-tint shadow-topbar",
-        "min-[750px]:px-4"
+        "min-[750px]:px-4",
       )}
     >
       <div className="flex gap-1 pl-[3px] min-[750px]:pl-[5px]">

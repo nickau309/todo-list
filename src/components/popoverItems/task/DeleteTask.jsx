@@ -1,8 +1,8 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { DeleteIcon24 } from "@assets";
-import { useConfirmDialogControl } from "@contexts";
+import { DeleteIcon24 } from "@/assets";
+import { useConfirmDialogControl } from "@/contexts";
 import { Button } from "./components";
 
 export default function DeleteTask({ id, name }) {

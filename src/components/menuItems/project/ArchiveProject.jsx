@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { ArchiveIconOutline24 } from "@assets";
-import { useConfirmDialogControl } from "@contexts";
+import { ArchiveIconOutline24 } from "@/assets";
+import { useConfirmDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function ArchiveProject({ id, name }) {
@@ -26,7 +26,7 @@ export default function ArchiveProject({ id, name }) {
             id,
             isArchived: "true",
           },
-          { method: "post" }
+          { method: "post" },
         );
       },
       verb: "Archive",

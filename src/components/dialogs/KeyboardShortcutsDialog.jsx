@@ -1,10 +1,10 @@
 import React from "react";
 import { Dialog } from "@headlessui/react";
-import { CloseIcon24 } from "@assets";
-import { ErrorComponent } from "@components";
-import { QuaternaryButton } from "@components/buttons";
-import { BaseOverlayDialog } from "@components/dialogs";
-import { classNames } from "@utils";
+import { CloseIcon24 } from "@/assets";
+import { ErrorComponent } from "@/components";
+import { QuaternaryButton } from "@/components/buttons";
+import { BaseOverlayDialog } from "@/components/dialogs";
+import { classNames } from "@/utils";
 
 export default function KeyboardShortcutsDialog({
   afterLeave = () => {},
@@ -21,7 +21,7 @@ export default function KeyboardShortcutsDialog({
         <Dialog.Panel
           className={classNames(
             "flex max-h-full w-full max-w-[400px] flex-col divide-y divide-divider-tertiary overflow-hidden rounded-t-[10px] bg-default font-reactist text-sm text-base-primary shadow-[0_2px_8px_rgb(0,0,0,.16)]",
-            "min-[400px]:rounded-b-[10px]"
+            "min-[400px]:rounded-b-[10px]",
           )}
         >
           <header className="flex shrink-0 basis-12 items-center justify-between gap-4 p-2 pl-4">

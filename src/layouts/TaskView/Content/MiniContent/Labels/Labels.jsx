@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useFetcher, useParams, useRouteLoaderData } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Combobox } from "@headlessui/react";
-import { AddSmIcon24, LabelIconOutline24 } from "@assets";
-import { LabelsDropdown } from "@components/dropdowns";
-import { classNames } from "@utils";
+import { AddSmIcon24, LabelIconOutline24 } from "@/assets";
+import { LabelsDropdown } from "@/components/dropdowns";
+import { classNames } from "@/utils";
 import Label from "./Label";
 import LabelsButton from "./LabelsButton";
 
@@ -49,7 +49,7 @@ export default function Labels({ disabled, labelIds }) {
             onChange={(labelIds) => {
               fetcher.submit(
                 { type: "updateTask", id: taskId, labelIds },
-                { method: "post" }
+                { method: "post" },
               );
             }}
             multiple
@@ -60,7 +60,7 @@ export default function Labels({ disabled, labelIds }) {
                   ref={labelsContainerRef}
                   className={classNames(
                     !showAll && "max-h-16",
-                    "w-full overflow-hidden"
+                    "w-full overflow-hidden",
                   )}
                 >
                   {labels
@@ -82,7 +82,7 @@ export default function Labels({ disabled, labelIds }) {
                     className={classNames(
                       "flex h-8 max-w-full items-center rounded-[5px] border border-transparent px-3 transition-colors duration-300",
                       "text-tertiary-tint hover:bg-tertiary-hover-fill hover:text-tertiary-hover-tint",
-                      "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]"
+                      "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
                     )}
                   >
                     <span className="grow select-none truncate text-left font-reactist text-[13px]/8">
@@ -121,7 +121,7 @@ export default function Labels({ disabled, labelIds }) {
         onChange={(labelIds) => {
           fetcher.submit(
             { type: "updateTask", id: taskId, labelIds },
-            { method: "post" }
+            { method: "post" },
           );
         }}
         multiple

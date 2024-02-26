@@ -2,9 +2,13 @@ import React, { Fragment, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { DueDateIcon16 } from "@assets";
-import { DueDateDropdown } from "@components/dropdowns";
-import { classNames, getDueDateClassName, getDueDateDescription } from "@utils";
+import { DueDateIcon16 } from "@/assets";
+import { DueDateDropdown } from "@/components/dropdowns";
+import {
+  classNames,
+  getDueDateClassName,
+  getDueDateDescription,
+} from "@/utils";
 import { InputButton, RemoveButton } from "./components";
 
 export default function ChooseDueDate({ editId, editType }) {
@@ -13,7 +17,7 @@ export default function ChooseDueDate({ editId, editType }) {
   const [dueDate, setDueDate] = useState(() =>
     editId && editType === "editTask"
       ? tasks.find((t) => t.id === editId).dueDate
-      : null
+      : null,
   );
 
   const { refs, floatingStyles } = useFloating({

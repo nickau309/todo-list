@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CommentIcon24 } from "@assets";
+import { CommentIcon24 } from "@/assets";
 
 export default function ProjectCommentButton() {
   return (

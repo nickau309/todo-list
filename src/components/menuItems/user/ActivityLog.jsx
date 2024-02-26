@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ActivityIcon24 } from "@assets";
+import { ActivityIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function ActivityLog() {

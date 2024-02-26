@@ -4,8 +4,8 @@ import {
   CommandMenuDialog,
   KeyboardShortcutsDialog,
   ProjectDetailsDialog,
-} from "@components/dialogs";
-import { useDialogControl, useDialogState } from "@contexts/DialogContext";
+} from "@/components/dialogs";
+import { useDialogControl, useDialogState } from "@/contexts/DialogContext";
 
 export default function Dialogs() {
   const fetcher = useFetcher();
@@ -80,7 +80,7 @@ export default function Dialogs() {
     const project = projects.find((p) => p.id === id);
 
     const relevantFetcher = fetchers.find(
-      (f) => f.formData && f.formData.get("id") === id
+      (f) => f.formData && f.formData.get("id") === id,
     );
 
     return (

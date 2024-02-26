@@ -2,9 +2,9 @@ import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
 import { autoUpdate, offset, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { DropdownIcon24, LayoutIcon24, SelectCheckIcon12 } from "@assets";
-import { Z60Portal } from "@components/portals";
-import { classNames } from "@utils";
+import { DropdownIcon24, LayoutIcon24, SelectCheckIcon12 } from "@/assets";
+import { Z60Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 const viewStyles = [
   { name: "list", disabled: false },
@@ -32,7 +32,7 @@ export default function LayoutListbox({ viewStyle }) {
       onChange={(viewStyle) => {
         fetcher.submit(
           { type: "updateProject", id: projectId, viewStyle },
-          { method: "post" }
+          { method: "post" },
         );
       }}
     >
@@ -44,7 +44,7 @@ export default function LayoutListbox({ viewStyle }) {
               "flex w-full gap-2.5 px-2.5 py-1 leading-6",
               open
                 ? "bg-menu-item-primary-hover"
-                : "hover:bg-menu-item-primary-hover"
+                : "hover:bg-menu-item-primary-hover",
             )}
           >
             <span className="text-content-secondary">
@@ -57,7 +57,7 @@ export default function LayoutListbox({ viewStyle }) {
                   "flex",
                   open
                     ? "text-content-primary"
-                    : "text-content-secondary hover:text-content-primary"
+                    : "text-content-secondary hover:text-content-primary",
                 )}
               >
                 <span className="w-[120px] text-right text-sm/6 capitalize">
@@ -75,7 +75,7 @@ export default function LayoutListbox({ viewStyle }) {
                 static
                 className={classNames(
                   "box-content min-w-[220px] overflow-hidden rounded-[5px] border border-dropdown bg-dropdown shadow-dropdown",
-                  "focus-visible:outline-none"
+                  "focus-visible:outline-none",
                 )}
               >
                 {viewStyles.map((viewStyle) => (
@@ -86,7 +86,7 @@ export default function LayoutListbox({ viewStyle }) {
                     className={classNames(
                       "flex cursor-pointer items-center justify-between text-content-primary",
                       "ui-active:bg-menu-item-secondary-hover",
-                      "ui-disabled:cursor-not-allowed ui-disabled:text-[#999]"
+                      "ui-disabled:cursor-not-allowed ui-disabled:text-[#999]",
                     )}
                   >
                     {({ selected }) => (

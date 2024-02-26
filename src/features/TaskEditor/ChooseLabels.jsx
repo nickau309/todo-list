@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react-dom";
 import { Combobox } from "@headlessui/react";
-import { LabelIconOutline16, LabelIconSolid12 } from "@assets";
-import { LabelsDropdown } from "@components/dropdowns";
+import { LabelIconOutline16, LabelIconSolid12 } from "@/assets";
+import { LabelsDropdown } from "@/components/dropdowns";
 import { InputButton, RemoveButton } from "./components";
 
 export default function ChooseLabels({ editId, editType }) {
@@ -12,7 +12,7 @@ export default function ChooseLabels({ editId, editType }) {
   const [labels, setLabels] = useState(() =>
     editId && editType === "editTask"
       ? tasks.find((t) => t.id === editId).labelIds
-      : []
+      : [],
   );
 
   const { refs, floatingStyles } = useFloating({

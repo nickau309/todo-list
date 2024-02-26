@@ -2,11 +2,11 @@ import React, { Fragment } from "react";
 import { useLoaderData } from "react-router-dom";
 import { autoUpdate, shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { ProductivityIcon24 } from "@assets";
-import { ErrorComponent } from "@components";
-import { Z50Portal } from "@components/portals";
-import { useSetShowSidebarSm, useWidth } from "@contexts";
-import { classNames } from "@utils";
+import { ProductivityIcon24 } from "@/assets";
+import { ErrorComponent } from "@/components";
+import { Z50Portal } from "@/components/portals";
+import { useSetShowSidebarSm, useWidth } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function Productivity() {
   const { todayCompleteTasksCount } = useLoaderData();
@@ -35,7 +35,7 @@ export default function Productivity() {
               "-mx-0.5 flex h-8 items-center justify-center gap-[5px] rounded-[3px] px-0.5",
               "hover:bg-navbar-hover-fill",
               "ui-open:bg-navbar-hover-fill",
-              "max-[750px]:w-8 min-[750px]:-mx-1.5 min-[750px]:px-1.5"
+              "max-[750px]:w-8 min-[750px]:-mx-1.5 min-[750px]:px-1.5",
             )}
           >
             <span>

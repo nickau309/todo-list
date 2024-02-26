@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
-import { UnarchiveIcon24 } from "@assets";
+import { UnarchiveIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function UnarchiveProject({ id }) {
@@ -12,7 +12,7 @@ export default function UnarchiveProject({ id }) {
       onClick={() => {
         fetcher.submit(
           { type: "updateProject", id, isArchived: false },
-          { method: "post" }
+          { method: "post" },
         );
       }}
     >

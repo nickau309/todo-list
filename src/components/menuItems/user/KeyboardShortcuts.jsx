@@ -1,6 +1,6 @@
 import React from "react";
-import { KeyboardIcon24 } from "@assets";
-import { useDialogControl } from "@contexts";
+import { KeyboardIcon24 } from "@/assets";
+import { useDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
 export default function KeyboardShortcuts() {

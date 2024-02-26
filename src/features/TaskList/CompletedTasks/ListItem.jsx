@@ -4,8 +4,8 @@ import {
   useNavigate,
   useRouteLoaderData,
 } from "react-router-dom";
-import { CheckboxInput } from "@components/checkboxes";
-import { classNames } from "@utils";
+import { CheckboxInput } from "@/components/checkboxes";
+import { classNames } from "@/utils";
 import { ItemInfoTags, ItemLeftAction, ItemRightAction } from "../components";
 
 export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
@@ -25,7 +25,7 @@ export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
       className={classNames(
         "group relative rounded-[3px] border-b",
         isInTaskPanel ? "border-divider-secondary" : "border-divider-base",
-        "bg-base-primary"
+        "bg-base-primary",
       )}
       style={{
         marginLeft: displayDepth * 28 + "px",
@@ -44,7 +44,7 @@ export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
         className={classNames(
           "peer flex rounded-[5px]",
           isInTaskPanel ? "pr-[60px]" : "pr-[30px]",
-          "focus-within:-ml-2.5 focus-within:w-[calc(100%+10px)] focus-within:bg-task-button focus-within:pl-2.5 focus-within:outline-none focus-within:ring-1 focus-within:ring-inset focus-within:ring-task-button"
+          "focus-within:-ml-2.5 focus-within:w-[calc(100%+10px)] focus-within:bg-task-button focus-within:pl-2.5 focus-within:outline-none focus-within:ring-1 focus-within:ring-inset focus-within:ring-task-button",
         )}
       >
         <div className="-ml-[3px] mr-1.5 mt-2">
@@ -57,7 +57,7 @@ export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
                 "line-clamp-4 w-full break-words pb-0.5 text-sm/normal tracking-dark",
                 isCompleted
                   ? "text-charcoal line-through"
-                  : "text-content-primary"
+                  : "text-content-primary",
               )}
             >
               {name}
@@ -75,7 +75,7 @@ export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
         <div
           className={classNames(
             "absolute right-full top-[7px] pr-[3px]",
-            "peer-focus-within:pr-[13px]"
+            "peer-focus-within:pr-[13px]",
           )}
         >
           <ItemLeftAction
@@ -91,7 +91,7 @@ export default function TaskListItem({ displayDepth, id, isInTaskPanel }) {
           "absolute right-0",
           isInTaskPanel
             ? "top-1.5 group-hover:bg-fade-panel"
-            : "top-2 -mr-[30px] group-hover:bg-fade"
+            : "top-2 -mr-[30px] group-hover:bg-fade",
         )}
       >
         <ItemRightAction

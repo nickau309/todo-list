@@ -1,10 +1,10 @@
 import React, { forwardRef, useRef } from "react";
-import { useNodeHeight, useTextareaControl } from "@hooks";
-import { classNames } from "@utils";
+import { useNodeHeight, useTextareaControl } from "@/hooks";
+import { classNames } from "@/utils";
 
 const EditDescription = forwardRef(function EditDescription(
   { defaultValue, id, isDescriptionBlank, onChange, ...attr },
-  ref
+  ref,
 ) {
   const textareaRef = useRef();
 
@@ -26,7 +26,7 @@ const EditDescription = forwardRef(function EditDescription(
         "box-content grow resize-none overflow-hidden bg-inherit pb-px pr-px",
         isDescriptionBlank && "pt-[1.5px]",
         "leading-[1.65] tracking-dark",
-        "placeholder:text-field-placeholder focus-visible:outline-none"
+        "placeholder:text-field-placeholder focus-visible:outline-none",
       )}
       {...attr}
     ></textarea>

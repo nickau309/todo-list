@@ -2,9 +2,9 @@ import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Listbox } from "@headlessui/react";
-import { Priority4Icon24, PriorityIcon24 } from "@assets";
-import { PriorityDropdown } from "@components/dropdowns";
-import { classNames, priorityTextColor as textColor } from "@utils";
+import { Priority4Icon24, PriorityIcon24 } from "@/assets";
+import { PriorityDropdown } from "@/components/dropdowns";
+import { classNames, priorityTextColor as textColor } from "@/utils";
 import { ModifyButton } from "./components";
 
 export default function Priority({ disabled, priority }) {
@@ -27,7 +27,7 @@ export default function Priority({ disabled, priority }) {
       onChange={(priority) => {
         fetcher.submit(
           { type: "updateTask", id: taskId, priority },
-          { method: "post" }
+          { method: "post" },
         );
       }}
       name="priority"
@@ -39,7 +39,7 @@ export default function Priority({ disabled, priority }) {
             as={ModifyButton}
             className={classNames(
               "group",
-              open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+              open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
             )}
           >
             <span className={classNames("mr-3.5", textColor[value])}>

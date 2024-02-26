@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useWidth } from "@contexts";
+import { useWidth } from "@/contexts";
 
 export default function useNodeHeight(ref, height) {
   const width = useWidth();

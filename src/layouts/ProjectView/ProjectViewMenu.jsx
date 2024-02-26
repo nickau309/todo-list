@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { autoUpdate, shift, useFloating } from "@floating-ui/react-dom";
 import { Menu } from "@headlessui/react";
-import { MoreActionIcon24 } from "@assets";
+import { MoreActionIcon24 } from "@/assets";
 import {
   AddExtension,
   AddSection,
@@ -15,9 +15,9 @@ import {
   ImportFromTemplate,
   ProjectCalendarFeed,
   SetShowCompleted,
-} from "@components/menuItems/project";
-import { Z50Portal } from "@components/portals";
-import { classNames } from "@utils";
+} from "@/components/menuItems/project";
+import { Z50Portal } from "@/components/portals";
+import { classNames } from "@/utils";
 
 export default function ProjectViewMenu({ childOrder, name }) {
   const { projectId } = useParams();
@@ -38,7 +38,7 @@ export default function ProjectViewMenu({ childOrder, name }) {
         aria-label="Project options menu"
         className={classNames(
           "flex items-center rounded-[3px] text-content-secondary",
-          "hover:bg-base-secondary-hover hover:text-base-primary"
+          "hover:bg-base-secondary-hover hover:text-base-primary",
         )}
       >
         <MoreActionIcon24 />
@@ -48,7 +48,7 @@ export default function ProjectViewMenu({ childOrder, name }) {
           unmount={false}
           className={classNames(
             "box-content flex w-[250px] overflow-hidden rounded-[10px] border border-menu bg-menu text-menu shadow-menu",
-            "focus-visible:outline-none"
+            "focus-visible:outline-none",
           )}
         >
           <div className="flex grow flex-col overflow-y-auto overflow-x-hidden py-1">

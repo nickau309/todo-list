@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import { redirect, useRouteLoaderData } from "react-router-dom";
-import { deleteProject, duplicateProject, updateProject } from "@data";
-import { ProjectListItem } from "@features";
+import { deleteProject, duplicateProject, updateProject } from "@/data";
+import { ProjectListItem } from "@/features";
 
 export async function action({ request }) {
   const formData = await request.formData();

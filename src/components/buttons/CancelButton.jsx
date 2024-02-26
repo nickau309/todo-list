@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 const CancelButton = forwardRef(function CancelButton(
   { children, className, ...attr },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -15,7 +15,7 @@ const CancelButton = forwardRef(function CancelButton(
         "enabled:hover:bg-secondary-hover-fill enabled:hover:text-secondary-hover-tint",
         "enabled:active:scale-[.97] enabled:active:transition-transform enabled:active:duration-200 enabled:active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
         "disabled:cursor-not-allowed disabled:bg-secondary-disabled-fill disabled:text-secondary-disabled-tint",
-        className
+        className,
       )}
       {...attr}
     >

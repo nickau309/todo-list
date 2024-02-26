@@ -1,6 +1,6 @@
 import React from "react";
-import { LockIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
+import { LockIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
 import { AddButton } from "./components";
 
 export default function Reminders({ disabled }) {

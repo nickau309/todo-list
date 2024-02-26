@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { DuplicateIcon24 } from "@assets";
+import { DuplicateIcon24 } from "@/assets";
 import { Button } from "./components";
 
 export default function Duplicate({ id }) {

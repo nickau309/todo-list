@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import { Listbox } from "@headlessui/react";
-import { Priority4Icon24, PriorityIcon24, SelectCheckIcon12 } from "@assets";
-import { Z60Portal } from "@components/portals";
-import { classNames, priorityTextColor as textColor } from "@utils";
+import { Priority4Icon24, PriorityIcon24, SelectCheckIcon12 } from "@/assets";
+import { Z60Portal } from "@/components/portals";
+import { classNames, priorityTextColor as textColor } from "@/utils";
 
 const PriorityDropdown = forwardRef(function PriorityDropdown(props, ref) {
   return (
@@ -11,7 +11,7 @@ const PriorityDropdown = forwardRef(function PriorityDropdown(props, ref) {
         static
         className={classNames(
           "overflow-hidden rounded-[5px] border border-dropdown bg-dropdown shadow-dropdown",
-          "focus-visible:outline-none"
+          "focus-visible:outline-none",
         )}
       >
         {new Array(4).fill(null).map((_, i) => (

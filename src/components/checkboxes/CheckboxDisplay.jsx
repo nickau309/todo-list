@@ -1,10 +1,10 @@
 import React from "react";
-import { CheckSmIcon24 } from "@assets";
+import { CheckSmIcon24 } from "@/assets";
 import {
   checkboxBgColor as bgColor,
   checkboxTextColor as textColor,
   classNames,
-} from "@utils";
+} from "@/utils";
 
 export default function CheckboxDisplay({ isCompleted, priority }) {
   const status = isCompleted ? "check" : "uncheck";
@@ -16,7 +16,7 @@ export default function CheckboxDisplay({ isCompleted, priority }) {
           "aspect-square w-[18px] cursor-default rounded-full",
           priority === 4 ? "border" : "border-2",
           bgColor[priority][status],
-          textColor[priority]
+          textColor[priority],
         )}
       ></span>
       {isCompleted && (

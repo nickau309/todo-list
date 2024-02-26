@@ -8,7 +8,7 @@ import {
   QuickAddDialogProvider,
   RootProvider,
   SettingsProvider,
-} from "@contexts";
+} from "@/contexts";
 import {
   addProject,
   deleteProject,
@@ -21,8 +21,8 @@ import {
   getTodayCompleteTasksCount,
   addTask,
   getSettings,
-} from "@data";
-import { RootView } from "@layouts";
+} from "@/data";
+import { RootView } from "@/layouts";
 
 export async function loader() {
   const projects = await getProjects();

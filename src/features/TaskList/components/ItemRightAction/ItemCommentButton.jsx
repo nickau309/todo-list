@@ -1,7 +1,7 @@
 import React from "react";
-import { CommentIcon24 } from "@assets";
-import { useErrorDialogControl } from "@contexts";
-import { classNames } from "@utils";
+import { CommentIcon24 } from "@/assets";
+import { useErrorDialogControl } from "@/contexts";
+import { classNames } from "@/utils";
 
 export default function ItemCommentButton() {
   const { openDialog } = useErrorDialogControl();
@@ -21,7 +21,7 @@ export default function ItemCommentButton() {
         "hover:bg-base-secondary-hover hover:text-base-primary",
         "focus-visible:bg-base-secondary-hover focus-visible:text-base-primary",
         "group-focus-within/action:opacity-100 group-hover:opacity-100",
-        "min-[810px]:grid"
+        "min-[810px]:grid",
       )}
     >
       <CommentIcon24 />

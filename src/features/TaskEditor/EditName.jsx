@@ -1,16 +1,16 @@
 import React, { forwardRef, useRef } from "react";
-import { useNodeHeight, useTextareaControl } from "@hooks";
-import { classNames } from "@utils";
+import { useNodeHeight, useTextareaControl } from "@/hooks";
+import { classNames } from "@/utils";
 
 const EditName = forwardRef(function EditName(
   { isInDialog, onChange, ...attr },
-  ref
+  ref,
 ) {
   const textareaRef = useRef();
 
   const { setHeight } = useNodeHeight(
     textareaRef,
-    isInDialog ? 25 : (14 * 165) / 100
+    isInDialog ? 25 : (14 * 165) / 100,
   );
   useTextareaControl(ref, textareaRef);
 
@@ -29,7 +29,7 @@ const EditName = forwardRef(function EditName(
         isInDialog ? "text-xl/tight" : "text-sm/[1.65]",
         "font-semibold tracking-dark",
         "placeholder:select-none placeholder:text-field-placeholder",
-        "focus-visible:outline-none"
+        "focus-visible:outline-none",
       )}
       {...attr}
     ></textarea>

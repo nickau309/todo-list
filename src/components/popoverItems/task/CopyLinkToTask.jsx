@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { LinkIcon24 } from "@assets";
+import { LinkIcon24 } from "@/assets";
 import { Button } from "./components";
 
 export default function CopyLinkToTask({ id }) {
@@ -12,7 +12,7 @@ export default function CopyLinkToTask({ id }) {
       as={Button}
       onClick={() => {
         navigator.clipboard.writeText(
-          `${window.location.origin}/todo-list/project/${projectId}/task/${id}`
+          `${window.location.origin}/todo-list/project/${projectId}/task/${id}`,
         );
       }}
     >

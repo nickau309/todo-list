@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Cog8ToothSmIcon24 } from "@assets";
+import { Cog8ToothSmIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function Settings() {

@@ -1,8 +1,8 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
-import { ConfirmDialog, ErrorDialog } from "@components/dialogs";
-import { classNames } from "@utils";
+import { ConfirmDialog, ErrorDialog } from "@/components/dialogs";
+import { classNames } from "@/utils";
 import Content from "./Content";
 import Header from "./Header";
 
@@ -26,7 +26,7 @@ export default function TaskView({ handleClose }) {
       <Dialog.Panel
         className={classNames(
           "flex w-full max-w-[864px] flex-col divide-y divide-divider-tertiary overflow-hidden rounded-t-[10px] bg-default text-sm text-content-secondary shadow-[0_2px_8px_rgb(0,0,0,.16)]",
-          "min-[580px]:rounded-b-[10px]"
+          "min-[580px]:rounded-b-[10px]",
         )}
       >
         <header className="basis-12">

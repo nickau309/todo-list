@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { classNames } from "@utils";
+import { classNames } from "@/utils";
 
 export default function NameInput({ name, setName }) {
   const id = useId();
@@ -26,7 +26,7 @@ export default function NameInput({ name, setName }) {
         className={classNames(
           "rounded-[5px] border border-field bg-base-primary p-[5px]",
           "transition-[border,box-shadow] duration-300 ease-[cubic-bezier(.25,.1,.25,1)] focus:border-field-focus",
-          "focus-visible:!border-transparent focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner"
+          "focus-visible:!border-transparent focus-visible:outline-none focus-visible:ring focus-visible:ring-outer focus-visible:ring-offset-1 focus-visible:ring-offset-inner",
         )}
       />
     </div>

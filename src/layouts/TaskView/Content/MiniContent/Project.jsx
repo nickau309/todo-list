@@ -2,9 +2,9 @@ import React from "react";
 import { useFetcher, useParams, useRouteLoaderData } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Combobox } from "@headlessui/react";
-import { InboxIcon24, ProjectIcon24 } from "@assets";
-import { ProjectDropdown } from "@components/dropdowns";
-import { classNames, textColor } from "@utils";
+import { InboxIcon24, ProjectIcon24 } from "@/assets";
+import { ProjectDropdown } from "@/components/dropdowns";
+import { classNames, textColor } from "@/utils";
 import { ModifyButton } from "./components";
 
 export default function Project({ disabled, projectId }) {
@@ -26,7 +26,7 @@ export default function Project({ disabled, projectId }) {
       onChange={(projectId) => {
         fetcher.submit(
           { type: "updateTask", id: taskId, projectId },
-          { method: "post" }
+          { method: "post" },
         );
       }}
     >
@@ -39,7 +39,7 @@ export default function Project({ disabled, projectId }) {
               as={ModifyButton}
               className={classNames(
                 "group",
-                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint"
+                open && "bg-quaternary-hover-fill !text-quaternary-hover-tint",
               )}
             >
               {project.childOrder ? (

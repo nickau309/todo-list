@@ -1,10 +1,10 @@
 import React from "react";
 import ProjectsActive, {
   action as projectsActiveAction,
-} from "@pages/ProjectsActive";
+} from "@/pages/ProjectsActive";
 import ProjectsArchived, {
   action as projectsArchivedAction,
-} from "@pages/ProjectsArchived";
+} from "@/pages/ProjectsArchived";
 
 const projectsTabsData = [
   {

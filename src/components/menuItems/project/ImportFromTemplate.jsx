@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ImportIcon24 } from "@assets";
+import { ImportIcon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function ImportFromTemplate() {

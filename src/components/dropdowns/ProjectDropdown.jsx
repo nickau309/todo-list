@@ -6,8 +6,8 @@ import {
   InboxIcon24,
   ProjectIcon24,
   SelectCheckIcon12,
-} from "@assets";
-import { textColor } from "@utils";
+} from "@/assets";
+import { textColor } from "@/utils";
 
 const ProjectDropdown = forwardRef(function ProjectDropdown(props, ref) {
   const fetcher = useFetcher();
@@ -29,7 +29,8 @@ const ProjectDropdown = forwardRef(function ProjectDropdown(props, ref) {
     filteredProjects = projects.filter((p) => !p.isArchived);
   } else {
     filteredProjects = projects.filter(
-      (p) => !p.isArchived && p.name.toLowerCase().includes(query.toLowerCase())
+      (p) =>
+        !p.isArchived && p.name.toLowerCase().includes(query.toLowerCase()),
     );
   }
 
@@ -92,7 +93,7 @@ const ProjectDropdown = forwardRef(function ProjectDropdown(props, ref) {
                   onClick={() => {
                     fetcher.submit(
                       { type: "addProject", name: query },
-                      { method: "post" }
+                      { method: "post" },
                     );
                   }}
                   className="flex w-full items-center gap-2 px-2 py-1 text-base-primary"

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import localforage from "localforage";
-import { BaseOverlayDialog } from "@components/dialogs";
+import { BaseOverlayDialog } from "@/components/dialogs";
 import {
   useConfirmDialogControl,
   useSettingsControl,
   useSettingsState,
-} from "@contexts";
-import { classNames } from "@utils";
+} from "@/contexts";
+import { classNames } from "@/utils";
 import SettingsTab from "./SettingsTab";
 
 export default function SettingsView() {
@@ -69,7 +69,7 @@ export default function SettingsView() {
             "min-[580px]:max-w-3xl min-[580px]:rounded-b-[10px]",
             "min-[750px]:max-h-[690px]",
             "min-[992px]:max-w-[960px]",
-            "min-[1200px]:max-w-[1060px]"
+            "min-[1200px]:max-w-[1060px]",
           )}
         >
           <SettingsTab handleClose={handleClose} />
