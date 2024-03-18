@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -137,6 +138,11 @@ const config: Config = {
           DEFAULT: "var(--border-field, #ddd)",
           focus: "var(--border-field-focus, #808080)",
         },
+        input: {
+          error: "#dc4c3e",
+          focus: "#b8b8b8",
+          idle: "#e6e6e6",
+        },
         menu: {
           DEFAULT: "var(--border-menu, #ddd)",
           topbar: "var(--border-menu-topbar, #eee)",
@@ -177,6 +183,20 @@ const config: Config = {
           "hover-tint": "var(--tertiary-hover-tint, #db4c3f)",
           "hover-fill": "var(--tertiary-hover-fill, #fafafa)",
           "disabled-tint": "var(--tertiary-disabled-tint, #b2b2b2)",
+        },
+        "actionable-primary": {
+          "idle-tint": "#fff",
+          "idle-fill": "#dc4c3e",
+          "hover-tint": "#fff",
+          "hover-fill": "#c3392c",
+          "disabled-tint": "#fff",
+          "disabled-fill": "#eda59e",
+        },
+        "actionable-quaternary": {
+          "idle-tint": "#666",
+          "hover-fill": "#f5f5f5",
+          "hover-tint": "#1a1a1a",
+          "disabled-tint": "#b2b2b2",
         },
         quaternary: {
           tint: "var(--quaternary-tint, #666)",
@@ -222,6 +242,11 @@ const config: Config = {
         content: {
           primary: "var(--content-primary, #202020)",
           secondary: "var(--content-secondary, #808080)",
+        },
+        "display-content": {
+          primary: "#202020",
+          secondary: "#666",
+          danger: "#d1453b",
         },
         date: {
           "next-week": {
@@ -319,6 +344,14 @@ const config: Config = {
             backgroundColor: "rgb(var(--checkbox-p4-rgb, 128 128 128))",
           },
         },
+        spin: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
       },
       letterSpacing: {
         dark: "var(--tracking-dark, 0)",
@@ -361,6 +394,11 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: [
+    plugin(function ({ addVariant }) {
+      addVariant("custom-active", "&:active:not([aria-disabled=true])");
+    }),
+    require("@headlessui/tailwindcss"),
+  ],
 };
 export default config;

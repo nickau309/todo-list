@@ -92,11 +92,19 @@ export { default as errorLogo } from "./errorLogo.jpg";
 
 export { default as errorLogoDark } from "./errorLogoDark.png";
 
+export { default as ExclamationIcon16 } from "./ExclamationIcon16.svg";
+
 export { default as ExportIcon24 } from "./ExportIcon24.svg";
 
 export { default as ExtensionIcon24 } from "./ExtensionIcon24.svg";
 
+export { default as EyeIcon24 } from "./EyeIcon24.svg";
+
+export { default as EyeSlashIcon24 } from "./EyeSlashIcon24.svg";
+
 export { default as FiltersLabelsIcon24 } from "./FiltersLabelsIcon24.svg";
+
+export { default as forgetPasswordImage } from "./forgetPasswordImage.png";
 
 export { default as GroupIcon24 } from "./GroupIcon24.svg";
 
@@ -131,6 +139,8 @@ export { default as LayoutIcon24 } from "./LayoutIcon24.svg";
 export { default as LinkIcon24 } from "./LinkIcon24.svg";
 
 export { default as LockIcon24 } from "./LockIcon24.svg";
+
+export { default as loginImage } from "./loginImage.png";
 
 export { default as LogOutIcon24 } from "./LogOutIcon24.svg";
 
@@ -198,7 +208,17 @@ export { default as ShowCompletedIcon24 } from "./ShowCompletedIcon24.svg";
 
 export { default as SidebarIcon24 } from "./SidebarIcon24.svg";
 
+export { default as signupImage1 } from "./signupImage1.jpg";
+
+export { default as signupImage2 } from "./signupImage2.jpg";
+
+export { default as signupImage3 } from "./signupImage3.jpg";
+
+export { default as signupImage4 } from "./signupImage4.jpg";
+
 export { default as SortIcon24 } from "./SortIcon24.svg";
+
+export { default as SpinnerIcon24 } from "./SpinnerIcon24.svg";
 
 export { default as SubmitIcon24 } from "./SubmitIcon24.svg";
 
@@ -219,6 +239,10 @@ export { default as ThickCheckIcon24 } from "./ThickCheckIcon24.svg";
 export { default as TodayIcon24 } from "./TodayIcon24";
 
 export { default as TodayIcon28 } from "./TodayIcon28";
+
+export { default as TodoistFullLogo } from "./TodoistFullLogo.svg";
+
+export { default as TodoistSquareLogo } from "./TodoistSquareLogo.svg";
 
 export { default as TomorrowIcon28 } from "./TomorrowIcon28.svg";
 
