@@ -14,7 +14,7 @@ import {
   ViewIcon24,
 } from "@/assets";
 import { ErrorComponent } from "@/components";
-import SettingsTheme from "@/pages/SettingsTheme";
+import SettingsTheme from "@/_pages/SettingsTheme";
 
 const settingsTabsData = [
   {
