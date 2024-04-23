@@ -81,6 +81,25 @@ const config: Config = {
           "p4-checkbox-complete 0.25s linear forwards reverse",
       },
       backgroundColor: {
+        // new
+        "background-base": {
+          primary: "var(--background-base-primary)",
+          secondary: "var(--background-base-secondary)",
+          tertiary: "#f9f7f6",
+        },
+        "background-raised": {
+          primary: "var(--background-raised-primary)",
+        },
+        "theme-card": {
+          DEFAULT: "var(--theme-card-background)",
+          content: "var(--theme-card-content)",
+          sidebar: {
+            DEFAULT: "var(--theme-card-sidebar)",
+            hover: "var(--theme-card-sidebar-hover)",
+            selected: "var(--theme-card-sidebar-selected)",
+          },
+        },
+        // old
         aside: "var(--bg-aside, #fafafa)",
         banner: "var(--bg-banner, #fafafa)",
         base: {
@@ -110,11 +129,6 @@ const config: Config = {
           "hover-fill": "var(--bg-tab-hover-fill, #e6e6e6)",
         },
         "task-button": "var(--bg-task-button, #fafafa)",
-        "theme-card": {
-          DEFAULT: "var(--bg-theme-card, #fff)",
-          content: "var(--bg-theme-card-content, #e5e5e5)",
-          header: "var(--bg-theme-card-header, #dc4c3e)",
-        },
         toggle: {
           DEFAULT: "var(--bg-toggle, #b3b3b3)",
           checked: "var(--bg-toggle-checked, #db4c3f)",
@@ -126,6 +140,18 @@ const config: Config = {
           "var(--bg-fade-panel, linear-gradient(90deg,rgba(255,255,255,0) 0,rgb(255,255,255) 16px 100%))",
       },
       borderColor: {
+        // new
+        input: {
+          alert: "var(--input-border-alert-tint)",
+          // --product-library-info-attention-primary-idle-fill: #dc4c3e;
+          focus: "var(--input-border-focus-tint)",
+          idle: "var(--input-border-idle-tint)",
+        },
+        "theme-card": {
+          DEFAULT: "var(--theme-card-border)",
+          priority: "var(--theme-card-priority)",
+        },
+        // old
         banner: "var(--border-banner, #f0f0f0)",
         base: {
           primary: "var(--border-base-primary, #ddd)",
@@ -138,17 +164,11 @@ const config: Config = {
           DEFAULT: "var(--border-field, #ddd)",
           focus: "var(--border-field-focus, #808080)",
         },
-        input: {
-          error: "#dc4c3e",
-          focus: "#b8b8b8",
-          idle: "#e6e6e6",
-        },
         menu: {
           DEFAULT: "var(--border-menu, #ddd)",
           topbar: "var(--border-menu-topbar, #eee)",
         },
         tab: "var(--border-tab, #f5f5f5)",
-        "theme-card": "var(--border-theme-card, #e5e5e5)",
       },
       borderWidth: {
         "dialog-width": "var(--border-dialog-width, 0px)",
@@ -162,6 +182,81 @@ const config: Config = {
         topbar: "var(--shadow-topbar, none)",
       },
       colors: {
+        // new
+        "actionable-primary": {
+          "disabled-fill": "var(--actionable-primary-disabled-fill)",
+          "disabled-tint": "var(--actionable-primary-disabled-tint)",
+          "hover-fill": "var(--actionable-primary-hover-fill)",
+          "hover-tint": "var(--actionable-primary-hover-tint)",
+          "idle-fill": "var(--actionable-primary-idle-fill)",
+          "idle-tint": "var(--actionable-primary-idle-tint)",
+        },
+        "actionable-secondary": {
+          "disabled-fill": "var(--actionable-secondary-disabled-fill)",
+          "disabled-tint": "var(--actionable-secondary-disabled-tint)",
+          "hover-fill": "var(--actionable-secondary-hover-fill)",
+          "hover-tint": "var(--actionable-secondary-hover-tint)",
+          "idle-fill": "var(--actionable-secondary-idle-fill)",
+          "idle-tint": "var(--actionable-secondary-idle-tint)",
+        },
+        "actionable-quaternary": {
+          "disabled-tint": "var(--actionable-quaternary-disabled-tint)",
+          "hover-fill": "var(--actionable-quaternary-hover-fill)",
+          "hover-tint": "var(--actionable-quaternary-hover-tint)",
+          "idle-tint": "var(--actionable-quaternary-idle-tint)",
+        },
+        "actionable-destructive": {
+          "disabled-tint": "var(--actionable-destructive-disabled-tint)",
+          "hover-tint": "var(--actionable-destructive-hover-tint)",
+          "idle-tint": "var(--actionable-destructive-idle-tint)",
+        },
+        actionable: {
+          "focus-fill": "var(--actionable-focus-fill)",
+        },
+        "display-accent": {
+          "primary-fill": "var(--display-accent-primary-fill)",
+          "primary-tint": "var(--display-accent-primary-tint)",
+          "secondary-fill": "var(--display-accent-secondary-fill)",
+        },
+        "display-content": {
+          primary: "#202020",
+          secondary: "#666",
+          danger: "var(--display-content-danger)",
+        },
+        "display-primary": {
+          "idle-tint": "var(--display-primary-idle-tint)",
+        },
+        "display-secondary": {
+          "idle-tint": "var(--display-secondary-idle-tint)",
+        },
+        divider: {
+          // shared
+          primary: "var(--divider-primary)",
+          secondary: "var(--divider-secondary)",
+          // old
+          tertiary: "var(--divider-tertiary, #f5f5f5)",
+          base: "var(--divider-base, #f0f0f0)",
+        },
+        "info-attention-primary": {
+          "idle-fill": "var(--info-attention-primary-idle-fill)",
+        },
+        "info-promote-tertiary": {
+          "idle-fill": "var(--info-promote-tertiary-idle-fill)",
+          "idle-tint": "var(--info-promote-tertiary-idle-tint)",
+        },
+        "selectable-primary": {
+          "selected-fill": "var(--selectable-primary-selected-fill)",
+          "unselected-fill": "var(--selectable-primary-unselected-fill)",
+        },
+        "selectable-secondary": {
+          "hover-fill": "var(--selectable-secondary-hover-fill)",
+          "selected-fill": "var(--selectable-secondary-selected-fill)",
+          "selected-tint": "var(--selectable-secondary-selected-tint)",
+        },
+        "theme-card": {
+          accent: "var(--theme-card-accent)",
+        },
+        // old
         primary: {
           tint: "var(--primary-tint, #fff)",
           fill: "var(--primary-fill, #db4c3f)",
@@ -183,20 +278,6 @@ const config: Config = {
           "hover-tint": "var(--tertiary-hover-tint, #db4c3f)",
           "hover-fill": "var(--tertiary-hover-fill, #fafafa)",
           "disabled-tint": "var(--tertiary-disabled-tint, #b2b2b2)",
-        },
-        "actionable-primary": {
-          "idle-tint": "#fff",
-          "idle-fill": "#dc4c3e",
-          "hover-tint": "#fff",
-          "hover-fill": "#c3392c",
-          "disabled-tint": "#fff",
-          "disabled-fill": "#eda59e",
-        },
-        "actionable-quaternary": {
-          "idle-tint": "#666",
-          "hover-fill": "#f5f5f5",
-          "hover-tint": "#1a1a1a",
-          "disabled-tint": "#b2b2b2",
         },
         quaternary: {
           tint: "var(--quaternary-tint, #666)",
@@ -243,11 +324,6 @@ const config: Config = {
           primary: "var(--content-primary, #202020)",
           secondary: "var(--content-secondary, #808080)",
         },
-        "display-content": {
-          primary: "#202020",
-          secondary: "#666",
-          danger: "#d1453b",
-        },
         date: {
           "next-week": {
             fill: "var(--date-next-week-fill, #692ec2)",
@@ -269,12 +345,6 @@ const config: Config = {
             fill: "var(--date-weekend-fill, #246fe0)",
             tint: "var(--date-weekend-tint, #246fe0)",
           },
-        },
-        divider: {
-          primary: "var(--divider-primary, #999)",
-          secondary: "var(--divider-secondary, #eee)",
-          tertiary: "var(--divider-tertiary, #f5f5f5)",
-          base: "var(--divider-base, #f0f0f0)",
         },
         "focus-fill": "var(--focus-fill, #f3f3f3)",
         navbar: {
@@ -357,11 +427,13 @@ const config: Config = {
         dark: "var(--tracking-dark, 0)",
       },
       ringColor: {
-        outer: "var(--ring-outer, #dceaff)",
+        // shared
+        outer: "var(--ring-outer)",
+        // old
         "task-button": "var(--ring-task-button, rgba(31,96,194,.4))",
       },
       ringOffsetColor: {
-        inner: "var(--ring-inner, #1f60c2)",
+        inner: "var(--ring-inner)",
       },
       textColor: {
         banner: {
@@ -384,11 +456,6 @@ const config: Config = {
           selected: "var(--text-tab-selected, #202020)",
           unselected: "var(--text-tab-unselected, #666)",
         },
-        "theme-card": {
-          header: "var(--text-theme-card-header, #fff)",
-          priority: "var(--text-theme-card-priority, #666)",
-          "selected-icon": "var(--text-theme-card-selected-icon, #dc4c3e)",
-        },
         username: "var(--text-username, #98be2f)",
         "field-placeholder": "var(--field-placeholder, rgba(0,0,0,.4))",
       },
@@ -397,6 +464,12 @@ const config: Config = {
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant("custom-active", "&:active:not([aria-disabled=true])");
+      addVariant("custom-hocus", [
+        "&:focus-visible:not([aria-disabled=true])",
+        "&:hover:not([aria-disabled=true])",
+        "&[aria-expanded=true]",
+      ]);
+      addVariant("custom-hover", "&:hover:not([aria-disabled=true])");
     }),
     require("@headlessui/tailwindcss"),
   ],

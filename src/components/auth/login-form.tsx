@@ -24,7 +24,7 @@ export default function LoginForm() {
     <form action={action} className="flex flex-col">
       <div aria-atomic="true" aria-live="polite">
         {shouldShowError && state?.message && (
-          <p className="text-display-content-danger pb-4 text-xs/[15.2px]">
+          <p className="pb-4 text-xs/[15.2px] text-display-content-danger">
             {state.message}
           </p>
         )}

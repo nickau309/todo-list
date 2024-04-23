@@ -1,4 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+"use client";
+
 import React, {
   createContext,
   useCallback,
@@ -25,12 +26,12 @@ export function ErrorDialogProvider({ children }) {
 
   const stateContextValue = useMemo(
     () => ({ isOpen, ...data }),
-    [isOpen, data]
+    [isOpen, data],
   );
 
   const controlContextValue = useMemo(
     () => ({ openDialog, closeDialog, resetDialog }),
-    [openDialog, closeDialog, resetDialog]
+    [openDialog, closeDialog, resetDialog],
   );
 
   return (

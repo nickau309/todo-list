@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import { CloseIcon24, HomeIcon24, MenuIcon24 } from "@/assets";
 import { useShowSidebarSm, useSetShowSidebar } from "@/contexts";
 import { classNames } from "@/utils";
-import HelpInformation from "./HelpInformation";
-import Notification from "./Notification";
-import Productivity from "./Productivity";
 import QuickAdd from "./QuickAdd";
-import TopbarMenu from "./TopbarMenu";
-import UpgradeToPro from "./UpgradeToPro";
 
 export default function Topbar() {
   const showSidebarSm = useShowSidebarSm();
@@ -41,14 +36,7 @@ export default function Topbar() {
         </Link>
       </div>
       <div className="flex items-center gap-3 pl-3 pr-2.5">
-        <UpgradeToPro />
         <QuickAdd />
-        <Productivity />
-        <div className="flex gap-[5px]">
-          <HelpInformation />
-          <Notification />
-        </div>
-        <TopbarMenu />
       </div>
     </div>
   );

@@ -9,7 +9,20 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String? @db.VarChar(255)
+  password String  @db.Char(60)
+  theme    Theme   @default(TODOIST)
+}
+
+enum Theme {
+  TODOIST
+  DARK
+  MOONSTONE
+  TANGERINE
+  KALE
+  BLUEBERRY
+  LAVENDER
+  RASPBERRY
 }

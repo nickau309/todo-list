@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Reorder, useDragControls } from "framer-motion";
-import { useWidth } from "@/contexts/WidthContext";
+import { useWidth } from "@/contexts";
 import { classNames } from "@/utils";
 import AddTaskAbove from "./AddTaskAbove";
 import AddTaskBelow from "./AddTaskBelow";

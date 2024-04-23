@@ -1,4 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+"use client";
+
 import React, {
   createContext,
   useCallback,
@@ -23,7 +24,7 @@ export function QuickAddDialogProvider({ children }) {
 
   const controlContextValue = useMemo(
     () => ({ openDialog, closeDialog }),
-    [openDialog, closeDialog]
+    [openDialog, closeDialog],
   );
 
   return (

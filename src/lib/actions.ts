@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/lib/auth";
+import { signIn, signOut } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { CredentialSchema } from "@/lib/zod";
 import type { AuthFormState, ForgetPasswordFormState } from "@/types";
@@ -126,4 +126,8 @@ export async function forgetPassword(
   });
 
   return { success: true };
+}
+
+export async function logOut() {
+  await signOut();
 }

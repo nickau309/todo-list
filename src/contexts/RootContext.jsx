@@ -1,6 +1,7 @@
-/* eslint-disable react-refresh/only-export-components */
+"use client";
+
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useWidth } from "./WidthContext";
+import { useWidth } from "./width-context";
 
 const ShowSidebarContext = createContext(null);
 const ShowSidebarSmContext = createContext(null);

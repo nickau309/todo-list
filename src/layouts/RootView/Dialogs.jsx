@@ -1,10 +1,6 @@
 import React from "react";
 import { useFetcher, useFetchers, useLoaderData } from "react-router-dom";
-import {
-  CommandMenuDialog,
-  KeyboardShortcutsDialog,
-  ProjectDetailsDialog,
-} from "@/components/dialogs";
+import { ProjectDetailsDialog } from "@/components/dialogs";
 import { useDialogControl, useDialogState } from "@/contexts/DialogContext";
 
 export default function Dialogs() {
@@ -68,14 +64,6 @@ export default function Dialogs() {
         title="Add project"
       />
     );
-  } else if (type === "CommandMenu") {
-    return (
-      <CommandMenuDialog
-        afterLeave={resetDialog}
-        isOpen={isOpen}
-        onClose={closeDialog}
-      />
-    );
   } else if (type === "EditProject") {
     const project = projects.find((p) => p.id === id);
 
@@ -108,14 +96,6 @@ export default function Dialogs() {
         }}
         verb="Save"
         title="Edit project"
-      />
-    );
-  } else if (type === "KeyboardShortcuts") {
-    return (
-      <KeyboardShortcutsDialog
-        afterLeave={resetDialog}
-        isOpen={isOpen}
-        onClose={closeDialog}
       />
     );
   }

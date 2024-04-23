@@ -17,9 +17,9 @@ export default function EmailInput({ onChange, errors }: EmailInputProps) {
       <div
         className={clsx(
           "rounded-[10px] border",
-          errors ? "border-input-error" : "border-input-idle",
+          errors ? "border-input-alert" : "border-input-idle",
           "p-2 pb-1",
-          !errors && "has-[:focus-visible]:border-input-focus",
+          !errors && "focus-within:border-input-focus",
         )}
       >
         <label htmlFor="email" className="flex cursor-text flex-col gap-2">

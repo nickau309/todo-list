@@ -8,6 +8,4 @@ export { default as ProjectView } from "./ProjectView";
 
 export { default as RootView } from "./RootView";
 
-export { default as SettingsView } from "./SettingsView";
-
 export { default as TaskView } from "./TaskView";

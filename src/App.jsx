@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { WidthProvider } from "./contexts";
-import { projectsTabsData, settingsTabsData } from "./data";
+import { projectsTabsData } from "./data";
 import ErrorPage from "./_pages/ErrorPage";
 import NotImplemented from "./_pages/NotImplemented";
 import Project, {
@@ -25,7 +25,6 @@ import Task, {
   loader as taskLoader,
   action as taskAction,
 } from "./_pages/Task";
-import Settings, { action as settingsAction } from "./_pages/Settings";
 import WorkspaceNotFound from "./_pages/WorkspaceNotFound";
 
 const router = createBrowserRouter(
@@ -71,19 +70,6 @@ const router = createBrowserRouter(
                   element: <Navigate to={projectsTabsData[0].path} replace />,
                 },
                 ...projectsTabsData,
-              ],
-            },
-            {
-              path: "settings",
-              element: <Settings />,
-              id: "settings",
-              action: settingsAction,
-              children: [
-                {
-                  index: true,
-                  element: <Navigate to="theme" replace />,
-                },
-                ...settingsTabsData,
               ],
             },
             { path: "today", element: <NotImplemented /> },

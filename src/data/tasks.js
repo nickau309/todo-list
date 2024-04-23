@@ -1,5 +1,5 @@
 import localforage from "localforage";
-import { adjustChildOrder, generateId, isSameDay } from "./general";
+import { adjustChildOrder, generateId } from "./general";
 import { getProjects, isProjectExisted } from "./projects";
 
 // Tasks
@@ -46,7 +46,7 @@ function cleanTaskData({ ...data }) {
 
   if (data["labelIds[0]"]) {
     const entries = Object.entries(data).filter((entry) =>
-      entry[0].startsWith("labelIds[")
+      entry[0].startsWith("labelIds["),
     );
     data.labelIds = entries.map((entry) => entry[1]);
     entries.forEach((entry) => delete data[entry[0]]);
@@ -160,17 +160,17 @@ export async function deleteTask({ id }) {
   if (task.parentId) {
     const parentTask = tasks.find((t) => t.id === task.parentId);
     parentTask.childIds = parentTask.childIds.filter(
-      (childId) => childId !== id
+      (childId) => childId !== id,
     );
   }
 
   // Delete tasks
   const nextTask = tasks.find(
-    (t) => t.childOrder > task.childOrder && t.depth <= task.depth
+    (t) => t.childOrder > task.childOrder && t.depth <= task.depth,
   );
   const nextChildOrder = nextTask?.childOrder ?? tasks.length;
   const updatedTasks = tasks.filter(
-    (t) => t.childOrder < task.childOrder || t.childOrder >= nextChildOrder
+    (t) => t.childOrder < task.childOrder || t.childOrder >= nextChildOrder,
   );
 
   // Set tasks
@@ -197,20 +197,20 @@ export async function duplicateTask({ id }) {
 
   // Clone tasks
   const nextTask = tasks.find(
-    (t) => t.childOrder > task.childOrder && t.depth <= task.depth
+    (t) => t.childOrder > task.childOrder && t.depth <= task.depth,
   );
   const nextChildOrder = nextTask?.childOrder ?? tasks.length;
   const clonedTasks = structuredClone(
     tasks.filter(
-      (t) => t.childOrder >= task.childOrder && t.childOrder < nextChildOrder
-    )
+      (t) => t.childOrder >= task.childOrder && t.childOrder < nextChildOrder,
+    ),
   );
 
   // Create new ids
   const idMap = new Map(
     await Promise.all(
-      clonedTasks.map(async (t) => [t.id, await generateTaskId()])
-    )
+      clonedTasks.map(async (t) => [t.id, await generateTaskId()]),
+    ),
   );
 
   // Update cloned tasks
@@ -243,14 +243,14 @@ export async function duplicateTasksByProjectId({
   // Clone tasks
   const tasks = await getTasks();
   const clonedTasks = structuredClone(
-    tasks.filter((t) => t.projectId === oldProjectId)
+    tasks.filter((t) => t.projectId === oldProjectId),
   );
 
   // Create new ids
   const idMap = new Map(
     await Promise.all(
-      clonedTasks.map(async (t) => [t.id, await generateTaskId()])
-    )
+      clonedTasks.map(async (t) => [t.id, await generateTaskId()]),
+    ),
   );
 
   // Update cloned tasks
@@ -381,20 +381,14 @@ export async function getIncompleteTasksCount() {
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   const todayCount = incompleteTasks.filter(
-    (t) => t.dueDate !== null && t.dueDate < tomorrow
+    (t) => t.dueDate !== null && t.dueDate < tomorrow,
   ).length;
   incompleteTasksCountMap.set("today", todayCount);
   const isOverdue = incompleteTasks.some(
-    (t) => t.dueDate !== null && t.dueDate < today
+    (t) => t.dueDate !== null && t.dueDate < today,
   );
 
   return { incompleteTasksCountMap, isOverdue };
-}
-
-export async function getTodayCompleteTasksCount() {
-  const tasks = await getTasks();
-  const today = new Date();
-  return tasks.filter((t) => isSameDay(new Date(t.completedAt), today)).length;
 }
 
 export async function moveTask({ depth: depthInStr, id, prevId, nextId }) {
@@ -418,7 +412,7 @@ export async function moveTask({ depth: depthInStr, id, prevId, nextId }) {
   if (task.parentId) {
     const parentTask = tasks.find((t) => t.id === task.parentId);
     parentTask.childIds = parentTask.childIds.filter(
-      (childId) => childId !== id
+      (childId) => childId !== id,
     );
     task.parentId = null;
   }
@@ -525,7 +519,7 @@ export async function updateTask({ id, ...rawData }) {
         parentTask &&
         tasks.find(
           (t) =>
-            t.childOrder > parentTask.childOrder && t.depth <= parentTask.depth
+            t.childOrder > parentTask.childOrder && t.depth <= parentTask.depth,
         );
       const nextChildOrder = nextTask?.childOrder ?? tasks.length;
       data.childOrder = nextChildOrder - 1 + (task.childOrder + 1) / 1e6;
@@ -559,7 +553,7 @@ export async function updateTask({ id, ...rawData }) {
     if (task.parentId) {
       const parentTask = tasks.find((t) => t.id === task.parentId);
       parentTask.childIds = parentTask.childIds.filter(
-        (childId) => childId !== id
+        (childId) => childId !== id,
       );
       data.parentId = null;
     }
@@ -597,7 +591,7 @@ async function validateDepth({ tasks, taskIds }) {
     if (currentTask.depth === 4) {
       const childIds = currentTask.childIds.splice(
         0,
-        currentTask.childIds.length
+        currentTask.childIds.length,
       );
       parentTask.childIds.push(...childIds);
       for (const childId of childIds) {

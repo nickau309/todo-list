@@ -1,7 +1,7 @@
 import { ExclamationIcon16, EyeIcon24, EyeSlashIcon24 } from "@/assets";
 import clsx from "clsx";
-import { useState } from "react";
 import type { ChangeEvent, ChangeEventHandler } from "react";
+import { useState } from "react";
 
 type PasswordInputProps = {
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -27,10 +27,9 @@ export default function PasswordInput({
       <div
         className={clsx(
           "rounded-[10px] border",
-          errors ? "border-input-error" : "border-input-idle",
+          errors ? "border-input-alert" : "border-input-idle",
           "p-2 pb-1",
-          !errors &&
-            "has-[:focus-visible]:border-input-focus has-[button:active]:border-input-focus",
+          !errors && "focus-within:border-input-focus",
         )}
       >
         <label htmlFor="password" className="flex cursor-text flex-col gap-2">
@@ -57,10 +56,11 @@ export default function PasswordInput({
                 aria-label="Toggle password visibility"
                 onClick={togglePasswordVisibility}
                 className={clsx(
-                  "size-6 rounded-[5px] transition-colors duration-300",
-                  "hover:bg-actionable-quaternary-hover-fill",
-                  "focus-visible:bg-actionable-quaternary-hover-fill",
-                  "active:scale-[.97] active:transition-transform active:duration-200 active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
+                  "grid size-6 place-items-center rounded-[5px]",
+                  "transition-colors duration-300",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-display-primary-idle-tint",
+                  "custom-active:scale-[.97] custom-active:transition-transform custom-active:duration-200 custom-active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",
+                  "custom-hocus:bg-actionable-quaternary-hover-fill",
                 )}
               >
                 {isPasswordVisible ? <EyeIcon24 /> : <EyeSlashIcon24 />}
@@ -73,7 +73,7 @@ export default function PasswordInput({
         {errors?.map((error) => (
           <p
             key={error}
-            className="text-display-content-danger flex gap-1 pt-2"
+            className="flex gap-1 pt-2 text-display-content-danger"
           >
             <ExclamationIcon16 />
             <span className="text-[13px]/[16.8px]">{error}</span>

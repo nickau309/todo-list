@@ -1,0 +1,4 @@
+* {
+  scrollbar-color: var(--scrollbar-thumb-idle) var(--scrollbar-thumb-track);
+  scrollbar-width: thin;
+}

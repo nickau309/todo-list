@@ -1,4 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+"use client";
+
 import React, {
   createContext,
   useCallback,
@@ -37,12 +38,12 @@ export function EditorProvider({ children }) {
 
   const editorStateContextValue = useMemo(
     () => ({ editId, editType, isEditorOpen }),
-    [editId, editType, isEditorOpen]
+    [editId, editType, isEditorOpen],
   );
 
   const editorControlContextValue = useMemo(
     () => ({ openEditor, closeEditor }),
-    [openEditor, closeEditor]
+    [openEditor, closeEditor],
   );
 
   return (

@@ -14,4 +14,4 @@ export * from "./SettingsContext";
 
 export * from "./ShowCompletedContext";
 
-export * from "./WidthContext";
+export * from "./width-context";

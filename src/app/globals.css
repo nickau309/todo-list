@@ -3,15 +3,271 @@
 @tailwind utilities;
 
 @layer base {
-  .theme_todoist.theme_card {
-    --bg-theme-card: #fff;
-    --bg-theme-card-content: #e5e5e5;
-    --bg-theme-card-header: #dc4c3e;
-    --text-theme-card-header: #fff;
-    --text-theme-card-priority: #666;
-    --text-theme-card-selected-icon: #dc4c3e;
+  /* new */
+  #root {
+    --actionable-focus-fill: #eee;
+    --actionable-secondary-disabled-fill: #fafafa;
+    --actionable-secondary-disabled-tint: #999;
+    --actionable-secondary-hover-fill: #e5e5e5;
+    --actionable-secondary-hover-tint: #1a1a1a;
+    --actionable-secondary-idle-fill: #f5f5f5;
+    --actionable-secondary-idle-tint: #444;
+    --actionable-quaternary-disabled-tint: #b2b2b2;
+    --actionable-quaternary-hover-fill: #f5f5f5;
+    --actionable-quaternary-hover-tint: #1a1a1a;
+    --actionable-quaternary-idle-tint: #666;
+    --actionable-destructive-disabled-tint: #f1b7b2;
+    --actionable-destructive-hover-tint: #b03d32;
+    --actionable-destructive-idle-tint: #dc4c3e;
+    --background-raised-primary: #fff;
+    --display-content-danger: #d1453b;
+    --display-primary-idle-tint: #202020;
+    --display-secondary-idle-tint: #666;
+    --divider-primary: #eee;
+    --divider-secondary: #f5f5f5;
+    --info-attention-primary-idle-fill: #dc4c3e;
+    --info-promote-tertiary-idle-fill: #faead1;
+    --info-promote-tertiary-idle-tint: #8f4700;
+    --input-border-alert-tint: #dc4c3e;
+    --input-border-focus-tint: #b8b8b8;
+    --input-border-idle-tint: #e6e6e6;
+    --ring-inner: #1f60c2;
+    --ring-outer: #dceaff;
+    --scrollbar-thumb-idle: #c1c1c1;
+    --scrollbar-thumb-track: #fafafa;
+    --theme-card-border: #e5e5e5;
   }
-  .theme_noir {
+  #root.theme_todoist {
+    --actionable-primary-disabled-fill: #eda59e;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #c3392c;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #dc4c3e;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #fcfaf8;
+    --display-accent-primary-fill: #dc4c3e;
+    --display-accent-primary-tint: #dc4c3e;
+    --display-accent-secondary-fill: #fde7d8;
+    --selectable-primary-selected-fill: #dc4c3e;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #f2efed;
+    --selectable-secondary-selected-fill: #ffefe5;
+    --selectable-secondary-selected-tint: #a81f00;
+  }
+  #root.theme_dark {
+    --actionable-focus-fill: #363636;
+    --actionable-primary-disabled-fill: #4c2827;
+    --actionable-primary-disabled-tint: #797979;
+    --actionable-primary-hover-fill: #e36564;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #de4c4a;
+    --actionable-primary-idle-tint: #fff;
+    --actionable-secondary-disabled-fill: #242424;
+    --actionable-secondary-disabled-tint: #999;
+    --actionable-secondary-hover-fill: #3d3d3d;
+    --actionable-secondary-hover-tint: #e4e4e4;
+    --actionable-secondary-idle-fill: #292929;
+    --actionable-secondary-idle-tint: #e4e4e4;
+    --actionable-quaternary-disabled-tint: #4d4d4d;
+    --actionable-quaternary-hover-fill: #343434;
+    --actionable-quaternary-hover-tint: #fff;
+    --actionable-quaternary-idle-tint: #d1d1d1;
+    --actionable-destructive-disabled-tint: #6e261f;
+    --actionable-destructive-hover-tint: #ff7f74;
+    --actionable-destructive-idle-tint: #e06155;
+    --background-base-primary: #1e1e1e;
+    --background-base-secondary: #262626;
+    --background-raised-primary: #282828;
+    --display-accent-primary-fill: #de4c4a;
+    --display-accent-primary-tint: #de4c4a;
+    --display-accent-secondary-fill: #6f2625;
+    --display-primary-idle-tint: #fff;
+    --display-secondary-idle-tint: #ccc;
+    --divider-primary: #3d3d3d;
+    --divider-secondary: #282828;
+    --info-promote-tertiary-idle-fill: #412a06;
+    --info-promote-tertiary-idle-tint: #ff8c1a;
+    --input-border-focus-tint: #707070;
+    --input-border-idle-tint: #3d3d3d;
+    --ring-inner: #1f60c2;
+    --ring-outer: #2a4c80;
+    --scrollbar-thumb-idle: #6b6b6b;
+    --scrollbar-thumb-track: #2c2c2c;
+    --selectable-primary-selected-fill: #de4c4a;
+    --selectable-primary-unselected-fill: #555;
+    --selectable-secondary-hover-fill: #322f2a;
+    --selectable-secondary-selected-fill: #472525;
+    --selectable-secondary-selected-tint: #f07f75;
+    --theme-card-border: #4d4d4d;
+  }
+  #root.theme_moonstone {
+    --actionable-primary-disabled-fill: #a4a9b0;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #323f51;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #39485e;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #fafafa;
+    --display-accent-primary-fill: #39485e;
+    --display-accent-primary-tint: #39485e;
+    --display-accent-secondary-fill: #e0e2e5;
+    --selectable-primary-selected-fill: #39485e;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #efeff1;
+    --selectable-secondary-selected-fill: #e0e2e5;
+    --selectable-secondary-selected-tint: #39485e;
+  }
+  #root.theme_tangerine {
+    --actionable-primary-disabled-fill: #ebc180;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #995e00;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #d68400;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #fcfcf8;
+    --display-accent-primary-fill: #d68400;
+    --display-accent-primary-tint: #995e00;
+    --display-accent-secondary-fill: #fdecdc;
+    --selectable-primary-selected-fill: #d68400;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #f4f1eb;
+    --selectable-secondary-selected-fill: #fff3d6;
+    --selectable-secondary-selected-tint: #995e00;
+  }
+  #root.theme_kale {
+    --actionable-primary-disabled-fill: #a5bca2;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #3e6737;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #4c7a45;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #fcfcf8;
+    --display-accent-primary-fill: #4c7a45;
+    --display-accent-primary-tint: #4c7a45;
+    --display-accent-secondary-fill: #e8f1d0;
+    --selectable-primary-selected-fill: #4c7a45;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #f2f2e9;
+    --selectable-secondary-selected-fill: #f0f6df;
+    --selectable-secondary-selected-tint: #3e6737;
+  }
+  #root.theme_blueberry {
+    --actionable-primary-disabled-fill: #9ab4dd;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #246498;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #297abc;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #f8fafb;
+    --display-accent-primary-fill: #297abc;
+    --display-accent-primary-tint: #297abc;
+    --display-accent-secondary-fill: #d6e5f3;
+    --selectable-primary-selected-fill: #297abc;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #eef2f6;
+    --selectable-secondary-selected-fill: #dfedfb;
+    --selectable-secondary-selected-tint: #1e5480;
+  }
+  #root.theme_lavender {
+    --actionable-primary-disabled-fill: #bab5de;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #51459f;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #766bbd;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #f9f9fa;
+    --display-accent-primary-fill: #766bbd;
+    --display-accent-primary-tint: #766bbd;
+    --display-accent-secondary-fill: #e8e3f4;
+    --selectable-primary-selected-fill: #766bbd;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #ededf2;
+    --selectable-secondary-selected-fill: #e9e5f5;
+    --selectable-secondary-selected-tint: #4d447e;
+  }
+  #root.theme_raspberry {
+    --actionable-primary-disabled-fill: #f4a0b7;
+    --actionable-primary-disabled-tint: #fff;
+    --actionable-primary-hover-fill: #8c213f;
+    --actionable-primary-hover-tint: #fff;
+    --actionable-primary-idle-fill: #c5496c;
+    --actionable-primary-idle-tint: #fff;
+    --background-base-primary: #fff;
+    --background-base-secondary: #fbf8f8;
+    --display-accent-primary-fill: #c5496c;
+    --display-accent-primary-tint: #c5496c;
+    --display-accent-secondary-fill: #f8e2e7;
+    --selectable-primary-selected-fill: #c5496c;
+    --selectable-primary-unselected-fill: #b3b3b3;
+    --selectable-secondary-hover-fill: #f2eded;
+    --selectable-secondary-selected-fill: #f8e2e7;
+    --selectable-secondary-selected-tint: #8c213f;
+  }
+  .theme_card {
+    --theme-card-background: #fff;
+    --theme-card-content: #e5e5e5;
+    --theme-card-priority: #666;
+  }
+  .theme_card.theme_todoist {
+    --theme-card-accent: #dc4c3e;
+    --theme-card-sidebar: #fcf9f9;
+    --theme-card-sidebar-hover: #f6efee;
+    --theme-card-sidebar-selected: #fee6e3;
+  }
+  .theme_card.theme_dark {
+    --theme-card-accent: #bd4337;
+    --theme-card-background: #1e1e1e;
+    --theme-card-content: #4d4d4d;
+    --theme-card-priority: #b3b3b3;
+    --theme-card-sidebar: #282828;
+    --theme-card-sidebar-hover: #363636;
+    --theme-card-sidebar-selected: #4f2929;
+  }
+  .theme_card.theme_moonstone {
+    --theme-card-accent: #4a5462;
+    --theme-card-sidebar: #f8f9fc;
+    --theme-card-sidebar-hover: #f2f2f2;
+    --theme-card-sidebar-selected: #eee;
+  }
+  .theme_card.theme_tangerine {
+    --theme-card-accent: #d68400;
+    --theme-card-sidebar: #fcf9f8;
+    --theme-card-sidebar-hover: #f6f1ee;
+    --theme-card-sidebar-selected: #feebe3;
+  }
+  .theme_card.theme_kale {
+    --theme-card-accent: #4c7a45;
+    --theme-card-sidebar: #f9faf8;
+    --theme-card-sidebar-hover: #eff2ec;
+    --theme-card-sidebar-selected: #ecf2dd;
+  }
+  .theme_card.theme_blueberry {
+    --theme-card-accent: #3669ba;
+    --theme-card-sidebar: #f8fafc;
+    --theme-card-sidebar-hover: #eef2f6;
+    --theme-card-sidebar-selected: #e3f2fe;
+  }
+  .theme_card.theme_lavender {
+    --theme-card-accent: #766bbd;
+    --theme-card-sidebar: #f9f9fc;
+    --theme-card-sidebar-hover: #f1eef6;
+    --theme-card-sidebar-selected: #f1eeff;
+  }
+  .theme_card.theme_raspberry {
+    --theme-card-accent: #c94f71;
+    --theme-card-sidebar: #fbf9f9;
+    --theme-card-sidebar-hover: #f2ecf0;
+    --theme-card-sidebar-selected: #ffeaef;
+  }
+
+  /* old */
+  #root.theme_noir {
     --primary-fill: #2e2e2e;
     --primary-hover-fill: #121212;
     --primary-disabled-fill: rgba(46, 46, 46, 0.4);
@@ -27,11 +283,7 @@
     --navbar-hover-fill: rgba(255, 255, 255, 0.4);
     --navbar-idle-fill: #2e2e2e;
   }
-  .theme_noir.theme_card {
-    --bg-theme-card-header: #2e2e2e;
-    --text-theme-card-selected-icon: #2e2e2e;
-  }
-  .theme_dark {
+  #root.theme_dark {
     --primary-fill: #de4c4a;
     --primary-hover-fill: #c53727;
     --primary-disabled-tint: rgba(255, 255, 255, 0.5);
@@ -98,7 +350,6 @@
     --border-menu: rgba(255, 255, 255, 0.1);
     --border-menu-topbar: rgba(255, 255, 255, 0.1);
     --border-tab: #333;
-    --border-theme-card: #4d4d4d;
     --brand: #5297ff;
 
     --checkbox-p1-disabled: 121 64 60;
@@ -125,9 +376,9 @@
 
     --display-secondary: #a3a3a3;
 
-    --divider-primary: #666;
+    /* --divider-primary: #666;
     --divider-secondary: #3d3d3d;
-    --divider-tertiary: #282828;
+    --divider-tertiary: #282828; */
     --divider-base: rgba(255, 255, 255, 0.1);
     --divider-on-dark: rgba(92, 92, 92, 0.6);
 
@@ -146,7 +397,6 @@
     --priority2-rgb: 255 154 20;
     --priority3-rgb: 82 151 255;
 
-    --ring-outer: #2a4c80;
     --ring-task-button: #175bc2;
 
     --shadow-dialog: 0 1px 4px rgba(0, 0, 0, 0.08),
@@ -176,25 +426,18 @@
     --views-today: #1c8c3a;
     --views-upcoming: #a970ff;
   }
-  .theme_dark ::-webkit-scrollbar {
+  #root.theme_dark ::-webkit-scrollbar {
     width: 7px;
     height: 7px;
   }
-  .theme_dark ::-webkit-scrollbar-thumb {
+  #root.theme_dark ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #8b8b8b;
   }
-  .theme_dark ::-webkit-scrollbar-track {
+  #root.theme_dark ::-webkit-scrollbar-track {
     background: #171717;
   }
-  .theme_dark.theme_card {
-    --bg-theme-card: #1e1e1e;
-    --bg-theme-card-content: #4d4d4d;
-    --bg-theme-card-header: #333;
-    --text-theme-card-priority: #b3b3b3;
-    --text-theme-card-selected-icon: #de4c4a;
-  }
-  .theme_neutral {
+  #root.theme_neutral {
     --checkbox-p4-rgb: 153 153 153;
     --content-secondary: #666;
     --display-secondary: #666;
@@ -204,12 +447,7 @@
     --navbar-idle-tint: #484b4c;
     --navbar-on-idle-fill: #fff;
   }
-  .theme_neutral.theme_card {
-    --bg-theme-card-header: #f7f7f7;
-    --text-theme-card-header: #444;
-    --text-theme-card-selected-icon: #db4c3f;
-  }
-  .theme_tangerine {
+  #root.theme_tangerine {
     --primary-fill: #ff9000;
     --primary-hover-fill: #ff9000;
     --primary-disabled-fill: rgba(244, 131, 24, 0.4);
@@ -224,9 +462,5 @@
     --divider-on-dark: #666;
     --navbar-hover-fill: rgba(0, 0, 0, 0.2);
     --navbar-idle-fill: #ff9000;
-  }
-  .theme_tangerine.theme_card {
-    --bg-theme-card-header: #f48318;
-    --text-theme-card-selected-icon: #f48318;
   }
 }

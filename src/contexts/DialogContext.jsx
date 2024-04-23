@@ -1,4 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+"use client";
+
 import React, {
   createContext,
   useCallback,
@@ -32,12 +33,12 @@ export function DialogProvider({ children }) {
 
   const stateContextValue = useMemo(
     () => ({ id, type, isOpen }),
-    [id, type, isOpen]
+    [id, type, isOpen],
   );
 
   const controlContextValue = useMemo(
     () => ({ openDialog, closeDialog, resetDialog }),
-    [openDialog, closeDialog, resetDialog]
+    [openDialog, closeDialog, resetDialog],
   );
 
   return (

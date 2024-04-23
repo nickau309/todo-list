@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  images: {
+    remotePatterns: [{ hostname: "d1nbslm0j6pual.cloudfront.net" }],
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg"),
@@ -10,7 +13,25 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: fileLoaderRule.issuer,
-      use: ["@svgr/webpack"],
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            svgoConfig: {
+              plugins: [
+                {
+                  name: "preset-default",
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
     });
     fileLoaderRule.exclude = /\.svg$/i;
     return config;

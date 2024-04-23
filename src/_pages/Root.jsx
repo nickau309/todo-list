@@ -18,9 +18,7 @@ import {
   moveProject,
   updateProject,
   duplicateProject,
-  getTodayCompleteTasksCount,
   addTask,
-  getSettings,
 } from "@/data";
 import { RootView } from "@/layouts";
 
@@ -29,16 +27,12 @@ export async function loader() {
   const labels = await getLabels();
   const { incompleteTasksCountMap, isOverdue } =
     await getIncompleteTasksCount();
-  const todayCompleteTasksCount = await getTodayCompleteTasksCount();
-  const settings = await getSettings();
 
   return {
     incompleteTasksCountMap,
     isOverdue,
     labels,
     projects,
-    settings,
-    todayCompleteTasksCount,
   };
 }
 
