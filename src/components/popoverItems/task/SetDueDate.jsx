@@ -3,9 +3,9 @@ import { useFetcher, useLoaderData } from "react-router-dom";
 import { shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
 import {
-  DisabledIcon24,
+  NoDateIcon24,
   MoreActionIcon28,
-  NextWeekendIcon28,
+  WeekendIcon28,
   NextWeekIcon28,
   TodayIcon28,
   TomorrowIcon28,
@@ -83,7 +83,7 @@ export default function SetDueDate({ close, id }) {
               "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
-            <NextWeekendIcon28 />
+            <WeekendIcon28 />
           </Popover.Button>
         )}
         {today.getDay() !== 0 && (
@@ -119,7 +119,7 @@ export default function SetDueDate({ close, id }) {
               "hover:bg-menu-item-secondary-hover focus-visible:bg-menu-item-secondary-hover focus-visible:outline-none",
             )}
           >
-            <DisabledIcon24 className="h-7 w-7" />
+            <NoDateIcon24 className="h-7 w-7" />
           </Popover.Button>
         )}
         <Popover as={Fragment}>

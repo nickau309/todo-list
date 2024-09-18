@@ -17,13 +17,14 @@ import "./app.css";
 type LayoutProps = {
   children: ReactNode;
   dialog: ReactNode;
+  task: ReactNode;
 };
 
-export default async function Layout({ children, dialog }: LayoutProps) {
+export default async function Layout({ children, dialog, task }: LayoutProps) {
   const user = await getUser();
 
   return (
-    <Provider>
+    <Provider user={user}>
       <UpdateLocalSettings theme={user.theme} />
       <ThemeWrapper>
         <div className="flex h-dvh items-center justify-center">
@@ -35,7 +36,7 @@ export default async function Layout({ children, dialog }: LayoutProps) {
               <a href="#test" className="focus:border focus:border-red">
                 test
               </a>
-              <Link href="/app/temp">Test</Link>
+              <Link href="/app/task/1">Task 1</Link>
               <br />
               <br />
               <br />
@@ -71,6 +72,7 @@ export default async function Layout({ children, dialog }: LayoutProps) {
               {children}
             </div>
             {dialog}
+            {task}
             <AddTeamDialog />
             <KeyboardShortcutsDialog />
             <PrintDialog />

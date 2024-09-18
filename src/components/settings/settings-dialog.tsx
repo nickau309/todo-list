@@ -1,7 +1,7 @@
 "use client";
 
+import { useOldConfirmDialogControl } from "@/components/old-confirm-dialog";
 import { Button, Dialog, Panel, Portal } from "@/components/dialog";
-import { useConfirmDialogControl } from "@/contexts/confirm-dialog-context";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -20,7 +20,7 @@ export default function SettingsDialog({ children }: SettingsDialogProps) {
   const {
     setIsOpen: setIsConfirmDialogOpen,
     setHandleSubmit: setHandleConfirmDialogSubmit,
-  } = useConfirmDialogControl();
+  } = useOldConfirmDialogControl("SettingsDialog");
 
   const { isOpen, afterUnmount } = useSettingsDialogState();
   const { setIsOpen } = useSettingsDialogControl();

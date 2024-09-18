@@ -131,3 +131,17 @@ export async function forgetPassword(
 export async function logOut() {
   await signOut();
 }
+
+export async function createTask() {
+  await prisma.task.create({
+    data: {
+      childOrder: 0,
+      description: "describe",
+      dueDate: new Date(),
+      isCompleted: false,
+      name: "test",
+      projectId: 1,
+      userId: 1,
+    },
+  });
+}

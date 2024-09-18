@@ -9,11 +9,14 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String? @db.VarChar(255)
-  password String  @db.Char(60)
-  theme    Theme   @default(TODOIST)
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String?   @db.VarChar(255)
+  password String    @db.Char(60)
+  theme    Theme     @default(TODOIST)
+  projects Project[]
+  tasks    Task[]
+  labels   Label[]
 }
 
 enum Theme {
@@ -25,4 +28,73 @@ enum Theme {
   BLUEBERRY
   LAVENDER
   RASPBERRY
+}
+
+model Project {
+  id             Int       @id @default(autoincrement())
+  childOrder     Int
+  name           String    @db.VarChar(120)
+  color          Color     @default(CHARCOAL)
+  isArchived     Boolean   @default(false)
+  isFavorite     Boolean   @default(false)
+  isInboxProject Boolean   @default(false)
+  viewStyle      ViewStyle @default(LIST)
+  tasks          Task[]
+  user           User      @relation(fields: [userId], references: [id])
+  userId         Int
+}
+
+enum Color {
+  BERRY_RED
+  RED
+  ORANGE
+  YELLOW
+  OLIVE_GREEN
+  LIME_GREEN
+  GREEN
+  MINT_GREEN
+  TEAL
+  SKY_BLUE
+  LIGHT_BLUE
+  BLUE
+  GRAPE
+  VIOLET
+  LAVENDER
+  MAGENTA
+  SALMON
+  CHARCOAL
+  GREY
+  TAUPE
+}
+
+enum ViewStyle {
+  LIST
+  BOARD
+  CALENDAR
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  childOrder  Int
+  name        String    @db.VarChar(500)
+  description String    @db.VarChar(16384)
+  isCompleted Boolean   @default(false)
+  dueDate     DateTime? @db.Date
+  priority    Int       @default(4)
+  labels      Label[]
+  addedAt     DateTime  @default(now()) @db.Timestamptz(3)
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   Int
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+}
+
+model Label {
+  id         Int    @id @default(autoincrement())
+  childOrder Int
+  name       String @db.VarChar(60)
+  color      Color  @default(CHARCOAL)
+  tasks      Task[]
+  user       User   @relation(fields: [userId], references: [id])
+  userId     Int
 }

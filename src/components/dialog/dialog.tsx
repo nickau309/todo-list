@@ -9,8 +9,8 @@ import {
   useRole,
   useTransitionStyles,
 } from "@floating-ui/react";
+import type { ReactNode } from "react";
 import {
-  ReactNode,
   createContext,
   useCallback,
   useContext,
@@ -62,13 +62,13 @@ export default function Dialog({
   });
 
   const click = useClick(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
   const role = useRole(context);
+  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     click,
-    dismiss,
     role,
+    dismiss,
   ]);
 
   const { isMounted, styles } = useTransitionStyles(context, {

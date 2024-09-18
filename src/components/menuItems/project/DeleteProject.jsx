@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { DeleteIcon24 } from "@/assets";
+import { Delete1Icon24 } from "@/assets";
 import { useConfirmDialogControl } from "@/contexts";
 import { MenuItem } from "./components";
 
@@ -33,7 +33,7 @@ export default function DeleteProject({ id, name }) {
     <MenuItem as="button" onClick={openConfirmDialog}>
       <div className="flex gap-2.5">
         <span className="text-content-secondary">
-          <DeleteIcon24 />
+          <Delete1Icon24 />
         </span>
         <span className="text-sm/6">Delete project</span>
       </div>

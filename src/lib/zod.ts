@@ -24,6 +24,7 @@ export const DeleteAccountSchema = z.object({
   password: z.string().min(8),
 });
 
+// settings
 export const UpdateAccountSchema = z.object({
   name: z.string().max(maxNameLength),
 });
@@ -43,3 +44,67 @@ export const UpdatePasswordSchema = z.object({
 export const UpdateThemeSchema = z.object({
   theme: z.nativeEnum(Theme),
 });
+
+// project
+export const CreateProjectSchema = z.object({
+  name: z.string().max(120),
+});
+
+// task
+export const TaskDueDateSchema = z.object({
+  date: z.string().date(),
+});
+
+export const TaskInfoSchema = z.object({
+  name: z
+    .string({
+      errorMap: (issue, ctx) => {
+        if (issue.code === "too_big") {
+          const length = typeof ctx.data === "string" ? ctx.data.length : 0;
+          return {
+            message: `Task name character limit: ${length} / ${issue.maximum}`,
+          };
+        }
+        return { message: ctx.defaultError };
+      },
+    })
+    .min(1)
+    .max(500),
+  description: z
+    .string({
+      errorMap: (issue, ctx) => {
+        if (issue.code === "too_big") {
+          const length = typeof ctx.data === "string" ? ctx.data.length : 0;
+          return {
+            message: `Task description character limit: ${length} / ${issue.maximum}`,
+          };
+        }
+        return { message: ctx.defaultError };
+      },
+    })
+    .max(16383),
+});
+
+export const TaskIsCompletedSchema = z.object({
+  isCompleted: z.enum(["true", "false"]).transform((value) => value === "true"),
+});
+
+export const UpdatePrioritySchema = z.object({
+  priority: z.coerce.number().int().gte(1).lte(4),
+});
+
+export const UpdateProjectIdSchema = z.object({
+  projectId: z.coerce.number().int(),
+});
+
+export const UpdateTaskLabelSchema = z.object({
+  labelId: z.coerce.number().int(),
+});
+
+// label
+export const CreateLabelSchema = z.object({
+  name: z.string().max(60),
+});
+
+// General
+export const DateSchema = z.string().date();

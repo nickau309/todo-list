@@ -1,6 +1,6 @@
 "use client";
 
-import { useOptimisticUser } from "@/contexts/settings/optimistic-user-context";
+import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import {
   DeleteAccountSchema,
   UpdateAccountSchema,

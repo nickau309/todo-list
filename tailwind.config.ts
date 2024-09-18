@@ -15,28 +15,40 @@ const config: Config = {
       inherit: "inherit",
       black: "rgb(0, 0, 0)",
       white: "rgb(255, 255, 255)",
-      "berry-red": "rgb(184, 37, 111)",
-      red: "rgb(219, 64, 53)",
-      orange: "rgb(255, 153, 51)",
-      yellow: "rgb(250, 208, 0)",
-      "olive-green": "rgb(175, 184, 59)",
-      "lime-green": "rgb(126, 204, 73)",
-      green: "rgb(41, 148, 56)",
-      "mint-green": "rgb(106, 204, 188)",
-      teal: "rgb(21, 143, 173)",
-      "sky-blue": "rgb(20, 170, 245)",
-      "light-blue": "rgb(150, 195, 235)",
-      blue: "rgb(64, 115, 255)",
-      grape: "rgb(136, 77, 255)",
-      violet: "rgb(175, 56, 235)",
-      lavender: "rgb(235, 150, 235)",
-      magenta: "rgb(224, 81, 148)",
-      salmon: "rgb(255, 141, 133)",
-      charcoal: "rgb(128, 128, 128)",
-      grey: "rgb(184, 184, 184)",
-      taupe: "rgb(204, 172, 147)",
+      "berry-red": "rgb(var(--rgb-berry-red) / <alpha-value>)",
+      red: "rgb(var(--rgb-red) / <alpha-value>)",
+      orange: "rgb(var(--rgb-orange) / <alpha-value>)",
+      yellow: "rgb(var(--rgb-yellow) / <alpha-value>)",
+      "olive-green": "rgb(var(--rgb-olive-green) / <alpha-value>)",
+      "lime-green": "rgb(var(--rgb-lime-green) / <alpha-value>)",
+      green: "rgb(var(--rgb-green) / <alpha-value>)",
+      "mint-green": "rgb(var(--rgb-mint-green) / <alpha-value>)",
+      teal: "rgb(var(--rgb-teal) / <alpha-value>)",
+      "sky-blue": "rgb(var(--rgb-sky-blue) / <alpha-value>)",
+      "light-blue": "rgb(var(--rgb-light-blue) / <alpha-value>)",
+      blue: "rgb(var(--rgb-blue) / <alpha-value>)",
+      grape: "rgb(var(--rgb-grape) / <alpha-value>)",
+      violet: "rgb(var(--rgb-violet) / <alpha-value>)",
+      lavender: "rgb(var(--rgb-lavender) / <alpha-value>)",
+      magenta: "rgb(var(--rgb-magenta) / <alpha-value>)",
+      salmon: "rgb(var(--rgb-salmon) / <alpha-value>)",
+      charcoal: "rgb(var(--rgb-charcoal) / <alpha-value>)",
+      grey: "rgb(var(--rgb-grey) / <alpha-value>)",
+      taupe: "rgb(var(--rgb-taupe) / <alpha-value>)",
     },
     fontFamily: {
+      monospace: [
+        "ui-monospace",
+        "SFMono-Regular",
+        "SF Mono",
+        "Menlo",
+        "Monaco",
+        "Cascadia Mono",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
       reactist: [
         "-apple-system",
         "system-ui",
@@ -67,6 +79,7 @@ const config: Config = {
     },
     extend: {
       animation: {
+        // old
         "p1-checkbox-check": "p1-checkbox-complete 0.25s linear forwards",
         "p1-checkbox-uncheck":
           "p1-checkbox-complete 0.25s linear forwards reverse",
@@ -82,14 +95,15 @@ const config: Config = {
       },
       backgroundColor: {
         // new
-        "background-base": {
-          primary: "var(--background-base-primary)",
-          secondary: "var(--background-base-secondary)",
-          tertiary: "#f9f7f6",
-        },
         "background-raised": {
           primary: "var(--background-raised-primary)",
+          quaternary: "var(--background-raised-quaternary)",
         },
+        dropdown: "var(--dropdown-background)",
+        option: {
+          active: "var(--option-active-fill)",
+        },
+        scheduler: "var(--scheduler-background)",
         "theme-card": {
           DEFAULT: "var(--theme-card-background)",
           content: "var(--theme-card-content)",
@@ -116,7 +130,6 @@ const config: Config = {
             secondary: "var(--bg-drag-placeholder-secondary, #e5e5e5)",
           },
         },
-        dropdown: "var(--bg-dropdown, #fff)",
         menu: {
           DEFAULT: "var(--bg-menu, #fff)",
           item: {
@@ -141,12 +154,13 @@ const config: Config = {
       },
       borderColor: {
         // new
+        dropdown: "var(--dropdown-border)",
         input: {
           alert: "var(--input-border-alert-tint)",
-          // --product-library-info-attention-primary-idle-fill: #dc4c3e;
           focus: "var(--input-border-focus-tint)",
           idle: "var(--input-border-idle-tint)",
         },
+        "scheduler-color": "var(--scheduler-border-color)",
         "theme-card": {
           DEFAULT: "var(--theme-card-border)",
           priority: "var(--theme-card-priority)",
@@ -158,8 +172,6 @@ const config: Config = {
         },
         chip: "var(--border-chip, #ddd)",
         dialog: "var(--border-dialog, transparent)",
-        "divider-on-dark": "var(--divider-on-dark, rgba(102,102,102,.6))",
-        dropdown: "var(--border-dropdown, rgba(0,0,0,.1))",
         field: {
           DEFAULT: "var(--border-field, #ddd)",
           focus: "var(--border-field-focus, #808080)",
@@ -171,12 +183,18 @@ const config: Config = {
         tab: "var(--border-tab, #f5f5f5)",
       },
       borderWidth: {
+        // new
+        "scheduler-width": "var(--scheduler-border-width)",
+        // old
         "dialog-width": "var(--border-dialog-width, 0px)",
       },
       boxShadow: {
+        // new
+        dropdown: "var(--dropdown-shadow)",
+        scheduler: "var(--scheduler-shadow)",
+        // old
         dialog: "var(--shadow-dialog, 0 15px 50px rgb(0,0,0,.35))",
         drag: "var(--shadow-drag, 0 5px 8px rgba(0,0,0,.16))",
-        dropdown: "var(--shadow-dropdown, 0 2px 4px rgba(0,0,0,.08))",
         menu: "var(--shadow-menu, 0 1px 8px rgba(0,0,0,.08))",
         "menu-topbar": "var(--shadow-menu-topbar, 0 0 8px rgba(0,0,0,.12))",
         topbar: "var(--shadow-topbar, none)",
@@ -199,6 +217,12 @@ const config: Config = {
           "idle-fill": "var(--actionable-secondary-idle-fill)",
           "idle-tint": "var(--actionable-secondary-idle-tint)",
         },
+        "actionable-tertiary": {
+          "disabled-tint": "var(--actionable-tertiary-disabled-tint)",
+          "hover-fill": "var(--actionable-tertiary-hover-fill)",
+          "hover-tint": "var(--actionable-tertiary-hover-tint)",
+          "idle-tint": "var(--actionable-tertiary-idle-tint)",
+        },
         "actionable-quaternary": {
           "disabled-tint": "var(--actionable-quaternary-disabled-tint)",
           "hover-fill": "var(--actionable-quaternary-hover-fill)",
@@ -213,6 +237,11 @@ const config: Config = {
         actionable: {
           "focus-fill": "var(--actionable-focus-fill)",
         },
+        "background-base": {
+          primary: "var(--background-base-primary)",
+          secondary: "var(--background-base-secondary)",
+          tertiary: "#f9f7f6",
+        },
         "display-accent": {
           "primary-fill": "var(--display-accent-primary-fill)",
           "primary-tint": "var(--display-accent-primary-tint)",
@@ -225,12 +254,17 @@ const config: Config = {
         },
         "display-primary": {
           "idle-tint": "var(--display-primary-idle-tint)",
+          "on-dark-tint": "var(--display-primary-on-dark-tint)",
         },
         "display-secondary": {
           "idle-tint": "var(--display-secondary-idle-tint)",
         },
+        "display-tertiary": {
+          "idle-tint": "var(--display-tertiary-idle-tint)",
+        },
         divider: {
           // shared
+          "on-dark": "var(--divider-on-dark)",
           primary: "var(--divider-primary)",
           secondary: "var(--divider-secondary)",
           // old
@@ -239,12 +273,53 @@ const config: Config = {
         },
         "info-attention-primary": {
           "idle-fill": "var(--info-attention-primary-idle-fill)",
+          "idle-tint": "var(--info-attention-primary-idle-tint)",
         },
         "info-promote-tertiary": {
           "idle-fill": "var(--info-promote-tertiary-idle-fill)",
           "idle-tint": "var(--info-promote-tertiary-idle-tint)",
         },
+        priority: {
+          1: "var(--todoist-p1-color)",
+          2: "var(--todoist-p2-color)",
+          3: "var(--todoist-p3-color)",
+          4: "var(--todoist-p4-color)",
+          // 1: "rgb(var(--priority1-rgb, 209 69 59) / <alpha-value>)",
+          // 2: "rgb(var(--priority2-rgb, 235 137 9) / <alpha-value>)",
+          // 3: "rgb(var(--priority3-rgb, 36 111 224) / <alpha-value>)",
+          // 4: "rgb(var(--priority4-rgb, 102 102 102) / <alpha-value>)",
+        },
+        priorities: {
+          p1: {
+            "disabled-fill": "var(--priorities-p1-disabled-fill)",
+            "disabled-tint": "var(--priorities-p1-disabled-tint)",
+            "idle-fill": "var(--priorities-p1-idle-fill)",
+            "idle-tint": "var(--priorities-p1-idle-tint)",
+          },
+          p2: {
+            "disabled-fill": "var(--priorities-p2-disabled-fill)",
+            "disabled-tint": "var(--priorities-p2-disabled-tint)",
+            "idle-fill": "var(--priorities-p2-idle-fill)",
+            "idle-tint": "var(--priorities-p2-idle-tint)",
+          },
+          p3: {
+            "disabled-fill": "var(--priorities-p3-disabled-fill)",
+            "disabled-tint": "var(--priorities-p3-disabled-tint)",
+            "idle-fill": "var(--priorities-p3-idle-fill)",
+            "idle-tint": "var(--priorities-p3-idle-tint)",
+          },
+          p4: {
+            "disabled-fill": "var(--priorities-p4-disabled-fill)",
+            "disabled-tint": "var(--priorities-p4-disabled-tint)",
+            "idle-fill": "var(--priorities-p4-idle-fill)",
+            "idle-tint": "var(--priorities-p4-idle-tint)",
+          },
+        },
         "selectable-primary": {
+          "on-dark": {
+            "hover-fill": "var(--selectable-primary-on-dark-hover-fill)",
+            "selected-fill": "var(--selectable-primary-on-dark-selected-fill)",
+          },
           "selected-fill": "var(--selectable-primary-selected-fill)",
           "unselected-fill": "var(--selectable-primary-unselected-fill)",
         },
@@ -252,6 +327,22 @@ const config: Config = {
           "hover-fill": "var(--selectable-secondary-hover-fill)",
           "selected-fill": "var(--selectable-secondary-selected-fill)",
           "selected-tint": "var(--selectable-secondary-selected-tint)",
+        },
+        schedule: {
+          "next-week-fill": "var(--schedule-next-week-fill)",
+          "next-week-tint": "var(--schedule-next-week-tint)",
+          "overdue-tint": "var(--schedule-overdue-tint)",
+          "today-fill": "var(--schedule-today-fill)",
+          "today-tint": "var(--schedule-today-tint)",
+          "tomorrow-fill": "var(--schedule-tomorrow-fill)",
+          "tomorrow-tint": "var(--schedule-tomorrow-tint)",
+          "weekend-fill": "var(--schedule-weekend-fill)",
+        },
+        scheduler: {
+          "preview-content-icon": "var(--scheduler-preview-content-icon)",
+          "suggestions-item-icon": "var(--scheduler-suggestions-item-icon)",
+          "suggestions-item-weekday":
+            "var(--scheduler-suggestions-item-weekday)",
         },
         "theme-card": {
           accent: "var(--theme-card-accent)",
@@ -353,12 +444,6 @@ const config: Config = {
           "idle-tint": "var(--navbar-idle-tint, #fff)",
           "on-idle-fill": "var(--navbar-on-idle-fill, rgba(255,255,255,.2))",
         },
-        priority: {
-          1: "rgb(var(--priority1-rgb, 209 69 59) / <alpha-value>)",
-          2: "rgb(var(--priority2-rgb, 235 137 9) / <alpha-value>)",
-          3: "rgb(var(--priority3-rgb, 36 111 224) / <alpha-value>)",
-          4: "rgb(var(--priority4-rgb, 102 102 102) / <alpha-value>)",
-        },
         views: {
           "filters-labels": "var(--views-filters-labels, #c77100)",
           inbox: "var(--views-inbox, #246fe0)",
@@ -370,6 +455,43 @@ const config: Config = {
         banner: "var(--fill-banner, #666)",
       },
       keyframes: {
+        // new
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "50%, 100%": {
+            opacity: "1",
+          },
+        },
+        "fade-out": {
+          "0%": {
+            opacity: "1",
+          },
+          "50%, 100%": {
+            opacity: "0",
+          },
+        },
+        scale: {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.25)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        spin: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        // old
         "p1-checkbox-complete": {
           "0%": { transform: "scale(1)" },
           "50%": {
@@ -414,14 +536,6 @@ const config: Config = {
             backgroundColor: "rgb(var(--checkbox-p4-rgb, 128 128 128))",
           },
         },
-        spin: {
-          from: {
-            transform: "rotate(0deg)",
-          },
-          to: {
-            transform: "rotate(360deg)",
-          },
-        },
       },
       letterSpacing: {
         dark: "var(--tracking-dark, 0)",
@@ -436,6 +550,12 @@ const config: Config = {
         inner: "var(--ring-inner)",
       },
       textColor: {
+        // new
+        dropdown: "var(--dropdown-text)",
+        option: {
+          checkbox: "var(--option-checkbox)",
+        },
+        // old
         banner: {
           title: "var(--text-banner-title, #202020)",
         },
@@ -462,14 +582,50 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function ({ addVariant }) {
+    plugin(function ({ addVariant, matchVariant }) {
+      const hoverModifier = ":hover:not([aria-disabled=true])";
+      const hocusModifiers = [
+        ":focus-visible:not([aria-disabled=true])",
+        hoverModifier,
+        "[aria-expanded=true]",
+      ];
       addVariant("custom-active", "&:active:not([aria-disabled=true])");
-      addVariant("custom-hocus", [
-        "&:focus-visible:not([aria-disabled=true])",
-        "&:hover:not([aria-disabled=true])",
-        "&[aria-expanded=true]",
-      ]);
-      addVariant("custom-hover", "&:hover:not([aria-disabled=true])");
+      addVariant(
+        "custom-hocus",
+        hocusModifiers.map((modifier) => `&${modifier}`),
+      );
+      matchVariant(
+        "peer",
+        (_, { modifier: name }) => {
+          return hocusModifiers.map((modifier) => {
+            return name
+              ? `:merge(.peer\\/${name})${modifier} ~ &`
+              : `:merge(.peer)${modifier} ~ &`;
+          });
+        },
+        { values: { "custom-hocus": "custom-hocus" } },
+      );
+      matchVariant(
+        "group",
+        (_, { modifier: name }) => {
+          return hocusModifiers.map((modifier) => {
+            return name
+              ? `:merge(.group\\/${name})${modifier} &`
+              : `:merge(.group)${modifier} &`;
+          });
+        },
+        { values: { "custom-hocus": "custom-hocus" } },
+      );
+      addVariant("custom-hover", `&${hoverModifier}`);
+      matchVariant(
+        "peer",
+        (_, { modifier: name }) => {
+          return name
+            ? `:merge(.peer\\/${name})${hoverModifier} ~ &`
+            : `:merge(.peer)${hoverModifier} ~ &`;
+        },
+        { values: { "custom-hover": "custom-hover" } },
+      );
     }),
     require("@headlessui/tailwindcss"),
   ],

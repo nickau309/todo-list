@@ -1,7 +1,7 @@
 "use client";
 
-import UpgradeIcon from "@/components/settings/upgrade-icon";
-import { useConfirmDialogControl } from "@/contexts/confirm-dialog-context";
+import UpgradeIcon from "@/components/upgrade-icon";
+import { useOldConfirmDialogControl } from "@/components/old-confirm-dialog";
 import { useSetShowNavMenu } from "@/contexts/settings/show-nav-menu-context";
 import { useDiscardChanges } from "@/hooks/settings";
 import type { NavMenuItemType } from "@/types/settings";
@@ -21,7 +21,7 @@ export default function Item({
   const {
     setIsOpen: setIsConfirmDialogOpen,
     setHandleSubmit: setHandleConfirmDialogSubmit,
-  } = useConfirmDialogControl();
+  } = useOldConfirmDialogControl("Item");
 
   const setShowNavMenu = useSetShowNavMenu();
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
-import { ChevronDownIcon24, ChevronUpIcon } from "@/assets";
+import { ChevronDownIcon24, ChevronUpIcon24 } from "@/assets";
 import { QuaternaryButton } from "@/components/buttons";
 
 export default function TaskNavigate({ projectId }) {
@@ -27,7 +27,7 @@ export default function TaskNavigate({ projectId }) {
         className="w-8 transition-colors duration-300"
         {...prevButtonAttr}
       >
-        <ChevronUpIcon />
+        <ChevronUpIcon24 />
       </QuaternaryButton>
       <QuaternaryButton
         className="w-8 transition-colors duration-300"

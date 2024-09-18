@@ -2,11 +2,17 @@ import { LogOutIcon24 } from "@/assets";
 import Menu from "@/components/menu";
 import { logOut } from "@/lib/actions";
 import clsx from "clsx";
+import { mutate } from "swr";
 
 export default function LogOut() {
   const label = "Log out";
 
   const handleClick = () => {
+    void mutate(
+      () => true, // which cache keys are updated
+      undefined, // update cache data to `undefined`
+      { revalidate: false }, // do not revalidate
+    );
     void logOut();
   };
 

@@ -32,6 +32,10 @@ export { default as ArrowLeftIcon24 } from "./ArrowLeftIcon24.svg";
 
 export { default as BackUpIcon24 } from "./BackUpIcon24.svg";
 
+export { default as BoldIcon24 } from "./BoldIcon24.svg";
+
+export { default as BulletListIcon24 } from "./BulletListIcon24.svg";
+
 export { default as CheckLgIcon24 } from "./CheckLgIcon24.svg";
 
 export { default as CheckSmIcon24 } from "./CheckSmIcon24.svg";
@@ -48,9 +52,13 @@ export { default as ChevronRightIcon16 } from "./ChevronRightIcon16.svg";
 
 export { default as ChevronRightIcon24 } from "./ChevronRightIcon24.svg";
 
-export { default as ChevronUpIcon } from "./ChevronUpIcon.svg";
+export { default as ChevronUpIcon24 } from "./ChevronUpIcon24.svg";
+
+export { default as ClearIcon24 } from "./ClearIcon24.svg";
 
 export { default as CloseIcon24 } from "./CloseIcon24.svg";
+
+export { default as CodeIcon24 } from "./CodeIcon24.svg";
 
 export { default as Cog6ToothIcon24 } from "./Cog6ToothIcon24.svg";
 
@@ -64,11 +72,13 @@ export { default as CreateIcon24 } from "./CreateIcon24.svg";
 
 export { default as deleteAccountImage } from "./deleteAccountImage.png";
 
-export { default as DeleteIcon24 } from "./DeleteIcon24.svg";
+export { default as Delete1Icon24 } from "./Delete1Icon24.svg";
+
+export { default as Delete2Icon24 } from "./Delete2Icon24.svg";
+
+export { default as DescriptionIcon16 } from "./DescriptionIcon16.svg";
 
 export { default as DescriptionIcon24 } from "./DescriptionIcon24.svg";
-
-export { default as DisabledIcon24 } from "./DisabledIcon24.svg";
 
 export { default as DragHandleIcon24 } from "./DragHandleIcon24.svg";
 
@@ -122,6 +132,10 @@ export { default as GroupIcon24 } from "./GroupIcon24.svg";
 
 export { default as GuideIcon24 } from "./GuideIcon24.svg";
 
+export { default as Heading1Icon24 } from "./Heading1Icon24.svg";
+
+export { default as Heading2Icon24 } from "./Heading2Icon24.svg";
+
 export { default as HelpLgIcon24 } from "./HelpLgIcon24.svg";
 
 export { default as HelpSmIcon24 } from "./HelpSmIcon24.svg";
@@ -135,6 +149,8 @@ export { default as InboxIcon16 } from "./InboxIcon16.svg";
 export { default as InboxIcon24 } from "./InboxIcon24.svg";
 
 export { default as InspirationIcon24 } from "./InspirationIcon24.svg";
+
+export { default as ItalicIcon24 } from "./ItalicIcon24.svg";
 
 export { default as KeyboardIcon24 } from "./KeyboardIcon24.svg";
 
@@ -150,7 +166,9 @@ export { default as LabelIconSolid24 } from "./LabelIconSolid24.svg";
 
 export { default as LayoutIcon24 } from "./LayoutIcon24.svg";
 
-export { default as LinkIcon24 } from "./LinkIcon24.svg";
+export { default as Link1Icon24 } from "./Link1Icon24.svg";
+
+export { default as Link2Icon24 } from "./Link2Icon24.svg";
 
 export { default as LockIcon24 } from "./LockIcon24.svg";
 
@@ -168,17 +186,25 @@ export { default as MoreActionIcon28 } from "./MoreActionIcon28.svg";
 
 export { default as MoveIcon24 } from "./MoveIcon24.svg";
 
+export { default as NextWeekIcon24 } from "./NextWeekIcon24.svg";
+
 export { default as NextWeekIcon28 } from "./NextWeekIcon28.svg";
 
-export { default as NextWeekendIcon28 } from "./NextWeekendIcon28.svg";
+export { default as NoDateIcon24 } from "./NoDateIcon24.svg";
 
 export { default as NotificationLgIcon24 } from "./NotificationLgIcon24.svg";
 
 export { default as NotificationSmIcon24 } from "./NotificationSmIcon24.svg";
 
+export { default as NumberSignIcon16 } from "./NumberSignIcon16.svg";
+
+export { default as NumberSignIcon24 } from "./NumberSignIcon24.svg";
+
 export { default as OptionCheckIcon24 } from "./OptionCheckIcon24.svg";
 
 export { default as OptionUncheckIcon24 } from "./OptionUncheckIcon24.svg";
+
+export { default as OrderedListIcon24 } from "./OrderedListIcon24.svg";
 
 export { default as PieChartIcon10 } from "./PieChartIcon10";
 
@@ -205,6 +231,8 @@ export { default as ProjectIcon24 } from "./ProjectIcon24.svg";
 export { default as ProjectListIcon24 } from "./ProjectListIcon24.svg";
 
 export { default as QuickAddIcon24 } from "./QuickAddIcon24.svg";
+
+export { default as QuoteIcon24 } from "./QuoteIcon24.svg";
 
 export { default as ReminderIcon16 } from "./ReminderIcon16.svg";
 
@@ -260,6 +288,8 @@ export { default as TodoistSquareLogo32 } from "./TodoistSquareLogo32.svg";
 
 export { default as TodoistSquareLogo64 } from "./TodoistSquareLogo64.svg";
 
+export { default as TomorrowIcon24 } from "./TomorrowIcon24.svg";
+
 export { default as TomorrowIcon28 } from "./TomorrowIcon28.svg";
 
 export { default as UnarchiveIcon24 } from "./UnarchiveIcon24.svg";
@@ -267,3 +297,7 @@ export { default as UnarchiveIcon24 } from "./UnarchiveIcon24.svg";
 export { default as UpcomingIcon24 } from "./UpcomingIcon24.svg";
 
 export { default as ViewIcon24 } from "./ViewIcon24.svg";
+
+export { default as WeekendIcon24 } from "./WeekendIcon24.svg";
+
+export { default as WeekendIcon28 } from "./WeekendIcon28.svg";

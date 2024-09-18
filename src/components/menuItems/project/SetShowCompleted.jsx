@@ -1,5 +1,5 @@
 import React from "react";
-import { DisabledIcon24, ShowCompletedIcon24 } from "@/assets";
+import { NoDateIcon24, ShowCompletedIcon24 } from "@/assets";
 import { useSetShowCompleted, useShowCompleted } from "@/contexts";
 import { MenuItem } from "./components";
 
@@ -11,7 +11,7 @@ export default function SetShowCompleted() {
     <MenuItem as="button" onClick={() => setShowCompleted(!showCompleted)}>
       <div className="flex gap-2.5">
         <span className="text-content-secondary">
-          {showCompleted ? <DisabledIcon24 /> : <ShowCompletedIcon24 />}
+          {showCompleted ? <NoDateIcon24 /> : <ShowCompletedIcon24 />}
         </span>
         <span className="text-sm/6">
           {showCompleted ? "Hide completed" : "Show completed"}

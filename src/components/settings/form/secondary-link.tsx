@@ -1,6 +1,6 @@
 "use client";
 
-import { useConfirmDialogControl } from "@/contexts/confirm-dialog-context";
+import { useOldConfirmDialogControl } from "@/components/old-confirm-dialog";
 import { useDiscardChanges } from "@/hooks/settings";
 import clsx from "clsx";
 import type { Route } from "next";
@@ -25,7 +25,7 @@ export default function SecondaryLink<R extends string>({
   const {
     setIsOpen: setIsConfirmDialogOpen,
     setHandleSubmit: setHandleConfirmDialogSubmit,
-  } = useConfirmDialogControl();
+  } = useOldConfirmDialogControl("SecondaryLink");
 
   const discardChanges = useDiscardChanges();
 

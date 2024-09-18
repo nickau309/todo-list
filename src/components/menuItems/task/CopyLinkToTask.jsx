@@ -1,5 +1,5 @@
 import React from "react";
-import { LinkIcon24 } from "@/assets";
+import { Link1Icon24 } from "@/assets";
 import { MenuItem } from "./components";
 
 export default function CopyLinkToTask({ id, projectId }) {
@@ -14,7 +14,7 @@ export default function CopyLinkToTask({ id, projectId }) {
     >
       <div className="flex items-center gap-2.5">
         <span className="text-content-secondary">
-          <LinkIcon24 />
+          <Link1Icon24 />
         </span>
         <span className="text-[13px]/[16.8px]">Copy link to task</span>
       </div>

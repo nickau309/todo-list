@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetcher } from "react-router-dom";
 import { Popover } from "@headlessui/react";
-import { DeleteIcon24 } from "@/assets";
+import { Delete1Icon24 } from "@/assets";
 import { useConfirmDialogControl } from "@/contexts";
 import { Button } from "./components";
 
@@ -34,7 +34,7 @@ export default function DeleteTask({ id, name }) {
     >
       <div className="flex gap-2.5">
         <span className="text-content-secondary group-hover/delete:text-[#de4c4a]">
-          <DeleteIcon24 />
+          <Delete1Icon24 />
         </span>
         <span className="text-sm/6 group-hover/delete:text-[#de4c4a]">
           Delete task

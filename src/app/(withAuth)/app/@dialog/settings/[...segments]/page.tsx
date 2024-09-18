@@ -4,7 +4,7 @@ import {
   Header,
   OpenNavMenuButton,
 } from "@/components/settings/form";
-import UpgradeIcon from "@/components/settings/upgrade-icon";
+import UpgradeIcon from "@/components/upgrade-icon";
 import { NAV_MENU_ITEMS } from "@/constants/settings";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";

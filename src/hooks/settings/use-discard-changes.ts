@@ -1,5 +1,5 @@
 import { useSetLocalSettings } from "@/contexts/local-settings-context";
-import { useOptimisticUser } from "@/contexts/settings/optimistic-user-context";
+import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import { LocalSettingsSchema } from "@/lib/zod";
 import { useCallback } from "react";
 import { useFormContext } from "react-hook-form";

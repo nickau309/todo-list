@@ -1,7 +1,7 @@
 "use client";
 
 import { updateTheme } from "@/actions/settings";
-import { useSetOptimisticUser } from "@/contexts/settings/optimistic-user-context";
+import { useSetOptimisticUser } from "@/contexts/optimistic-user-context";
 import type { ReactNode } from "react";
 import { startTransition } from "react";
 import type { SubmitHandler } from "react-hook-form";

@@ -5,7 +5,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import authConfig from "../../auth.config";
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
@@ -54,6 +54,13 @@ export const { auth, signIn, signOut } = NextAuth({
               email,
               name,
               password: hashPassword,
+              projects: {
+                create: {
+                  name: "Inbox",
+                  childOrder: 0,
+                  isInboxProject: true,
+                },
+              },
             },
           });
 
