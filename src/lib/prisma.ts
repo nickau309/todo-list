@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+export { setTaskChildOrder } from "@prisma/client/sql";
 
 const prismaClientSingleton = () => {
   return new PrismaClient();

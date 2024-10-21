@@ -30,47 +30,7 @@ export default async function Layout({ children, dialog, task }: LayoutProps) {
         <div className="flex h-dvh items-center justify-center">
           <ClientComponent fallback={<LoadingComponent />}>
             <Sidebar name={user.name ?? ""} />
-            <div className="h-full flex-1 overflow-y-auto">
-              right
-              <br />
-              <a href="#test" className="focus:border focus:border-red">
-                test
-              </a>
-              <Link href="/app/task/1">Task 1</Link>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              bottom
-              {children}
-            </div>
+            <div className="h-full min-w-0 flex-1">{children}</div>
             {dialog}
             {task}
             <AddTeamDialog />

@@ -1,9 +1,17 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useDueDatePopover } from "./due-date-popover";
 
-type ButtonProps = ComponentPropsWithoutRef<"button">;
+type ButtonProps = {
+  className?: string;
+  children?: ReactNode;
+  style?: CSSProperties;
+};
 
-export default function DueDatePopoverButton(props: ButtonProps) {
+export default function DueDatePopoverButton({
+  className,
+  children,
+  style,
+}: ButtonProps) {
   const { disabled, refs, getReferenceProps } = useDueDatePopover(
     "DueDatePopoverButton",
   );
@@ -12,7 +20,20 @@ export default function DueDatePopoverButton(props: ButtonProps) {
     <button
       ref={refs.setReference}
       aria-disabled={disabled}
-      {...getReferenceProps(props)}
-    />
+      className={className}
+      style={style}
+      {...getReferenceProps({
+        onClick: (e) => {
+          e.stopPropagation();
+        },
+        onKeyDown: (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.stopPropagation();
+          }
+        },
+      })}
+    >
+      {children}
+    </button>
   );
 }

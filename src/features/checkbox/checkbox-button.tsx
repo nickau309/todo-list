@@ -1,6 +1,6 @@
 import { CheckSmIcon24 } from "@/assets";
 import clsx from "clsx";
-import { useRef } from "react";
+import { KeyboardEvent, MouseEvent, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
 const BORDER_WIDTH = {
@@ -291,9 +291,16 @@ export default function CheckboxButton({
   priority: number;
   setChecked: (checked: boolean) => void;
 }) {
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (!disabled) {
       setChecked(!checked);
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.stopPropagation();
     }
   };
 
@@ -309,6 +316,7 @@ export default function CheckboxButton({
         aria-checked={checked}
         aria-disabled={disabled}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         role="checkbox"
         className={clsx(
           "peer size-[18px] cursor-pointer appearance-none rounded-full",
@@ -323,6 +331,120 @@ export default function CheckboxButton({
       <NewColoredBackground checked={checked} priority={priority} />
       <NewColoredCheck checked={checked} priority={priority} />
       <NewCheck checked={checked} priority={priority} />
+    </div>
+  );
+}
+
+function NewBorderDisplay({ priority }: { priority: number }) {
+  return (
+    <span
+      className={clsx(
+        "pointer-events-none size-[18px] rounded-full",
+        BORDER_WIDTH[priority],
+        BORDER_COLOR[priority],
+        "[grid-area:center]",
+      )}
+    />
+  );
+}
+
+function NewBackgroundDisplay({
+  checked,
+  priority,
+}: {
+  checked: boolean;
+  priority: number;
+}) {
+  if (checked) {
+    return null;
+  }
+
+  return (
+    <span
+      className={clsx(
+        "pointer-events-none size-[18px] rounded-full",
+        BORDER_WIDTH[priority],
+        "border-transparent",
+        BG_COLOR[priority],
+        "opacity-10",
+        "[grid-area:center]",
+      )}
+    />
+  );
+}
+
+function NewColoredBackgroundDisplay({
+  checked,
+  priority,
+}: {
+  checked: boolean;
+  priority: number;
+}) {
+  if (!checked) {
+    return null;
+  }
+
+  return (
+    <span
+      className={clsx(
+        "pointer-events-none size-[18px] rounded-full",
+        BORDER_WIDTH[priority],
+        "border-transparent",
+        CHECKED_BG_COLOR[priority],
+        "[grid-area:center]",
+      )}
+    />
+  );
+}
+
+function NewCheckDisplay({
+  checked,
+  priority,
+}: {
+  checked: boolean;
+  priority: number;
+}) {
+  if (!checked) {
+    return null;
+  }
+
+  return (
+    <span
+      className={clsx(
+        "pointer-events-none",
+        CHECKED_TEXT_COLOR[priority],
+        "[grid-area:center]",
+      )}
+    >
+      <CheckSmIcon24 />
+    </span>
+  );
+}
+
+export function CheckboxDisplay({
+  checked,
+  priority,
+}: {
+  checked: boolean;
+  priority: number;
+}) {
+  return (
+    <div
+      className={clsx(
+        "grid size-6 place-items-center",
+        "[grid-template-areas:'center']",
+      )}
+    >
+      <div
+        className={clsx(
+          "size-[18px] cursor-not-allowed rounded-full",
+          "[grid-area:center]",
+        )}
+      />
+      <NewBorderDisplay priority={priority} />
+      <NewBackgroundDisplay checked={checked} priority={priority} />
+      <NewColoredBackgroundDisplay checked={checked} priority={priority} />
+      <NewCheckDisplay checked={checked} priority={priority} />
     </div>
   );
 }

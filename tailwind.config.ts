@@ -104,6 +104,7 @@ const config: Config = {
           active: "var(--option-active-fill)",
         },
         scheduler: "var(--scheduler-background)",
+        "task-list-item": "var(--task-list-item-background)",
         "theme-card": {
           DEFAULT: "var(--theme-card-background)",
           content: "var(--theme-card-content)",
@@ -192,6 +193,7 @@ const config: Config = {
         // new
         dropdown: "var(--dropdown-shadow)",
         scheduler: "var(--scheduler-shadow)",
+        "task-drop": "var(--task-drop-shadow)",
         // old
         dialog: "var(--shadow-dialog, 0 15px 50px rgb(0,0,0,.35))",
         drag: "var(--shadow-drag, 0 5px 8px rgba(0,0,0,.16))",
@@ -246,6 +248,7 @@ const config: Config = {
           "primary-fill": "var(--display-accent-primary-fill)",
           "primary-tint": "var(--display-accent-primary-tint)",
           "secondary-fill": "var(--display-accent-secondary-fill)",
+          "secondary-tint": "var(--display-accent-secondary-tint)",
         },
         "display-content": {
           primary: "#202020",
@@ -543,6 +546,7 @@ const config: Config = {
       ringColor: {
         // shared
         outer: "var(--ring-outer)",
+        "task-list-item": "var(--task-list-item-ring)",
         // old
         "task-button": "var(--ring-task-button, rgba(31,96,194,.4))",
       },

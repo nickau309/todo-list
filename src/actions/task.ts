@@ -2,7 +2,10 @@
 
 import { getTask } from "@/lib/data";
 import dayjs from "@/lib/dayjs";
-import prisma from "@/lib/prisma";
+import prisma, {
+  incrementTaskChildOrder,
+  setTaskChildOrder,
+} from "@/lib/prisma";
 import {
   TaskDueDateSchema,
   TaskInfoSchema,
@@ -13,6 +16,7 @@ import {
 } from "@/lib/zod";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { z } from "zod";
 
 export async function removeDueDate(id: number) {
   await prisma.task.update({
@@ -34,13 +38,14 @@ export async function updateDueDate(id: number, formData: FormData) {
 
   const { dueDate } = await getTask(String(id));
 
-  await prisma.task.update({
+  const { projectId } = await prisma.task.update({
     where: { id },
     data: {
       dueDate: new Date(parsed.data.date),
     },
   });
 
+  revalidateTag(`project-${projectId}`);
   revalidateTag(`task-${id}`);
   revalidateTag(`date-${dayjs(dueDate).format("YYYY-MM-DD")}`);
   revalidateTag(`date-${parsed.data.date}`);
@@ -68,11 +73,12 @@ export async function updateIsCompleted(id: number, formData: FormData) {
     throw new Error("Please fill in the form with valid values.");
   }
 
-  await prisma.task.update({
+  const { projectId } = await prisma.task.update({
     where: { id },
     data: parsed.data,
   });
 
+  revalidateTag(`project-${projectId}`);
   revalidateTag(`task-${id}`);
 }
 
@@ -186,4 +192,31 @@ export async function duplicateTask(id: number) {
       ...rest,
     },
   });
+}
+
+export async function reorderTask(id: number, formData: FormData) {
+  const schema = z.object({
+    childOrder: z.coerce.number().int(),
+  });
+
+  const parsed = schema.safeParse(Object.fromEntries(formData));
+  if (!parsed.success) {
+    throw new Error("Please fill in the form with valid values.");
+  }
+
+  const { childOrder } = parsed.data;
+
+  const modifiedTasks = await prisma.$queryRawTyped(
+    setTaskChildOrder(id, childOrder),
+  );
+
+  console.log(modifiedTasks);
+
+  for (const task of modifiedTasks) {
+    if (task.id !== null) {
+      revalidateTag(`task-${task.id}`);
+    }
+  }
+  // may revalidate parent task id in future
+  // should revalidate project id too
 }

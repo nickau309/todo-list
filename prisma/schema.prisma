@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
 }
 
 datasource db {
@@ -74,19 +75,22 @@ enum ViewStyle {
 }
 
 model Task {
-  id          Int       @id @default(autoincrement())
-  childOrder  Int
-  name        String    @db.VarChar(500)
-  description String    @db.VarChar(16384)
-  isCompleted Boolean   @default(false)
-  dueDate     DateTime? @db.Date
-  priority    Int       @default(4)
-  labels      Label[]
-  addedAt     DateTime  @default(now()) @db.Timestamptz(3)
-  project     Project   @relation(fields: [projectId], references: [id])
-  projectId   Int
-  user        User      @relation(fields: [userId], references: [id])
-  userId      Int
+  id           Int       @id @default(autoincrement())
+  childOrder   Int
+  name         String    @db.VarChar(500)
+  description  String    @db.VarChar(16384)
+  isCompleted  Boolean   @default(false)
+  dueDate      DateTime? @db.Date
+  priority     Int       @default(4)
+  labels       Label[]
+  addedAt      DateTime  @default(now()) @db.Timestamptz(3)
+  childTasks   Task[]    @relation("ParentChild")
+  parentTask   Task?     @relation("ParentChild", fields: [parentTaskId], references: [id])
+  parentTaskId Int?
+  project      Project   @relation(fields: [projectId], references: [id])
+  projectId    Int
+  user         User      @relation(fields: [userId], references: [id])
+  userId       Int
 }
 
 model Label {

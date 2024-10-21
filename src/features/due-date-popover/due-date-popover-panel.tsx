@@ -24,30 +24,46 @@ export default function DueDatePopoverPanel() {
 
   return (
     <FloatingPortal id="root">
-      <FloatingOverlay lockScroll className="z-40">
-        <FloatingFocusManager context={context}>
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            className={clsx(
-              "flex w-[250px] flex-col divide-y divide-divider-primary rounded-[10px]",
-              "border-scheduler-width border-scheduler-color bg-scheduler text-display-primary-idle-tint shadow-scheduler",
-            )}
-            {...getFloatingProps()}
-          >
-            <SetDueDateForm />
-            <div className="flex flex-col py-1">
-              <Today />
-              <Tomorrow />
-              <LaterThisWeek />
-              <ThisWeekend />
-              <NextWeekend />
-              <NextWeek />
-              <NoDate />
-            </div>
+      <FloatingOverlay
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        className="z-40"
+      />
+      <FloatingFocusManager context={context}>
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          className={clsx(
+            "z-40 flex w-[250px] flex-col divide-y divide-divider-primary rounded-[10px]",
+            "border-scheduler-width border-scheduler-color bg-scheduler text-display-primary-idle-tint shadow-scheduler",
+          )}
+          {...getFloatingProps({
+            onClick: (e) => {
+              e.stopPropagation();
+            },
+            onKeyDown: (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.stopPropagation();
+              }
+            },
+            onPointerDown: (e) => {
+              e.stopPropagation();
+            },
+          })}
+        >
+          <SetDueDateForm />
+          <div className="flex flex-col py-1">
+            <Today />
+            <Tomorrow />
+            <LaterThisWeek />
+            <ThisWeekend />
+            <NextWeekend />
+            <NextWeek />
+            <NoDate />
           </div>
-        </FloatingFocusManager>
-      </FloatingOverlay>
+        </div>
+      </FloatingFocusManager>
     </FloatingPortal>
   );
 }

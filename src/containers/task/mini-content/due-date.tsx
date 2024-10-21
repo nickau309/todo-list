@@ -66,7 +66,6 @@ export default function DueDate({ disabled = false }: DueDateProps) {
       {hasDueDate ? (
         <div className="relative flex items-center px-3">
           <DueDatePopoverButton
-            type="button"
             className={clsx(
               "group peer",
               "flex h-10 min-w-[68px] flex-1 select-none items-center gap-3.5 rounded-[5px] pl-1.5 pr-3",
@@ -111,7 +110,6 @@ export default function DueDate({ disabled = false }: DueDateProps) {
       ) : (
         <div className="flex items-center px-3">
           <DueDatePopoverButton
-            type="button"
             className={clsx(
               "group",
               "flex h-10 min-w-[68px] flex-1 select-none items-center gap-3.5 rounded-[5px] pl-1.5 pr-3",

@@ -1,15 +1,18 @@
 "use client";
 
+import type { TaskType } from "@/types/task";
 import type { Route } from "next";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useMemo, useState } from "react";
 
 type StateContextType = {
   prevHref: Route;
+  siblingTaskIds: TaskType["id"][];
 };
 
 type ControlContextType = {
   setPrevHref: Dispatch<SetStateAction<Route>>;
+  setSiblingTaskIds: Dispatch<SetStateAction<TaskType["id"][]>>;
 };
 
 type ProviderProps = {
@@ -22,9 +25,17 @@ const ControlContext = createContext<ControlContextType | null>(null);
 export function TaskDialogProvider({ children }: ProviderProps) {
   const [prevHref, setPrevHref] = useState<Route>("/app/today");
 
-  const state = useMemo<StateContextType>(() => ({ prevHref }), [prevHref]);
+  const [siblingTaskIds, setSiblingTaskIds] = useState<TaskType["id"][]>([]);
 
-  const control = useMemo<ControlContextType>(() => ({ setPrevHref }), []);
+  const state = useMemo<StateContextType>(
+    () => ({ prevHref, siblingTaskIds }),
+    [prevHref, siblingTaskIds],
+  );
+
+  const control = useMemo<ControlContextType>(
+    () => ({ setPrevHref, setSiblingTaskIds }),
+    [],
+  );
 
   return (
     <StateContext.Provider value={state}>

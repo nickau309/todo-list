@@ -1,9 +1,50 @@
 import { createTask } from "@/lib/actions";
+import Link from "next/link";
 
 export default function Page() {
   return (
-    <form action={createTask}>
-      <button type="submit">Add task</button>
-    </form>
+    <>
+      right
+      <br />
+      <a href="#test" className="focus:border focus:border-red">
+        test
+      </a>
+      <Link href="/app/task/1">Task 1</Link>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      bottom
+      <form action={createTask}>
+        <button type="submit">Add task</button>
+      </form>
+    </>
   );
 }
