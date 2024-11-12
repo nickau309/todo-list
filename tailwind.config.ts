@@ -162,10 +162,7 @@ const config: Config = {
           idle: "var(--input-border-idle-tint)",
         },
         "scheduler-color": "var(--scheduler-border-color)",
-        "theme-card": {
-          DEFAULT: "var(--theme-card-border)",
-          priority: "var(--theme-card-priority)",
-        },
+        "theme-card-priority": "var(--theme-card-priority)",
         // old
         banner: "var(--border-banner, #f0f0f0)",
         base: {

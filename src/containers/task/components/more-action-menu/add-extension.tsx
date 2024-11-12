@@ -2,11 +2,12 @@ import { ExtensionIcon24 } from "@/assets";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
+import type { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMoreActionMenu } from "./more-action-menu";
 
 export default function AddExtension() {
-  const { setAfterUnmount } = useSettingsDialogControl();
+  const { setPrevHref } = useSettingsDialogControl();
 
   const label = "Add extension…";
   const { ref, index } = useListItem({ label });
@@ -44,12 +45,9 @@ export default function AddExtension() {
       {...getItemProps({
         onClick() {
           if (!disabled) {
-            const afterUnmount = () => {
-              router.push(`${pathname}?${searchParams.toString()}`);
-            };
             setIsMoreActionMenuOpen(false);
-            setAfterUnmount(() => afterUnmount);
             router.push(href);
+            setPrevHref(`${pathname}?${searchParams.toString()}` as Route);
           }
         },
       })}

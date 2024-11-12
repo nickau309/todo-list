@@ -36,6 +36,8 @@ export { default as BoldIcon24 } from "./BoldIcon24.svg";
 
 export { default as BulletListIcon24 } from "./BulletListIcon24.svg";
 
+export { default as CalendarIcon24 } from "./CalendarIcon24.svg";
+
 export { default as CheckLgIcon24 } from "./CheckLgIcon24.svg";
 
 export { default as CheckSmIcon24 } from "./CheckSmIcon24.svg";
@@ -293,8 +295,6 @@ export { default as TomorrowIcon24 } from "./TomorrowIcon24.svg";
 export { default as TomorrowIcon28 } from "./TomorrowIcon28.svg";
 
 export { default as UnarchiveIcon24 } from "./UnarchiveIcon24.svg";
-
-export { default as UpcomingIcon24 } from "./UpcomingIcon24.svg";
 
 export { default as ViewIcon24 } from "./ViewIcon24.svg";
 

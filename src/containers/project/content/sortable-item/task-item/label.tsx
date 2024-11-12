@@ -24,7 +24,7 @@ export default function Label({ color, id, name }: LabelProps) {
   return (
     <Link
       href={`/app/label/${id}`}
-      aria-disabled={false}
+      aria-disabled="false"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       className={clsx(

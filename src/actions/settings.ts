@@ -21,7 +21,6 @@ import { redirect } from "next/navigation";
 
 export async function deleteAccount(
   id: number,
-  _: DeleteAccountFormState,
   formData: FormData,
 ): Promise<DeleteAccountFormState> {
   const parsed = DeleteAccountSchema.safeParse(Object.fromEntries(formData));
@@ -31,17 +30,24 @@ export async function deleteAccount(
     };
   }
 
-  const { password } = parsed.data;
+  const { email, password } = parsed.data;
 
-  // Check if password correct
+  // Check if email and password correct
   const user = await prisma.user.findUnique({
     where: { id },
-    select: { password: true },
+    select: { email: true, password: true },
   });
   // For type safety only. Impossible case.
   if (!user) {
     throw new Error("User not found");
   }
+
+  if (email !== user.email) {
+    return {
+      message: "You entered an incorrect email. Please confirm and try again.",
+    };
+  }
+
   const passwordsMatch = await bcrypt.compare(password, user.password);
   if (!passwordsMatch) {
     return {
@@ -82,7 +88,6 @@ export async function updateAccount(
 
 export async function updateEmail(
   id: number,
-  _: UpdateEmailFormState,
   formData: FormData,
 ): Promise<UpdateEmailFormState> {
   const parsed = UpdateEmailSchema.safeParse(Object.fromEntries(formData));
@@ -147,7 +152,6 @@ export async function updateEmail(
 
 export async function updatePassword(
   id: number,
-  _: UpdatePasswordFormState,
   formData: FormData,
 ): Promise<UpdatePasswordFormState> {
   const parsed = UpdatePasswordSchema.safeParse(Object.fromEntries(formData));

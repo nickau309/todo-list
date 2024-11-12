@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { UpcomingIcon24 } from "@/assets";
+import { CalendarIcon24 } from "@/assets";
 import { classNames } from "@/utils";
 
 export default function Upcoming() {
@@ -25,7 +25,7 @@ export default function Upcoming() {
         )}
       >
         <span className="text-views-upcoming">
-          <UpcomingIcon24 />
+          <CalendarIcon24 />
         </span>
         <span className="min-w-0 grow select-none truncate py-[3px] text-sm/[17px] text-base-primary">
           Upcoming

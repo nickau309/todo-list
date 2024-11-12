@@ -29,7 +29,7 @@ export default function Provider({ children, user }: ProviderProps) {
             <PrefersColorSchemeProvider>
               <PrintDialogProvider>
                 <ProductivityDialogProvider>
-                  <SettingsDialogProvider>
+                  <SettingsDialogProvider user={user}>
                     <SidebarProvider>
                       <SidebarWidthProvider>
                         <SyncDialogProvider>

@@ -20,6 +20,7 @@ export const LocalSettingsSchema = z
   }));
 
 export const DeleteAccountSchema = z.object({
+  email: z.string().email(),
   reason: z.string().optional(),
   password: z.string().min(8),
 });

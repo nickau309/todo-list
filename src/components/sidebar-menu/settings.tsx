@@ -2,21 +2,18 @@ import { Cog8ToothSmIcon24 } from "@/assets";
 import Menu from "@/components/menu";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import clsx from "clsx";
+import type { Route } from "next";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function Settings() {
-  const { setAfterUnmount } = useSettingsDialogControl();
+  const { setPrevHref } = useSettingsDialogControl();
 
   const pathname = usePathname();
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   const handleClick = () => {
-    const afterUnmount = () => {
-      router.push(`${pathname}?${searchParams.toString()}`);
-    };
-    setAfterUnmount(() => afterUnmount);
+    setPrevHref(`${pathname}?${searchParams.toString()}` as Route);
   };
 
   const label = "Settings";

@@ -1,11 +1,5 @@
-import ErrorComponent from "@/components/error-component";
-import {
-  CloseSettingsDialogButton,
-  Header,
-  OpenNavMenuButton,
-} from "@/components/settings/form";
-import UpgradeIcon from "@/components/upgrade-icon";
 import { NAV_MENU_ITEMS } from "@/constants/settings";
+import NotImplementedPage from "@/containers/settings/not-implemented-page";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
@@ -42,24 +36,6 @@ export default function Page({ params }: PageProps) {
   ) {
     redirect(`/app/settings/${NAV_MENU_ITEMS[0].segment}`);
   }
-  const currentItem =
-    NAV_MENU_ITEMS.find((item) => item.segment === params.segments[0]) ??
-    NAV_MENU_ITEMS[0];
 
-  return (
-    <div className="flex min-h-0 flex-1 flex-col">
-      <Header>
-        <OpenNavMenuButton />
-        <div className="flex min-w-0 flex-1 items-center gap-1">
-          <h2 className="truncate font-bold">{currentItem.description}</h2>
-          {currentItem.showUpgradeIcon && <UpgradeIcon />}
-        </div>
-        <CloseSettingsDialogButton />
-      </Header>
-      <hr className="border-divider-primary" />
-      <div className="grid flex-1 place-items-center overflow-y-auto overflow-x-hidden p-4">
-        <ErrorComponent text="Feature not implemented." />
-      </div>
-    </div>
-  );
+  return <NotImplementedPage segment={params.segments[0]} />;
 }

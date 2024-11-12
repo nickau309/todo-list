@@ -17,6 +17,7 @@ import {
   SubscriptionIcon24,
   ThemeIcon24,
   ViewIcon24,
+  CalendarIcon24,
 } from "@/assets";
 
 export const NAV_MENU_ITEMS = [
@@ -72,7 +73,7 @@ export const NAV_MENU_ITEMS = [
     description: "Reminders",
     icon: <ReminderIcon24 />,
     segment: "reminders",
-    showUpgradeIcon: true,
+    showUpgradeIcon: false,
   },
   {
     description: "Notifications",
@@ -90,6 +91,12 @@ export const NAV_MENU_ITEMS = [
     description: "Integrations",
     icon: <ExtensionIcon24 />,
     segment: "integrations",
+    showUpgradeIcon: false,
+  },
+  {
+    description: "Calendars",
+    icon: <CalendarIcon24 />,
+    segment: "calendars",
     showUpgradeIcon: false,
   },
 ];

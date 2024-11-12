@@ -12,7 +12,7 @@ export default function SidebarNotifications() {
       aria-disabled="false"
       aria-label="Notifications"
       className={clsx(
-        "grid size-8 place-items-center rounded-[5px] border border-transparent",
+        "grid size-8 shrink-0 place-items-center rounded-[5px] border border-transparent",
         segment === "notifications" && "bg-selectable-secondary-selected-fill",
         "text-actionable-quaternary-idle-tint transition-colors duration-300",
         "custom-active:scale-[.97] custom-active:transition-transform custom-active:duration-200 custom-active:ease-[cubic-bezier(.02,1.505,.745,1.235)]",

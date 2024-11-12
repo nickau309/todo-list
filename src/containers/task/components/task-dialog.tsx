@@ -49,7 +49,6 @@ export default function TaskDialog({
               "grid h-full w-full max-w-[864px] overflow-hidden rounded-[10px]",
               "bg-background-base-primary text-display-primary-idle-tint",
               "shadow-[0_2px_8px_rgba(0,0,0,.16)]",
-              "max-[580px]:rounded-b-none",
             )}
             {...getFloatingProps()}
           >

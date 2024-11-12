@@ -12,8 +12,10 @@ import clsx from "clsx";
 import type { FormEvent } from "react";
 import { useId, useRef } from "react";
 
+type HandleSubmitType = (e: FormEvent<HTMLFormElement>) => void;
+
 type DialogProps = {
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleSubmit: HandleSubmitType | null;
   onOpenChange: (open: boolean) => void;
   open: boolean;
 };
@@ -46,7 +48,7 @@ export default function ConfirmDialog({
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSubmit(e);
+    handleSubmit?.(e);
     onOpenChange(false);
   };
 
@@ -75,7 +77,10 @@ export default function ConfirmDialog({
           >
             <form onSubmit={handleFormSubmit} className="flex flex-1 flex-col">
               <header className="flex items-center justify-between gap-4 p-4 pb-2">
-                <h1 id={labelId} className="text-base/[23px] font-semibold">
+                <h1
+                  id={labelId}
+                  className="truncate text-base/[23px] font-semibold"
+                >
                   Discard unsaved changes?
                 </h1>
               </header>

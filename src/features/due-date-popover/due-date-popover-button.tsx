@@ -2,14 +2,14 @@ import type { CSSProperties, ReactNode } from "react";
 import { useDueDatePopover } from "./due-date-popover";
 
 type ButtonProps = {
-  className?: string;
   children?: ReactNode;
+  className?: string;
   style?: CSSProperties;
 };
 
 export default function DueDatePopoverButton({
-  className,
   children,
+  className,
   style,
 }: ButtonProps) {
   const { disabled, refs, getReferenceProps } = useDueDatePopover(

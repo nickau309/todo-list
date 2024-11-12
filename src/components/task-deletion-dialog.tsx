@@ -83,7 +83,10 @@ export default function TaskDeletionDialog({
           >
             <form onSubmit={handleFormSubmit} className="flex flex-1 flex-col">
               <header className="flex items-center justify-between gap-4 p-4 pb-2">
-                <h1 id={labelId} className="text-base/[23px] font-semibold">
+                <h1
+                  id={labelId}
+                  className="truncate text-base/[23px] font-semibold"
+                >
                   Delete task?
                 </h1>
               </header>

@@ -105,7 +105,6 @@
     --task-drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
     --task-list-item-background: #fafafa;
     --task-list-item-ring: rgba(31, 96, 194, 0.4);
-    --theme-card-border: #e5e5e5;
     --todoist-p1-color: #d1453b;
     --todoist-p2-color: #eb8909;
     --todoist-p3-color: #246fe0;
@@ -242,7 +241,6 @@
     --task-drop-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
     --task-list-item-background: #363636;
     --task-list-item-ring: #175bc2;
-    --theme-card-border: #4d4d4d;
   }
   #root.theme_moonstone {
     --actionable-primary-disabled-fill: #a4a9b0;
