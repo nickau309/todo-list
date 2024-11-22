@@ -1,6 +1,7 @@
 "use client";
 
-import { type ReactNode, useEffect, useState } from "react";
+import useHasMounted from "@/hooks/use-has-mounted";
+import type { ReactNode } from "react";
 
 type ClientComponentProps = {
   children: ReactNode;
@@ -11,11 +12,7 @@ export default function ClientComponent({
   children,
   fallback,
 }: ClientComponentProps) {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
+  const hasMounted = useHasMounted();
 
   return hasMounted ? children : fallback;
 }

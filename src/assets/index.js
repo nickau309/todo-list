@@ -210,6 +210,8 @@ export { default as OrderedListIcon24 } from "./OrderedListIcon24.svg";
 
 export { default as PieChartIcon10 } from "./PieChartIcon10";
 
+export { default as PresentIcon24 } from "./PresentIcon24.svg";
+
 export { default as PrintIcon24 } from "./PrintIcon24.svg";
 
 export { default as Priority4Icon16 } from "./Priority4Icon16.svg";
@@ -221,8 +223,6 @@ export { default as PriorityIcon16 } from "./PriorityIcon16.svg";
 export { default as PriorityIcon24 } from "./PriorityIcon24.svg";
 
 export { default as ProductivityIcon24 } from "./ProductivityIcon24.svg";
-
-export { default as ProIcon24 } from "./ProIcon24.svg";
 
 export { default as ProjectIcon12 } from "./ProjectIcon12.svg";
 
@@ -295,6 +295,8 @@ export { default as TomorrowIcon24 } from "./TomorrowIcon24.svg";
 export { default as TomorrowIcon28 } from "./TomorrowIcon28.svg";
 
 export { default as UnarchiveIcon24 } from "./UnarchiveIcon24.svg";
+
+export { default as UpgradeIcon24 } from "./UpgradeIcon24.svg";
 
 export { default as ViewIcon24 } from "./ViewIcon24.svg";
 

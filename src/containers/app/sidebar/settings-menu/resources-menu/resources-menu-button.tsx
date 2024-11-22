@@ -1,0 +1,75 @@
+import { ChevronRightIcon24, ResourceIcon24 } from "@/assets";
+import { useListItem, useMergeRefs } from "@floating-ui/react";
+import clsx from "clsx";
+import type { MouseEvent } from "react";
+import { useSettingsMenu } from "../settings-menu-context";
+import { useResourcesMenu } from "./resources-menu-context";
+
+export default function ResourcesMenuButton() {
+  const label = "Resources";
+
+  const item = useListItem({ label });
+
+  const { activeIndex, getItemProps } = useSettingsMenu("ResourcesMenuButton");
+
+  const { disabled, setHasFocusInside, refs, getReferenceProps } =
+    useResourcesMenu("ResourcesMenuButton");
+
+  const ref = useMergeRefs([refs.setReference, item.ref]);
+
+  return (
+    <button
+      ref={ref}
+      aria-disabled={disabled}
+      tabIndex={!disabled && activeIndex === item.index ? 0 : -1}
+      className={clsx(
+        "group",
+        "flex min-h-8 w-full select-none items-center gap-2.5 rounded-[5px] px-1.5",
+        "focus-visible:outline-none",
+        "aria-disabled:cursor-not-allowed",
+        "custom-hocus:bg-actionable-focus-fill",
+      )}
+      {...getReferenceProps(
+        getItemProps({
+          onClick(e: MouseEvent<HTMLButtonElement>) {
+            if (disabled) {
+              e.preventDefault();
+            }
+          },
+          onFocus() {
+            if (!disabled) {
+              setHasFocusInside(false);
+            }
+          },
+        }),
+      )}
+    >
+      <span
+        className={clsx(
+          "grid size-6 place-items-center text-display-secondary-idle-tint",
+          "group-aria-disabled:opacity-50",
+        )}
+      >
+        <ResourceIcon24 />
+      </span>
+      <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
+        <span
+          className={clsx(
+            "truncate text-[13px]/[16.8px] text-display-primary-idle-tint",
+            "group-aria-disabled:text-display-tertiary-idle-tint",
+          )}
+        >
+          {label}
+        </span>
+        <span
+          className={clsx(
+            "grid size-6 place-items-center text-display-secondary-idle-tint",
+            "group-aria-disabled:opacity-50",
+          )}
+        >
+          <ChevronRightIcon24 />
+        </span>
+      </div>
+    </button>
+  );
+}

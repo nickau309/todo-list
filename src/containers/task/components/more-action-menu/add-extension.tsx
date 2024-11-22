@@ -55,7 +55,7 @@ export default function AddExtension() {
       <span
         className={clsx(
           "grid size-6 place-items-center text-display-secondary-idle-tint",
-          "group-aria-disabled:text-display-tertiary-idle-tint",
+          "group-aria-disabled:opacity-50",
         )}
       >
         <ExtensionIcon24 />

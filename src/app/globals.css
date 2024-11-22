@@ -37,6 +37,8 @@
     --dropdown-text: #202020;
     --info-attention-primary-idle-fill: #dc4c3e;
     --info-attention-primary-idle-tint: #dc4c3e;
+    --info-promote-primary-idle-fill: #f48318;
+    --info-promote-primary-idle-tint: #fff;
     --info-promote-tertiary-idle-fill: #faead1;
     --info-promote-tertiary-idle-tint: #8f4700;
     --input-border-alert-tint: #dc4c3e;

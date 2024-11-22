@@ -41,6 +41,7 @@ export default function TaskDialog({
           "transition-[padding] duration-500 ease-[cubic-bezier(.42,0,.58,1)]",
           "max-[580px]:p-0",
         )}
+        style={{ overflow: "hidden" }}
       >
         <FloatingFocusManager context={context}>
           <div

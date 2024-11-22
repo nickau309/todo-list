@@ -275,6 +275,10 @@ const config: Config = {
           "idle-fill": "var(--info-attention-primary-idle-fill)",
           "idle-tint": "var(--info-attention-primary-idle-tint)",
         },
+        "info-promote-primary": {
+          "idle-fill": "var(--info-promote-primary-idle-fill)",
+          "idle-tint": "var(--info-promote-primary-idle-tint)",
+        },
         "info-promote-tertiary": {
           "idle-fill": "var(--info-promote-tertiary-idle-fill)",
           "idle-tint": "var(--info-promote-tertiary-idle-tint)",
