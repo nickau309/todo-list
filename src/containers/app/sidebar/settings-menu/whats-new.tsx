@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import type { MouseEvent } from "react";
 import { useSettingsMenu } from "./settings-menu-context";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 
 type LinkProps = {
   disabled?: boolean;
@@ -13,12 +13,18 @@ type LinkProps = {
 export default function WhatsNew({ disabled = false }: LinkProps) {
   const label = "What's new";
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
 
   const { ref, index } = useListItem({ label });
 
-  const { activeIndex, getItemProps } = useSettingsMenu("WhatsNew");
+  const { getItemProps } = useSettingsMenu("WhatsNew");
 
   return (
     <Link

@@ -1,5 +1,5 @@
 import { LogOutIcon24 } from "@/assets";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { logOut } from "@/lib/actions";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
@@ -14,12 +14,18 @@ type ButtonProps = {
 export default function LogOut({ disabled = false }: ButtonProps) {
   const label = "Log out";
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
 
   const { ref, index } = useListItem({ label });
 
-  const { activeIndex, getItemProps } = useSettingsMenu("LogOut");
+  const { getItemProps } = useSettingsMenu("LogOut");
 
   return (
     <button

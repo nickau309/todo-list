@@ -1,5 +1,5 @@
 import { GuideIcon24 } from "@/assets";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import Link from "next/link";
@@ -13,14 +13,21 @@ type LinkProps = {
 export default function GettingStartedGuide({ disabled = false }: LinkProps) {
   const label = "Getting started guide";
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.resourcesMenu.activeIndex);
+  const setHasFocusInside = useStore(
+    (store) => store.resourcesMenu.setHasFocusInside,
+  );
 
   const { ref, index } = useListItem({ label });
 
-  const { setHasFocusInside, activeIndex, getItemProps } = useResourcesMenu(
-    "GettingStartedGuide",
-  );
+  const { getItemProps } = useResourcesMenu("GettingStartedGuide");
 
   return (
     <Link

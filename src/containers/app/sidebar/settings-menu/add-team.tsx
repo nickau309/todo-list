@@ -1,5 +1,5 @@
 import { AddIcon13 } from "@/assets";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
@@ -12,12 +12,18 @@ type ButtonProps = {
 export default function AddTeam({ disabled = false }: ButtonProps) {
   const label = "Add a team";
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
 
   const { ref, index } = useListItem({ label });
 
-  const { activeIndex, getItemProps } = useSettingsMenu("AddTeam");
+  const { getItemProps } = useSettingsMenu("AddTeam");
 
   return (
     <button

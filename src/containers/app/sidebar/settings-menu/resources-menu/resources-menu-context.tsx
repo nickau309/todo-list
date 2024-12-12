@@ -1,4 +1,4 @@
-import { useSidebarControl, useSidebarState } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import type {
   UseFloatingData,
   UseListNavigationProps,
@@ -20,13 +20,11 @@ import {
   useRole,
   useTypeahead,
 } from "@floating-ui/react";
-import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { createContext, useContext, useMemo, useRef, useState } from "react";
+import type { ReactNode } from "react";
+import { createContext, useContext, useMemo, useRef } from "react";
 
 type MenuContextType = {
   disabled: boolean;
-  setHasFocusInside: Dispatch<SetStateAction<boolean>>;
-  activeIndex: number | null;
   elementsRef: UseListNavigationProps["listRef"];
   labelsRef: UseTypeaheadProps["listRef"];
 } & Pick<UseFloatingData, "context" | "floatingStyles" | "refs"> &
@@ -43,11 +41,8 @@ export function ResourcesMenuProvider({
   children,
   disabled = false,
 }: ProviderProps) {
-  const { isResourcesMenuOpen } = useSidebarState();
-  const { setIsResourcesMenuOpen } = useSidebarControl();
-
-  const [hasFocusInside, setHasFocusInside] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { activeIndex, hasFocusInside, isOpen, setActiveIndex, setIsOpen } =
+    useStore((state) => state.resourcesMenu);
 
   const elementsRef = useRef([]);
   const labelsRef = useRef([]);
@@ -66,8 +61,8 @@ export function ResourcesMenuProvider({
         },
       }),
     ],
-    open: isResourcesMenuOpen,
-    onOpenChange: setIsResourcesMenuOpen,
+    open: isOpen,
+    onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
   });
 
@@ -92,7 +87,7 @@ export function ResourcesMenuProvider({
   const typeahead = useTypeahead(context, {
     listRef: labelsRef,
     activeIndex,
-    onMatch: isResourcesMenuOpen ? setActiveIndex : undefined,
+    onMatch: isOpen ? setActiveIndex : undefined,
   });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
@@ -102,8 +97,6 @@ export function ResourcesMenuProvider({
   const value = useMemo<MenuContextType>(
     () => ({
       disabled,
-      setHasFocusInside,
-      activeIndex,
       elementsRef,
       labelsRef,
       context,
@@ -114,7 +107,6 @@ export function ResourcesMenuProvider({
       getItemProps,
     }),
     [
-      activeIndex,
       context,
       disabled,
       floatingStyles,

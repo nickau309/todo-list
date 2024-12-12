@@ -1,4 +1,5 @@
 import { ChevronRightIcon24, ResourceIcon24 } from "@/assets";
+import { useStore } from "@/contexts/store-context";
 import { useListItem, useMergeRefs } from "@floating-ui/react";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
@@ -8,12 +9,18 @@ import { useResourcesMenu } from "./resources-menu-context";
 export default function ResourcesMenuButton() {
   const label = "Resources";
 
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setHasFocusInside = useStore(
+    (state) => state.resourcesMenu.setHasFocusInside,
+  );
+
   const item = useListItem({ label });
 
-  const { activeIndex, getItemProps } = useSettingsMenu("ResourcesMenuButton");
+  const { getItemProps } = useSettingsMenu("ResourcesMenuButton");
 
-  const { disabled, setHasFocusInside, refs, getReferenceProps } =
-    useResourcesMenu("ResourcesMenuButton");
+  const { disabled, refs, getReferenceProps } = useResourcesMenu(
+    "ResourcesMenuButton",
+  );
 
   const ref = useMergeRefs([refs.setReference, item.ref]);
 

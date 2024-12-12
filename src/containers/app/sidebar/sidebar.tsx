@@ -1,29 +1,26 @@
 "use client";
 
-import { SIDEBAR_TRANSITION } from "@/constants/sidebar";
-import { useSidebarState } from "@/contexts/sidebar-context";
-import { motion } from "framer-motion";
+import { SidebarProvider } from "./contexts/sidebar-context";
 import Notifications from "./notifications";
 import Overlay from "./overlay";
+import Panel from "./panel";
 import Placeholder from "./placeholder";
 import Resizer from "./resizer";
 import SettingsMenu from "./settings-menu";
+import ShowSidebarSideEffect from "./show-sidebar-side-effect";
 import Toggle from "./toggle";
+import WidthSideEffect from "./width-side-effect";
 
 export default function Sidebar() {
-  const { showSidebar, sidebarWidth } = useSidebarState();
-
   return (
-    <>
+    <SidebarProvider>
+      {/* Side Effect */}
+      <ShowSidebarSideEffect />
+      <WidthSideEffect />
+      {/* Component */}
       <Placeholder />
       <Overlay />
-      <motion.div
-        initial={false}
-        animate={{ marginLeft: showSidebar ? 0 : -sidebarWidth }}
-        transition={SIDEBAR_TRANSITION}
-        className="fixed left-0 top-0 z-20 h-full bg-background-base-secondary"
-        style={{ width: sidebarWidth }}
-      >
+      <Panel>
         <div className="flex h-full w-full flex-col">
           <div className="flex items-center justify-between p-3">
             <div className="ml-[-3px] max-w-[calc(85%-40px)]">
@@ -37,7 +34,7 @@ export default function Sidebar() {
           <div>bla</div>
         </div>
         <Resizer />
-      </motion.div>
-    </>
+      </Panel>
+    </SidebarProvider>
   );
 }

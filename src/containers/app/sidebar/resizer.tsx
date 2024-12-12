@@ -1,8 +1,8 @@
 import { MAX_SIDEBAR_WIDTH, MIN_SIDEBAR_WIDTH } from "@/constants/sidebar";
-import { useSidebarControl } from "@/contexts/sidebar-context";
 import clsx from "clsx";
-import type { Dispatch, MouseEvent, SetStateAction } from "react";
+import type { MouseEvent } from "react";
 import { useState } from "react";
+import { useSidebarControl } from "./contexts/sidebar-context";
 
 export default function Resizer() {
   const { setSidebarWidth } = useSidebarControl();

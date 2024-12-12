@@ -7,24 +7,14 @@ import {
 } from "@/constants/sidebar";
 import useLocalStorage from "@/hooks/use-local-storage";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { useWidth } from "./width-context";
+import { createContext, useContext, useMemo } from "react";
 
 type StateContextType = {
-  showSidebarLg: boolean;
-  showSidebarSm: boolean;
-  showSidebar: boolean;
   sidebarWidth: number;
-  isSettingsMenuOpen: boolean;
-  isResourcesMenuOpen: boolean;
 };
 
 type ControlContextType = {
-  setShowSidebarSm: Dispatch<SetStateAction<boolean>>;
-  setShowSidebar: Dispatch<SetStateAction<boolean>>;
   setSidebarWidth: Dispatch<SetStateAction<number>>;
-  setIsSettingsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  setIsResourcesMenuOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 type ProviderProps = {
@@ -47,66 +37,20 @@ const StateContext = createContext<StateContextType | null>(null);
 const ControlContext = createContext<ControlContextType | null>(null);
 
 export function SidebarProvider({ children }: ProviderProps) {
-  const width = useWidth();
-
-  const [showSidebarLg, setShowSidebarLg] = useState(true);
-  const [showSidebarSm, setShowSidebarSm] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useLocalStorage(
     "sidebarWidth",
     INIT_SIDEBAR_WIDTH,
     { deserializer },
   );
 
-  useEffect(() => {
-    if (width > 750) {
-      setShowSidebarSm(false);
-    } else {
-      setShowSidebarLg(true);
-    }
-  }, [setShowSidebarLg, setShowSidebarSm, width]);
-
-  const showSidebar = width > 750 ? showSidebarLg : showSidebarSm;
-  const setShowSidebar = width > 750 ? setShowSidebarLg : setShowSidebarSm;
-
-  const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
-
-  const [isResourcesMenuOpen, setIsResourcesMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (!showSidebar) {
-      setIsSettingsMenuOpen(false);
-      setIsResourcesMenuOpen(false);
-    }
-  }, [showSidebar]);
-
   const state = useMemo<StateContextType>(
-    () => ({
-      showSidebarLg,
-      showSidebarSm,
-      showSidebar,
-      sidebarWidth,
-      isSettingsMenuOpen,
-      isResourcesMenuOpen,
-    }),
-    [
-      isResourcesMenuOpen,
-      isSettingsMenuOpen,
-      showSidebar,
-      showSidebarLg,
-      showSidebarSm,
-      sidebarWidth,
-    ],
+    () => ({ sidebarWidth }),
+    [sidebarWidth],
   );
 
   const control = useMemo<ControlContextType>(
-    () => ({
-      setShowSidebarSm,
-      setShowSidebar,
-      setSidebarWidth,
-      setIsSettingsMenuOpen,
-      setIsResourcesMenuOpen,
-    }),
-    [setShowSidebar, setSidebarWidth],
+    () => ({ setSidebarWidth }),
+    [setSidebarWidth],
   );
 
   return (

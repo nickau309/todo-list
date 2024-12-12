@@ -1,5 +1,5 @@
 import { ActivityIcon24 } from "@/assets";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import Link from "next/link";
@@ -13,12 +13,18 @@ type LinkProps = {
 export default function ActivityLog({ disabled = false }: LinkProps) {
   const label = "Activity log";
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
 
   const { ref, index } = useListItem({ label });
 
-  const { activeIndex, getItemProps } = useSettingsMenu("ActivityLog");
+  const { getItemProps } = useSettingsMenu("ActivityLog");
 
   return (
     <Link

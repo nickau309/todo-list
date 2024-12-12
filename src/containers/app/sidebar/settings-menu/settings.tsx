@@ -1,6 +1,6 @@
 import { Cog8ToothSmIcon24 } from "@/assets";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
-import { useSidebarControl } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import type { Route } from "next";
@@ -18,15 +18,21 @@ export default function Settings({ disabled = false }: LinkProps) {
 
   const { setPrevHref } = useSettingsDialogControl();
 
-  const { setIsResourcesMenuOpen, setIsSettingsMenuOpen, setShowSidebarSm } =
-    useSidebarControl();
+  const setShowSidebarSm = useStore((state) => state.sidebar.setShowSidebarSm);
+  const setIsSettingsMenuOpen = useStore(
+    (state) => state.settingsMenu.setIsOpen,
+  );
+  const activeIndex = useStore((state) => state.settingsMenu.activeIndex);
+  const setIsResourcesMenuOpen = useStore(
+    (state) => state.resourcesMenu.setIsOpen,
+  );
 
   const { ref, index } = useListItem({ label });
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const { activeIndex, getItemProps } = useSettingsMenu("Settings");
+  const { getItemProps } = useSettingsMenu("Settings");
 
   return (
     <Link

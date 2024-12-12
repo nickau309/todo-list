@@ -2,17 +2,21 @@ import {
   PLACEHOLDER_VARIANT_LABELS,
   PLACEHOLDER_VARIANTS,
 } from "@/constants/sidebar";
-import { useSidebarState } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import { useWidth } from "@/contexts/width-context";
 import useHasMounted from "@/hooks/use-has-mounted";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSidebarState } from "./contexts/sidebar-context";
 
 export default function Placeholder() {
-  const { showSidebarLg, showSidebarSm, sidebarWidth } = useSidebarState();
+  const showSidebarLg = useStore((state) => state.sidebar.showSidebarLg);
+  const showSidebarSm = useStore((state) => state.sidebar.showSidebarSm);
 
   const width = useWidth();
 
   const hasMounted = useHasMounted();
+
+  const { sidebarWidth } = useSidebarState();
 
   return (
     <AnimatePresence>

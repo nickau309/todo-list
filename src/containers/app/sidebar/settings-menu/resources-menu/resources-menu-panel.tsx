@@ -1,4 +1,4 @@
-import { useSidebarState } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -13,7 +13,7 @@ type PanelProps = {
 };
 
 export default function ResourcesMenuPanel({ children }: PanelProps) {
-  const { isResourcesMenuOpen } = useSidebarState();
+  const isOpen = useStore((state) => state.resourcesMenu.isOpen);
 
   const {
     elementsRef,
@@ -26,7 +26,7 @@ export default function ResourcesMenuPanel({ children }: PanelProps) {
 
   return (
     <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-      {isResourcesMenuOpen && (
+      {isOpen && (
         <FloatingPortal id="root">
           <FloatingFocusManager
             context={context}

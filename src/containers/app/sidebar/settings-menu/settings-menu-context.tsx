@@ -1,4 +1,4 @@
-import { useSidebarControl, useSidebarState } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import type {
   UseFloatingData,
   UseListNavigationProps,
@@ -19,10 +19,9 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import type { ReactNode } from "react";
-import { createContext, useContext, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useMemo, useRef } from "react";
 
 type MenuContextType = {
-  activeIndex: number | null;
   elementsRef: UseListNavigationProps["listRef"];
   labelsRef: UseTypeaheadProps["listRef"];
 } & Pick<UseFloatingData, "context" | "floatingStyles" | "refs"> &
@@ -35,10 +34,9 @@ type ProviderProps = {
 const MenuContext = createContext<MenuContextType | null>(null);
 
 export function SettingsMenuProvider({ children }: ProviderProps) {
-  const { isSettingsMenuOpen } = useSidebarState();
-  const { setIsSettingsMenuOpen } = useSidebarControl();
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { activeIndex, isOpen, setActiveIndex, setIsOpen } = useStore(
+    (state) => state.settingsMenu,
+  );
 
   const elementsRef = useRef([]);
   const labelsRef = useRef([]);
@@ -57,8 +55,8 @@ export function SettingsMenuProvider({ children }: ProviderProps) {
         },
       }),
     ],
-    open: isSettingsMenuOpen,
-    onOpenChange: setIsSettingsMenuOpen,
+    open: isOpen,
+    onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
   });
 
@@ -74,7 +72,7 @@ export function SettingsMenuProvider({ children }: ProviderProps) {
   const typeahead = useTypeahead(context, {
     listRef: labelsRef,
     activeIndex,
-    onMatch: isSettingsMenuOpen ? setActiveIndex : undefined,
+    onMatch: isOpen ? setActiveIndex : undefined,
   });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
@@ -83,7 +81,6 @@ export function SettingsMenuProvider({ children }: ProviderProps) {
 
   const value = useMemo<MenuContextType>(
     () => ({
-      activeIndex,
       elementsRef,
       labelsRef,
       context,
@@ -94,7 +91,6 @@ export function SettingsMenuProvider({ children }: ProviderProps) {
       getItemProps,
     }),
     [
-      activeIndex,
       context,
       floatingStyles,
       getFloatingProps,

@@ -1,15 +1,16 @@
 import { SidebarIcon24 } from "@/assets";
 import { SIDEBAR_TRANSITION } from "@/constants/sidebar";
-import { useSidebarControl, useSidebarState } from "@/contexts/sidebar-context";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import useSetShowSidebar from "./hooks/use-set-show-sidebar";
+import useShowSidebar from "./hooks/use-show-sidebar";
 
 export default function Toggle() {
-  const { showSidebar } = useSidebarState();
-  const { setShowSidebar } = useSidebarControl();
+  const showSidebar = useShowSidebar();
+  const setShowSidebar = useSetShowSidebar();
 
   const handleClick = () => {
-    setShowSidebar((showSidebar) => !showSidebar);
+    setShowSidebar(!showSidebar);
   };
 
   return (

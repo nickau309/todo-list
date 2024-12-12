@@ -1,4 +1,4 @@
-import { useSidebarState } from "@/contexts/sidebar-context";
+import { useStore } from "@/contexts/store-context";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -14,7 +14,7 @@ type PanelProps = {
 };
 
 export default function SettingsMenuPanel({ children }: PanelProps) {
-  const { isSettingsMenuOpen } = useSidebarState();
+  const isOpen = useStore((state) => state.settingsMenu.isOpen);
 
   const {
     elementsRef,
@@ -27,7 +27,7 @@ export default function SettingsMenuPanel({ children }: PanelProps) {
 
   return (
     <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-      {isSettingsMenuOpen && (
+      {isOpen && (
         <FloatingPortal id="root">
           <FloatingOverlay lockScroll className="z-30">
             <FloatingFocusManager context={context} visuallyHiddenDismiss>
