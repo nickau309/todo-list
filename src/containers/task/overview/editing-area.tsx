@@ -24,6 +24,7 @@ export default function EditingArea({
   const {
     field: { onChange: onNameChange, value: name },
     fieldState: { error: nameError },
+    formState: { isSubmitted, isSubmitting, isValid },
   } = useTaskInfoFormController({ name: "name" });
 
   const {
@@ -32,6 +33,7 @@ export default function EditingArea({
   } = useTaskInfoFormController({ name: "description" });
 
   const nameEditor = useNameEditor({
+    isSubmitDisabled: isSubmitted || isSubmitting || !isValid,
     focusingField,
     setFocusingField,
     name,

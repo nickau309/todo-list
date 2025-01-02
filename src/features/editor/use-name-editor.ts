@@ -14,13 +14,13 @@ import { useEditor } from "@tiptap/react";
 import clsx from "clsx";
 import { marked } from "marked";
 import type { Dispatch, SetStateAction } from "react";
-import { useFormState } from "react-hook-form";
 import CustomCode from "./extensions/code";
 import CustomDocument from "./extensions/document";
 import FloatingLinkEditor from "./extensions/floating-link-editor";
 import CustomLink from "./extensions/link";
 
 type UseNameEditorProps = {
+  isSubmitDisabled: boolean;
   focusingField: TaskInfoKeyType | null;
   setFocusingField: Dispatch<SetStateAction<TaskInfoKeyType | null>>;
   name: string;
@@ -79,13 +79,12 @@ const nameEditorExtensions: Extensions = [
 ];
 
 export default function useNameEditor({
+  isSubmitDisabled,
   focusingField,
   setFocusingField,
   name,
   setName,
 }: UseNameEditorProps) {
-  const { isSubmitted, isSubmitting, isValid } = useFormState();
-
   const nameEditor = useEditor({
     content: marked.parse(name),
     extensions: nameEditorExtensions,
@@ -108,8 +107,7 @@ export default function useNameEditor({
           return;
         }
 
-        const isDisabled = isSubmitted || isSubmitting || !isValid;
-        if (isDisabled) {
+        if (isSubmitDisabled) {
           return;
         }
 
