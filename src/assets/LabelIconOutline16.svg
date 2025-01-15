@@ -1,13 +1,14 @@
 <svg
+  xmlns="http://www.w3.org/2000/svg"
   width="16"
   height="16"
+  fill="none"
   viewBox="0 0 16 16"
-  xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    fill-rule="evenodd"
-    clip-rule="evenodd"
-    d="M7.828 2H12a2 2 0 012 2v4.172a2 2 0 01-.586 1.414l-4 4a2 2 0 01-2.828 0L2.414 9.414a2 2 0 010-2.828l4-4A2 2 0 017.828 2zm0 1a1 1 0 00-.707.293l-4 4a1 1 0 000 1.414l4.172 4.172a1 1 0 001.414 0l4-4A1 1 0 0013 8.172V4a1 1 0 00-1-1H7.828zM10 7a1 1 0 100-2 1 1 0 000 2z"
     fill="currentColor"
+    fill-rule="evenodd"
+    d="M7.828 2H12a2 2 0 0 1 2 2v4.172a2 2 0 0 1-.586 1.414l-4 4a2 2 0 0 1-2.828 0L2.414 9.414a2 2 0 0 1 0-2.828l4-4A2 2 0 0 1 7.828 2m0 1a1 1 0 0 0-.707.293l-4 4a1 1 0 0 0 0 1.414l4.172 4.172a1 1 0 0 0 1.414 0l4-4A1 1 0 0 0 13 8.172V4a1 1 0 0 0-1-1zM10 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+    clip-rule="evenodd"
   ></path>
 </svg>

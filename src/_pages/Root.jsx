@@ -5,7 +5,6 @@ import {
   ConfirmDialogProvider,
   DialogProvider,
   ErrorDialogProvider,
-  QuickAddDialogProvider,
   RootProvider,
   SettingsProvider,
 } from "@/contexts";
@@ -66,9 +65,7 @@ export default function Root() {
         <ConfirmDialogProvider>
           <DialogProvider>
             <ErrorDialogProvider>
-              <QuickAddDialogProvider>
-                <RootView />
-              </QuickAddDialogProvider>
+              <RootView />
             </ErrorDialogProvider>
           </DialogProvider>
         </ConfirmDialogProvider>

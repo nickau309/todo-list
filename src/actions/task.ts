@@ -1,15 +1,13 @@
 "use server";
 
-import { getTask } from "@/lib/data";
+import { getTask, getUser } from "@/lib/data";
 import dayjs from "@/lib/dayjs";
-import prisma, {
-  incrementTaskChildOrder,
-  setTaskChildOrder,
-} from "@/lib/prisma";
+import prisma, { setTaskChildOrder } from "@/lib/prisma";
 import {
   TaskDueDateSchema,
   TaskInfoSchema,
   TaskIsCompletedSchema,
+  TaskSchema,
   UpdatePrioritySchema,
   UpdateProjectIdSchema,
   UpdateTaskLabelSchema,
@@ -17,6 +15,65 @@ import {
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+
+export async function createTask(formData: FormData) {
+  const user = await getUser();
+  // user.projects.
+  const data = {
+    name: formData.get("name"),
+    description: formData.get("description"),
+    dueDate: formData.get("dueDate"),
+    priority: formData.get("priority"),
+    labelIds: formData.getAll("labelId"),
+    projectId: formData.get("projectId"),
+    childOrder: formData.get("childOrder"),
+  };
+
+  const parsed = TaskSchema.parse(data);
+
+  console.log({ data, parsed });
+
+  if (parsed.childOrder === null) {
+    await prisma.$transaction(async (tx) => {
+      const count = await tx.task.count({
+        where: {
+          projectId: parsed.projectId ?? user.projects[0].id,
+        },
+      });
+
+      await tx.task.create({
+        data: {
+          childOrder: count,
+          description: parsed.description,
+          dueDate: parsed.dueDate,
+          labels: {
+            connect: parsed.labelIds.map((labelId) => ({ id: labelId })),
+          },
+          name: parsed.name,
+          priority: parsed.priority,
+          projectId: parsed.projectId ?? user.projects[0].id,
+          userId: user.id,
+        },
+      });
+    });
+  }
+
+  // id <> (SELECT id FROM "TargetTask")
+  // AND "projectId" = (SELECT "projectId" FROM "TargetTask")
+  // AND "childOrder" > (SELECT "oldChildOrder" FROM "TargetTask")
+
+  // await prisma.task.create({
+  //   data: {
+  //     childOrder: 0,
+  //     description: "describe",
+  //     dueDate: new Date(),
+  //     isCompleted: false,
+  //     name: "test",
+  //     projectId: 1,
+  //     userId: 1,
+  //   },
+  // });
+}
 
 export async function removeDueDate(id: number) {
   await prisma.task.update({

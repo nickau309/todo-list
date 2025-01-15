@@ -2,7 +2,7 @@ import {
   removeDueDate as removeDueDateAction,
   updateDueDate,
 } from "@/actions/task";
-import { AddSmIcon24, DueDateIcon16, RemoveIcon24 } from "@/assets";
+import { AddSmIcon24, DueDateOutlineIcon16, RemoveIcon24 } from "@/assets";
 import {
   DueDatePopover,
   DueDatePopoverButton,
@@ -93,7 +93,7 @@ export default function DueDate({ disabled = false }: DueDateProps) {
                   "group-aria-disabled:opacity-60",
                 )}
               >
-                <DueDateIcon16 />
+                <DueDateOutlineIcon16 />
               </span>
               <span
                 className={clsx(

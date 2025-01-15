@@ -1,3 +1,6 @@
+import { INIT_INPUT_VALUES } from "@/constants/quick-add-form";
+import type { QuickAddFormType } from "@/types/quick-add-form";
+import type { Dispatch, SetStateAction } from "react";
 import type { StateCreator } from "zustand/vanilla";
 import { createStore } from "zustand/vanilla";
 
@@ -24,6 +27,32 @@ type ResourcesMenu = {
   setActiveIndex: (activeIndex: number | null) => void;
 };
 
+type QuickAddDialog = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+};
+
+type QuickAddForm = {
+  defaultValues: QuickAddFormType;
+  setDefaultValues: Dispatch<SetStateAction<QuickAddFormType>>;
+  inputValues: QuickAddFormType;
+  setInputValues: Dispatch<SetStateAction<QuickAddFormType>>;
+  reset: (inputValues: QuickAddFormType) => void;
+  setDescription: (description: QuickAddFormType["description"]) => void;
+  setDueDate: (dueDate: QuickAddFormType["dueDate"]) => void;
+  setLabelIds: (labelIds: QuickAddFormType["labelIds"]) => void;
+  setName: (name: QuickAddFormType["name"]) => void;
+  setPriority: (priority: QuickAddFormType["priority"]) => void;
+  setProjectId: (projectId: QuickAddFormType["projectId"]) => void;
+};
+
+type ConfirmDialog = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  handleSubmit: (() => void) | null;
+  setHandleSubmit: (handleSubmit: (() => void) | null) => void;
+};
+
 type SidebarSlice = {
   sidebar: Sidebar;
 };
@@ -36,7 +65,24 @@ type ResourcesMenuSlice = {
   resourcesMenu: ResourcesMenu;
 };
 
-export type State = SidebarSlice & SettingsMenuSlice & ResourcesMenuSlice;
+type QuickAddDialogSlice = {
+  quickAddDialog: QuickAddDialog;
+};
+
+type QuickAddFormSlice = {
+  quickAddForm: QuickAddForm;
+};
+
+type ConfirmDialogSlice = {
+  confirmDialog: ConfirmDialog;
+};
+
+export type State = SidebarSlice &
+  SettingsMenuSlice &
+  ResourcesMenuSlice &
+  QuickAddDialogSlice &
+  QuickAddFormSlice &
+  ConfirmDialogSlice;
 
 // SetStateAction<ProjectOptimisticType>
 // >(project, (prevState, stateOrFn) => {
@@ -139,10 +185,185 @@ const createResourcesMenuSlice: StateCreator<
   };
 };
 
+const createQuickAddDialogSlice: StateCreator<
+  State,
+  [],
+  [],
+  QuickAddDialogSlice
+> = (set) => {
+  return {
+    quickAddDialog: {
+      isOpen: false,
+      setIsOpen: (isOpen) => {
+        set((state) => ({
+          quickAddDialog: {
+            ...state.quickAddDialog,
+            isOpen,
+          },
+        }));
+      },
+    },
+  };
+};
+
+const createQuickAddFormSlice: StateCreator<
+  State,
+  [],
+  [],
+  QuickAddFormSlice
+> = (set) => {
+  return {
+    quickAddForm: {
+      defaultValues: INIT_INPUT_VALUES,
+      setDefaultValues: (stateOrFn) => {
+        set((state) => {
+          const defaultValues =
+            stateOrFn instanceof Function
+              ? stateOrFn(state.quickAddForm.defaultValues)
+              : stateOrFn;
+          return {
+            quickAddForm: {
+              ...state.quickAddForm,
+              defaultValues,
+            },
+          };
+        });
+      },
+      inputValues: INIT_INPUT_VALUES,
+      setInputValues: (stateOrFn) => {
+        set((state) => {
+          const inputValues =
+            stateOrFn instanceof Function
+              ? stateOrFn(state.quickAddForm.inputValues)
+              : stateOrFn;
+          return {
+            quickAddForm: {
+              ...state.quickAddForm,
+              inputValues,
+            },
+          };
+        });
+      },
+      reset: (inputValues) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            defaultValues: {
+              ...inputValues,
+            },
+            inputValues: {
+              ...inputValues,
+            },
+          },
+        }));
+      },
+      setName: (name) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              name,
+            },
+          },
+        }));
+      },
+      setDescription: (description) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              description,
+            },
+          },
+        }));
+      },
+      setDueDate: (dueDate) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              dueDate,
+            },
+          },
+        }));
+      },
+      setPriority: (priority) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              priority,
+            },
+          },
+        }));
+      },
+      setLabelIds: (labelIds) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              labelIds,
+            },
+          },
+        }));
+      },
+      setProjectId: (projectId) => {
+        set((state) => ({
+          quickAddForm: {
+            ...state.quickAddForm,
+            inputValues: {
+              ...state.quickAddForm.inputValues,
+              projectId,
+            },
+          },
+        }));
+      },
+    },
+  };
+};
+
+const createConfirmDialogSlice: StateCreator<
+  State,
+  [],
+  [],
+  ConfirmDialogSlice
+> = (set) => {
+  return {
+    confirmDialog: {
+      isOpen: false,
+      setIsOpen: (isOpen) => {
+        set((state) => ({
+          confirmDialog: {
+            ...state.confirmDialog,
+            isOpen,
+          },
+        }));
+      },
+      handleSubmit: null,
+      setHandleSubmit: (handleSubmit) => {
+        set((state) => ({
+          confirmDialog: {
+            ...state.confirmDialog,
+            handleSubmit,
+          },
+        }));
+      },
+    },
+  };
+};
+
 export const createCounterStore = () => {
   return createStore<State>()((...props) => ({
     ...createSidebarSlice(...props),
     ...createSettingsMenuSlice(...props),
     ...createResourcesMenuSlice(...props),
+    ...createQuickAddDialogSlice(...props),
+    ...createQuickAddFormSlice(...props),
+    ...createConfirmDialogSlice(...props),
   }));
 };

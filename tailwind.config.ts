@@ -161,6 +161,7 @@ const config: Config = {
           focus: "var(--input-border-focus-tint)",
           idle: "var(--input-border-idle-tint)",
         },
+        "quick-add-color": "var(--quick-add-border-color)",
         "scheduler-color": "var(--scheduler-border-color)",
         "theme-card-priority": "var(--theme-card-priority)",
         // old
@@ -182,6 +183,7 @@ const config: Config = {
       },
       borderWidth: {
         // new
+        "quick-add-width": "var(--quick-add-border-width)",
         "scheduler-width": "var(--scheduler-border-width)",
         // old
         "dialog-width": "var(--border-dialog-width, 0px)",
@@ -189,6 +191,7 @@ const config: Config = {
       boxShadow: {
         // new
         dropdown: "var(--dropdown-shadow)",
+        "quick-add": "var(--quick-add-shadow)",
         scheduler: "var(--scheduler-shadow)",
         "task-drop": "var(--task-drop-shadow)",
         // old

@@ -1,11 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ConfirmDialog,
-  ErrorDialog,
-  QuickAddDialog,
-} from "@/components/dialogs";
+import { ConfirmDialog, ErrorDialog } from "@/components/dialogs";
 import {
   useSetShowSidebarSm,
   useShowSidebar,
@@ -68,7 +64,6 @@ export default function RootView() {
       <ConfirmDialog />
       <Dialogs />
       <ErrorDialog />
-      <QuickAddDialog />
     </div>
   );
 }

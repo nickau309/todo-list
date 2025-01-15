@@ -1,4 +1,4 @@
-import { createTask } from "@/lib/actions";
+import { createTask } from "@/actions/task";
 import Link from "next/link";
 
 export default function Page() {

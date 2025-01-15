@@ -52,11 +52,7 @@ export const CreateProjectSchema = z.object({
 });
 
 // task
-export const TaskDueDateSchema = z.object({
-  date: z.string().date(),
-});
-
-export const TaskInfoSchema = z.object({
+export const TaskSchema = z.object({
   name: z
     .string({
       errorMap: (issue, ctx) => {
@@ -84,14 +80,30 @@ export const TaskInfoSchema = z.object({
       },
     })
     .max(16383),
+  dueDate: z
+    .union([z.date(), z.string().datetime().pipe(z.coerce.date())])
+    .nullable(),
+  priority: z.coerce.number().int().gte(1).lte(4),
+  labelIds: z.coerce.number().int().array(),
+  projectId: z.coerce.number().int().nullable(),
+  childOrder: z.coerce.number().int().gte(0).nullish(),
 });
+
+export const TaskInfoSchema = TaskSchema.pick({
+  name: true,
+  description: true,
+});
+
+export const TaskDueDateSchema = TaskSchema.pick({
+  dueDate: true,
+}).required();
 
 export const TaskIsCompletedSchema = z.object({
   isCompleted: z.enum(["true", "false"]).transform((value) => value === "true"),
 });
 
-export const UpdatePrioritySchema = z.object({
-  priority: z.coerce.number().int().gte(1).lte(4),
+export const UpdatePrioritySchema = TaskSchema.pick({
+  priority: true,
 });
 
 export const UpdateProjectIdSchema = z.object({

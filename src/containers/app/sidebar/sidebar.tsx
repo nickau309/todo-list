@@ -1,5 +1,6 @@
 "use client";
 
+import AddTask from "./add-task";
 import { SidebarProvider } from "./contexts/sidebar-context";
 import Notifications from "./notifications";
 import Overlay from "./overlay";
@@ -21,18 +22,19 @@ export default function Sidebar() {
       <Placeholder />
       <Overlay />
       <Panel>
-        <div className="flex h-full w-full flex-col">
-          <div className="flex items-center justify-between p-3">
-            <div className="ml-[-3px] max-w-[calc(85%-40px)]">
-              <SettingsMenu />
-            </div>
-            <div className="relative flex pr-10">
-              <Notifications />
-              <Toggle />
-            </div>
+        <div className="flex items-center justify-between p-3">
+          <div className="ml-[-3px] max-w-[calc(85%-40px)]">
+            <SettingsMenu />
           </div>
-          <div>bla</div>
+          <div className="relative flex pr-10">
+            <Notifications />
+            <Toggle />
+          </div>
         </div>
+        <div className="px-3">
+          <AddTask />
+        </div>
+        <div>bla</div>
         <Resizer />
       </Panel>
     </SidebarProvider>

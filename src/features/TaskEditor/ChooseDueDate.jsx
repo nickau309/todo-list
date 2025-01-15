@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { DueDateIcon16 } from "@/assets";
+import { DueDateOutlineIcon16 } from "@/assets";
 import { DueDateDropdown } from "@/components/dropdowns";
 import {
   classNames,
@@ -45,7 +45,7 @@ export default function ChooseDueDate({ editId, editType }) {
                 : ""
             }
           >
-            <DueDateIcon16 />
+            <DueDateOutlineIcon16 />
           </span>
           <span className="font-reactist text-[13px]">
             {dueDate ? description : "Due date"}

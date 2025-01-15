@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useFetcher, useParams } from "react-router-dom";
 import { autoUpdate, flip, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
-import { AddSmIcon24, DueDateIcon16, RemoveIcon24 } from "@/assets";
+import { AddSmIcon24, DueDateOutlineIcon16, RemoveIcon24 } from "@/assets";
 import { DueDateDropdown } from "@/components/dropdowns";
 import {
   classNames,
@@ -75,7 +75,7 @@ export default function DueDate({ disabled, dueDate }) {
             }}
           >
             <span className={classNames("mr-2", className)}>
-              <DueDateIcon16 />
+              <DueDateOutlineIcon16 />
             </span>
             <span className="grow select-none truncate text-left font-reactist text-xs">
               {description}

@@ -62,6 +62,9 @@
     --priorities-p4-disabled-tint: #d6d6d6;
     --priorities-p4-idle-fill: #999;
     --priorities-p4-idle-tint: #999;
+    --quick-add-border-color: currentColor;
+    --quick-add-border-width: 0px;
+    --quick-add-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
     --rgb-berry-red: 184 37 95;
     --rgb-red: 207 71 58;
     --rgb-orange: 199 113 0;
@@ -194,6 +197,10 @@
     --priorities-p4-disabled-tint: #575757;
     --priorities-p4-idle-fill: #a9a9a9;
     --priorities-p4-idle-tint: #a9a9a9;
+    --quick-add-border-color: #383838;
+    --quick-add-border-width: 1px;
+    --quick-add-shadow: 0 1px 4px rgba(0, 0, 0, 0.08),
+      0 15px 50px rgba(0, 0, 0, 0.6);
     --rgb-berry-red: 214 43 111;
     --rgb-red: 207 71 58;
     --rgb-orange: 244 131 24;

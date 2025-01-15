@@ -16,6 +16,8 @@ export { default as AddSectionIcon24 } from "./AddSectionIcon24.svg";
 
 export { default as AddSmIcon24 } from "./AddSmIcon24.svg";
 
+export { default as AddTaskIcon24 } from "./AddTaskIcon24.svg";
+
 export { default as AlertIcon24 } from "./AlertIcon24.svg";
 
 export { default as AppIcon24 } from "./AppIcon24.svg";
@@ -90,9 +92,11 @@ export { default as DropdownIcon24 } from "./DropdownIcon24.svg";
 
 export { default as DueDateIcon12 } from "./DueDateIcon12.svg";
 
-export { default as DueDateIcon16 } from "./DueDateIcon16.svg";
-
 export { default as DueDateIcon24 } from "./DueDateIcon24.svg";
+
+export { default as DueDateOutlineIcon16 } from "./DueDateOutlineIcon16.svg";
+
+export { default as DueDateSolidIcon16 } from "./DueDateSolidIcon16.svg";
 
 export { default as DuplicateIcon24 } from "./DuplicateIcon24.svg";
 
@@ -295,6 +299,8 @@ export { default as TomorrowIcon24 } from "./TomorrowIcon24.svg";
 export { default as TomorrowIcon28 } from "./TomorrowIcon28.svg";
 
 export { default as UnarchiveIcon24 } from "./UnarchiveIcon24.svg";
+
+export { default as UpgradeIcon16 } from "./UpgradeIcon16.svg";
 
 export { default as UpgradeIcon24 } from "./UpgradeIcon24.svg";
 
