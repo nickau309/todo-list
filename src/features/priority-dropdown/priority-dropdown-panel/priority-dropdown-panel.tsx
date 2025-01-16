@@ -1,4 +1,3 @@
-import { PRIORITY_ITEMS } from "@/constants/task/priority";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -7,12 +6,14 @@ import {
 } from "@floating-ui/react";
 import clsx from "clsx";
 import type { KeyboardEvent } from "react";
-import { usePriorityDropdown } from "./priority-dropdown";
+import { usePriorityDropdown } from "../priority-dropdown";
 import PriorityDropdownOption from "./priority-dropdown-option";
+
+const PRIORITY_OPTIONS = [1, 2, 3, 4] as const;
 
 export default function PriorityDropdownPanel() {
   const {
-    setSelectedItem,
+    setSelectedPriority,
     isOpen,
     setIsOpen,
     activeIndex,
@@ -29,30 +30,36 @@ export default function PriorityDropdownPanel() {
       {isOpen && (
         <FloatingPortal id="root">
           <FloatingOverlay lockScroll className="z-40">
-            <FloatingFocusManager context={context}>
+            <FloatingFocusManager context={context} visuallyHiddenDismiss>
               <div
                 ref={refs.setFloating}
                 aria-label="Select a priority"
                 style={floatingStyles}
                 className={clsx(
-                  "box-content flex max-h-[300px] max-w-full flex-col overflow-hidden rounded-[10px]",
-                  "border border-dropdown bg-dropdown font-sans text-dropdown shadow-dropdown",
+                  "box-content",
+                  "flex max-h-[300px] max-w-full overflow-hidden rounded-[10px] border border-dropdown",
+                  "bg-dropdown text-dropdown",
+                  "shadow-dropdown",
                   "focus-visible:outline-none",
                 )}
                 {...getFloatingProps({
                   onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
                     if (e.key === "Enter" && activeIndex !== null) {
-                      setSelectedItem(PRIORITY_ITEMS[activeIndex]);
+                      e.preventDefault();
+                      setSelectedPriority(PRIORITY_OPTIONS[activeIndex]);
                       setIsOpen(false);
-                    } else if (e.key === "") {
+                    } else if (e.key === " ") {
                       e.preventDefault();
                     }
                   },
                 })}
               >
-                <div className="flex flex-col overflow-y-auto overflow-x-hidden">
-                  {PRIORITY_ITEMS.map((item) => (
-                    <PriorityDropdownOption key={item.priority} item={item} />
+                <div className="min-w-0 flex-1 overflow-y-auto overflow-x-hidden">
+                  {PRIORITY_OPTIONS.map((priority) => (
+                    <PriorityDropdownOption
+                      key={priority}
+                      priority={priority}
+                    />
                   ))}
                 </div>
               </div>

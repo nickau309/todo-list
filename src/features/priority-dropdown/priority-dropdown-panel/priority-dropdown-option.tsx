@@ -1,31 +1,31 @@
 import { Priority4Icon24, PriorityIcon24, SelectCheckIcon12 } from "@/assets";
-import type { PriorityItemType } from "@/types/task";
+import getPriorityTextColor from "@/utils/getPriorityTextColor";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { useId } from "react";
-import { usePriorityDropdown } from "./priority-dropdown";
+import { usePriorityDropdown } from "../priority-dropdown";
 
-type PriorityDropdownOptionProps = {
-  item: PriorityItemType;
+type OptionProps = {
+  priority: number;
 };
 
-export default function PriorityDropdownOption({
-  item,
-}: PriorityDropdownOptionProps) {
-  const { ref, index } = useListItem({ label: `Priority ${item.priority}` });
+export default function PriorityDropdownOption({ priority }: OptionProps) {
+  const label = `Priority ${priority}`;
+
+  const { ref, index } = useListItem({ label });
 
   const id = useId();
 
   const {
-    selectedItem,
-    setSelectedItem,
+    selectedPriority,
+    setSelectedPriority,
     setIsOpen,
     activeIndex,
     getItemProps,
   } = usePriorityDropdown("PriorityDropdownOption");
 
   const isActive = activeIndex === index;
-  const isSelected = selectedItem.priority === item.priority;
+  const isSelected = selectedPriority === priority;
 
   return (
     <button
@@ -37,21 +37,21 @@ export default function PriorityDropdownOption({
       role="option"
       tabIndex={isActive ? 0 : -1}
       className={clsx(
-        "flex items-center gap-2.5 px-2 py-1",
+        "flex w-full items-center gap-2.5 px-2 py-1",
         "focus-visible:outline-none",
         "data-[active='true']:bg-option-active",
       )}
       {...getItemProps({
         onClick() {
-          setSelectedItem(item);
+          setSelectedPriority(priority);
           setIsOpen(false);
         },
       })}
     >
-      <span className={item.text_color}>
-        {item.priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
+      <span className={getPriorityTextColor(priority)}>
+        {priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
       </span>
-      <span className="truncate text-[13px]/6">Priority {item.priority}</span>
+      <span className="truncate font-sans text-[13px]/6">{label}</span>
       {isSelected && (
         <span className="text-display-accent-primary-tint">
           <SelectCheckIcon12 className="size-3.5" />

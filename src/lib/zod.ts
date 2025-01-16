@@ -102,7 +102,7 @@ export const TaskIsCompletedSchema = z.object({
   isCompleted: z.enum(["true", "false"]).transform((value) => value === "true"),
 });
 
-export const UpdatePrioritySchema = TaskSchema.pick({
+export const TaskPrioritySchema = TaskSchema.pick({
   priority: true,
 });
 

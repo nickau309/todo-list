@@ -1,15 +1,11 @@
 import { updatePriority } from "@/actions/task";
 import { Priority4Icon24, PriorityIcon24 } from "@/assets";
 import {
-  PRIORITY_ITEMS,
-  PRIORITY_ITEMS_DEFAULT_INDEX,
-} from "@/constants/task/priority";
-import {
   PriorityDropdown,
   PriorityDropdownButton,
   PriorityDropdownPanel,
 } from "@/features/priority-dropdown";
-import { PriorityItemType } from "@/types/task";
+import getPriorityTextColor from "@/utils/getPriorityTextColor";
 import clsx from "clsx";
 import { startTransition, useCallback } from "react";
 import {
@@ -25,30 +21,29 @@ export default function Priority({ disabled = false }: PriorityProps) {
   const { id, priority } = useOptimisticTask();
   const setOptimisticTask = useSetOptimisticTask();
 
-  const item =
-    PRIORITY_ITEMS.find((item) => item.priority === priority) ??
-    PRIORITY_ITEMS[PRIORITY_ITEMS_DEFAULT_INDEX];
-
-  const setItem = useCallback(
-    (item: PriorityItemType) => {
+  const setPriority = useCallback(
+    (priority: number) => {
       startTransition(() => {
         setOptimisticTask((optimisticTask) => ({
           ...optimisticTask,
-          priority: item.priority,
+          priority,
         }));
       });
       const formData = new FormData();
-      formData.append("priority", String(item.priority));
+      formData.append("priority", String(priority));
       void updatePriority(id, formData);
     },
     [id, setOptimisticTask],
   );
 
   return (
-    <PriorityDropdown disabled={disabled} item={item} setItem={setItem}>
+    <PriorityDropdown
+      priority={priority}
+      setPriority={setPriority}
+      disabled={disabled}
+    >
       <div className="flex items-center px-3">
         <PriorityDropdownButton
-          type="button"
           className={clsx(
             "group",
             "flex h-10 min-w-[68px] flex-1 select-none items-center gap-3.5 rounded-[5px] pl-1.5 pr-3",
@@ -58,11 +53,14 @@ export default function Priority({ disabled = false }: PriorityProps) {
           )}
         >
           <span
-            className={clsx(item.text_color, "group-aria-disabled:opacity-60")}
+            className={clsx(
+              getPriorityTextColor(priority),
+              "group-aria-disabled:opacity-60",
+            )}
           >
-            {item.priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
+            {priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
           </span>
-          <span className="truncate text-sm/8">Priority {item.priority}</span>
+          <span className="truncate text-sm/8">Priority {priority}</span>
         </PriorityDropdownButton>
       </div>
       <PriorityDropdownPanel />

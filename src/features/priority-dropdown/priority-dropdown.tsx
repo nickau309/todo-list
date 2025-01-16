@@ -1,4 +1,3 @@
-import type { PriorityItemType } from "@/types/task";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
@@ -21,9 +20,9 @@ import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useMemo, useRef, useState } from "react";
 
 type DropdownContextType = {
+  selectedPriority: number;
+  setSelectedPriority: (priority: number) => void;
   disabled: boolean;
-  selectedItem: PriorityItemType;
-  setSelectedItem: (item: PriorityItemType) => void;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   activeIndex: number | null;
@@ -34,18 +33,18 @@ type DropdownContextType = {
 
 type DropdownProps = {
   children: ReactNode;
+  priority: number;
+  setPriority: (priority: number) => void;
   disabled?: boolean;
-  item: PriorityItemType;
-  setItem: (item: PriorityItemType) => void;
 };
 
 const DropdownContext = createContext<DropdownContextType | null>(null);
 
 export default function PriorityDropdown({
   children,
+  priority: selectedPriority,
+  setPriority: setSelectedPriority,
   disabled = false,
-  item: selectedItem,
-  setItem: setSelectedItem,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -53,10 +52,10 @@ export default function PriorityDropdown({
   const elementsRef: UseListNavigationProps["listRef"] = useRef([]);
   const labelsRef: UseTypeaheadProps["listRef"] = useRef([]);
 
-  const { context, floatingStyles, refs } = useFloating<HTMLButtonElement>({
+  const { context, floatingStyles, refs } = useFloating({
     middleware: [
       flip({ fallbackAxisSideDirection: "start" }),
-      shift({ padding: 8 }),
+      shift({ padding: 16 }),
     ],
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -83,11 +82,11 @@ export default function PriorityDropdown({
     [click, role, dismiss, listNavigation, typeahead],
   );
 
-  const contextValue = useMemo(
+  const contextValue = useMemo<DropdownContextType>(
     () => ({
+      selectedPriority,
+      setSelectedPriority,
       disabled,
-      selectedItem,
-      setSelectedItem,
       isOpen,
       setIsOpen,
       activeIndex,
@@ -110,8 +109,8 @@ export default function PriorityDropdown({
       getReferenceProps,
       isOpen,
       refs,
-      selectedItem,
-      setSelectedItem,
+      selectedPriority,
+      setSelectedPriority,
     ],
   );
 

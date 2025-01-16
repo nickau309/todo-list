@@ -1,4 +1,3 @@
-import { PRIORITY_ITEMS } from "@/constants/task/priority";
 import type { Task } from "@prisma/client";
 import type { LabelType } from "./label";
 import type { ProjectPreviewType } from "./project";
@@ -15,5 +14,3 @@ export type TaskType = Task & {
   project: ProjectPreviewType;
   labels: LabelType[];
 };
-
-export type PriorityItemType = (typeof PRIORITY_ITEMS)[number];

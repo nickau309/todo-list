@@ -8,7 +8,7 @@ import {
   TaskInfoSchema,
   TaskIsCompletedSchema,
   TaskSchema,
-  UpdatePrioritySchema,
+  TaskPrioritySchema,
   UpdateProjectIdSchema,
   UpdateTaskLabelSchema,
 } from "@/lib/zod";
@@ -30,7 +30,6 @@ export async function createTask(formData: FormData) {
   };
 
   const parsed = TaskSchema.parse(data);
-
   console.log({ data, parsed });
 
   if (parsed.childOrder === null) {
@@ -140,7 +139,7 @@ export async function updateIsCompleted(id: number, formData: FormData) {
 }
 
 export async function updatePriority(id: number, formData: FormData) {
-  const parsed = UpdatePrioritySchema.safeParse(Object.fromEntries(formData));
+  const parsed = TaskPrioritySchema.safeParse(Object.fromEntries(formData));
 
   if (!parsed.success) {
     throw new Error("Please fill in the form with valid values.");
