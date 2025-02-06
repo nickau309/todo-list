@@ -1,9 +1,17 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useLabelsDropdown } from "./labels-dropdown";
 
-type ButtonProps = ComponentPropsWithoutRef<"button">;
+type ButtonProps = {
+  children?: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+};
 
-export default function LabelsDropdownButton(props: ButtonProps) {
+export default function LabelsDropdownButton({
+  children,
+  className,
+  style,
+}: ButtonProps) {
   const { disabled, refs, getReferenceProps } = useLabelsDropdown(
     "LabelsDropdownButton",
   );
@@ -11,8 +19,13 @@ export default function LabelsDropdownButton(props: ButtonProps) {
   return (
     <button
       ref={refs.setReference}
+      type="button"
       aria-disabled={disabled}
-      {...getReferenceProps(props)}
-    />
+      className={className}
+      style={style}
+      {...getReferenceProps()}
+    >
+      {children}
+    </button>
   );
 }

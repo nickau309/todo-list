@@ -1,57 +1,35 @@
 import { LabelIconOutline16, LabelIconSolid12, RemoveIcon16 } from "@/assets";
-import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import { useStore } from "@/contexts/store-context";
 import {
   LabelsDropdown,
   LabelsDropdownButton,
   LabelsDropdownPanel,
 } from "@/features/labels-dropdown";
-import type { LabelType } from "@/types/label";
 import clsx from "clsx";
-import { useCallback, useMemo } from "react";
 
 type LabelsProps = {
   disabled?: boolean;
 };
 
 export default function Labels({ disabled = false }: LabelsProps) {
-  const { labels } = useOptimisticUser();
-
   const { labelIds, setLabelIds } = useStore((state) => ({
     labelIds: state.quickAddForm.inputValues.labelIds,
     setLabelIds: state.quickAddForm.setLabelIds,
   }));
 
-  const selectedLabels = useMemo(() => {
-    return labels.filter((label) => labelIds.includes(label.id));
-  }, [labels, labelIds]);
-
   const removeAllLabels = () => {
     setLabelIds([]);
   };
 
-  const toggleLabel = useCallback(
-    (label: LabelType) => {
-      const hasLabel = labelIds.includes(label.id);
-      if (hasLabel) {
-        setLabelIds(labelIds.filter((labelId) => labelId !== label.id));
-      } else {
-        setLabelIds(labelIds.concat(label.id));
-      }
-    },
-    [labelIds, setLabelIds],
-  );
-
   return (
     <LabelsDropdown
+      labelIds={labelIds}
+      setLabelIds={setLabelIds}
       disabled={disabled}
-      labels={selectedLabels}
-      toggleLabel={toggleLabel}
     >
       {labelIds.length > 0 ? (
         <div className="relative flex items-center">
           <LabelsDropdownButton
-            type="button"
             className={clsx(
               "flex h-7 items-center gap-1 rounded-[5px] border border-input-idle",
               "pl-1.5 pr-[26px]",
@@ -96,7 +74,6 @@ export default function Labels({ disabled = false }: LabelsProps) {
       ) : (
         <div className="relative flex items-center">
           <LabelsDropdownButton
-            type="button"
             className={clsx(
               "flex h-7 items-center gap-1 rounded-[5px] border border-input-idle",
               "px-1.5",

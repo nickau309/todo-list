@@ -1,6 +1,7 @@
 import "server-only";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import type { LabelType } from "@/types/label";
 import type { ProjectType } from "@/types/project";
 import type { TaskType } from "@/types/task";
 import type { UserType } from "@/types/user";
@@ -50,15 +51,6 @@ const queryUser = unstable_cache(
             name: true,
           },
           orderBy: [{ isInboxProject: "desc" }, { childOrder: "asc" }],
-        },
-        labels: {
-          select: {
-            childOrder: true,
-            color: true,
-            id: true,
-            name: true,
-          },
-          orderBy: { childOrder: "asc" },
         },
       },
     }),
@@ -206,3 +198,29 @@ export async function getIncompleteTaskCountOn(dueDate: Date) {
 // function isTask(task: unknown): task is TaskType {
 //   // write a TaskSchema for task
 // }
+
+// Labels
+export async function getLabels(): Promise<LabelType[]> {
+  const { id: userId } = await getRawUser();
+
+  const getCachedLabels = unstable_cache(
+    (userId: number) => queryLabels(userId),
+    ["labels"],
+    { tags: ["labels"] },
+  );
+
+  return getCachedLabels(userId);
+}
+
+function queryLabels(userId: number): Promise<LabelType[]> {
+  return prisma.label.findMany({
+    where: { userId },
+    select: {
+      childOrder: true,
+      color: true,
+      id: true,
+      name: true,
+    },
+    orderBy: { childOrder: "asc" },
+  });
+}

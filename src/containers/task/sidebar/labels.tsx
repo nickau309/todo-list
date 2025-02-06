@@ -1,4 +1,4 @@
-import { connectLabel, disconnectLabel } from "@/actions/task";
+import { updateLabels } from "@/actions/task";
 import { AddSmIcon24, RemoveIcon24 } from "@/assets";
 import { bgColor20, bgHoverColor50, bgHoverColor80 } from "@/constants/color";
 import {
@@ -6,7 +6,6 @@ import {
   LabelsDropdownButton,
   LabelsDropdownPanel,
 } from "@/features/labels-dropdown";
-import type { LabelType } from "@/types/label";
 import clsx from "clsx";
 import Link from "next/link";
 import { startTransition, useCallback } from "react";
@@ -23,53 +22,50 @@ export default function Labels({ disabled = false }: LabelsProps) {
   const { id, labels } = useOptimisticTask();
   const setOptimisticTask = useSetOptimisticTask();
 
-  const removeLabel = useCallback(
-    (labelId: number) => {
+  const labelIds = labels.map((label) => label.id);
+
+  const removeLabel = (removeLabelId: number) => {
+    startTransition(() => {
+      setOptimisticTask((optimisticTask) => ({
+        ...optimisticTask,
+        labels: optimisticTask.labels.filter((l) => l.id !== removeLabelId),
+      }));
+    });
+    const formData = new FormData();
+    for (const labelId of labelIds) {
+      if (labelId !== removeLabelId) {
+        formData.append("labelId", String(labelId));
+      }
+    }
+    void updateLabels(id, formData);
+  };
+
+  const setLabelIds = useCallback(
+    (labelIds: number[]) => {
       startTransition(() => {
         setOptimisticTask((optimisticTask) => ({
           ...optimisticTask,
-          labels: optimisticTask.labels.filter((l) => l.id !== labelId),
+          labels: labels.filter((label) => labelIds.includes(label.id)),
         }));
       });
       const formData = new FormData();
-      formData.append("labelId", String(labelId));
-      void disconnectLabel(id, formData);
-    },
-    [id, setOptimisticTask],
-  );
-
-  const toggleLabel = useCallback(
-    (label: LabelType) => {
-      const isConnected = labels.some((l) => l.id === label.id);
-      if (isConnected) {
-        removeLabel(label.id);
-      } else {
-        startTransition(() => {
-          setOptimisticTask((optimisticTask) => ({
-            ...optimisticTask,
-            labels: [...optimisticTask.labels, label].sort(
-              (a, b) => a.childOrder - b.childOrder,
-            ),
-          }));
-        });
-        const formData = new FormData();
-        formData.append("labelId", String(label.id));
-        void connectLabel(id, formData);
+      for (const labelId of labelIds) {
+        formData.append("labelId", String(labelId));
       }
+      void updateLabels(id, formData);
     },
-    [id, labels, removeLabel, setOptimisticTask],
+    [id, labels, setOptimisticTask],
   );
 
   return (
     <div className="flex flex-col gap-1">
       <div className="-mx-2 flex flex-col">
         <LabelsDropdown
+          labelIds={labelIds}
+          setLabelIds={setLabelIds}
           disabled={disabled}
-          labels={labels}
-          toggleLabel={toggleLabel}
         >
           <LabelsDropdownButton
-            type="button"
             className={clsx(
               "group flex h-7 min-w-[68px] select-none items-center gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
               "text-actionable-quaternary-idle-tint",

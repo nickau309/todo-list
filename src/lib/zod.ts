@@ -1,5 +1,5 @@
 import { maxNameLength } from "@/constants/user";
-import { Theme } from "@prisma/client";
+import { Color, Theme } from "@prisma/client";
 import { z } from "zod";
 
 export const CredentialSchema = z.object({
@@ -106,17 +106,18 @@ export const TaskPrioritySchema = TaskSchema.pick({
   priority: true,
 });
 
+export const TaskLabelIdsSchema = TaskSchema.pick({
+  labelIds: true,
+});
+
 export const UpdateProjectIdSchema = z.object({
   projectId: z.coerce.number().int(),
 });
 
-export const UpdateTaskLabelSchema = z.object({
-  labelId: z.coerce.number().int(),
-});
-
 // label
-export const CreateLabelSchema = z.object({
-  name: z.string().max(60),
+export const LabelSchema = z.object({
+  name: z.string().min(1).max(60),
+  color: z.nativeEnum(Color).optional(),
 });
 
 // General

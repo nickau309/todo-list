@@ -7,10 +7,10 @@ import {
   TaskDueDateSchema,
   TaskInfoSchema,
   TaskIsCompletedSchema,
-  TaskSchema,
+  TaskLabelIdsSchema,
   TaskPrioritySchema,
+  TaskSchema,
   UpdateProjectIdSchema,
-  UpdateTaskLabelSchema,
 } from "@/lib/zod";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
@@ -168,18 +168,19 @@ export async function updateProjectId(id: number, formData: FormData) {
   revalidateTag(`task-${id}`);
 }
 
-export async function connectLabel(id: number, formData: FormData) {
-  const parsed = UpdateTaskLabelSchema.safeParse(Object.fromEntries(formData));
+export async function updateLabels(id: number, formData: FormData) {
+  const data = {
+    labelIds: formData.getAll("labelId"),
+  };
 
-  if (!parsed.success) {
-    throw new Error("Please fill in the form with valid values.");
-  }
+  const parsed = TaskLabelIdsSchema.parse(data);
+  console.log({ data, parsed });
 
   await prisma.task.update({
     where: { id },
     data: {
       labels: {
-        connect: { id: parsed.data.labelId },
+        set: parsed.labelIds.map((labelId) => ({ id: labelId })),
       },
     },
   });
@@ -194,25 +195,6 @@ export async function deleteTask(id: number, redirectTo = "/app/today") {
 
   revalidateTag(`task-${id}`);
   redirect(redirectTo);
-}
-
-export async function disconnectLabel(id: number, formData: FormData) {
-  const parsed = UpdateTaskLabelSchema.safeParse(Object.fromEntries(formData));
-
-  if (!parsed.success) {
-    throw new Error("Please fill in the form with valid values.");
-  }
-
-  await prisma.task.update({
-    where: { id },
-    data: {
-      labels: {
-        disconnect: { id: parsed.data.labelId },
-      },
-    },
-  });
-
-  revalidateTag(`task-${id}`);
 }
 
 export async function duplicateTask(id: number) {
