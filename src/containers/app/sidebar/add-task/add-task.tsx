@@ -1,6 +1,6 @@
 import ConfirmDialog from "@/components/confirm-dialog";
 import { INIT_INPUT_VALUES } from "@/constants/quick-add-form";
-import { useOptimisticUser } from "@/contexts/optimistic-user-context";
+import { useProjects } from "@/contexts/projects-context";
 import { useStore } from "@/contexts/store-context";
 import useBeforeUnload from "@/hooks/use-before-unload";
 import { useSelectedLayoutSegments } from "next/navigation";
@@ -12,7 +12,7 @@ import QuickAddDialogPanel from "./quick-add-dialog-panel";
 import QuickAddForm from "./quick-add-form";
 
 export default function AddTask() {
-  const { projects } = useOptimisticUser();
+  const projects = useProjects();
 
   const {
     isQuickAddDialogOpen,

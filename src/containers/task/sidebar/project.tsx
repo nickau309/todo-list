@@ -1,12 +1,12 @@
 import { updateProjectId } from "@/actions/task";
 import { DropdownIcon24, InboxIcon16, NumberSignIcon16 } from "@/assets";
 import { textColor } from "@/constants/color";
+import { useProjects } from "@/contexts/projects-context";
 import {
   ProjectDropdown,
   ProjectDropdownButton,
   ProjectDropdownPanel,
 } from "@/features/project-dropdown";
-import type { ProjectPreviewType } from "@/types/project";
 import clsx from "clsx";
 import { startTransition, useCallback } from "react";
 import {
@@ -19,29 +19,34 @@ type ProjectProps = {
 };
 
 export default function Project({ disabled = false }: ProjectProps) {
-  const { id, project } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { id, projectId } = useOptimisticTask();
   const setOptimisticTask = useSetOptimisticTask();
 
-  const setProject = useCallback(
-    (project: ProjectPreviewType) => {
+  const setProjectId = useCallback(
+    (projectId: number) => {
       startTransition(() => {
         setOptimisticTask((optimisticTask) => ({
           ...optimisticTask,
-          project,
+          projectId,
         }));
       });
       const formData = new FormData();
-      formData.append("projectId", String(project.id));
+      formData.append("projectId", String(projectId));
       void updateProjectId(id, formData);
     },
     [id, setOptimisticTask],
   );
 
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+
   return (
     <ProjectDropdown
       disabled={disabled}
-      project={project}
-      setProject={setProject}
+      projectId={projectId}
+      setProjectId={setProjectId}
     >
       <div className="flex flex-col">
         <div

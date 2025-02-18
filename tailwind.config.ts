@@ -563,6 +563,9 @@ const config: Config = {
         option: {
           checkbox: "var(--option-checkbox)",
         },
+        "project-dropdown-option": {
+          check: "var(--project-dropdown-option-check)",
+        },
         // old
         banner: {
           title: "var(--text-banner-title, #202020)",

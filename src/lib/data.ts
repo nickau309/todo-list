@@ -2,7 +2,7 @@ import "server-only";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import type { LabelType } from "@/types/label";
-import type { ProjectType } from "@/types/project";
+import type { NewProjectType, ProjectType } from "@/types/project";
 import type { TaskType } from "@/types/task";
 import type { UserType } from "@/types/user";
 import dayjs from "dayjs";
@@ -42,17 +42,6 @@ const queryUser = unstable_cache(
   async (id: number) =>
     prisma.user.findUnique({
       where: { id },
-      include: {
-        projects: {
-          select: {
-            color: true,
-            id: true,
-            isInboxProject: true,
-            name: true,
-          },
-          orderBy: [{ isInboxProject: "desc" }, { childOrder: "asc" }],
-        },
-      },
     }),
   ["user"],
   { tags: ["user"] },
@@ -137,15 +126,6 @@ export async function getTask(id: string): Promise<TaskType> {
       prisma.task.findUnique({
         where: { id },
         include: {
-          project: {
-            select: {
-              color: true,
-              id: true,
-              isArchived: true,
-              isInboxProject: true,
-              name: true,
-            },
-          },
           labels: {
             select: {
               childOrder: true,
@@ -198,6 +178,36 @@ export async function getIncompleteTaskCountOn(dueDate: Date) {
 // function isTask(task: unknown): task is TaskType {
 //   // write a TaskSchema for task
 // }
+
+// Projects
+export async function getProjects(): Promise<NewProjectType[]> {
+  const { id: userId } = await getRawUser();
+
+  const getCachedProjects = unstable_cache(
+    (userId: number) => queryProjects(userId),
+    ["projects"],
+    { tags: ["projects"] },
+  );
+
+  return getCachedProjects(userId);
+}
+
+function queryProjects(userId: number): Promise<NewProjectType[]> {
+  return prisma.project.findMany({
+    where: { userId },
+    select: {
+      childOrder: true,
+      color: true,
+      id: true,
+      isArchived: true,
+      isFavorite: true,
+      isInboxProject: true,
+      name: true,
+      viewStyle: true,
+    },
+    orderBy: [{ isInboxProject: "desc" }, { childOrder: "asc" }],
+  });
+}
 
 // Labels
 export async function getLabels(): Promise<LabelType[]> {

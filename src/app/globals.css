@@ -129,6 +129,7 @@
     --display-accent-primary-fill: #dc4c3e;
     --display-accent-primary-tint: #dc4c3e;
     --display-accent-secondary-fill: #fde7d8;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #dc4c3e;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #f2efed;
@@ -197,6 +198,7 @@
     --priorities-p4-disabled-tint: #575757;
     --priorities-p4-idle-fill: #a9a9a9;
     --priorities-p4-idle-tint: #a9a9a9;
+    --project-dropdown-option-check: var(--display-primary-idle-tint);
     --quick-add-border-color: #383838;
     --quick-add-border-width: 1px;
     --quick-add-shadow: 0 1px 4px rgba(0, 0, 0, 0.08),
@@ -265,6 +267,7 @@
     --display-accent-primary-fill: #39485e;
     --display-accent-primary-tint: #39485e;
     --display-accent-secondary-fill: #e0e2e5;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #39485e;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #efeff1;
@@ -285,6 +288,7 @@
     --display-accent-primary-fill: #d68400;
     --display-accent-primary-tint: #995e00;
     --display-accent-secondary-fill: #fdecdc;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #d68400;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #f4f1eb;
@@ -305,6 +309,7 @@
     --display-accent-primary-fill: #4c7a45;
     --display-accent-primary-tint: #4c7a45;
     --display-accent-secondary-fill: #e8f1d0;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #4c7a45;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #f2f2e9;
@@ -325,6 +330,7 @@
     --display-accent-primary-fill: #297abc;
     --display-accent-primary-tint: #297abc;
     --display-accent-secondary-fill: #d6e5f3;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #297abc;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #eef2f6;
@@ -345,6 +351,7 @@
     --display-accent-primary-fill: #766bbd;
     --display-accent-primary-tint: #766bbd;
     --display-accent-secondary-fill: #e8e3f4;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #766bbd;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #ededf2;
@@ -365,6 +372,7 @@
     --display-accent-primary-fill: #c5496c;
     --display-accent-primary-tint: #c5496c;
     --display-accent-secondary-fill: #f8e2e7;
+    --project-dropdown-option-check: var(--actionable-primary-idle-fill);
     --selectable-primary-selected-fill: #c5496c;
     --selectable-primary-unselected-fill: #b3b3b3;
     --selectable-secondary-hover-fill: #f2eded;

@@ -2,13 +2,19 @@
 
 import { InboxIcon16, NumberSignIcon16 } from "@/assets";
 import { textColor } from "@/constants/color";
+import { useProjects } from "@/contexts/projects-context";
 import clsx from "clsx";
 import type { Route } from "next";
 import Link from "next/link";
 import { useOptimisticTask } from "../contexts/optimistic-task-context";
 
 export default function Title() {
-  const { project } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { projectId } = useOptimisticTask();
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
 
   const href: Route = project.isInboxProject
     ? "/app/inbox"

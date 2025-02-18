@@ -1,4 +1,3 @@
-import type { ProjectPreviewType } from "@/types/project";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
@@ -14,47 +13,33 @@ import {
   useRole,
 } from "@floating-ui/react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 type DropdownContextType = {
   disabled: boolean;
-  selectedProject: ProjectPreviewType;
-  setSelectedProject: (project: ProjectPreviewType) => void;
+  selectedProjectId: number;
+  setSelectedProjectId: (projectId: number) => void;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  activeIndex: number | null;
-  setActiveIndex: Dispatch<SetStateAction<number | null>>;
 } & Pick<UseFloatingData, "context" | "floatingStyles" | "refs"> &
   Pick<UseInteractionsReturn, "getReferenceProps" | "getFloatingProps">;
 
 type DropdownProps = {
   children: ReactNode;
+  projectId: number;
+  setProjectId: (projectId: number) => void;
   disabled?: boolean;
-  project: ProjectPreviewType;
-  setProject: (project: ProjectPreviewType) => void;
 };
 
 const DropdownContext = createContext<DropdownContextType | null>(null);
 
 export default function ProjectDropdown({
   children,
+  projectId: selectedProjectId,
+  setProjectId: setSelectedProjectId,
   disabled = false,
-  project: selectedProject,
-  setProject: setSelectedProject,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const onOpenChange = useCallback((open: boolean) => {
-    setIsOpen(open);
-    setActiveIndex(null);
-  }, []);
 
   const { context, floatingStyles, refs } = useFloating<HTMLButtonElement>({
     middleware: [
@@ -62,7 +47,7 @@ export default function ProjectDropdown({
       shift({ padding: 8 }),
     ],
     open: isOpen,
-    onOpenChange,
+    onOpenChange: setIsOpen,
     whileElementsMounted: autoUpdate,
   });
 
@@ -76,15 +61,13 @@ export default function ProjectDropdown({
     dismiss,
   ]);
 
-  const value = useMemo(
+  const value = useMemo<DropdownContextType>(
     () => ({
       disabled,
-      selectedProject,
-      setSelectedProject,
+      selectedProjectId,
+      setSelectedProjectId,
       isOpen,
       setIsOpen,
-      activeIndex,
-      setActiveIndex,
       context,
       floatingStyles,
       refs,
@@ -92,7 +75,6 @@ export default function ProjectDropdown({
       getFloatingProps,
     }),
     [
-      activeIndex,
       context,
       disabled,
       floatingStyles,
@@ -100,8 +82,8 @@ export default function ProjectDropdown({
       getReferenceProps,
       isOpen,
       refs,
-      selectedProject,
-      setSelectedProject,
+      selectedProjectId,
+      setSelectedProjectId,
     ],
   );
 

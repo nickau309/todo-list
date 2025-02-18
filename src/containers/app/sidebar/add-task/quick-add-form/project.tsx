@@ -1,22 +1,20 @@
 import { DropdownIcon16, InboxIcon16, NumberSignIcon16 } from "@/assets";
 import { textColor } from "@/constants/color";
-import { useOptimisticUser } from "@/contexts/optimistic-user-context";
+import { useProjects } from "@/contexts/projects-context";
 import { useStore } from "@/contexts/store-context";
 import {
   ProjectDropdown,
   ProjectDropdownButton,
   ProjectDropdownPanel,
 } from "@/features/project-dropdown";
-import type { ProjectPreviewType } from "@/types/project";
 import clsx from "clsx";
-import { useCallback } from "react";
 
 type ProjectProps = {
   disabled?: boolean;
 };
 
 export default function Project({ disabled = false }: ProjectProps) {
-  const { projects } = useOptimisticUser();
+  const projects = useProjects();
 
   const { projectId, setProjectId } = useStore((state) => ({
     projectId: state.quickAddForm.inputValues.projectId,
@@ -26,18 +24,11 @@ export default function Project({ disabled = false }: ProjectProps) {
   const project =
     projects.find((project) => project.id === projectId) ?? projects[0];
 
-  const setProject = useCallback(
-    (project: ProjectPreviewType) => {
-      setProjectId(project.id);
-    },
-    [setProjectId],
-  );
-
   return (
     <ProjectDropdown
       disabled={disabled}
-      project={project}
-      setProject={setProject}
+      projectId={projectId ?? projects[0].id}
+      setProjectId={setProjectId}
     >
       <ProjectDropdownButton
         type="button"

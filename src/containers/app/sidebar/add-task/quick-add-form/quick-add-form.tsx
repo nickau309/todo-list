@@ -1,5 +1,5 @@
 import { createTask } from "@/actions/task";
-import { useOptimisticUser } from "@/contexts/optimistic-user-context";
+import { useProjects } from "@/contexts/projects-context";
 import { useStore } from "@/contexts/store-context";
 import { TaskSchema } from "@/lib/zod";
 import type { FormEvent } from "react";
@@ -10,7 +10,7 @@ import Project from "./project";
 import SubmitButton from "./submit-button";
 
 export default function QuickAddForm() {
-  const { projects } = useOptimisticUser();
+  const projects = useProjects();
 
   const { setIsOpen, inputValues } = useStore((state) => ({
     setIsOpen: state.quickAddDialog.setIsOpen,

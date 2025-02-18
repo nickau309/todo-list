@@ -1,5 +1,6 @@
 "use client";
 
+import { useProjects } from "@/contexts/projects-context";
 import { useOptimisticTask } from "../contexts/optimistic-task-context";
 import { useTaskState } from "../contexts/task-context";
 import DueDate from "./due-date";
@@ -9,12 +10,15 @@ import Project from "./project";
 import Reminders from "./reminders";
 
 export default function MiniContent() {
-  const {
-    isCompleted,
-    project: { isArchived },
-  } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { isCompleted, projectId } = useOptimisticTask();
 
   const { isEditingInfo } = useTaskState();
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+  const { isArchived } = project;
 
   const isDisabled = isCompleted || isArchived || isEditingInfo;
 

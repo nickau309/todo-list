@@ -1,5 +1,6 @@
 "use client";
 
+import { useProjects } from "@/contexts/projects-context";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -19,9 +20,9 @@ import Print from "./print";
 import ViewTaskActivity from "./view-task-activity";
 
 export default function MoreActionMenuPanel() {
-  const {
-    project: { isArchived },
-  } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { projectId } = useOptimisticTask();
 
   const {
     isOpen,
@@ -32,6 +33,10 @@ export default function MoreActionMenuPanel() {
     refs,
     getFloatingProps,
   } = useMoreActionMenu("MoreActionMenuItems");
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+  const { isArchived } = project;
 
   return (
     <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>

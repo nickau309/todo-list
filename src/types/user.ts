@@ -1,5 +1,4 @@
 import type { User } from "@prisma/client";
-import { ProjectPreviewType } from "./project";
 
 export type LocalSettingsType = {
   syncTheme: boolean;
@@ -9,6 +8,4 @@ export type LocalSettingsType = {
 
 export type ThemeType = User["theme"];
 
-export type UserType = Omit<User, "password"> & {
-  projects: ProjectPreviewType[];
-};
+export type UserType = Omit<User, "password">;

@@ -3,7 +3,7 @@ import ClientComponent from "@/components/client-component";
 import LoadingComponent from "@/components/loading-component";
 import Sidebar from "@/containers/app/sidebar";
 import { StoreProvider } from "@/contexts/store-context";
-import { getLabels, getUser } from "@/lib/data";
+import { getLabels, getProjects, getUser } from "@/lib/data";
 import Link from "next/link";
 import { type ReactNode } from "react";
 import ThemeWrapper from "./theme-wrapper";
@@ -19,10 +19,11 @@ type LayoutProps = {
 export default async function Layout({ children, dialog, task }: LayoutProps) {
   const user = await getUser();
   const labels = await getLabels();
+  const projects = await getProjects();
 
   return (
     <StoreProvider>
-      <Provider user={user} labels={labels}>
+      <Provider user={user} labels={labels} projects={projects}>
         <UpdateLocalSettings theme={user.theme} />
         <ThemeWrapper>
           <div className="flex h-dvh items-center justify-center">

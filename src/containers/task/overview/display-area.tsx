@@ -1,4 +1,5 @@
 import { DescriptionIcon16 } from "@/assets";
+import { useProjects } from "@/contexts/projects-context";
 import {
   EditorContent,
   useDescriptionViewer,
@@ -17,12 +18,9 @@ type AreaProps = {
 };
 
 export default function DisplayArea({ setFocusingField }: AreaProps) {
-  const {
-    name,
-    description,
-    isCompleted,
-    project: { isArchived },
-  } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { name, description, isCompleted, projectId } = useOptimisticTask();
 
   const { setIsEditingInfo } = useTaskControl();
 
@@ -40,6 +38,10 @@ export default function DisplayArea({ setFocusingField }: AreaProps) {
   });
 
   const { reset } = useTaskInfoFormContext();
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+  const { isArchived } = project;
 
   const disabled = isCompleted || isArchived;
 

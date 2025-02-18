@@ -47,8 +47,9 @@ export const UpdateThemeSchema = z.object({
 });
 
 // project
-export const CreateProjectSchema = z.object({
-  name: z.string().max(120),
+export const ProjectSchema = z.object({
+  name: z.string().min(1).max(120),
+  color: z.nativeEnum(Color).optional(),
 });
 
 // task

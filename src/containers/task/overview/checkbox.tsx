@@ -1,6 +1,7 @@
 "use client";
 
 import { updateIsCompleted } from "@/actions/task";
+import { useProjects } from "@/contexts/projects-context";
 import { CheckboxButton } from "@/features/checkbox";
 import { startTransition, useCallback } from "react";
 import {
@@ -10,12 +11,9 @@ import {
 import { useTaskState } from "../contexts/task-context";
 
 export default function Checkbox() {
-  const {
-    id,
-    isCompleted,
-    priority,
-    project: { isArchived },
-  } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { id, isCompleted, priority, projectId } = useOptimisticTask();
   const setOptimisticTask = useSetOptimisticTask();
 
   const { isEditingInfo } = useTaskState();
@@ -34,6 +32,10 @@ export default function Checkbox() {
     },
     [id, setOptimisticTask],
   );
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+  const { isArchived } = project;
 
   const isDisabled = isArchived || isEditingInfo;
 

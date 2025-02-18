@@ -1,5 +1,6 @@
 "use client";
 
+import { useProjects } from "@/contexts/projects-context";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
@@ -50,9 +51,13 @@ export default function MoreActionMenu({
   children,
   disabled = false,
 }: MenuProps) {
-  const {
-    project: { isArchived },
-  } = useOptimisticTask();
+  const projects = useProjects();
+
+  const { projectId } = useOptimisticTask();
+
+  const project =
+    projects.find((project) => project.id === projectId) ?? projects[0];
+  const { isArchived } = project;
 
   const disabledIndices = isArchived
     ? disabledIndicesWhenProjectIsArchived
