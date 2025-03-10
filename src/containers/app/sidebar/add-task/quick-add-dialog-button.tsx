@@ -1,4 +1,5 @@
 import { AddTaskIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 import { useQuickAddDialog } from "./quick-add-dialog";
 
@@ -22,7 +23,15 @@ export default function QuickAddDialogButton() {
       <span className="text-actionable-primary-idle-fill">
         <AddTaskIcon24 />
       </span>
-      <span className="truncate text-sm/8 font-semibold">Add task</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="14px"
+        weight={600}
+        height="32px"
+      >
+        Add task
+      </Text>
     </button>
   );
 }

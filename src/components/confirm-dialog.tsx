@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -77,20 +78,31 @@ export default function ConfirmDialog({
           >
             <form onSubmit={handleFormSubmit} className="flex flex-1 flex-col">
               <header className="flex items-center justify-between gap-4 p-4 pb-2">
-                <h1
+                <Text
+                  as="h1"
                   id={labelId}
-                  className="truncate text-base/[23px] font-semibold"
+                  overflow="truncate"
+                  font="reactist"
+                  size="16px"
+                  weight={600}
+                  height="23px"
+                  color="primary"
                 >
                   Discard unsaved changes?
-                </h1>
+                </Text>
               </header>
               <div className="overflow-auto px-4">
-                <p
+                <Text
+                  as="p"
                   id={descriptionId}
-                  className="text-sm/normal tracking-[-.15px]"
+                  font="reactist"
+                  size="14px"
+                  height={1.5}
+                  spacing="-.15px"
+                  color="primary"
                 >
                   Your unsaved changes will be discarded.
-                </p>
+                </Text>
               </div>
               <footer className="flex justify-end gap-2.5 p-4 pt-6">
                 <button
@@ -107,9 +119,15 @@ export default function ConfirmDialog({
                     "custom-hocus:bg-actionable-secondary-hover-fill custom-hocus:text-actionable-secondary-hover-tint",
                   )}
                 >
-                  <span className="truncate text-[13px]/8 font-semibold">
+                  <Text
+                    overflow="truncate"
+                    font="reactist"
+                    size="13px"
+                    weight={600}
+                    height="32px"
+                  >
                     Cancel
-                  </span>
+                  </Text>
                 </button>
                 <button
                   ref={initialFocus}
@@ -125,9 +143,15 @@ export default function ConfirmDialog({
                     "custom-hocus:bg-actionable-primary-hover-fill custom-hocus:text-actionable-primary-hover-tint",
                   )}
                 >
-                  <span className="truncate text-[13px]/8 font-semibold">
+                  <Text
+                    overflow="truncate"
+                    font="reactist"
+                    size="13px"
+                    weight={600}
+                    height="32px"
+                  >
                     Discard
-                  </span>
+                  </Text>
                 </button>
               </footer>
             </form>

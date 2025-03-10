@@ -1,4 +1,5 @@
 import { ChevronDownSmIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import clsx from "clsx";
 import Image from "next/image";
@@ -37,9 +38,16 @@ export default function SettingsMenuButton() {
         />
       </span>
       <div className="flex min-w-0 flex-1 items-center">
-        <span className="truncate text-sm/8 font-semibold text-display-primary-idle-tint">
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="14px"
+          weight={600}
+          height="32px"
+          color="primary"
+        >
           {name}
-        </span>
+        </Text>
         <span>
           <ChevronDownSmIcon24 />
         </span>

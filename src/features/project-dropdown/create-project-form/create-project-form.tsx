@@ -1,4 +1,5 @@
 import { createProject } from "@/actions/project";
+import Text from "@/components/ui/text";
 import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import {
   useDispatchOptimisticProjects,
@@ -151,9 +152,16 @@ export default function CreateProjectForm() {
                       height="18"
                     />
                   </span>
-                  <span className="truncate text-[13px]/[16.8px] font-bold">
+                  <Text
+                    overflow="truncate"
+                    font="reactist"
+                    size="13px"
+                    weight={700}
+                    height="16.8px"
+                    color="primary"
+                  >
                     My Projects
-                  </span>
+                  </Text>
                 </div>
                 {optimisticProjects.slice(1).map((project) => (
                   <ProjectDropdownOption
@@ -195,9 +203,15 @@ export default function CreateProjectForm() {
           ) : (
             <div className="flex flex-col">
               <div className="flex px-2 py-[7px]">
-                <span className="truncate font-sans text-sm/[18.4px] text-[#555]">
+                <Text
+                  overflow="truncate"
+                  font="sans"
+                  size="14px"
+                  height="18.4px"
+                  color="text-[#555]"
+                >
                   Project not found
-                </span>
+                </Text>
               </div>
               <SubmitButton name={name} disabled={isSubmitting || !isValid} />
             </div>

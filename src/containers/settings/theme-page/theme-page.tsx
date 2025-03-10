@@ -1,6 +1,7 @@
 "use client";
 
 import { updateTheme } from "@/actions/settings";
+import Text from "@/components/ui/text";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -47,17 +48,33 @@ export default function ThemePage({ id }: PageProps) {
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <OpenNavMenuButton />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">Theme</h2>
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
+              Theme
+            </Text>
           </div>
         </div>
         <CloseSettingsDialogButton />
       </header>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden p-4 pb-8">
         <div className="flex flex-col gap-4">
-          <p className="text-sm/[17.6px]">
+          <Text
+            as="p"
+            font="reactist"
+            size="14px"
+            height="17.6px"
+            color="primary"
+          >
             Personalize your Todoist with colors to match your style, mood, and
             personality.
-          </p>
+          </Text>
           <SyncThemeInput />
           <AutoDarkModeInput />
           <ThemeInput />

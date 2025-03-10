@@ -1,4 +1,5 @@
 import Switch from "@/components/switch";
+import Text from "@/components/ui/text";
 import { useId } from "react";
 
 export default function TwoFAButton() {
@@ -7,12 +8,16 @@ export default function TwoFAButton() {
   return (
     <div className="flex flex-col gap-2">
       <Switch aria-describedby={descriptionId} isChecked={false} />
-      <p
+      <Text
+        as="p"
         id={descriptionId}
-        className="text-[13px]/[16.8px] text-display-secondary-idle-tint"
+        font="reactist"
+        size="13px"
+        height="16.8px"
+        color="secondary"
       >
         2FA is disabled on your Todoist account.
-      </p>
+      </Text>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { DropdownIcon16, InboxIcon16, NumberSignIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import { useProjects } from "@/contexts/projects-context";
 import { useStore } from "@/contexts/store-context";
@@ -63,9 +64,15 @@ export default function Project({ disabled = false }: ProjectProps) {
             <NumberSignIcon16 />
           </span>
         )}
-        <span className="truncate text-[13px]/8 font-semibold">
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          weight={600}
+          height="32px"
+        >
           {project.name}
-        </span>
+        </Text>
         <span>
           <DropdownIcon16 />
         </span>

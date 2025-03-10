@@ -62,6 +62,7 @@
     --priorities-p4-disabled-tint: #d6d6d6;
     --priorities-p4-idle-fill: #999;
     --priorities-p4-idle-tint: #999;
+    --priority-dropdown-option-text: var(--display-primary-idle-tint);
     --quick-add-border-color: currentColor;
     --quick-add-border-width: 0px;
     --quick-add-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
@@ -198,6 +199,7 @@
     --priorities-p4-disabled-tint: #575757;
     --priorities-p4-idle-fill: #a9a9a9;
     --priorities-p4-idle-tint: #a9a9a9;
+    --priority-dropdown-option-text: var(--display-secondary-idle-tint);
     --project-dropdown-option-check: var(--display-primary-idle-tint);
     --quick-add-border-color: #383838;
     --quick-add-border-width: 1px;
@@ -241,7 +243,7 @@
     --scheduler-preview-content-icon: #d1d1d1;
     --scheduler-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
       0 6px 6px rgba(0, 0, 0, 0.23);
-    --scheduler-suggestions-item-weekday: #ccc;
+    --scheduler-suggestions-item-weekday: var(--display-secondary-idle-tint);
     --scrollbar-thumb-idle: #6b6b6b;
     --scrollbar-thumb-track: #2c2c2c;
     --selectable-primary-selected-fill: #de4c4a;

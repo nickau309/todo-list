@@ -563,6 +563,7 @@ const config: Config = {
         option: {
           checkbox: "var(--option-checkbox)",
         },
+        "priority-dropdown-option": "var(--priority-dropdown-option-text)",
         "project-dropdown-option": {
           check: "var(--project-dropdown-option-check)",
         },

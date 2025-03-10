@@ -2,6 +2,7 @@
 
 import { deleteAccount } from "@/actions/settings";
 import { AlertIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -54,23 +55,43 @@ export default function DeletePage({ id }: PageProps) {
           <OpenNavMenuButton />
           <GoBackLink />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
               Delete account
-            </h2>
+            </Text>
           </div>
         </div>
         <CloseSettingsDialogButton />
       </header>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden p-4 pb-8">
         <div className="flex w-full max-w-[660px] flex-col gap-6">
-          <p className="text-sm/[17.6px]">
+          <Text
+            as="p"
+            font="reactist"
+            size="14px"
+            height="17.6px"
+            color="primary"
+          >
             We&apos;ll be sorry to see you go, but thanks for trying Todoist!
-          </p>
-          <p className="text-sm/[17.6px]">
+          </Text>
+          <Text
+            as="p"
+            font="reactist"
+            size="14px"
+            height="17.6px"
+            color="primary"
+          >
             Deleting your account is permanent.{" "}
             <strong>All your data will be wiped out immediately</strong> and you
             won&apos;t be able to get it back.
-          </p>
+          </Text>
           <ReasonInput />
           <EmailInput setErrorMessage={setErrorMessage} />
           <PasswordInput setErrorMessage={setErrorMessage} />
@@ -80,9 +101,17 @@ export default function DeletePage({ id }: PageProps) {
                 <span className="text-info-attention-primary-idle-fill">
                   <AlertIcon24 />
                 </span>
-                <p className="py-1 font-sans text-sm/[18.4px]">
-                  {errorMessage}
-                </p>
+                <div className="py-1">
+                  <Text
+                    as="p"
+                    font="sans"
+                    size="14px"
+                    height="18.4px"
+                    color="primary"
+                  >
+                    {errorMessage}
+                  </Text>
+                </div>
               </div>
             )}
           </div>

@@ -1,5 +1,6 @@
 import { updatePriority } from "@/actions/task";
 import { Priority4Icon24, PriorityIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   PriorityDropdown,
   PriorityDropdownButton,
@@ -60,7 +61,9 @@ export default function Priority({ disabled = false }: PriorityProps) {
           >
             {priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
           </span>
-          <span className="truncate text-sm/8">Priority {priority}</span>
+          <Text overflow="truncate" font="reactist" size="14px" height="32px">
+            Priority {priority}
+          </Text>
         </PriorityDropdownButton>
       </div>
       <PriorityDropdownPanel />

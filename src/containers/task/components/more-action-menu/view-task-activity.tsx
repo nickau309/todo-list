@@ -1,4 +1,5 @@
 import { ActivityIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { useMoreActionMenu } from "./more-action-menu";
@@ -36,14 +37,15 @@ export default function ViewTaskActivity() {
         <ActivityIcon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <span
-          className={clsx(
-            "truncate text-[13px]/[16.8px] text-display-primary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color={disabled ? "tertiary" : "primary"}
         >
           {label}
-        </span>
+        </Text>
       </div>
     </button>
   );

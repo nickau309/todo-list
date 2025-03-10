@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -22,9 +23,18 @@ export default function ReasonInput() {
   return (
     <div className="flex w-full max-w-[400px] flex-col gap-2">
       <div className="flex justify-between gap-2">
-        <label htmlFor={id} className="truncate text-sm/[17.6px] font-bold">
+        <Text
+          as="label"
+          htmlFor={id}
+          overflow="truncate"
+          font="reactist"
+          size="14px"
+          weight={700}
+          height="17.6px"
+          color="primary"
+        >
           Reason for deleting (optional)
-        </label>
+        </Text>
       </div>
       <div className="flex min-h-[35.2px] flex-col">
         <textarea

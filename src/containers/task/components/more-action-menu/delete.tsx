@@ -1,4 +1,5 @@
 import { Delete1Icon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { useTaskControl } from "../../contexts/task-context";
@@ -51,23 +52,38 @@ export default function Delete() {
         <Delete1Icon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <span
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color="text-actionable-destructive-idle-tint"
           className={clsx(
-            "truncate text-[13px]/[16.8px] text-actionable-destructive-idle-tint",
             "group-aria-disabled:text-actionable-destructive-disabled-tint",
             "group-custom-hocus:text-actionable-destructive-hover-tint",
           )}
         >
           {label}
-        </span>
-        <div
-          className={clsx(
-            "flex items-center gap-0.5 px-px text-xs text-display-secondary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
-        >
-          <kbd className="font-sans text-xs">⇧</kbd>
-          <kbd className="font-sans text-xs">Delete</kbd>
+        </Text>
+        <div className="flex items-center gap-0.5 px-px">
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            ⇧
+          </Text>
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            Delete
+          </Text>
         </div>
       </div>
     </button>

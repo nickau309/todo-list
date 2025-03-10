@@ -1,4 +1,5 @@
 import { CreateIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
 
@@ -30,9 +31,18 @@ export default function SubmitButton({ name, disabled = false }: ButtonProps) {
       <span>
         <CreateIcon24 />
       </span>
-      <span className="min-w-0 break-words text-left font-sans text-[13px]/[17.6px] font-semibold">
+      <Text
+        minWidth="0px"
+        wordBreak="break-words"
+        align="left"
+        font="sans"
+        size="13px"
+        weight={600}
+        height="17.6px"
+        color="primary"
+      >
         Create &quot;{name}&quot;
-      </span>
+      </Text>
     </button>
   );
 }

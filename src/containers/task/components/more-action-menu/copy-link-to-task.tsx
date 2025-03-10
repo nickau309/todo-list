@@ -1,4 +1,5 @@
 import { Link1Icon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { useMoreActionMenu } from "./more-action-menu";
@@ -36,23 +37,43 @@ export default function CopyLinkToTask() {
         <Link1Icon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <span
-          className={clsx(
-            "truncate text-[13px]/[16.8px] text-display-primary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color={disabled ? "tertiary" : "primary"}
         >
           {label}
-        </span>
-        <div
-          className={clsx(
-            "flex items-center gap-0.5 px-px text-xs text-display-secondary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
-        >
-          <kbd className="font-sans text-xs">⇧</kbd>
-          <kbd className="font-sans text-xs">Ctrl</kbd>
-          <kbd className="font-sans text-xs">C</kbd>
+        </Text>
+        <div className="flex items-center gap-0.5 px-px">
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            ⇧
+          </Text>
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            Ctrl
+          </Text>
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            C
+          </Text>
         </div>
       </div>
     </button>

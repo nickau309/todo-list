@@ -1,4 +1,5 @@
 import { NextWeekIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import dayjs from "@/lib/dayjs";
 import clsx from "clsx";
 import { useDueDatePopover } from "./due-date-popover";
@@ -33,12 +34,24 @@ export default function NextWeek() {
         <NextWeekIcon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between">
-        <span className="truncate font-sans text-[13px]/6 font-medium">
+        <Text
+          overflow="truncate"
+          font="sans"
+          size="13px"
+          weight={500}
+          height="24px"
+        >
           Next week
-        </span>
-        <span className="truncate font-sans text-[13px]/6 text-scheduler-suggestions-item-weekday">
+        </Text>
+        <Text
+          overflow="truncate"
+          font="sans"
+          size="13px"
+          height="24px"
+          color="text-scheduler-suggestions-item-weekday"
+        >
           {nextWeek.format("ddd D MMM")}
-        </span>
+        </Text>
       </div>
     </button>
   );

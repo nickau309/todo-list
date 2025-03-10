@@ -1,6 +1,7 @@
 "use client";
 
 import { updateAccount } from "@/actions/settings";
+import Text from "@/components/ui/text";
 import { OAUTH_PROVIDERS } from "@/constants/settings";
 import { useSetOptimisticUser } from "@/contexts/optimistic-user-context";
 import {
@@ -59,7 +60,17 @@ export default function AccountPage({ email, id }: PageProps) {
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <OpenNavMenuButton />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">Account</h2>
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
+              Account
+            </Text>
           </div>
         </div>
         <CloseSettingsDialogButton />
@@ -68,8 +79,28 @@ export default function AccountPage({ email, id }: PageProps) {
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <h3 className="truncate text-sm/[17.6px] font-bold">Plan</h3>
-              <p className="truncate text-base/5 font-bold">Beginner</p>
+              <Text
+                as="h3"
+                overflow="truncate"
+                font="reactist"
+                size="14px"
+                weight={700}
+                height="17.6px"
+                color="primary"
+              >
+                Plan
+              </Text>
+              <Text
+                as="p"
+                overflow="truncate"
+                font="reactist"
+                size="16px"
+                weight={700}
+                height="20px"
+                color="primary"
+              >
+                Beginner
+              </Text>
             </div>
             <SecondaryLink href="/app/settings/subscription" disabled>
               Manage plan
@@ -80,34 +111,84 @@ export default function AccountPage({ email, id }: PageProps) {
             <PhotoInput disabled={true} />
             <NameInput />
             <div className="flex flex-col items-start gap-2">
-              <h3 className="truncate text-sm/[17.6px] font-bold">Email</h3>
-              <p className="text-sm/[17.6px]">{email}</p>
+              <Text
+                as="h3"
+                overflow="truncate"
+                font="reactist"
+                size="14px"
+                weight={700}
+                height="17.6px"
+                color="primary"
+              >
+                Email
+              </Text>
+              <Text
+                as="p"
+                font="reactist"
+                size="14px"
+                height="17.6px"
+                color="primary"
+              >
+                {email}
+              </Text>
               <SecondaryLink href="/app/settings/account/email">
                 Change email
               </SecondaryLink>
             </div>
             <div className="flex flex-col items-start gap-2">
-              <h3 className="truncate text-sm/[17.6px] font-bold">Password</h3>
+              <Text
+                as="h3"
+                overflow="truncate"
+                font="reactist"
+                size="14px"
+                weight={700}
+                height="17.6px"
+                color="primary"
+              >
+                Password
+              </Text>
               <SecondaryLink href="/app/settings/account/password">
                 Change password
               </SecondaryLink>
             </div>
             <div className="flex flex-col items-start gap-2">
-              <h3 className="truncate text-sm/[17.6px] font-bold">
+              <Text
+                as="h3"
+                overflow="truncate"
+                font="reactist"
+                size="14px"
+                weight={700}
+                height="17.6px"
+                color="primary"
+              >
                 Two-factor authentication
-              </h3>
+              </Text>
               <TwoFAButton />
             </div>
           </div>
           <hr className="border-divider-secondary" />
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h3 className="truncate text-sm/[17.6px] font-bold">
+              <Text
+                as="h3"
+                overflow="truncate"
+                font="reactist"
+                size="14px"
+                weight={700}
+                height="17.6px"
+                color="primary"
+              >
                 Connected accounts
-              </h3>
-              <p className="text-xs/[15.2px] text-display-secondary-idle-tint">
+              </Text>
+              <Text
+                as="p"
+                font="reactist"
+                size="12px"
+                height="15.2px"
+                color="secondary"
+              >
                 Log in to Todoist with your Google, Facebook, or Apple account.
-              </p>
+              </Text>
             </div>
             {OAUTH_PROVIDERS.map((provider) => {
               const Icon = provider.large_icon;
@@ -130,9 +211,15 @@ export default function AccountPage({ email, id }: PageProps) {
                     <span className="-ml-1.5">
                       <Icon />
                     </span>
-                    <span className="truncate text-[13px]/8 font-semibold">
+                    <Text
+                      overflow="truncate"
+                      font="reactist"
+                      size="13px"
+                      weight={600}
+                      height="32px"
+                    >
                       Connect with {provider.name}
-                    </span>
+                    </Text>
                   </a>
                 </div>
               );
@@ -140,13 +227,27 @@ export default function AccountPage({ email, id }: PageProps) {
           </div>
           <hr className="border-divider-secondary" />
           <div className="flex flex-col items-start gap-2">
-            <h3 className="truncate text-sm/[17.6px] font-bold">
+            <Text
+              as="h3"
+              overflow="truncate"
+              font="reactist"
+              size="14px"
+              weight={700}
+              height="17.6px"
+              color="primary"
+            >
               Delete account
-            </h3>
-            <p className="text-xs/[15.2px]">
+            </Text>
+            <Text
+              as="p"
+              font="reactist"
+              size="12px"
+              height="15.2px"
+              color="primary"
+            >
               This will immediately delete all of your data including tasks,
               projects, comments, and more. This can’t be undone.
-            </p>
+            </Text>
             <Link
               href="/app/settings/account/delete"
               aria-disabled="false"
@@ -159,9 +260,15 @@ export default function AccountPage({ email, id }: PageProps) {
                 "custom-hocus:text-actionable-destructive-hover-tint",
               )}
             >
-              <span className="truncate text-[13px]/8 font-semibold">
+              <Text
+                overflow="truncate"
+                font="reactist"
+                size="13px"
+                weight={600}
+                height="32px"
+              >
                 Delete account
-              </span>
+              </Text>
             </Link>
           </div>
         </div>

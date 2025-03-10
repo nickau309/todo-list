@@ -1,4 +1,5 @@
 import { ReminderIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   UnlockRemindersDialog,
   UnlockRemindersDialogButton,
@@ -29,14 +30,15 @@ export default function Reminders({ disabled = false }: RemindersProps) {
           <span>
             <ReminderIcon16 />
           </span>
-          <span
-            className={clsx(
-              "truncate text-[13px]/[16.8px]",
-              "text-display-secondary-idle-tint",
-            )}
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="13px"
+            height="16.8px"
+            color="secondary"
           >
             Reminders
-          </span>
+          </Text>
         </UnlockRemindersDialogButton>
       </div>
       <UnlockRemindersDialogPanel />

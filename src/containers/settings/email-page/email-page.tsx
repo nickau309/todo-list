@@ -1,6 +1,7 @@
 "use client";
 
 import { updateEmail } from "@/actions/settings";
+import Text from "@/components/ui/text";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -58,27 +59,47 @@ export default function EmailPage({ email, id }: PageProps) {
           <OpenNavMenuButton />
           <GoBackLink />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
               Change email address
-            </h2>
+            </Text>
           </div>
         </div>
         <CloseSettingsDialogButton />
       </header>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden p-4 pb-8">
         <div className="flex flex-col gap-6">
-          <p className="text-sm/[17.6px]">
+          <Text
+            as="p"
+            font="reactist"
+            size="14px"
+            height="17.6px"
+            color="primary"
+          >
             Update the email you use for your Todoist account. Your email is
             currently <strong>{email}</strong>.
-          </p>
+          </Text>
           <NewEmailInput setErrorMessage={setErrorMessage} />
           <ConfirmEmailInput setErrorMessage={setErrorMessage} />
           <PasswordInput setErrorMessage={setErrorMessage} />
           <div role="alert" aria-atomic="true" aria-live="assertive">
             {errorMessage && (
-              <p className="text-sm/[17.6px] text-display-content-danger">
+              <Text
+                as="p"
+                font="reactist"
+                size="14px"
+                height="17.6px"
+                color="text-display-content-danger"
+              >
                 {errorMessage}
-              </p>
+              </Text>
             )}
           </div>
         </div>

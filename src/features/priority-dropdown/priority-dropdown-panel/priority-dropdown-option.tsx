@@ -1,4 +1,5 @@
 import { Priority4Icon24, PriorityIcon24, SelectCheckIcon12 } from "@/assets";
+import Text from "@/components/ui/text";
 import getPriorityTextColor from "@/utils/getPriorityTextColor";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
@@ -51,7 +52,15 @@ export default function PriorityDropdownOption({ priority }: OptionProps) {
       <span className={getPriorityTextColor(priority)}>
         {priority === 4 ? <Priority4Icon24 /> : <PriorityIcon24 />}
       </span>
-      <span className="truncate font-sans text-[13px]/6">{label}</span>
+      <Text
+        overflow="truncate"
+        font="sans"
+        size="13px"
+        height="24px"
+        color="text-priority-dropdown-option"
+      >
+        {label}
+      </Text>
       {isSelected && (
         <span className="text-display-accent-primary-tint">
           <SelectCheckIcon12 className="size-3.5" />

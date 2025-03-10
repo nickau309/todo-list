@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useSettingsDialogState } from "@/contexts/settings-dialog-context";
 import { UpdateEmailSchema } from "@/lib/zod";
 import clsx from "clsx";
@@ -35,7 +36,15 @@ export default function SubmitButton({ isSubmitting }: ButtonProps) {
         "custom-hocus:bg-actionable-primary-hover-fill custom-hocus:text-actionable-primary-hover-tint",
       )}
     >
-      <span className="truncate text-[13px]/8 font-semibold">Change email</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
+        Change email
+      </Text>
     </button>
   );
 }

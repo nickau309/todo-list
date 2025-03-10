@@ -1,6 +1,7 @@
 "use client";
 
 import { updatePassword } from "@/actions/settings";
+import Text from "@/components/ui/text";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -52,9 +53,17 @@ export default function PasswordPage({ id }: PageProps) {
           <OpenNavMenuButton />
           <GoBackLink />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
               Change password
-            </h2>
+            </Text>
           </div>
         </div>
         <CloseSettingsDialogButton />
@@ -66,14 +75,26 @@ export default function PasswordPage({ id }: PageProps) {
           <ConfirmPasswordInput setErrorMessage={setErrorMessage} />
           <div role="alert" aria-atomic="true" aria-live="assertive">
             {errorMessage ? (
-              <p className="text-sm/[17.6px] text-display-content-danger">
+              <Text
+                as="p"
+                font="reactist"
+                size="14px"
+                height="17.6px"
+                color="text-display-content-danger"
+              >
                 {errorMessage}
-              </p>
+              </Text>
             ) : (
-              <p className="text-sm/[17.6px] text-display-secondary-idle-tint">
+              <Text
+                as="p"
+                font="reactist"
+                size="14px"
+                height="17.6px"
+                color="secondary"
+              >
                 Your password must be at least 8 characters long. Avoid common
                 words or patterns.
-              </p>
+              </Text>
             )}
           </div>
         </div>

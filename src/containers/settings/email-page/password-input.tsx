@@ -1,4 +1,5 @@
 import { EyeIcon24, EyeSlashIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -34,9 +35,18 @@ export default function PasswordInput({ setErrorMessage }: InputProps) {
     <div className="flex flex-col gap-1">
       <div className="flex w-full max-w-[400px] flex-col gap-2">
         <div className="flex">
-          <label htmlFor={id} className="truncate text-sm/[17.6px] font-bold">
+          <Text
+            as="label"
+            htmlFor={id}
+            overflow="truncate"
+            font="reactist"
+            size="14px"
+            weight={700}
+            height="17.6px"
+            color="primary"
+          >
             Todoist password
-          </label>
+          </Text>
         </div>
         <div
           className={clsx(

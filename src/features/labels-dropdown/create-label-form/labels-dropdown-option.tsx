@@ -3,6 +3,7 @@ import {
   OptionCheckIcon24,
   OptionUncheckIcon24,
 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import type { LabelType } from "@/types/label";
 import clsx from "clsx";
@@ -39,7 +40,6 @@ const LabelsDropdownOption = forwardRef<HTMLDivElement, OptionProps>(
         id={id}
         role="option"
         className={clsx(
-          "group",
           "flex w-full cursor-pointer items-center gap-2.5 px-2 py-1",
           "aria-disabled:cursor-progress",
           "data-[active='true']:bg-option-active",
@@ -50,15 +50,15 @@ const LabelsDropdownOption = forwardRef<HTMLDivElement, OptionProps>(
           <LabelIconOutline24 />
         </span>
         <div className="flex min-w-0 flex-1 gap-1">
-          <span
-            className={clsx(
-              "truncate font-sans text-[13px]/[17.6px]",
-              "text-display-primary-idle-tint",
-              "group-aria-disabled:text-[#999]",
-            )}
+          <Text
+            overflow="truncate"
+            font="sans"
+            size="13px"
+            height="17.6px"
+            color="primary"
           >
             {name}
-          </span>
+          </Text>
         </div>
         <span className="text-option-checkbox">
           {selected ? <OptionCheckIcon24 /> : <OptionUncheckIcon24 />}

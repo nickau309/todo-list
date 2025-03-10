@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useStore } from "@/contexts/store-context";
 import type { TaskInfoKeyType } from "@/types/task";
 import type { MouseEvent } from "react";
@@ -75,9 +76,17 @@ export default function EditingArea({
       </div>
       <div role="alert" aria-atomic="true" aria-live="assertive">
         {message !== null && (
-          <p className="mb-2.5 font-sans text-xs text-info-attention-primary-idle-tint">
-            {message}
-          </p>
+          <div className="pb-2.5">
+            <Text
+              as="p"
+              font="sans"
+              size="12px"
+              height="16px"
+              color="text-info-attention-primary-idle-tint"
+            >
+              {message}
+            </Text>
+          </div>
         )}
       </div>
       <div className="flex flex-wrap gap-2">

@@ -1,6 +1,7 @@
 "use client";
 
 import ErrorComponent from "@/components/error-component";
+import Text from "@/components/ui/text";
 import UpgradeIcon from "@/components/upgrade-icon";
 import { NAV_MENU_ITEMS } from "@/constants/settings";
 import CloseSettingsDialogButton from "./components/close-settings-dialog-button";
@@ -21,9 +22,17 @@ export default function NotImplementedPage({ segment }: PageProps) {
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <OpenNavMenuButton />
           <div className="flex min-w-0 flex-1 items-center gap-1">
-            <h2 className="truncate text-base/[23px] font-semibold">
+            <Text
+              as="h2"
+              overflow="truncate"
+              font="reactist"
+              size="16px"
+              weight={600}
+              height="23px"
+              color="primary"
+            >
               {currentItem.description}
-            </h2>
+            </Text>
             {currentItem.showUpgradeIcon && <UpgradeIcon />}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { CloseIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -45,9 +46,17 @@ export default function UnlockRemindersDialogPanel() {
             >
               <form onSubmit={handleSubmit} className="flex flex-1 flex-col">
                 <header className="flex items-center justify-between gap-4 p-2 pl-4">
-                  <h1 id={labelId} className="text-xl/[24.8px] font-bold">
+                  <Text
+                    as="h1"
+                    id={labelId}
+                    font="reactist"
+                    size="20px"
+                    weight={700}
+                    height="24.8px"
+                    color="primary"
+                  >
                     Unlock reminders
-                  </h1>
+                  </Text>
                   <button
                     type="button"
                     aria-disabled="false"
@@ -82,10 +91,18 @@ export default function UnlockRemindersDialogPanel() {
                     </video>
                   </div>
                 </div>
-                <p className="p-4 font-sans text-sm/normal">
-                  With Pro, you can set reminders at a specific time or location
-                  so you’ll never forget a task again.
-                </p>
+                <div className="p-4">
+                  <Text
+                    as="p"
+                    font="sans"
+                    size="14px"
+                    height={1.5}
+                    color="primary"
+                  >
+                    With Pro, you can set reminders at a specific time or
+                    location so you’ll never forget a task again.
+                  </Text>
+                </div>
                 <footer className="flex justify-end gap-4 p-4">
                   <button
                     ref={initialFocus}
@@ -102,9 +119,15 @@ export default function UnlockRemindersDialogPanel() {
                       "custom-hocus:bg-actionable-secondary-hover-fill custom-hocus:text-actionable-secondary-hover-tint",
                     )}
                   >
-                    <span className="truncate text-[13px]/8 font-semibold">
+                    <Text
+                      overflow="truncate"
+                      font="reactist"
+                      size="13px"
+                      weight={600}
+                      height="32px"
+                    >
                       Cancel
-                    </span>
+                    </Text>
                   </button>
                   <button
                     type="submit"
@@ -119,9 +142,15 @@ export default function UnlockRemindersDialogPanel() {
                       "custom-hocus:bg-actionable-primary-hover-fill custom-hocus:text-actionable-primary-hover-tint",
                     )}
                   >
-                    <span className="truncate text-[13px]/8 font-semibold">
+                    <Text
+                      overflow="truncate"
+                      font="reactist"
+                      size="13px"
+                      weight={600}
+                      height="32px"
+                    >
                       Upgrade
-                    </span>
+                    </Text>
                   </button>
                 </footer>
               </form>

@@ -1,4 +1,5 @@
 import Switch from "@/components/switch";
+import Text from "@/components/ui/text";
 import {
   useLocalSettings,
   useSetLocalSettings,
@@ -39,9 +40,17 @@ export default function SyncThemeInput() {
   return (
     <div className="flex gap-2">
       <Switch id={id} isChecked={syncTheme} setIsChecked={setSyncTheme} />
-      <label htmlFor={id} className="cursor-pointer text-sm/[17.6px]">
+      <Text
+        as="label"
+        htmlFor={id}
+        overflow="truncate"
+        font="reactist"
+        size="14px"
+        height="17.6px"
+        color="primary"
+      >
         Sync theme
-      </label>
+      </Text>
     </div>
   );
 }

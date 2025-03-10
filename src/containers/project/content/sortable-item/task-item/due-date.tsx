@@ -1,5 +1,6 @@
 import { removeDueDate, updateDueDate } from "@/actions/task";
 import { DueDateIcon12 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   DueDatePopover,
   DueDatePopoverButton,
@@ -68,7 +69,9 @@ export default function DueDate({ disabled, dueDate, id }: DueDateProps) {
         <span>
           <DueDateIcon12 />
         </span>
-        <span className="text-xs/4">{getDueDateString(dueDate)}</span>
+        <Text overflow="truncate" font="reactist" size="12px" height="16px">
+          {getDueDateString(dueDate)}
+        </Text>
       </DueDatePopoverButton>
       <DueDatePopoverPanel />
     </DueDatePopover>

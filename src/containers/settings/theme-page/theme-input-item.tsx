@@ -1,4 +1,5 @@
 import { CheckLgIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   useLocalSettings,
   useSetLocalSettings,
@@ -56,9 +57,15 @@ export default function ThemeInputItem({ className, name }: ThemeItemType) {
       </div>
       <div className="flex h-full flex-1 flex-col items-start gap-2 bg-theme-card p-2 pt-0">
         <div className="flex w-full items-center justify-between text-theme-card-accent">
-          <span id={labelId} className="text-xs/[15.2px] font-bold">
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="12px"
+            weight={700}
+            height="15.2px"
+          >
             {`${name[0]}${name.slice(1).toLowerCase()}`}
-          </span>
+          </Text>
           <span
             className={clsx(
               "grid size-6 place-items-center opacity-0",

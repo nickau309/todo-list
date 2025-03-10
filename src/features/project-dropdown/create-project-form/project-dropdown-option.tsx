@@ -1,4 +1,5 @@
 import { InboxIcon24, NumberSignIcon24, SelectCheckIcon12 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import type { ProjectType } from "@/types/project";
 import { useListItem } from "@floating-ui/react";
@@ -77,22 +78,24 @@ export default function ProjectDropdownOption({
         )}
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <div className="flex min-w-0 flex-1 gap-1">
-            <span
-              className={clsx(
-                "truncate text-[13px]/[16.8px]",
-                "text-display-primary-idle-tint",
-              )}
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="13px"
+              height="16.8px"
+              color="primary"
             >
               {name}
-            </span>
-            <span
-              className={clsx(
-                "truncate text-[13px]/[16.8px]",
-                "text-display-secondary-idle-tint",
-              )}
+            </Text>
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="13px"
+              height="16.8px"
+              color="secondary"
             >
               {searching && "My Projects"}
-            </span>
+            </Text>
           </div>
           {selected && (
             <span className="text-project-dropdown-option-check">

@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -18,7 +19,19 @@ export default function CompactHeader({ show }: { show: boolean }) {
             transition={{ ease: "easeOut", duration: 0.1 }}
             className="flex min-w-0 flex-1 justify-center"
           >
-            <h1 className="truncate pr-1 text-base/5 font-bold">Inbox</h1>
+            <div className="flex pr-1">
+              <Text
+                as="h1"
+                overflow="truncate"
+                font="reactist"
+                size="16px"
+                weight={700}
+                height="20px"
+                color="primary"
+              >
+                Inbox
+              </Text>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

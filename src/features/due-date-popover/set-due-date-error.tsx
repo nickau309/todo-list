@@ -1,4 +1,5 @@
 import { DueDateIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 
 export default function SetDueDateError() {
   return (
@@ -7,9 +8,15 @@ export default function SetDueDateError() {
         <span className="text-scheduler-preview-content-icon">
           <DueDateIcon24 />
         </span>
-        <span className="truncate font-sans text-sm/[18.4px] font-semibold">
+        <Text
+          overflow="truncate"
+          font="sans"
+          size="14px"
+          weight={600}
+          height="18.4px"
+        >
           No results
-        </span>
+        </Text>
       </div>
     </div>
   );

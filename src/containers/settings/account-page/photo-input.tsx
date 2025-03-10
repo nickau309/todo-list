@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useSettingsDialogState } from "@/contexts/settings-dialog-context";
 import clsx from "clsx";
 import Image from "next/image";
@@ -24,7 +25,17 @@ export default function PhotoInput({ disabled }: PhotoInputType) {
 
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="truncate text-sm/[17.6px] font-bold">Photo</h3>
+      <Text
+        as="h3"
+        overflow="truncate"
+        font="reactist"
+        size="14px"
+        weight={700}
+        height="17.6px"
+        color="primary"
+      >
+        Photo
+      </Text>
       <div className="flex items-center gap-3">
         <span className="size-20 shrink-0 overflow-hidden rounded-full">
           <Image
@@ -35,7 +46,15 @@ export default function PhotoInput({ disabled }: PhotoInputType) {
           />
         </span>
         <div className="flex min-w-0 flex-col items-start gap-2">
-          <p className="text-xs/[15.2px]">&nbsp;</p>
+          <Text
+            as="p"
+            font="reactist"
+            size="12px"
+            height="15.2px"
+            color="primary"
+          >
+            &nbsp;
+          </Text>
           <div>
             <button
               type="button"
@@ -51,9 +70,15 @@ export default function PhotoInput({ disabled }: PhotoInputType) {
                 "custom-hocus:bg-actionable-secondary-hover-fill custom-hocus:text-actionable-secondary-hover-tint",
               )}
             >
-              <span className="truncate text-[13px]/8 font-semibold">
+              <Text
+                overflow="truncate"
+                font="reactist"
+                size="13px"
+                weight={600}
+                height="32px"
+              >
                 Upload photo
-              </span>
+              </Text>
             </button>
             <input
               ref={ref}
@@ -65,15 +90,27 @@ export default function PhotoInput({ disabled }: PhotoInputType) {
             />
           </div>
           <div className="flex w-full flex-wrap gap-1">
-            <p
+            <Text
+              as="p"
               id={descriptionId}
-              className="truncate text-xs/[15.2px] text-display-secondary-idle-tint"
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              height="15.2px"
+              color="secondary"
             >
               Pick a photo up to 4MB.
-            </p>
-            <p className="truncate text-xs/[15.2px] text-display-secondary-idle-tint">
+            </Text>
+            <Text
+              as="p"
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              height="15.2px"
+              color="secondary"
+            >
               Your avatar photo will be public.
-            </p>
+            </Text>
           </div>
         </div>
       </div>

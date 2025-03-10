@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { maxNameLength } from "@/constants/user";
 import {
   useSettingsDialogControl,
@@ -26,9 +27,18 @@ export default function NameInput() {
     <div className="flex flex-col gap-1">
       <div className="flex w-full max-w-[400px] flex-col gap-2">
         <div className="flex">
-          <label htmlFor={id} className="truncate text-sm/[17.6px] font-bold">
+          <Text
+            as="label"
+            htmlFor={id}
+            overflow="truncate"
+            font="reactist"
+            size="14px"
+            weight={700}
+            height="17.6px"
+            color="primary"
+          >
             Name
-          </label>
+          </Text>
         </div>
         <div
           className={clsx(
@@ -50,16 +60,17 @@ export default function NameInput() {
         </div>
       </div>
       <div className="flex w-full max-w-[400px] justify-end">
-        <span
-          className={clsx(
-            "truncate text-[13px]/[16.8px]",
-            name.length > 244
-              ? "text-display-content-danger"
-              : "text-display-secondary-idle-tint",
-          )}
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color={
+            name.length > 244 ? "text-display-content-danger" : "secondary"
+          }
         >
           {name.length}/{maxNameLength}
-        </span>
+        </Text>
       </div>
     </div>
   );

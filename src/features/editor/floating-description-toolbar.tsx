@@ -9,6 +9,7 @@ import {
   OrderedListIcon24,
   QuoteIcon24,
 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   FloatingPortal,
   autoUpdate,
@@ -355,9 +356,15 @@ export default function FloatingDescriptionToolbar({ editor }: ToolbarProps) {
                 <span>
                   <Link2Icon24 />
                 </span>
-                <span className="truncate text-[13px]/8 font-semibold">
+                <Text
+                  overflow="truncate"
+                  font="reactist"
+                  size="13px"
+                  weight={600}
+                  height="32px"
+                >
                   Link
-                </span>
+                </Text>
               </button>
             </div>
           </div>

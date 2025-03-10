@@ -1,4 +1,5 @@
 import Switch from "@/components/switch";
+import Text from "@/components/ui/text";
 import {
   useLocalSettings,
   useSetLocalSettings,
@@ -28,17 +29,29 @@ export default function AutoDarkModeInput() {
           isChecked={useSystemTheme}
           setIsChecked={setUseSystemTheme}
         />
-        <label htmlFor={id} className="cursor-pointer text-sm/[17.6px]">
+        <Text
+          as="label"
+          htmlFor={id}
+          overflow="truncate"
+          font="reactist"
+          size="14px"
+          height="17.6px"
+          color="primary"
+        >
           Auto Dark Mode
-        </label>
+        </Text>
       </div>
-      <p
+      <Text
+        as="p"
         id={descriptionId}
-        className="text-[13px]/[16.8px] text-display-secondary-idle-tint"
+        font="reactist"
+        size="13px"
+        height="16.8px"
+        color="secondary"
       >
         Automatically switch between light and dark themes when your system
         does.
-      </p>
+      </Text>
     </div>
   );
 }

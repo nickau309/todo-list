@@ -1,4 +1,5 @@
 import { DueDateIcon12 } from "@/assets";
+import Text from "@/components/ui/text";
 import type { ProjectType } from "@/types/project";
 import getDueDateString from "@/utils/getDueDateString";
 import getDueDateTextColor from "@/utils/getDueDateTextColor";
@@ -21,7 +22,9 @@ export default function DueDate({ dueDate }: DueDateProps) {
       <span>
         <DueDateIcon12 />
       </span>
-      <span className="text-xs/4">{getDueDateString(dueDate)}</span>
+      <Text overflow="truncate" font="reactist" size="12px" height="16px">
+        {getDueDateString(dueDate)}
+      </Text>
     </div>
   );
 }

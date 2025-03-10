@@ -1,4 +1,5 @@
 import { UpgradeIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   UnlockLocationDialog,
   UnlockLocationDialogButton,
@@ -34,14 +35,15 @@ export default function Location({ disabled = false }: LocationProps) {
               )}
             />
           </span>
-          <span
-            className={clsx(
-              "truncate text-[13px]/[16.8px]",
-              "text-display-secondary-idle-tint",
-            )}
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="13px"
+            height="16.8px"
+            color="secondary"
           >
             Location
-          </span>
+          </Text>
         </UnlockLocationDialogButton>
       </div>
       <UnlockLocationDialogPanel />

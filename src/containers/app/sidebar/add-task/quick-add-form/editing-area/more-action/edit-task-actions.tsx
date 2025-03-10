@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useSettingsDialogControl } from "@/contexts/settings-dialog-context";
 import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
@@ -80,14 +81,15 @@ export default function EditTaskActions({ disabled = false }: LinkProps) {
       })}
     >
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <span
-          className={clsx(
-            "truncate text-[13px]/[16.8px] text-display-accent-primary-fill",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color={disabled ? "tertiary" : "text-display-accent-primary-fill"}
         >
           {label}
-        </span>
+        </Text>
       </div>
     </Link>
   );

@@ -1,4 +1,5 @@
 import { DueDateIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import dayjs from "@/lib/dayjs";
 import clsx from "clsx";
 import IncompleteTaskCountString from "./incomplete-task-count-string";
@@ -29,12 +30,26 @@ export default function SetDueDatePreview({ inputDate }: PreviewProps) {
           <DueDateIcon24 />
         </span>
         <div className="flex min-w-0 flex-1 flex-col items-start">
-          <span className="truncate font-sans text-[13px]/[17.6px] font-semibold">
+          <Text
+            overflow="truncate"
+            font="sans"
+            size="13px"
+            weight={600}
+            height="17.6px"
+            color="primary"
+          >
             {str}
-          </span>
-          <span className="truncate font-sans text-[10px]/[12.8px] font-semibold text-display-secondary-idle-tint">
+          </Text>
+          <Text
+            overflow="truncate"
+            font="sans"
+            size="10px"
+            weight={600}
+            height="12.8px"
+            color="secondary"
+          >
             <IncompleteTaskCountString inputDate={inputDate} />
-          </span>
+          </Text>
         </div>
       </button>
     </div>

@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -57,14 +58,15 @@ export default function Item({
       )}
     >
       <span>{icon}</span>
-      <span
-        className={clsx(
-          "truncate text-sm/8",
-          !isCurrentPage && "text-display-primary-idle-tint",
-        )}
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="14px"
+        height="32px"
+        color={!isCurrentPage ? "primary" : undefined}
       >
         {description}
-      </span>
+      </Text>
     </CompositeItem>
   );
 }

@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useStore } from "@/contexts/store-context";
 import clsx from "clsx";
 import useIsDirty from "../hooks/useIsDirty";
@@ -41,7 +42,15 @@ export default function CancelButton() {
         "custom-hocus:bg-actionable-secondary-hover-fill custom-hocus:text-actionable-secondary-hover-tint",
       )}
     >
-      <span className="truncate text-[13px]/8 font-semibold">Cancel</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
+        Cancel
+      </Text>
     </button>
   );
 }

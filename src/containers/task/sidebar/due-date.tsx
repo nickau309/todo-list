@@ -3,6 +3,7 @@ import {
   updateDueDate,
 } from "@/actions/task";
 import { AddSmIcon24, DueDateOutlineIcon16, RemoveIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   DueDatePopover,
   DueDatePopoverButton,
@@ -65,15 +66,21 @@ export default function DueDate({ disabled = false }: DueDateProps) {
     >
       <div className="flex flex-col">
         {hasDueDate && (
-          <div
-            className={clsx(
-              "pl-px text-xs/7 font-semibold",
-              disabled
-                ? "text-actionable-quaternary-disabled-tint"
-                : "text-display-secondary-idle-tint",
-            )}
-          >
-            Due date
+          <div className="flex pl-px">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              weight={600}
+              height="28px"
+              color={
+                disabled
+                  ? "text-actionable-quaternary-disabled-tint"
+                  : "secondary"
+              }
+            >
+              Due date
+            </Text>
           </div>
         )}
         {hasDueDate ? (
@@ -95,14 +102,15 @@ export default function DueDate({ disabled = false }: DueDateProps) {
               >
                 <DueDateOutlineIcon16 />
               </span>
-              <span
-                className={clsx(
-                  "truncate text-xs/7",
-                  "group-aria-disabled:font-semibold",
-                )}
+              <Text
+                overflow="truncate"
+                font="reactist"
+                size="12px"
+                height="28px"
+                className="group-aria-disabled:font-semibold"
               >
                 {getDueDateString(dueDate)}
-              </span>
+              </Text>
             </DueDatePopoverButton>
             {!disabled && (
               <button
@@ -128,7 +136,7 @@ export default function DueDate({ disabled = false }: DueDateProps) {
           <div className="-mx-2 flex flex-col">
             <DueDatePopoverButton
               className={clsx(
-                "group flex h-7 min-w-[68px] select-none items-center gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
+                "group flex h-7 min-w-[68px] select-none items-center justify-between gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
                 "text-actionable-quaternary-idle-tint",
                 "transition-colors duration-300",
                 "aria-disabled:cursor-not-allowed aria-disabled:text-actionable-quaternary-disabled-tint",
@@ -136,9 +144,15 @@ export default function DueDate({ disabled = false }: DueDateProps) {
                 "custom-hocus:bg-selectable-secondary-selected-fill custom-hocus:text-actionable-quaternary-hover-tint",
               )}
             >
-              <span className="flex-1 truncate text-left text-xs/7 font-semibold">
+              <Text
+                overflow="truncate"
+                font="reactist"
+                size="12px"
+                weight={600}
+                height="28px"
+              >
                 Due date
-              </span>
+              </Text>
               <span>
                 <AddSmIcon24 />
               </span>

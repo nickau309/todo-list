@@ -1,4 +1,5 @@
 import { ActivityIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
@@ -66,23 +67,42 @@ export default function ActivityLog({ disabled = false }: LinkProps) {
         <ActivityIcon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
-        <span
-          className={clsx(
-            "truncate text-[13px]/[16.8px] text-display-primary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
+        <Text
+          overflow="truncate"
+          font="reactist"
+          size="13px"
+          height="16.8px"
+          color={disabled ? "tertiary" : "primary"}
         >
           {label}
-        </span>
-        <div
-          className={clsx(
-            "flex items-center gap-1 text-xs text-display-secondary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
-        >
-          <kbd className="font-sans text-xs">G</kbd>
-          <span className="text-xs/[15.2px]">then</span>
-          <kbd className="font-sans text-xs">A</kbd>
+        </Text>
+        <div className="flex items-center gap-1">
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            G
+          </Text>
+          <Text
+            font="reactist"
+            size="12px"
+            height="15.2px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            then
+          </Text>
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            A
+          </Text>
         </div>
       </div>
     </Link>

@@ -1,4 +1,5 @@
 import { AddLgIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 
 export default function AddTeamButton() {
@@ -18,7 +19,15 @@ export default function AddTeamButton() {
       <span>
         <AddLgIcon24 />
       </span>
-      <span className="truncate text-[13px]/8 font-semibold">Add team</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
+        Add team
+      </Text>
     </button>
   );
 }

@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
 
@@ -27,7 +28,15 @@ export default function SubmitButton({ disabled = false }: ButtonProps) {
         "custom-hocus:bg-actionable-primary-hover-fill custom-hocus:text-actionable-primary-hover-tint",
       )}
     >
-      <span className="truncate text-[13px]/8 font-semibold">Add task</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
+        Add task
+      </Text>
     </button>
   );
 }

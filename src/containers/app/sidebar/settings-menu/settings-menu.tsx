@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import ActivityLog from "./activity-log";
 import AddTeam from "./add-team";
 import Changelog from "./changelog";
@@ -56,7 +57,15 @@ export default function SettingsMenu() {
           className="flex items-center p-1.5"
         >
           <Version disabled />
-          <span className="truncate text-[13px]/[16.8px]">.</span>
+          <Text
+            overflow="truncate"
+            font="sans"
+            size="13px"
+            height="17.6px"
+            color="primary"
+          >
+            .
+          </Text>
           <Changelog disabled />
         </div>
       </SettingsMenuPanel>

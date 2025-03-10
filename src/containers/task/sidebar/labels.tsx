@@ -1,5 +1,6 @@
 import { updateLabels } from "@/actions/task";
 import { AddSmIcon24, RemoveIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { bgColor20, bgHoverColor50, bgHoverColor80 } from "@/constants/color";
 import {
   LabelsDropdown,
@@ -67,7 +68,7 @@ export default function Labels({ disabled = false }: LabelsProps) {
         >
           <LabelsDropdownButton
             className={clsx(
-              "group flex h-7 min-w-[68px] select-none items-center gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
+              "group flex h-7 min-w-[68px] select-none items-center justify-between gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
               "text-actionable-quaternary-idle-tint",
               "transition-colors duration-300",
               "aria-disabled:cursor-not-allowed aria-disabled:text-actionable-quaternary-disabled-tint",
@@ -75,9 +76,15 @@ export default function Labels({ disabled = false }: LabelsProps) {
               "custom-hocus:bg-selectable-secondary-selected-fill custom-hocus:text-actionable-quaternary-hover-tint",
             )}
           >
-            <span className="flex-1 truncate text-left text-xs/7 font-semibold">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              weight={600}
+              height="28px"
+            >
               Labels
-            </span>
+            </Text>
             <span>
               <AddSmIcon24 />
             </span>
@@ -100,9 +107,9 @@ export default function Labels({ disabled = false }: LabelsProps) {
                 bgHoverColor50[label.color],
               )}
             >
-              <span className="truncate font-sans text-sm/[18.4px]">
+              <Text overflow="truncate" font="sans" size="14px" height="18.4px">
                 {label.name}
-              </span>
+              </Text>
               {!disabled && (
                 <button
                   type="button"

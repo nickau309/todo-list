@@ -1,4 +1,5 @@
 import { LabelIconOutline12 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import type { ProjectType } from "@/types/project";
 import clsx from "clsx";
@@ -14,7 +15,11 @@ export default function Label({ color, name }: LabelProps) {
       <span>
         <LabelIconOutline12 />
       </span>
-      <span className="max-w-[136px] truncate font-sans text-xs/4">{name}</span>
+      <div className="flex max-w-[136px]">
+        <Text overflow="truncate" font="sans" size="12px" height="16px">
+          {name}
+        </Text>
+      </div>
     </div>
   );
 }

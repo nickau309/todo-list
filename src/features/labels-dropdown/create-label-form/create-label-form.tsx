@@ -1,4 +1,5 @@
 import { createLabel } from "@/actions/label";
+import Text from "@/components/ui/text";
 import { useLabelsData } from "@/contexts/labels-data-context";
 import useCombobox from "@/hooks/use-combobox";
 import { LabelSchema } from "@/lib/zod";
@@ -154,9 +155,15 @@ export default function CreateLabelForm() {
           </FloatingFocusManager>
         ) : (
           <div className="flex px-2.5 py-[7px]">
-            <span className="truncate font-sans text-[13px]/[17.6px] text-[#555]">
+            <Text
+              overflow="truncate"
+              font="sans"
+              size="13px"
+              height="17.6px"
+              color="text-[#555]"
+            >
               Label not found
-            </span>
+            </Text>
           </div>
         )}
         {showSubmitButton && (

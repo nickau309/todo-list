@@ -1,4 +1,5 @@
 import { ProductivityIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useOptimisticUser } from "@/contexts/optimistic-user-context";
 import { useStore } from "@/contexts/store-context";
 import { useListItem } from "@floating-ui/react";
@@ -66,32 +67,53 @@ export default function Productivity({ disabled = false }: ButtonProps) {
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between gap-2">
         <div className="flex min-w-0 flex-col gap-1 py-1 text-left">
-          <span
-            className={clsx(
-              "truncate text-sm/[17.6px] font-bold text-display-primary-idle-tint",
-              "group-aria-disabled:text-display-tertiary-idle-tint",
-            )}
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="14px"
+            weight={700}
+            height="17.6px"
+            color={disabled ? "tertiary" : "primary"}
           >
             {name}
-          </span>
-          <span
-            className={clsx(
-              "text-xs/[15.2px] text-display-secondary-idle-tint",
-              "group-aria-disabled:text-display-tertiary-idle-tint",
-            )}
+          </Text>
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="12px"
+            height="15.2px"
+            color={disabled ? "tertiary" : "secondary"}
           >
             0/5 tasks
-          </span>
+          </Text>
         </div>
-        <div
-          className={clsx(
-            "flex items-center gap-1 text-xs text-display-secondary-idle-tint",
-            "group-aria-disabled:text-display-tertiary-idle-tint",
-          )}
-        >
-          <kbd className="font-sans text-xs">O</kbd>
-          <span className="text-xs/[15.2px]">then</span>
-          <kbd className="font-sans text-xs">P</kbd>
+        <div className="flex items-center gap-1">
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            O
+          </Text>
+          <Text
+            font="reactist"
+            size="12px"
+            height="15.2px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            then
+          </Text>
+          <Text
+            as="kbd"
+            font="sans"
+            size="12px"
+            height="16px"
+            color={disabled ? "tertiary" : "secondary"}
+          >
+            P
+          </Text>
         </div>
       </div>
     </button>

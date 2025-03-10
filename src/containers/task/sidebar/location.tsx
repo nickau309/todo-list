@@ -1,4 +1,5 @@
 import { LockIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import UpgradeIcon from "@/components/upgrade-icon";
 import {
   UnlockLocationDialog,
@@ -18,7 +19,7 @@ export default function Location({ disabled = false }: LocationProps) {
         <UnlockLocationDialogButton
           type="button"
           className={clsx(
-            "group flex h-7 min-w-[68px] select-none items-center gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
+            "group flex h-7 min-w-[68px] select-none items-center justify-between gap-0.5 rounded-[5px] border border-transparent pl-2 pr-0.5",
             "text-actionable-quaternary-idle-tint",
             "transition-colors duration-300",
             "aria-disabled:cursor-not-allowed aria-disabled:text-actionable-quaternary-disabled-tint",
@@ -26,10 +27,16 @@ export default function Location({ disabled = false }: LocationProps) {
             "custom-hocus:bg-selectable-secondary-selected-fill custom-hocus:text-actionable-quaternary-hover-tint",
           )}
         >
-          <div className="flex min-w-0 flex-1 items-center gap-1">
-            <span className="truncate pl-px text-xs/7 font-semibold">
+          <div className="flex min-w-0 flex-1 items-center gap-1 pl-px">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              weight={600}
+              height="28px"
+            >
               Location
-            </span>
+            </Text>
             <UpgradeIcon />
           </div>
           <span>

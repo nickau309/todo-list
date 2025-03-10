@@ -1,4 +1,5 @@
 import { NoDateIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import clsx from "clsx";
 import { useDueDatePopover } from "./due-date-popover";
 
@@ -29,9 +30,15 @@ export default function NoDate() {
         <NoDateIcon24 />
       </span>
       <div className="flex min-w-0 flex-1 items-center justify-between">
-        <span className="truncate font-sans text-[13px]/6 font-medium">
+        <Text
+          overflow="truncate"
+          font="sans"
+          size="13px"
+          weight={500}
+          height="24px"
+        >
           No Date
-        </span>
+        </Text>
       </div>
     </button>
   );

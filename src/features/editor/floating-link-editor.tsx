@@ -1,4 +1,5 @@
 import { Delete2Icon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   FloatingFocusManager,
   FloatingPortal,
@@ -174,9 +175,15 @@ export default function FloatingLinkEditor({ editor }: EditorProps) {
                     "custom-hocus:bg-actionable-tertiary-hover-fill custom-hocus:text-actionable-tertiary-hover-tint",
                   )}
                 >
-                  <span className="truncate text-[13px]/8 font-semibold">
+                  <Text
+                    overflow="truncate"
+                    font="reactist"
+                    size="13px"
+                    weight={600}
+                    height="32px"
+                  >
                     Apply
-                  </span>
+                  </Text>
                 </button>
               )}
             </form>

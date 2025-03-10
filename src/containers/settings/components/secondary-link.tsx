@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import {
   useSettingsDialogControl,
   useSettingsDialogState,
@@ -45,7 +46,15 @@ export default function SecondaryLink<R extends string>({
         "custom-hocus:bg-actionable-secondary-hover-fill custom-hocus:text-actionable-secondary-hover-tint",
       )}
     >
-      <span className="truncate text-[13px]/8 font-semibold">{children}</span>
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
+        {children}
+      </Text>
     </Link>
   );
 }

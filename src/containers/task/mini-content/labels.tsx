@@ -1,5 +1,6 @@
 import { updateLabels } from "@/actions/task";
 import { AddSmIcon24, LabelIconOutline24, RemoveIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { bgColor20, bgHoverColor50, bgHoverColor80 } from "@/constants/color";
 import {
   LabelsDropdown,
@@ -114,9 +115,14 @@ export default function Labels({ disabled = false }: LabelsProps) {
                       bgHoverColor50[label.color],
                     )}
                   >
-                    <span className="truncate font-sans text-sm/[18.4px]">
+                    <Text
+                      overflow="truncate"
+                      font="sans"
+                      size="14px"
+                      height="18.4px"
+                    >
                       {label.name}
-                    </span>
+                    </Text>
                     {!disabled && (
                       <button
                         type="button"
@@ -156,9 +162,14 @@ export default function Labels({ disabled = false }: LabelsProps) {
                     "custom-hocus:bg-actionable-tertiary-hover-fill custom-hocus:text-actionable-tertiary-hover-tint",
                   )}
                 >
-                  <span className="truncate text-[13px]/8">
+                  <Text
+                    overflow="truncate"
+                    font="reactist"
+                    size="13px"
+                    height="32px"
+                  >
                     {showAll ? "Show less" : "Show more"}
-                  </span>
+                  </Text>
                 </button>
               )}
               <LabelsDropdownButton
@@ -174,7 +185,15 @@ export default function Labels({ disabled = false }: LabelsProps) {
                 <span>
                   <AddSmIcon24 />
                 </span>
-                <span className="truncate text-xs/7 font-semibold">Add</span>
+                <Text
+                  overflow="truncate"
+                  font="reactist"
+                  size="12px"
+                  weight={600}
+                  height="28px"
+                >
+                  Add
+                </Text>
               </LabelsDropdownButton>
             </div>
           </div>
@@ -192,7 +211,9 @@ export default function Labels({ disabled = false }: LabelsProps) {
             <span>
               <LabelIconOutline24 />
             </span>
-            <span className="truncate text-sm/8">Add labels</span>
+            <Text overflow="truncate" font="reactist" size="14px" height="32px">
+              Add labels
+            </Text>
           </LabelsDropdownButton>
         )}
       </div>

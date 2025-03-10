@@ -1,5 +1,6 @@
 import { updateProjectId } from "@/actions/task";
 import { InboxIcon24, NumberSignIcon24 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import { useProjects } from "@/contexts/projects-context";
 import {
@@ -78,7 +79,9 @@ export default function Project({ disabled = false }: ProjectProps) {
               <NumberSignIcon24 />
             </span>
           )}
-          <span className="truncate text-sm/8">{project.name}</span>
+          <Text overflow="truncate" font="reactist" size="14px" height="32px">
+            {project.name}
+          </Text>
         </ProjectDropdownButton>
       </div>
       <ProjectDropdownPanel />

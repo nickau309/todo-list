@@ -1,6 +1,7 @@
 "use client";
 
 import { InboxIcon16, NumberSignIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import { useProjects } from "@/contexts/projects-context";
 import clsx from "clsx";
@@ -47,9 +48,16 @@ export default function Title() {
           <NumberSignIcon16 />
         </span>
       )}
-      <span className="truncate text-[13px]/5 font-semibold tracking-[-.15px]">
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="20px"
+        spacing="-.15px"
+      >
         {project.name}
-      </span>
+      </Text>
     </Link>
   );
 }

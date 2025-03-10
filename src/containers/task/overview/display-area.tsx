@@ -1,4 +1,5 @@
 import { DescriptionIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useProjects } from "@/contexts/projects-context";
 import {
   EditorContent,
@@ -138,9 +139,15 @@ export default function DisplayArea({ setFocusingField }: AreaProps) {
             <span className="text-display-tertiary-idle-tint">
               <DescriptionIcon16 />
             </span>
-            <span className="text-sm/[1.65] text-display-tertiary-idle-tint">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="14px"
+              height={1.65}
+              color="tertiary"
+            >
               Description
-            </span>
+            </Text>
           </div>
         ) : (
           <EditorContent

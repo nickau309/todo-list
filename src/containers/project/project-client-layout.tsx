@@ -1,5 +1,6 @@
 "use client";
 
+import Text from "@/components/ui/text";
 import useHash from "@/hooks/use-hash";
 import clsx from "clsx";
 import { useMotionValueEvent, useScroll } from "framer-motion";
@@ -69,7 +70,17 @@ export default function ProjectClientLayout({ children }: LayoutProps) {
         >
           <div className="flex w-full max-w-[800px] flex-col gap-2">
             <div className="-ml-0.5 flex border border-transparent">
-              <h1 className="truncate text-[26px]/[35px] font-bold">Inbox</h1>
+              <Text
+                as="h1"
+                overflow="truncate"
+                font="reactist"
+                size="26px"
+                weight={700}
+                height="35px"
+                color="primary"
+              >
+                Inbox
+              </Text>
             </div>
           </div>
         </div>

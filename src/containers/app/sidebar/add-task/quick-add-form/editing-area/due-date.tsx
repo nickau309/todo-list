@@ -3,6 +3,7 @@ import {
   DueDateSolidIcon16,
   RemoveIcon16,
 } from "@/assets";
+import Text from "@/components/ui/text";
 import { useStore } from "@/contexts/store-context";
 import {
   DueDatePopover,
@@ -51,14 +52,15 @@ export default function DueDate({ disabled = false }: DueDateProps) {
             <span className={getDueDateTextColor(dueDate) ?? ""}>
               <DueDateSolidIcon16 />
             </span>
-            <span
-              className={clsx(
-                "truncate text-[13px]/normal",
-                getDueDateTextColor(dueDate) ?? "text-[#808080]",
-              )}
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="13px"
+              height={1.5}
+              color={getDueDateTextColor(dueDate) ?? "text-[#808080]"}
             >
               {getDueDateString(dueDate)}
-            </span>
+            </Text>
           </DueDatePopoverButton>
           <button
             type="button"
@@ -95,14 +97,15 @@ export default function DueDate({ disabled = false }: DueDateProps) {
             <span>
               <DueDateOutlineIcon16 />
             </span>
-            <span
-              className={clsx(
-                "truncate text-[13px]/[16.8px]",
-                "text-display-secondary-idle-tint",
-              )}
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="13px"
+              height="16.8px"
+              color="secondary"
             >
               Due date
-            </span>
+            </Text>
           </DueDatePopoverButton>
         </div>
       )}

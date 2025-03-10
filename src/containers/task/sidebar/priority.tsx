@@ -1,5 +1,6 @@
 import { updatePriority } from "@/actions/task";
 import { DropdownIcon24, Priority4Icon16, PriorityIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import {
   PriorityDropdown,
   PriorityDropdownButton,
@@ -43,15 +44,21 @@ export default function Priority({ disabled = false }: PriorityProps) {
       disabled={disabled}
     >
       <div className="flex flex-col">
-        <div
-          className={clsx(
-            "pl-px text-xs/7 font-semibold",
-            disabled
-              ? "text-actionable-quaternary-disabled-tint"
-              : "text-display-secondary-idle-tint",
-          )}
-        >
-          Priority
+        <div className="flex pl-px">
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="12px"
+            weight={600}
+            height="28px"
+            color={
+              disabled
+                ? "text-actionable-quaternary-disabled-tint"
+                : "secondary"
+            }
+          >
+            Priority
+          </Text>
         </div>
         <div className="relative -mx-2 flex flex-col">
           <PriorityDropdownButton
@@ -71,9 +78,15 @@ export default function Priority({ disabled = false }: PriorityProps) {
             >
               {priority === 4 ? <Priority4Icon16 /> : <PriorityIcon16 />}
             </span>
-            <span className="truncate text-xs/7 group-aria-disabled:font-semibold">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              height="28px"
+              className="group-aria-disabled:font-semibold"
+            >
               P{priority}
-            </span>
+            </Text>
           </PriorityDropdownButton>
           <span
             className={clsx(

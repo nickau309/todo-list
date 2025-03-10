@@ -1,5 +1,6 @@
 import { updateProjectId } from "@/actions/task";
 import { DropdownIcon24, InboxIcon16, NumberSignIcon16 } from "@/assets";
+import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
 import { useProjects } from "@/contexts/projects-context";
 import {
@@ -49,15 +50,21 @@ export default function Project({ disabled = false }: ProjectProps) {
       setProjectId={setProjectId}
     >
       <div className="flex flex-col">
-        <div
-          className={clsx(
-            "pl-px text-xs/7 font-semibold",
-            disabled
-              ? "text-actionable-quaternary-disabled-tint"
-              : "text-display-secondary-idle-tint",
-          )}
-        >
-          Project
+        <div className="flex pl-px">
+          <Text
+            overflow="truncate"
+            font="reactist"
+            size="12px"
+            weight={600}
+            height="28px"
+            color={
+              disabled
+                ? "text-actionable-quaternary-disabled-tint"
+                : "secondary"
+            }
+          >
+            Project
+          </Text>
         </div>
         <div className="relative -mx-2 flex flex-col">
           <ProjectDropdownButton
@@ -89,9 +96,15 @@ export default function Project({ disabled = false }: ProjectProps) {
                 <NumberSignIcon16 />
               </span>
             )}
-            <span className="truncate text-xs/7 group-aria-disabled:font-semibold">
+            <Text
+              overflow="truncate"
+              font="reactist"
+              size="12px"
+              height="28px"
+              className="group-aria-disabled:font-semibold"
+            >
               {project.name}
-            </span>
+            </Text>
           </ProjectDropdownButton>
           <span
             className={clsx(

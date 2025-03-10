@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { useSettingsDialogState } from "@/contexts/settings-dialog-context";
 import { UpdatePasswordSchema } from "@/lib/zod";
 import clsx from "clsx";
@@ -35,9 +36,15 @@ export default function SubmitButton({ isSubmitting }: ButtonProps) {
         "custom-hocus:bg-actionable-primary-hover-fill custom-hocus:text-actionable-primary-hover-tint",
       )}
     >
-      <span className="truncate text-[13px]/8 font-semibold">
+      <Text
+        overflow="truncate"
+        font="reactist"
+        size="13px"
+        weight={600}
+        height="32px"
+      >
         Change password
-      </span>
+      </Text>
     </button>
   );
 }
