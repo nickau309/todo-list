@@ -115,6 +115,19 @@ export const UpdateProjectIdSchema = z.object({
   projectId: z.coerce.number().int(),
 });
 
+export const SortableTaskDataSchema = z.object({
+  parentTaskId: z.number().nullable(),
+  sortable: z.object({
+    containerId: z.string(),
+    index: z.number(),
+    items: z.union([z.string(), z.number()]).array(),
+  }),
+});
+
+export const ContainerIdSchema = z.object({
+  id: z.string().min(1).pipe(z.coerce.number()),
+});
+
 // label
 export const LabelSchema = z.object({
   name: z.string().min(1).max(60),

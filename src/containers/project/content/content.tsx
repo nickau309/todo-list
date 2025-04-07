@@ -1,204 +1,228 @@
-import { reorderTask } from "@/actions/task";
-import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
+import useGetProject from "@/hooks/project/use-get-project";
+import useGetTaskIds from "@/hooks/task/use-get-task-ids";
 import {
-  DndContext,
-  DragOverlay,
-  PointerSensor,
-  closestCenter,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { startTransition, useState } from "react";
-import { Virtuoso } from "react-virtuoso";
-import {
-  useOptimisticProject,
-  useSetOptimisticProject,
-} from "../contexts/optimistic-project-context";
-import OverlayItem from "./overlay-item";
+import { defaultRangeExtractor, useVirtualizer } from "@tanstack/react-virtual";
+import type { RefObject } from "react";
+import { useCallback, useMemo } from "react";
+import { useDragData } from "./dnd-provider";
 import SortableItem from "./sortable-item";
 
 export default function Content({
-  container,
+  projectId,
+  scrollElementRef,
 }: {
-  container: HTMLDivElement | null;
+  projectId: string | number;
+  scrollElementRef: RefObject<HTMLDivElement>;
 }) {
-  const { isArchived, tasks } = useOptimisticProject();
-  const setOptimisticProject = useSetOptimisticProject();
+  const { data: project } = useGetProject({ id: projectId });
+  const isArchived = project?.isArchived ?? false;
 
-  const [activeId, setActiveId] = useState<string | number | null>(null);
+  const { activeId, overId, offsetX } = useDragData();
 
-  const pointerSensor = useSensor(PointerSensor, {
-    activationConstraint: { distance: 10 },
-  });
-  const sensors = useSensors(pointerSensor);
+  const query = useGetTaskIds({ projectId });
 
-  console.log(tasks);
+  const tasks = useMemo(() => {
+    const tasks: {
+      id: number;
+      parentTaskId: number | null;
+      depth: number;
+    }[] = [];
 
-  const handleDragStart = (event: DragStartEvent) => {
-    const { active } = event;
+    const path: number[] = [];
+    for (const task of query.data ?? []) {
+      while (path.length > 0 && path[path.length - 1] !== task.parentTaskId) {
+        path.pop();
+      }
+      tasks.push({
+        ...task,
+        depth: path.length,
+      });
+      path.push(task.id);
+    }
 
-    setActiveId(active.id);
-  };
+    return tasks;
+  }, [query.data]);
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
+  const displayTasks = useMemo(() => {
+    if (activeId === null) {
+      return tasks;
+    }
 
-    console.log("handle drag end..");
-    console.log(event);
+    const displayTasks: {
+      id: number;
+      parentTaskId: number | null;
+      depth: number;
+    }[] = [];
 
-    if (active.id !== over?.id) {
-      const activeItem = tasks.find((item) => item.id === active.id);
-      const overItem = tasks.find((item) => item.id === over?.id);
-      if (activeItem !== undefined && overItem !== undefined) {
-        const activeIndex = tasks.indexOf(activeItem);
-        const overIndex = tasks.indexOf(overItem);
-        console.log({ activeItem, overItem, activeIndex, overIndex });
-        const formData = new FormData();
-        formData.append("childOrder", String(overItem.childOrder));
-        void reorderTask(activeItem.id, formData);
-
-        const newItems = tasks.map((item) => {
-          if (item.childOrder === activeItem.childOrder) {
-            return {
-              ...item,
-              childOrder: overItem.childOrder,
-            };
-          } else if (
-            item.childOrder > activeItem.childOrder &&
-            item.childOrder <= overItem.childOrder
-          ) {
-            return {
-              ...item,
-              childOrder: item.childOrder - 1,
-            };
-          } else if (
-            item.childOrder < activeItem.childOrder &&
-            item.childOrder >= overItem.childOrder
-          ) {
-            return {
-              ...item,
-              childOrder: item.childOrder + 1,
-            };
-          } else {
-            return item;
-          }
-        });
-
-        startTransition(() => {
-          setOptimisticProject((optimisticProject) => ({
-            ...optimisticProject,
-            tasks: arrayMove(newItems, activeIndex, overIndex),
-          }));
-        });
+    let activeTaskDepth: number | null = null;
+    for (const task of tasks) {
+      if (activeTaskDepth === task.depth) {
+        activeTaskDepth = null;
+      }
+      if (activeId === task.id) {
+        activeTaskDepth = task.depth;
+      }
+      if (activeTaskDepth === null || task.depth <= activeTaskDepth) {
+        displayTasks.push(task);
       }
     }
 
-    setActiveId(null);
-  };
+    return displayTasks;
+  }, [activeId, tasks]);
 
-  console.log("render..");
+  const siblingTaskIds = useMemo(() => {
+    return tasks.map((task) => task.id);
+  }, [tasks]);
 
-  const task = tasks.find((task) => task.id === activeId);
+  const projectedTask = useMemo(() => {
+    if (activeId === null || overId === null) {
+      return null;
+    }
+    const overIndex = displayTasks.findIndex((task) => task.id === overId);
+    const activeIndex = displayTasks.findIndex((task) => task.id === activeId);
+    const prevIndex = activeIndex < overIndex ? overIndex : overIndex - 1;
+    const nextIndex = activeIndex > overIndex ? overIndex : overIndex + 1;
+    const activeItem = displayTasks[activeIndex];
+    const dragDepth = Math.round(offsetX / 28);
+    const projectedDepth = activeItem.depth + dragDepth;
+    const maxDepth = getMaxDepth({ items: displayTasks, prevIndex });
+    const minDepth = getMinDepth({ items: displayTasks, nextIndex });
+    let depth = projectedDepth;
+    if (projectedDepth > maxDepth) {
+      depth = maxDepth;
+    } else if (projectedDepth < minDepth) {
+      depth = minDepth;
+    }
+    const parentTaskId = getParentId({
+      activeIndex,
+      depth,
+      items: displayTasks,
+      prevIndex,
+    });
+    return { depth, parentTaskId };
+
+    function getMaxDepth({
+      items,
+      prevIndex,
+    }: {
+      items: { depth: number }[];
+      prevIndex: number;
+    }) {
+      if (prevIndex < 0) {
+        return 0;
+      }
+      return items[prevIndex].depth + 1;
+    }
+
+    function getMinDepth({
+      items,
+      nextIndex,
+    }: {
+      items: { depth: number }[];
+      nextIndex: number;
+    }) {
+      return items.at(nextIndex)?.depth ?? 0;
+    }
+
+    function getParentId({
+      activeIndex,
+      depth,
+      items,
+      prevIndex,
+    }: {
+      activeIndex: number;
+      depth: number;
+      items: { depth: number; id: number; parentTaskId: number | null }[];
+      prevIndex: number;
+    }) {
+      if (depth === 0) {
+        return null;
+      }
+      if (depth > items[prevIndex].depth) {
+        return items[prevIndex].id;
+      }
+      for (let index = prevIndex; index > 0; --index) {
+        if (index !== activeIndex && depth === items[index].depth) {
+          return items[index].parentTaskId;
+        }
+      }
+      return null;
+    }
+  }, [activeId, displayTasks, offsetX, overId]);
+
+  const rangeExtractor = useCallback<typeof defaultRangeExtractor>(
+    (range) => {
+      const arr = defaultRangeExtractor(range);
+
+      const index = displayTasks.findIndex((task) => task.id === activeId);
+      if (index !== -1) {
+        if (!arr.includes(index)) {
+          arr.push(index);
+        }
+      }
+
+      return arr;
+    },
+    [activeId, displayTasks],
+  );
+
+  const virtualizer = useVirtualizer({
+    count: displayTasks.length,
+    estimateSize: () => 43,
+    getScrollElement: () => scrollElementRef.current,
+    getItemKey: (index) => displayTasks[index].id,
+    overscan: 14,
+    rangeExtractor,
+  });
+
+  const items = virtualizer.getVirtualItems();
+
+  const [paddingTop, paddingBottom] =
+    items.length > 0
+      ? [
+          Math.max(0, items[0].start - virtualizer.options.scrollMargin),
+          Math.max(0, virtualizer.getTotalSize() - items[items.length - 1].end),
+        ]
+      : [0, 0];
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
+    <>
       <div className="h-[5px]"></div>
       <SortableContext
-        id="test"
-        items={tasks}
+        id={`sortable-project-${projectId}`}
+        items={displayTasks}
         strategy={verticalListSortingStrategy}
       >
-        <Virtuoso
-          data={tasks}
-          context={{
-            isArchived,
-            siblingTaskIds: tasks.map((task) => task.id),
-          }}
-          itemContent={(_, task, { isArchived, siblingTaskIds }) => {
+        <div style={{ paddingTop, paddingBottom }}>
+          {items.map((virtualRow) => {
+            const task = displayTasks[virtualRow.index];
+            let depth = task.depth;
+            let parentTaskId = task.parentTaskId;
+            if (task.id === activeId && projectedTask) {
+              depth = projectedTask.depth;
+              parentTaskId = projectedTask.parentTaskId;
+            }
             return (
-              <SortableItem
-                isArchived={isArchived}
-                siblingTaskIds={siblingTaskIds}
-                {...task}
-              />
+              <div
+                ref={virtualizer.measureElement}
+                key={virtualRow.key}
+                data-index={virtualRow.index}
+              >
+                <SortableItem
+                  depth={depth}
+                  id={task.id}
+                  isArchived={isArchived}
+                  parentTaskId={parentTaskId}
+                  siblingTaskIds={siblingTaskIds}
+                />
+              </div>
             );
-          }}
-          computeItemKey={(index, task) => {
-            return task.id;
-          }}
-          customScrollParent={container ?? undefined}
-        />
+          })}
+        </div>
       </SortableContext>
-
-      {/* <svg
-        aria-labelledby="61e47o-aria"
-        role="img"
-        height="43px"
-        width="800px"
-        viewBox="0 0 800 43"
-        data-testid="task-list-item-placeholder"
-      >
-        <title id="61e47o-aria">Loading...</title>
-        <rect
-          x="1"
-          y="13"
-          rx="9"
-          ry="9"
-          width="16"
-          height="16"
-          stroke="var(--product-library-display-tertiary-idle-tint)"
-          stroke-width="1"
-          fill="var(--product-library-background-base-primary)"
-        ></rect>
-        <rect
-          role="presentation"
-          x="0"
-          y="0"
-          width="100%"
-          height="100%"
-          clip-path="url(#61e47o-diff)"
-          style='fill: url("#61e47o-animated-diff");'
-        ></rect>
-        <defs>
-          <clipPath id="61e47o-diff">
-            <rect width="60%" height="8" rx="3" x="28" y="17"></rect>
-            <rect width="100%" height="1" x="0" y="42"></rect>
-          </clipPath>
-          <linearGradient
-            id="61e47o-animated-diff"
-            gradientTransform="translate(-2 0)"
-          >
-            <stop
-              offset="0%"
-              stop-color="var(--product-library-divider-primary)"
-              stop-opacity="1"
-            ></stop>
-            <stop
-              offset="50%"
-              stop-color="var(--product-library-display-quaternary-idle-tint)"
-              stop-opacity="0.5"
-            ></stop>
-            <stop
-              offset="100%"
-              stop-color="var(--product-library-divider-primary)"
-              stop-opacity="1"
-            ></stop>
-          </linearGradient>
-        </defs>
-      </svg> */}
-      <DragOverlay dropAnimation={null}>
-        {task && <OverlayItem {...task} />}
-      </DragOverlay>
-    </DndContext>
+    </>
   );
 }

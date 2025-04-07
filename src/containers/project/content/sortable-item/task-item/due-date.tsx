@@ -1,4 +1,3 @@
-import { removeDueDate, updateDueDate } from "@/actions/task";
 import { DueDateIcon12 } from "@/assets";
 import Text from "@/components/ui/text";
 import {
@@ -6,46 +5,31 @@ import {
   DueDatePopoverButton,
   DueDatePopoverPanel,
 } from "@/features/due-date-popover";
+import useUpdateTask from "@/hooks/task/use-update-task";
 import dayjs from "@/lib/dayjs";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 import getDueDateString from "@/utils/getDueDateString";
 import getDueDateTextColor from "@/utils/getDueDateTextColor";
 import clsx from "clsx";
-import { startTransition, useCallback } from "react";
-import { useSetOptimisticProject } from "../../../contexts/optimistic-project-context";
+import { useCallback } from "react";
 
 type DueDateProps = {
-  disabled: boolean;
-} & Pick<ProjectType["tasks"][number], "dueDate" | "id">;
+  disabled?: boolean;
+} & Pick<TaskType, "dueDate" | "id">;
 
-export default function DueDate({ disabled, dueDate, id }: DueDateProps) {
-  const setOptimisticProject = useSetOptimisticProject();
+export default function DueDate({
+  dueDate,
+  id,
+  disabled = false,
+}: DueDateProps) {
+  const { mutate } = useUpdateTask();
 
   const setDueDate = useCallback(
     (dueDate: Date | null) => {
-      startTransition(() => {
-        setOptimisticProject((optimisticProject) => ({
-          ...optimisticProject,
-          tasks: optimisticProject.tasks.map((task) => {
-            if (task.id !== id) {
-              return task;
-            }
-            return {
-              ...task,
-              dueDate,
-            };
-          }),
-        }));
-      });
-      if (dueDate !== null) {
-        const formData = new FormData();
-        formData.append("date", dayjs(dueDate).format("YYYY-MM-DD"));
-        void updateDueDate(id, formData);
-      } else {
-        void removeDueDate(id);
-      }
+      const date = dueDate ? dayjs(dueDate).format("YYYY-MM-DD") : dueDate;
+      mutate({ id, date });
     },
-    [id, setOptimisticProject],
+    [id, mutate],
   );
 
   if (dueDate === null) {

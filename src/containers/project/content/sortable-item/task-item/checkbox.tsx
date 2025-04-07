@@ -1,47 +1,31 @@
-import { updateIsCompleted } from "@/actions/task";
 import { CheckboxButton } from "@/features/checkbox";
-import type { ProjectType } from "@/types/project";
-import { startTransition, useCallback } from "react";
-import { useSetOptimisticProject } from "../../../contexts/optimistic-project-context";
+import useUpdateIsCompleted from "@/hooks/task/use-update-is-completed";
+import type { TaskType } from "@/types/task";
+import { useCallback } from "react";
 
-type CheckboxProps = Pick<ProjectType, "isArchived"> &
-  Pick<ProjectType["tasks"][number], "id" | "isCompleted" | "priority">;
+type CheckboxProps = {
+  disabled?: boolean;
+} & Pick<TaskType, "id" | "isCompleted" | "priority">;
 
 export default function Checkbox({
   id,
-  isArchived,
   isCompleted,
   priority,
+  disabled = false,
 }: CheckboxProps) {
-  const setOptimisticProject = useSetOptimisticProject();
+  const { mutate } = useUpdateIsCompleted();
 
   const setIsCompleted = useCallback(
     (isCompleted: boolean) => {
-      startTransition(() => {
-        setOptimisticProject((optimisticProject) => ({
-          ...optimisticProject,
-          tasks: optimisticProject.tasks.map((task) => {
-            if (task.id !== id) {
-              return task;
-            }
-            return {
-              ...task,
-              isCompleted,
-            };
-          }),
-        }));
-      });
-      const formData = new FormData();
-      formData.append("isCompleted", String(isCompleted));
-      void updateIsCompleted(id, formData);
+      mutate({ id, isCompleted });
     },
-    [id, setOptimisticProject],
+    [id, mutate],
   );
 
   return (
     <CheckboxButton
       checked={isCompleted}
-      disabled={isArchived}
+      disabled={disabled}
       priority={priority}
       setChecked={setIsCompleted}
     />

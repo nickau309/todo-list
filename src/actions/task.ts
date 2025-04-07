@@ -2,7 +2,7 @@
 
 import { getTask, getUser } from "@/lib/data";
 import dayjs from "@/lib/dayjs";
-import prisma, { setTaskChildOrder } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import {
   TaskDueDateSchema,
   TaskInfoSchema,
@@ -230,31 +230,4 @@ export async function duplicateTask(id: number) {
       ...rest,
     },
   });
-}
-
-export async function reorderTask(id: number, formData: FormData) {
-  const schema = z.object({
-    childOrder: z.coerce.number().int(),
-  });
-
-  const parsed = schema.safeParse(Object.fromEntries(formData));
-  if (!parsed.success) {
-    throw new Error("Please fill in the form with valid values.");
-  }
-
-  const { childOrder } = parsed.data;
-
-  const modifiedTasks = await prisma.$queryRawTyped(
-    setTaskChildOrder(id, childOrder),
-  );
-
-  console.log(modifiedTasks);
-
-  for (const task of modifiedTasks) {
-    if (task.id !== null) {
-      revalidateTag(`task-${task.id}`);
-    }
-  }
-  // may revalidate parent task id in future
-  // should revalidate project id too
 }

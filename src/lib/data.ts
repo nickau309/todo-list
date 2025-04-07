@@ -48,106 +48,50 @@ const queryUser = unstable_cache(
 );
 
 // Project
-function queryProject(id: number, userId: number): Promise<ProjectType | null> {
+export function queryProject(
+  id: number,
+  userId: number,
+): Promise<ProjectType | null> {
   return prisma.project.findUnique({
     where: { id, userId },
-    include: {
-      tasks: {
-        select: {
-          childOrder: true,
-          description: true,
-          dueDate: true,
-          id: true,
-          isCompleted: true,
-          labels: {
-            select: {
-              childOrder: true,
-              color: true,
-              id: true,
-              name: true,
-            },
-            orderBy: { childOrder: "asc" },
-          },
-          name: true,
-          priority: true,
-        },
-        orderBy: { childOrder: "asc" },
-      },
-    },
   });
-}
-
-export async function getProject(id: string): Promise<ProjectType> {
-  const { id: userId } = await getRawUser();
-
-  // const data = await prisma.$queryRaw`
-  //   WITH RECURSIVE "TaskWithDepth" AS (
-  //     SELECT id, "parentTaskId", 0 as depth
-  //     FROM "Task"
-  //     WHERE
-  //       "parentTaskId" IS NULL AND
-  //       "projectId" = ${Number(id)} AND
-  //       "userId" = ${userId}
-  //     UNION ALL
-  //     SELECT t.id, t."parentTaskId", 1 + twd.depth as depth
-  //     FROM "Task" t
-  //     JOIN "TaskWithDepth" twd ON t."parentTaskId" = twd.id
-  //   )
-  //   SELECT * FROM "TaskWithDepth"
-  //   -- SELECT p.*, (SELECT * FROM "TaskWithDepth") as task
-  //   -- FROM "Project" p
-  //   -- WHERE
-  //   --   ID = ${Number(id)} AND
-  //   --   "userId" = ${userId}
-  // `;
-  // console.log(data);
-
-  const getCachedProject = unstable_cache(
-    queryProject.bind(null, Number(id), userId),
-    [`project-${id}`],
-    { tags: [`project-${id}`] },
-  );
-
-  const project = await getCachedProject();
-
-  if (project === null) {
-    notFound();
-  }
-
-  return project;
 }
 
 // Task
 export async function getTask(id: string): Promise<TaskType> {
   const { id: userId } = await getRawUser();
 
-  const queryTask = unstable_cache(
-    async (id: number) =>
-      prisma.task.findUnique({
-        where: { id },
-        include: {
-          labels: {
-            select: {
-              childOrder: true,
-              color: true,
-              id: true,
-              name: true,
-            },
-            orderBy: { childOrder: "asc" },
-          },
-        },
-      }),
-    [`task-${id}`],
-    { tags: [`task-${id}`] },
-  );
+  const getCachedTask = unstable_cache(queryTask, [`task-${id}`], {
+    tags: [`task-${id}`],
+  });
 
-  const task = await queryTask(Number(id));
+  const task = await getCachedTask(Number(id), userId);
 
   if (task === null || task.userId !== userId) {
     notFound();
   }
 
   return task;
+}
+
+export function queryTask(
+  id: number,
+  userId: number,
+): Promise<TaskType | null> {
+  return prisma.task.findUnique({
+    where: { id, userId },
+    include: {
+      labels: {
+        select: {
+          childOrder: true,
+          color: true,
+          id: true,
+          name: true,
+        },
+        orderBy: { childOrder: "asc" },
+      },
+    },
+  });
 }
 
 export async function getIncompleteTaskCountOn(dueDate: Date) {

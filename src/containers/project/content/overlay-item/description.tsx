@@ -2,12 +2,9 @@ import {
   EditorContent,
   useDescriptionViewerInTaskList,
 } from "@/features/editor";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 
-type DescriptionProps = Pick<
-  ProjectType["tasks"][number],
-  "description" | "isCompleted"
->;
+type DescriptionProps = Pick<TaskType, "description" | "isCompleted">;
 
 export default function Description({
   description,

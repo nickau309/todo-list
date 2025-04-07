@@ -1,13 +1,10 @@
 import { LabelIconOutline12 } from "@/assets";
 import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 import clsx from "clsx";
 
-type LabelProps = Pick<
-  ProjectType["tasks"][number]["labels"][number],
-  "color" | "name"
->;
+type LabelProps = Pick<TaskType["labels"][number], "color" | "name">;
 
 export default function Label({ color, name }: LabelProps) {
   return (

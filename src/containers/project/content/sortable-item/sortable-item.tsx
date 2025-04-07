@@ -1,45 +1,39 @@
 import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import clsx from "clsx";
 import TaskItem from "./task-item";
+import { memo } from "react";
 
 type ItemProps = {
+  depth: number;
   siblingTaskIds: number[];
 } & Pick<ProjectType, "isArchived"> &
-  Pick<
-    ProjectType["tasks"][number],
-    | "description"
-    | "dueDate"
-    | "id"
-    | "isCompleted"
-    | "labels"
-    | "name"
-    | "priority"
-  >;
+  Pick<TaskType, "id" | "parentTaskId">;
 
-export default function SortableItem({
-  description,
-  dueDate,
+function SortableItem({
+  depth,
   id,
   isArchived,
-  isCompleted,
-  labels,
-  name,
-  priority,
+  parentTaskId,
   siblingTaskIds,
 }: ItemProps) {
   const {
     attributes,
     isDragging,
     listeners,
-    setNodeRef,
+    setDraggableNodeRef,
+    setDroppableNodeRef,
     transform,
     transition,
   } = useSortable({
-    attributes: { role: "presentation", tabIndex: -1 },
     id,
+    attributes: { role: "presentation", tabIndex: -1 },
     transition: null,
+    data: {
+      parentTaskId,
+    },
   });
 
   const style = {
@@ -47,10 +41,13 @@ export default function SortableItem({
     transition,
   };
 
+  const paddingLeft = [null, "pl-7", "pl-14", "pl-[84px]", "pl-28"];
+
   return (
-    // indent div
-    <div ref={setNodeRef} style={style}>
+    <div ref={setDroppableNodeRef} className={clsx(paddingLeft[depth])}>
       <div
+        ref={setDraggableNodeRef}
+        style={style}
         {...attributes}
         {...listeners}
         className={clsx(
@@ -66,14 +63,8 @@ export default function SortableItem({
       >
         <div className={clsx("-mx-2", isDragging && "opacity-0")}>
           <TaskItem
-            description={description}
-            dueDate={dueDate}
             id={id}
             isArchived={isArchived}
-            isCompleted={isCompleted}
-            labels={labels}
-            name={name}
-            priority={priority}
             siblingTaskIds={siblingTaskIds}
           />
         </div>
@@ -81,3 +72,5 @@ export default function SortableItem({
     </div>
   );
 }
+
+export default memo(SortableItem);

@@ -4,18 +4,19 @@ import Text from "@/components/ui/text";
 import useHash from "@/hooks/use-hash";
 import clsx from "clsx";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useParams } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import CompactHeader from "./compact-header";
 import Content from "./content";
+import DndProvider from "./content/dnd-provider";
 
 type LayoutProps = {
   children: ReactNode;
 };
 
 export default function ProjectClientLayout({ children }: LayoutProps) {
-  const container = useRef<HTMLDivElement | null>(null);
-  const [temp, setTemp] = useState<HTMLDivElement | null>(null);
+  const container = useRef<HTMLDivElement>(null);
   const target = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     container,
@@ -31,6 +32,8 @@ export default function ProjectClientLayout({ children }: LayoutProps) {
 
   const hash = useHash();
 
+  const { projectId } = useParams<{ projectId: string }>();
+
   useEffect(() => {
     if (container.current && hash.length > 0) {
       const ele = container.current.querySelector(hash);
@@ -42,11 +45,7 @@ export default function ProjectClientLayout({ children }: LayoutProps) {
 
   return (
     <div
-      ref={(node) => {
-        console.log("set node..");
-        setTemp(node);
-        container.current = node;
-      }}
+      ref={container}
       className="flex h-full w-full flex-col overflow-y-auto bg-background-base-primary text-display-primary-idle-tint"
     >
       <header className="contents">
@@ -87,7 +86,9 @@ export default function ProjectClientLayout({ children }: LayoutProps) {
       </header>
       <div className="flex justify-center px-[55px] pb-[84px]">
         <div className="flex w-full max-w-[800px] flex-col">
-          <Content container={temp} />
+          <DndProvider>
+            <Content scrollElementRef={container} projectId={projectId} />
+          </DndProvider>
         </div>
         {children}
       </div>

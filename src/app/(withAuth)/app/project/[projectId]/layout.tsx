@@ -1,6 +1,4 @@
-import { OptimisticProjectProvider } from "@/containers/project/contexts/optimistic-project-context";
 import ProjectClientLayout from "@/containers/project/project-client-layout";
-import { getProject } from "@/lib/data";
 import type { ReactNode } from "react";
 
 type LayoutProps = {
@@ -11,20 +9,11 @@ type LayoutProps = {
   task: ReactNode;
 };
 
-export default async function ProjectServerLayout({
-  children,
-  params,
-  task,
-}: LayoutProps) {
-  const { projectId } = params;
-  const project = await getProject(projectId);
-
+export default function ProjectServerLayout({ children, task }: LayoutProps) {
   return (
-    <OptimisticProjectProvider project={project}>
-      <ProjectClientLayout>
-        {children}
-        {task}
-      </ProjectClientLayout>
-    </OptimisticProjectProvider>
+    <ProjectClientLayout>
+      {children}
+      {task}
+    </ProjectClientLayout>
   );
 }

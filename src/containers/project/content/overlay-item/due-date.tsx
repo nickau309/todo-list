@@ -1,11 +1,11 @@
 import { DueDateIcon12 } from "@/assets";
 import Text from "@/components/ui/text";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 import getDueDateString from "@/utils/getDueDateString";
 import getDueDateTextColor from "@/utils/getDueDateTextColor";
 import clsx from "clsx";
 
-type DueDateProps = Pick<ProjectType["tasks"][number], "dueDate">;
+type DueDateProps = Pick<TaskType, "dueDate">;
 
 export default function DueDate({ dueDate }: DueDateProps) {
   if (dueDate === null) {

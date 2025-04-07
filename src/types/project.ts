@@ -19,9 +19,7 @@ export type ProjectOptimisticType = Project & {
   tasks: TaskType[];
 };
 
-export type ProjectType = Project & {
-  tasks: TaskType[];
-};
+export type ProjectType = Project;
 
 export type NewProjectOptimisticType = NewProjectType & {
   isCreating?: boolean;

@@ -1,15 +1,12 @@
 import { LabelIconOutline12 } from "@/assets";
 import Text from "@/components/ui/text";
 import { textColor } from "@/constants/color";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 import clsx from "clsx";
 import Link from "next/link";
 import type { KeyboardEvent, MouseEvent } from "react";
 
-type LabelProps = Pick<
-  ProjectType["tasks"][number]["labels"][number],
-  "color" | "id" | "name"
->;
+type LabelProps = Pick<TaskType["labels"][number], "color" | "id" | "name">;
 
 export default function Label({ color, id, name }: LabelProps) {
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {

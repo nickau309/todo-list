@@ -1,7 +1,7 @@
 import { EditorContent, useNameViewerInTaskList } from "@/features/editor";
-import type { ProjectType } from "@/types/project";
+import type { TaskType } from "@/types/task";
 
-type NameProps = Pick<ProjectType["tasks"][number], "isCompleted" | "name">;
+type NameProps = Pick<TaskType, "isCompleted" | "name">;
 
 export default function Name({ isCompleted, name }: NameProps) {
   const nameViewer = useNameViewerInTaskList({
