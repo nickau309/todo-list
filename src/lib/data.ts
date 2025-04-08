@@ -94,31 +94,6 @@ export function queryTask(
   });
 }
 
-export async function getIncompleteTaskCountOn(dueDate: Date) {
-  const { id: userId } = await getRawUser();
-
-  const dateStr = dayjs(dueDate).format("YYYY-MM-DD");
-
-  const queryTaskCount = unstable_cache(
-    async () => {
-      return prisma.task.count({
-        where: {
-          isCompleted: false,
-          dueDate,
-          project: {
-            isArchived: false,
-          },
-          userId,
-        },
-      });
-    },
-    [`user-${userId}`, `date-${dateStr}`],
-    { tags: [`user-${userId}`, `date-${dateStr}`] },
-  );
-
-  return queryTaskCount();
-}
-
 // function isTask(task: unknown): task is TaskType {
 //   // write a TaskSchema for task
 // }

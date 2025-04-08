@@ -23,6 +23,34 @@ export const taskRouter = createTRPCRouter({
 
       return task;
     }),
+  getCount: authedProcedure
+    .input(
+      z.object({
+        date: z.string().date(),
+      }),
+    )
+    .query(async (opts) => {
+      const { ctx, input } = opts;
+
+      const dueDate = new Date(input.date);
+
+      try {
+        const count = await prisma.task.count({
+          where: {
+            isCompleted: false,
+            dueDate,
+            project: {
+              isArchived: false,
+            },
+            userId: Number(ctx.session.user.uid),
+          },
+        });
+
+        return count;
+      } catch (error) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      }
+    }),
   getIds: authedProcedure
     .input(
       z.object({

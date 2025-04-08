@@ -133,6 +133,3 @@ export const LabelSchema = z.object({
   name: z.string().min(1).max(60),
   color: z.nativeEnum(Color).optional(),
 });
-
-// General
-export const DateSchema = z.string().date();

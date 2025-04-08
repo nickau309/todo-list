@@ -3,9 +3,9 @@ import Text from "@/components/ui/text";
 import { useStore } from "@/contexts/store-context";
 import { logOut } from "@/lib/actions";
 import { useListItem } from "@floating-ui/react";
+import { useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
-import { mutate } from "swr";
 import { useSettingsMenu } from "./settings-menu-context";
 
 type ButtonProps = {
@@ -25,6 +25,8 @@ export default function LogOut({ disabled = false }: ButtonProps) {
   );
 
   const { ref, index } = useListItem({ label });
+
+  const queryClient = useQueryClient();
 
   const { getItemProps } = useSettingsMenu("LogOut");
 
@@ -46,11 +48,7 @@ export default function LogOut({ disabled = false }: ButtonProps) {
           if (disabled) {
             e.preventDefault();
           } else {
-            void mutate(
-              () => true, // which cache keys are updated
-              undefined, // update cache data to `undefined`
-              { revalidate: false }, // do not revalidate
-            );
+            void queryClient.invalidateQueries();
             void logOut();
             setIsResourcesMenuOpen(false);
             setIsSettingsMenuOpen(false);
