@@ -7,7 +7,6 @@ import {
 } from "../constants/floating-link-editor";
 
 declare module "@tiptap/core" {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Commands<ReturnType> {
     floatingLinkEditor: {
       setIsFloatingLinkEditorOpen: (open: boolean) => ReturnType;
