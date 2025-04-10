@@ -51,7 +51,6 @@ export default function Project({ disabled = false }: ProjectProps) {
     >
       <div className="flex items-center px-3">
         <ProjectDropdownButton
-          type="button"
           className={clsx(
             "group",
             "flex h-10 min-w-[68px] flex-1 select-none items-center gap-3.5 rounded-[5px] pl-1.5 pr-3",

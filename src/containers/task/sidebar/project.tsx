@@ -68,7 +68,6 @@ export default function Project({ disabled = false }: ProjectProps) {
         </div>
         <div className="relative -mx-2 flex flex-col">
           <ProjectDropdownButton
-            type="button"
             className={clsx(
               "group peer flex h-7 min-w-[68px] select-none items-center gap-2 rounded-[5px] border border-transparent px-2",
               "transition-colors duration-300",

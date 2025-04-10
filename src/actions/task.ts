@@ -36,7 +36,7 @@ export async function createTask(formData: FormData) {
     await prisma.$transaction(async (tx) => {
       const count = await tx.task.count({
         where: {
-          projectId: parsed.projectId ?? user.projects[0].id,
+          projectId: parsed.projectId ?? 1, // user.projects[0].id,
         },
       });
 
@@ -50,7 +50,7 @@ export async function createTask(formData: FormData) {
           },
           name: parsed.name,
           priority: parsed.priority,
-          projectId: parsed.projectId ?? user.projects[0].id,
+          projectId: parsed.projectId ?? 1, // user.projects[0].id,
           userId: user.id,
         },
       });

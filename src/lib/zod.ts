@@ -95,9 +95,12 @@ export const TaskInfoSchema = TaskSchema.pick({
   description: true,
 });
 
-export const TaskDueDateSchema = TaskSchema.pick({
-  dueDate: true,
-}).required();
+export const TaskDueDateSchema = z.object({
+  date: z.string().date(),
+});
+// export const TaskDueDateSchema = TaskSchema.pick({
+//   dueDate: true,
+// }).required();
 
 export const TaskIsCompletedSchema = z.object({
   isCompleted: z.enum(["true", "false"]).transform((value) => value === "true"),
