@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "postinstall": "prisma generate --sql",
     "dotenv": "dotenv -e .env.local --"
   },
   "dependencies": {
