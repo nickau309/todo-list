@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext"
   },
   "include": [
     "svgr.d.ts",

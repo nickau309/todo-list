@@ -32,7 +32,6 @@ export default function Project({ disabled = false }: ProjectProps) {
       setProjectId={setProjectId}
     >
       <ProjectDropdownButton
-        type="button"
         className={clsx(
           "group",
           "flex h-8 min-w-[68px] select-none items-center gap-1 rounded-[5px] border border-transparent",

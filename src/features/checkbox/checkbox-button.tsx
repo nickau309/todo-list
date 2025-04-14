@@ -8,63 +8,63 @@ const BORDER_WIDTH = {
   2: "border-2",
   3: "border-2",
   4: "border",
-};
+} as Record<number, string>;
 
 const BORDER_COLOR = {
   1: "border-priorities-p1-idle-tint",
   2: "border-priorities-p2-idle-tint",
   3: "border-priorities-p3-idle-tint",
   4: "border-priorities-p4-idle-tint",
-};
+} as Record<number, string>;
 
 const DISABLED_BORDER_COLOR = {
   1: "peer-aria-disabled:border-priorities-p1-disabled-tint",
   2: "peer-aria-disabled:border-priorities-p2-disabled-tint",
   3: "peer-aria-disabled:border-priorities-p3-disabled-tint",
   4: "peer-aria-disabled:border-priorities-p4-disabled-tint",
-};
+} as Record<number, string>;
 
 const BG_COLOR = {
   1: "bg-priorities-p1-idle-fill",
   2: "bg-priorities-p2-idle-fill",
   3: "bg-priorities-p3-idle-fill",
   4: "bg-transparent",
-};
+} as Record<number, string>;
 
 const CHECKED_BG_COLOR = {
   1: "bg-priorities-p1-idle-fill",
   2: "bg-priorities-p2-idle-fill",
   3: "bg-priorities-p3-idle-fill",
   4: "bg-priorities-p4-idle-fill",
-};
+} as Record<number, string>;
 
 const DISABLED_BG_COLOR = {
   1: "peer-aria-disabled:bg-priorities-p1-disabled-fill",
   2: "peer-aria-disabled:bg-priorities-p2-disabled-fill",
   3: "peer-aria-disabled:bg-priorities-p3-disabled-fill",
   4: "peer-aria-disabled:bg-transparent",
-};
+} as Record<number, string>;
 
 const DISABLED_CHECKED_BG_COLOR = {
   1: "peer-aria-disabled:bg-priorities-p1-disabled-fill",
   2: "peer-aria-disabled:bg-priorities-p2-disabled-fill",
   3: "peer-aria-disabled:bg-priorities-p3-disabled-fill",
   4: "peer-aria-disabled:bg-priorities-p4-disabled-fill",
-};
+} as Record<number, string>;
 
 const CHECKED_TEXT_COLOR = {
   1: "text-background-base-secondary",
   2: "text-background-base-secondary",
   3: "text-background-base-secondary",
   4: "text-background-base-secondary",
-};
+} as Record<number, string>;
 
 const TEXT_COLOR = {
   1: "text-priorities-p1-idle-fill",
   2: "text-priorities-p2-idle-fill",
   3: "text-priorities-p3-idle-fill",
   4: "text-priorities-p4-idle-fill",
-};
+} as Record<number, string>;
 
 function NewBorder({
   checked,

@@ -3,9 +3,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    typedRoutes: true,
-  },
+  // experimental: {
+  //   typedRoutes: true,
+  // },
   images: {
     remotePatterns: [{ hostname: "d1nbslm0j6pual.cloudfront.net" }],
   },
