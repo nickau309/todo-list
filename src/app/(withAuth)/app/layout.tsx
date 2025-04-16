@@ -2,6 +2,7 @@ import { Provider } from "@/components/app";
 import ClientComponent from "@/components/client-component";
 import LoadingComponent from "@/components/loading-component";
 import Sidebar from "@/containers/app/sidebar";
+import DndProvider from "@/contexts/dnd-provider";
 import { StoreProvider } from "@/contexts/store-context";
 import { getLabels, getProjects, getUser } from "@/lib/data";
 import { TRPCReactProvider } from "@/lib/trpc/client";
@@ -30,10 +31,12 @@ export default async function Layout({ children, dialog, task }: LayoutProps) {
           <ThemeWrapper>
             <div className="flex h-dvh items-center justify-center">
               <ClientComponent fallback={<LoadingComponent />}>
-                <Sidebar />
-                <div className="h-full min-w-0 flex-1">{children}</div>
-                {dialog}
-                {task}
+                <DndProvider>
+                  <Sidebar />
+                  <div className="h-full min-w-0 flex-1">{children}</div>
+                  {dialog}
+                  {task}
+                </DndProvider>
               </ClientComponent>
             </div>
           </ThemeWrapper>

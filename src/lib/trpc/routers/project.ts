@@ -1,4 +1,6 @@
 import { queryProject } from "@/lib/data";
+import prisma from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, createTRPCRouter } from "../init";
@@ -24,4 +26,26 @@ export const projectRouter = createTRPCRouter({
 
       return project;
     }),
+  getInboxProject: authedProcedure.query(async (opts) => {
+    const { ctx } = opts;
+
+    try {
+      const project = await prisma.project.findFirstOrThrow({
+        where: {
+          isInboxProject: true,
+          userId: Number(ctx.session.user.uid),
+        },
+      });
+
+      return project;
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === "P2025") {
+          throw new TRPCError({ code: "NOT_FOUND" });
+        }
+      }
+
+      throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+    }
+  }),
 });

@@ -1,3 +1,5 @@
+"use client";
+
 import useReorderTask from "@/hooks/task/use-reorder-task";
 import { ContainerIdSchema, SortableTaskDataSchema } from "@/lib/zod";
 import type {
@@ -17,7 +19,7 @@ import {
 } from "@dnd-kit/core";
 import type { ReactNode } from "react";
 import { createContext, useContext, useMemo, useState } from "react";
-import OverlayItem from "./overlay-item";
+import OverlayItem from "../containers/project/content/overlay-item";
 
 type DragDataContextType = {
   activeId: UniqueIdentifier | null;

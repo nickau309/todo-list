@@ -1,5 +1,5 @@
-import useGetProject from "@/hooks/project/use-get-project";
 import useGetTaskIds from "@/hooks/task/use-get-task-ids";
+import type { ProjectType } from "@/types/project";
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -7,17 +7,18 @@ import {
 import { defaultRangeExtractor, useVirtualizer } from "@tanstack/react-virtual";
 import type { RefObject } from "react";
 import { useCallback, useMemo } from "react";
-import { useDragData } from "./dnd-provider";
+import { useDragData } from "../../../contexts/dnd-provider";
 import SortableItem from "./sortable-item";
 
 export default function Content({
+  project,
   projectId,
   scrollElementRef,
 }: {
+  project: ProjectType;
   projectId: string | number;
   scrollElementRef: RefObject<HTMLDivElement>;
 }) {
-  const { data: project } = useGetProject({ id: projectId });
   const isArchived = project?.isArchived ?? false;
 
   const { activeId, overId, offsetX } = useDragData();
