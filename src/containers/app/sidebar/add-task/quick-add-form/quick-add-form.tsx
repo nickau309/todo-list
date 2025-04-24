@@ -1,6 +1,6 @@
-import { createTask } from "@/actions/task";
 import { useProjects } from "@/contexts/projects-context";
 import { useStore } from "@/contexts/store-context";
+import useCreateTask from "@/hooks/task/use-create-task";
 import { TaskSchema } from "@/lib/zod";
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -17,23 +17,14 @@ export default function QuickAddForm() {
     inputValues: state.quickAddForm.inputValues,
   }));
 
+  const { mutate } = useCreateTask();
+
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", inputValues.name);
-    formData.append("description", inputValues.description);
-    if (inputValues.dueDate !== null) {
-      formData.append("dueDate", inputValues.dueDate.toISOString());
-    }
-    formData.append("priority", String(inputValues.priority));
-    for (const labelId of inputValues.labelIds) {
-      formData.append("labelId", String(labelId));
-    }
-    formData.append("projectId", `${inputValues.projectId ?? projects[0].id}`);
-    void createTask(formData);
+    mutate(inputValues);
 
     setIsSubmitted(true);
     setIsOpen(false);

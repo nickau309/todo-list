@@ -1,4 +1,3 @@
-import { createTask } from "@/actions/task";
 import Link from "next/link";
 
 export default function Page() {
@@ -42,9 +41,6 @@ export default function Page() {
       <br />
       <br />
       bottom
-      <form action={createTask}>
-        <button type="submit">Add task</button>
-      </form>
     </>
   );
 }

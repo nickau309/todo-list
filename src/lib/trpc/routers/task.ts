@@ -1,11 +1,46 @@
 import { queryTask } from "@/lib/data";
 import prisma, { getTaskFamily } from "@/lib/prisma";
+import { TaskSchema } from "@/lib/zod";
 import { Prisma } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, createTRPCRouter } from "../init";
 
 export const taskRouter = createTRPCRouter({
+  create: authedProcedure.input(TaskSchema).mutation(async (opts) => {
+    const { ctx, input } = opts;
+
+    try {
+      if (typeof input.childOrder !== "number") {
+        return await prisma.$transaction(async (tx) => {
+          const count = await tx.task.count({
+            where: {
+              projectId: input.projectId ?? 1, // user.projects[0].id,
+            },
+          });
+
+          const task = await tx.task.create({
+            data: {
+              childOrder: count,
+              description: input.description,
+              dueDate: input.dueDate,
+              labels: {
+                connect: input.labelIds.map((labelId) => ({ id: labelId })),
+              },
+              name: input.name,
+              priority: input.priority,
+              projectId: input.projectId ?? 1, // user.projects[0].id,
+              userId: Number(ctx.session.user.uid),
+            },
+          });
+
+          return task;
+        });
+      }
+    } catch (error) {
+      throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+    }
+  }),
   findUniqueById: authedProcedure
     .input(
       z.object({
