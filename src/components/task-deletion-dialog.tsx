@@ -1,3 +1,4 @@
+import Heading1 from "@/components/ui/heading1";
 import Text from "@/components/ui/text";
 import {
   FloatingFocusManager,
@@ -84,8 +85,7 @@ export default function TaskDeletionDialog({
           >
             <form onSubmit={handleFormSubmit} className="flex flex-1 flex-col">
               <header className="flex items-center justify-between gap-4 p-4 pb-2">
-                <Text
-                  as="h1"
+                <Heading1
                   id={labelId}
                   overflow="truncate"
                   font="reactist"
@@ -95,7 +95,7 @@ export default function TaskDeletionDialog({
                   color="primary"
                 >
                   Delete task?
-                </Text>
+                </Heading1>
               </header>
               <div className="overflow-auto px-4">
                 <Text

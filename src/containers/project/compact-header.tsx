@@ -1,4 +1,4 @@
-import Text from "@/components/ui/text";
+import Heading1 from "@/components/ui/heading1";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -20,8 +20,7 @@ export default function CompactHeader({ show }: { show: boolean }) {
             className="flex min-w-0 flex-1 justify-center"
           >
             <div className="flex pr-1">
-              <Text
-                as="h1"
+              <Heading1
                 overflow="truncate"
                 font="reactist"
                 size="16px"
@@ -30,7 +29,7 @@ export default function CompactHeader({ show }: { show: boolean }) {
                 color="primary"
               >
                 Inbox
-              </Text>
+              </Heading1>
             </div>
           </motion.div>
         )}

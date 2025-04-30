@@ -1,6 +1,6 @@
 "use client";
 
-import Text from "@/components/ui/text";
+import Heading1 from "@/components/ui/heading1";
 import useHash from "@/hooks/use-hash";
 import { ProjectType } from "@/types/project";
 import clsx from "clsx";
@@ -67,8 +67,7 @@ export default function ProjectView({ children, project }: ViewProps) {
         >
           <div className="flex w-full max-w-[800px] flex-col gap-2">
             <div className="-ml-0.5 flex border border-transparent">
-              <Text
-                as="h1"
+              <Heading1
                 overflow="truncate"
                 font="reactist"
                 size="26px"
@@ -77,7 +76,7 @@ export default function ProjectView({ children, project }: ViewProps) {
                 color="primary"
               >
                 Inbox
-              </Text>
+              </Heading1>
             </div>
           </div>
         </div>

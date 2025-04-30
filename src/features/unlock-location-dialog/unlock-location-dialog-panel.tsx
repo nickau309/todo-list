@@ -1,4 +1,5 @@
 import { CloseIcon24 } from "@/assets";
+import Heading1 from "@/components/ui/heading1";
 import Text from "@/components/ui/text";
 import {
   FloatingFocusManager,
@@ -46,8 +47,7 @@ export default function UnlockRemindersDialogPanel() {
             >
               <form onSubmit={handleSubmit} className="flex flex-1 flex-col">
                 <header className="flex items-center justify-between gap-4 p-2 pl-4">
-                  <Text
-                    as="h1"
+                  <Heading1
                     id={labelId}
                     font="reactist"
                     size="20px"
@@ -56,7 +56,7 @@ export default function UnlockRemindersDialogPanel() {
                     color="primary"
                   >
                     Unlock location-based reminders
-                  </Text>
+                  </Heading1>
                   <button
                     type="button"
                     aria-disabled="false"
