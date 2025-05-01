@@ -61,6 +61,9 @@ export default function AddTask() {
         setIsConfirmDialogOpen(true);
         setHandleConfirmDialogSubmit(() => {
           setIsQuickAddDialogOpen(false);
+          resetQuickAddForm({
+            ...INIT_INPUT_VALUES,
+          });
         });
       } else {
         setIsQuickAddDialogOpen(false);
