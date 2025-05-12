@@ -1,15 +1,9 @@
+import { useDialog } from "@/lib/floating-ui";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
 } from "@floating-ui/react";
-import {
-  useClick,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useRole,
-  useTransitionStyles,
-} from "@floating-ui/react";
+import { useFloating, useTransitionStyles } from "@floating-ui/react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useMemo, useState } from "react";
 
@@ -38,15 +32,9 @@ export default function UnlockLocationDialog({
     onOpenChange: setIsOpen,
   });
 
-  const click = useClick(context, { enabled: !disabled });
-  const role = useRole(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    role,
-    dismiss,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useDialog(context, {
+    enabled: !disabled,
+  });
 
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: 200,

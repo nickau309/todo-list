@@ -1,13 +1,9 @@
+import { useDialog } from "@/lib/floating-ui";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
 } from "@floating-ui/react";
-import {
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useRole,
-} from "@floating-ui/react";
+import { useFloating } from "@floating-ui/react";
 import type { ReactNode } from "react";
 import { createContext, useContext, useId, useMemo } from "react";
 
@@ -34,10 +30,7 @@ export default function SettingsDialog({
 
   const { context, refs } = useFloating({ open, onOpenChange });
 
-  const role = useRole(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
-
-  const { getFloatingProps } = useInteractions([role, dismiss]);
+  const { getFloatingProps } = useDialog(context);
 
   const value = useMemo<DialogContextType>(
     () => ({ open, labelId, context, refs, getFloatingProps }),

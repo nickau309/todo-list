@@ -1,17 +1,9 @@
+import { useDialog } from "@/lib/floating-ui";
 import type {
   UseFloatingData,
   UseInteractionsReturn,
 } from "@floating-ui/react";
-import {
-  autoUpdate,
-  flip,
-  shift,
-  useClick,
-  useDismiss,
-  useFloating,
-  useInteractions,
-  useRole,
-} from "@floating-ui/react";
+import { autoUpdate, flip, shift, useFloating } from "@floating-ui/react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useContext, useMemo, useState } from "react";
 
@@ -51,15 +43,9 @@ export default function ProjectDropdown({
     whileElementsMounted: autoUpdate,
   });
 
-  const click = useClick(context, { enabled: !disabled });
-  const role = useRole(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    role,
-    dismiss,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useDialog(context, {
+    enabled: !disabled,
+  });
 
   const value = useMemo<DropdownContextType>(
     () => ({

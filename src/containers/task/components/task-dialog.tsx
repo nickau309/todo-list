@@ -1,11 +1,9 @@
+import { useDialog } from "@/lib/floating-ui";
 import {
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
-  useDismiss,
   useFloating,
-  useInteractions,
-  useRole,
 } from "@floating-ui/react";
 import clsx from "clsx";
 import type { ReactNode } from "react";
@@ -23,10 +21,7 @@ export default function TaskDialog({
 }: DialogProps) {
   const { context, refs } = useFloating({ open, onOpenChange });
 
-  const role = useRole(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
-
-  const { getFloatingProps } = useInteractions([role, dismiss]);
+  const { getFloatingProps } = useDialog(context);
 
   if (!open) {
     return null;

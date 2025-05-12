@@ -1,13 +1,11 @@
 import Heading1 from "@/components/ui/heading1";
 import Text from "@/components/ui/text";
+import { useDialog } from "@/lib/floating-ui";
 import {
   FloatingFocusManager,
   FloatingOverlay,
   FloatingPortal,
-  useDismiss,
   useFloating,
-  useInteractions,
-  useRole,
   useTransitionStyles,
 } from "@floating-ui/react";
 import clsx from "clsx";
@@ -35,10 +33,7 @@ export default function TaskDeletionDialog({
 
   const { context, refs } = useFloating({ open, onOpenChange });
 
-  const role = useRole(context);
-  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
-
-  const { getFloatingProps } = useInteractions([role, dismiss]);
+  const { getFloatingProps } = useDialog(context);
 
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: 200,
